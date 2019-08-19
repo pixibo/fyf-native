@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="color_text">#037f7f</color>
+    <color name="color_text_grey">@color/grey_3</color>
+    <color name="color_background">#fafafa</color>
+    <color name="color_error">#ba4242</color>
+
+    <color name="color_background_edit_enable">#00c8b4</color>
+    <color name="color_background_edit_disabled">@color/grey</color>
+
+    <color name="color_background_button_disabled">#B8B7B7</color>
+    <color name="color_background_button_enable">@color/black</color>
+
+    <color name="color_background_dropdown">@color/grey_2</color>
+
+    <color name="color_button_selected_border">#037f7f</color>
+    <color name="color_button_selected_bg">#cdece9</color>
+    <color name="color_button_uselected_bg">#efefef</color>
+
+
+
+
+
+
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#B8B7B7</color>
+    <color name="grey_2">#d3d3d3</color>
+    <color name="grey_3">#979797</color>
+    <color name="grey_4">#5a5a5a</color>
+
+
+
+</resources>

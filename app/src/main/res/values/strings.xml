@@ -1,0 +1,219 @@
+<resources>
+    <string name="app_name">Pixibo Zalora</string>
+
+    <string name="no_internet" translatable="false">No Internet Connection</string>
+    <string name="something_wrong" translatable="false">Something went wrong !!</string>
+
+
+    <string name="cm">cm</string>
+    <string name="ft" translatable="false">ft</string>
+    <string name="in" translatable="false">in</string>
+    <string name="kg" translatable="false">kg</string>
+    <string name="lb" translatable="false">lb</string>
+
+
+    <string name="au" translatable="false">AU</string>
+    <string name="eu" translatable="false">EU</string>
+    <string name="fr" translatable="false">FR</string>
+    <string name="uk" translatable="false">UK</string>
+
+
+    <string name="find_my_size">Find My Size</string>
+    <string name="check_your_fit">CHECK YOUR FIT</string>
+    <string name="your_size">YOUR SIZE IS</string>
+    <string name="privacy_policy">Pixibo will not share or disclose your personal information to anyone.</string>
+    <string name="privacy_powered_by">Powered by</string>
+    <string name="privacy_powered_text" translatable="false">Privacy Policy</string>
+    <string name="loader_text" translatable="false">Finding the best size for you</string>
+    <string name="bust_text">Place the measuring tape around the fullest part of your bust, keeping the tape level around your body. If needed, round up to the nearest whole number.</string>
+
+    <string name="header_text" translatable="false">LOOKS LIKE YOU’RE A SIZE </string>
+    <string name="header_text_2" translatable="false"> FOR THIS ITEM</string>
+    <string name="international" translatable="false">INTERNATIONAL </string>
+
+    <string name="text_continue">CONTINUE</string>
+    <string name="dont_know_measurement">Don’t know? Enter measurements instead</string>
+
+    <string name="apparel_find_right_size">LET\'S FIND THE RIGHT SIZE FOR YOU</string>
+    <string name="apparel_body_profile">Your body profile</string>
+    <string name="apparel_bra_profile">Your bra size</string>
+    <string name="apparel_age">AGE</string>
+    <string name="apparel_height">HEIGHT</string>
+    <string name="apparel_weight">WEIGHT</string>
+
+    <string name="apparel_bra_size">SIZE TYPE</string>
+    <string name="apparel_bra_band">BAND</string>
+    <string name="apparel_bra_cup">CUP</string>
+    <string name="apparel_bra_overbust">OVERBUST</string>
+    <string name="apparel_bra_select_">Select Bra Size instead</string>
+
+    <string name="apparel_fit_accurate">WANT A MORE ACCURATE FIT?</string>
+    <string name="apparel_fit_fav_category">Tell us about your favourite </string>
+    <string name="apparel_fit_what_brand">WHAT BRAND IS IT?</string>
+    <string name="apparel_fit_skip">SKIP</string>
+
+    <string name="apparel_brand_fav_size" translatable="false">What size is your favourite </string>
+    <string name="apparel_brand_fav_size_2" translatable="false"> from </string>
+    <string name="apparel_brand_fav_size_3" translatable="false"> \? </string>
+    <string name="apparel_brand_range">RANGE</string>
+    <string name="apparel_brand_size">SIZE</string>
+
+
+    <string name="female_brand_1" translatable="false">MANGO</string>
+    <string name="female_brand_2" translatable="false">DOROTHY PERKINS</string>
+    <string name="female_brand_3" translatable="false">COTTON ON</string>
+    <string name="female_brand_4" translatable="false">ZALORA</string>
+
+    <string name="male_brand_1" translatable="false">ABERCROMBIE &amp; FITCH</string>
+    <string name="male_brand_2" translatable="false">TOPMAN</string>
+    <string name="male_brand_3" translatable="false">COTTON ON</string>
+    <string name="male_brand_4" translatable="false">NIKE</string>
+
+
+    <string name="apparel_last_question">LAST QUESTION!</string>
+    <string name="apparel_last_fit">How would you like this item to fit?</string>
+    <string name="apparel_last_fit_tight">TIGHT</string>
+    <string name="apparel_last_fit_regular">REGULAR</string>
+    <string name="apparel_last_fit_loose">LOOSE</string>
+    <string name="apparel_last_fit_tell_size" translatable="false">TELL ME MY SIZE</string>
+    <string name="apparel_last_fit_regular_text">Regular fit means that you want to wear this item as it was intended by the designer</string>
+    <string name="apparel_last_fit_tight_text">Tight fit means that you prefer this item to fit closer to the body for a contoured, slim silhouette</string>
+    <string name="apparel_last_fit_loose_text">Loose fit means that you prefer this item to fit looser on the body for a less structured, relaxed silhouette</string>
+
+
+    <string name="apparel_result_text_best">THIS SIZE SUITS YOU BEST</string>
+    <string name="apparel_result_text_check_fit">SEE HOW IT FITS YOUR</string>
+    <string name="apparel_result_text_check_fit_bust">BUST</string>
+    <string name="apparel_result_text_check_fit_waist">WAIST</string>
+    <string name="apparel_result_text_check_fit_hips">HIPS</string>
+
+    <string name="apparel_result_text_fit_tight">Too Tight</string>
+    <string name="apparel_result_text_fit_perfect">Perfect</string>
+    <string name="apparel_result_text_fit_loose">Too Loose</string>
+    <string name="apparel_result_preferred_fit">Your preferred fit:</string>
+    <string name="apparel_result_edit">edit</string>
+    <string name="apparel_result_add_to_cart">ADD TO CART</string>
+    <string name="apparel_result_start_over">START OVER</string>
+    <string name="apparel_result_size">SIZE</string>
+    <string name="apparel_result_not_fit">The sizes we have may not fit you well</string>
+    <string name="apparel_result_closest_match">This is our closest match</string>
+
+    <string name="error_required">Required</string>
+    <string name="error_age" translatable="false">Value must be between 15 and 80</string>
+    <string name="error_height_cm" translatable="false">Value must be between 140 and 190</string>
+    <string name="error_height_ft" translatable="false">Value must be between 4’7” and 6’3”</string>
+    <string name="error_weight_kg" translatable="false">Value must be between 40 and 110</string>
+    <string name="error_weight_lb" translatable="false">Value must be between 88 and 243</string>
+    <string name="error_bust_cm" translatable="false">Value must be between 75 and 155</string>
+    <string name="error_bust_in" translatable="false">Value must be between 30 and 61</string>
+
+
+    <string name="footwear_right_size" translatable="false">Let’s find the right size for you</string>
+    <string name="footwear_get_recommendation" translatable="false">Get a size recommendation based on a pair of shoes you already wear.</string>
+    <string name="footwear_fit_what_brand" translatable="false">WHAT BRAND IS IT?</string>
+    <string name="footwear_pick_category" translatable="false">Pick the category of </string>
+    <string name="footwear_pick_category_2" translatable="false">shoes you own </string>
+    <string name="footwear_category" translatable="false">CATEGORY</string>
+
+
+    <string name="band_au_8" translatable="false">8</string>
+    <string name="band_au_10" translatable="false">10</string>
+    <string name="band_au_12" translatable="false">12</string>
+    <string name="band_au_14" translatable="false">14</string>
+    <string name="band_au_16" translatable="false">16</string>
+    <string name="band_au_18" translatable="false">18</string>
+    <string name="band_au_20" translatable="false">20</string>
+    <string name="band_au_22" translatable="false">22</string>
+
+    <string name="band_eu_8" translatable="false">65</string>
+    <string name="band_eu_10" translatable="false">70</string>
+    <string name="band_eu_12" translatable="false">75</string>
+    <string name="band_eu_14" translatable="false">80</string>
+    <string name="band_eu_16" translatable="false">85</string>
+    <string name="band_eu_18" translatable="false">90</string>
+    <string name="band_eu_20" translatable="false">95</string>
+    <string name="band_eu_22" translatable="false">100</string>
+
+    <string name="band_fr_8" translatable="false">80</string>
+    <string name="band_fr_10" translatable="false">85</string>
+    <string name="band_fr_12" translatable="false">90</string>
+    <string name="band_fr_14" translatable="false">95</string>
+    <string name="band_fr_16" translatable="false">100</string>
+    <string name="band_fr_18" translatable="false">105</string>
+    <string name="band_fr_20" translatable="false">110</string>
+    <string name="band_fr_22" translatable="false">115</string>
+
+    <string name="band_uk_8" translatable="false">30</string>
+    <string name="band_uk_10" translatable="false">32</string>
+    <string name="band_uk_12" translatable="false">34</string>
+    <string name="band_uk_14" translatable="false">36</string>
+    <string name="band_uk_16" translatable="false">38</string>
+    <string name="band_uk_18" translatable="false">40</string>
+    <string name="band_uk_20" translatable="false">42</string>
+    <string name="band_uk_22" translatable="false">44</string>
+
+    <string name="cup_au_1" translatable="false">AA</string>
+    <string name="cup_au_2" translatable="false">A</string>
+    <string name="cup_au_3" translatable="false">B</string>
+    <string name="cup_au_4" translatable="false">C</string>
+    <string name="cup_au_5" translatable="false">D</string>
+    <string name="cup_au_6" translatable="false">DD</string>
+    <string name="cup_au_7" translatable="false">E</string>
+    <string name="cup_au_8" translatable="false">F</string>
+    <string name="cup_au_9" translatable="false">G</string>
+    <string name="cup_au_10" translatable="false">H</string>
+    <string name="cup_au_11" translatable="false">I</string>
+
+    <string name="cup_eu_1" translatable="false">A</string>
+    <string name="cup_eu_2" translatable="false">B</string>
+    <string name="cup_eu_3" translatable="false">C</string>
+    <string name="cup_eu_4" translatable="false">D</string>
+    <string name="cup_eu_5" translatable="false">E</string>
+    <string name="cup_eu_6" translatable="false">F</string>
+    <string name="cup_eu_7" translatable="false">G</string>
+    <string name="cup_eu_8" translatable="false">H</string>
+    <string name="cup_eu_9" translatable="false">I</string>
+    <string name="cup_eu_10" translatable="false">J</string>
+    <string name="cup_eu_11" translatable="false">K</string>
+
+    <string name="cup_fr_1" translatable="false">A</string>
+    <string name="cup_fr_2" translatable="false">B</string>
+    <string name="cup_fr_3" translatable="false">C</string>
+    <string name="cup_fr_4" translatable="false">D</string>
+    <string name="cup_fr_5" translatable="false">E</string>
+    <string name="cup_fr_6" translatable="false">F</string>
+    <string name="cup_fr_7" translatable="false">G</string>
+    <string name="cup_fr_8" translatable="false">H</string>
+    <string name="cup_fr_9" translatable="false">I</string>
+    <string name="cup_fr_10" translatable="false">J</string>
+    <string name="cup_fr_11" translatable="false">K</string>
+
+    <string name="cup_uk_1" translatable="false">A</string>
+    <string name="cup_uk_2" translatable="false">B</string>
+    <string name="cup_uk_3" translatable="false">C</string>
+    <string name="cup_uk_4" translatable="false">D</string>
+    <string name="cup_uk_5" translatable="false">DD</string>
+    <string name="cup_uk_6" translatable="false">E</string>
+    <string name="cup_uk_7" translatable="false">F</string>
+    <string name="cup_uk_8" translatable="false">G</string>
+    <string name="cup_uk_9" translatable="false">H</string>
+    <string name="cup_uk_10" translatable="false">I</string>
+    <string name="cup_uk_11" translatable="false">J</string>
+
+    <string name="apparel_female_top">top</string>
+    <string name="apparel_female_dress">dress</string>
+    <string name="apparel_female_jumpsuit">jumpsuit</string>
+    <string name="apparel_female_pant">pant</string>
+    <string name="apparel_female_jeans">jeans</string>
+    <string name="apparel_female_short">short</string>
+    <string name="apparel_female_skirt">skirt</string>
+    <string name="apparel_female_outerwear">outerwear</string>
+
+    <string name="apparel_male_top">top</string>
+    <string name="apparel_male_shirt">shirt</string>
+    <string name="apparel_male_pant">pant</string>
+    <string name="apparel_male_short">short</string>
+    <string name="apparel_male_outerwear">outerwear</string>
+
+
+</resources>
