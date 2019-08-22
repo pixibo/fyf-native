@@ -67,6 +67,8 @@
 
         </RelativeLayout>
 
+
+
         <!--   brand screens starts here -->
 
 
@@ -76,6 +78,7 @@
             android:layout_below="@+id/layout_header"
             android:id="@+id/layout_brand"
             android:visibility="gone"
+            android:paddingBottom="3dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
 
@@ -134,19 +137,56 @@
                 />
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_what_brand"
+                android:textSize="11sp"
+                android:textColor="@color/color_error"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:id="@+id/tv_brand_error"
+                android:fontFamily="@font/apercu_regular"
+                android:text="@string/brand_not_in_list"/>
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone"
+                android:layout_below="@+id/tv_what_brand"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/layout_add">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_add"
+                    />
+
+            </RelativeLayout>
+
+
+
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="120dp"
                 android:id="@+id/layout_brands"
-                android:visibility="gone"
                 android:layout_below="@+id/et_what_brand">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="MANGO"
+                    android:text="@string/footwear_brand_adidas"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -161,7 +201,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="COTTON ON"
+                    android:text="@string/footwear_brand_nike"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -178,7 +218,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="Dorothy Perkins"
+                    android:text="@string/footwear_brand_vans"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -194,7 +234,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="Dorothy Perkins"
+                    android:text="@string/footwear_brand_melissa"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -205,6 +245,23 @@
                     android:gravity="center"
                     android:layout_below="@+id/tv_brand_1"
                     android:id="@+id/tv_brand_4"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:text="@string/footwear_brand_puma"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textSize="12sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="11dp"
+                    android:fontFamily="@font/apercu_regular"
+                    android:background="@drawable/bg_button_unselected"
+                    android:textColor="@color/grey_3"
+                    android:gravity="center"
+                    android:layout_below="@+id/tv_brand_1"
+                    android:layout_toEndOf="@+id/tv_brand_4"
+                    android:id="@+id/tv_brand_5"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -220,8 +277,8 @@
                     android:textColor="@color/grey_3"
                     android:gravity="center"
                     android:layout_below="@+id/tv_brand_1"
-                    android:layout_toEndOf="@+id/tv_brand_4"
-                    android:id="@+id/tv_brand_5"/>
+                    android:layout_toEndOf="@+id/tv_brand_5"
+                    android:id="@+id/tv_brand_6"/>
 
 
             </RelativeLayout>
@@ -244,15 +301,10 @@
 
             </RelativeLayout>
 
-
-
-
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="65dp"
+                android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
 
 
@@ -276,11 +328,18 @@
         </RelativeLayout>
 
 
+        <!--   brand screens ends here -->
+
+        <!--   brand category screens starts here -->
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_header"
             android:id="@+id/layout_brand_category"
+            android:visibility="gone"
+            android:paddingBottom="3dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
 
@@ -302,7 +361,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_accurate_fit"
-                android:id="@+id/tv_fav_category"
+                android:id="@+id/tv_category"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
@@ -319,16 +378,138 @@
                 android:textSize="14sp"
                 android:id="@+id/tv_category_header"
                 android:layout_marginTop="45dp"
-                android:layout_below="@+id/tv_fav_category"
+                android:layout_below="@+id/tv_category"
                 android:text="@string/footwear_category"/>
 
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_category_header"
+                android:layout_marginTop="11dp"
+                android:id="@+id/tv_brand_category"
+                android:background="@drawable/bg_dropdown"
+                android:text="@string/brand_category_select"
+                android:drawableEnd="@drawable/ic_dropdown"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/grey_3"
+                android:textSize="16sp"
+                android:padding="13dp"
+                android:gravity="center_vertical"
+                />
+            
+            
+            
+            
+            <ImageView
+                android:layout_width="220dp"
+                android:layout_height="180dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="140dp"
+                android:id="@+id/iv_shoe_category"
+                android:layout_below="@+id/tv_brand_category"/>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_brand_category_selection"
+                android:padding=".5dp"
+                android:layout_marginBottom="120dp"
+                android:clickable="false"
+                android:visibility="gone"
+                android:layout_below="@+id/tv_brand_category"
+                android:background="@drawable/bg_edit_disabled"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_2" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_4" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_5" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_6" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_7" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_8" />
+
+
+            </LinearLayout>
 
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="65dp"
+                android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
 
 
@@ -337,7 +518,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
                     android:id="@+id/tv_back_brand_category"
                     android:background="@drawable/ic_back"/>
 
@@ -346,7 +527,6 @@
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:layout_centerVertical="true"
                     android:gravity="center"
                     android:id="@+id/tv_brand_category_skip"
                     android:layout_toStartOf="@+id/tv_brand_category_continue"
@@ -375,6 +555,294 @@
 
         </RelativeLayout>
 
+
+        <!--   brand category screens starts here -->
+
+        <!--   brand category model screens starts here -->
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_header"
+            android:id="@+id/layout_brand_category_model"
+            android:paddingBottom="3dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/footwear_right_size"
+                android:textSize="12sp"
+                android:textAllCaps="true"
+                android:id="@+id/tv_accurate_fit_model"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/black"
+                android:layout_marginTop="33dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_accurate_fit_model"
+                android:id="@+id/tv_category_model"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/apercu_regular"
+                android:text="@string/footwear_pick_category_model"/>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:id="@+id/tv_category_model_header"
+                android:layout_marginTop="45dp"
+                android:layout_below="@+id/tv_category_model"
+                android:text="@string/footwear_what_model"/>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_category_model_header"
+                android:layout_marginTop="11dp"
+                android:id="@+id/tv_brand_category_model"
+                android:background="@drawable/bg_dropdown"
+                android:text="@string/brand_category_select"
+                android:drawableEnd="@drawable/ic_dropdown"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/grey_3"
+                android:textSize="16sp"
+                android:padding="13dp"
+                android:gravity="center_vertical"
+                />
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_brand_category_model_selection"
+                android:padding=".5dp"
+                android:layout_marginBottom="120dp"
+                android:clickable="false"
+                android:visibility="gone"
+                android:layout_below="@+id/tv_brand_category_model"
+                android:background="@drawable/bg_edit_disabled"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_model_1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_model_2" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_model_3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_brand_category_model_4" />
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:textColor="@color/grey_3"-->
+                    <!--android:padding="15dp"-->
+                    <!--android:id="@+id/tv_brand_category_model_5" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:textColor="@color/grey_3"-->
+                    <!--android:padding="15dp"-->
+                    <!--android:id="@+id/tv_brand_category_model_6" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:textColor="@color/grey_3"-->
+                    <!--android:padding="15dp"-->
+                    <!--android:id="@+id/tv_brand_category_model_7" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:textColor="@color/grey_3"-->
+                    <!--android:padding="15dp"-->
+                    <!--android:id="@+id/tv_brand_category_model_8" />-->
+
+
+            </LinearLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="65dp"
+                android:layout_alignParentBottom="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tv_back_brand_model_category"
+                    android:background="@drawable/ic_back"/>
+
+
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:id="@+id/tv_brand_model_skip"
+                    android:layout_toStartOf="@+id/tv_brand_category_model_continue"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/apparel_fit_skip"
+                    />
+
+
+                <TextView
+                    android:layout_width="165dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:id="@+id/tv_brand_category_model_continue"
+                    android:background="@color/color_background_button_disabled"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/apercu_medium"
+                    android:text="@string/text_continue"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#d3d3d3"
+            android:layout_alignParentBottom="true">
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:id="@+id/layout_progress_1">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_2">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_3">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_4">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_5">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_6">
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
 
     </RelativeLayout>

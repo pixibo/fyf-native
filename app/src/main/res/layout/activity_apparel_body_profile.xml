@@ -73,8 +73,8 @@
         android:layout_height="match_parent"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="3dp"
         android:visibility="gone"
+        android:paddingBottom="3dp"
         android:layout_below="@+id/layout_header"
         android:id="@+id/layout_body_profile">
 
@@ -196,8 +196,7 @@
                 android:textColor="@color/black"
                 android:id="@+id/tv_quotes"
                 android:layout_toStartOf="@+id/et_height_in"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/apercu_bold" />
+                android:layout_marginTop="5dp" />
 
             <EditText
                 android:layout_width="35dp"
@@ -219,8 +218,7 @@
                 android:visibility="gone"
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="@font/apercu_bold" />
+                android:layout_marginEnd="10dp" />
 
 
         </RelativeLayout>
@@ -306,6 +304,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:id="@+id/layout_weight"
+
             android:padding="2dp"
             android:background="@drawable/bg_edit_disabled"
             android:layout_below="@+id/tv_weight">
@@ -360,7 +359,8 @@
             android:id="@+id/layout_weight_lb"
             android:padding="2dp"
             android:layout_toEndOf="@+id/layout_weight_kg"
-            android:layout_below="@+id/tv_weight">
+            android:layout_below="@+id/tv_weight"
+            android:layout_marginBottom="160dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -388,18 +388,28 @@
             android:text="@string/error_required"/>
 
 
-        <TextView
-            android:layout_width="165dp"
-            android:layout_height="40dp"
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:id="@+id/tv_continue"
-            android:background="@color/color_background_button_enable"
-            android:textColor="@color/white"
-            android:fontFamily="@font/apercu_medium"
-            android:text="@string/text_continue"
-            android:layout_marginBottom="65dp"
-            android:layout_alignParentEnd="true" />
+            android:paddingBottom="65dp">
+
+
+            <TextView
+                android:layout_width="165dp"
+                android:layout_height="40dp"
+
+                android:gravity="center"
+                android:id="@+id/tv_continue"
+                android:background="@color/color_background_button_enable"
+                android:textColor="@color/white"
+                android:fontFamily="@font/apercu_medium"
+                android:text="@string/text_continue"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+
 
 
 
@@ -655,6 +665,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="28dp"
+                    android:visibility="invisible"
                     android:layout_marginEnd="15dp"
                     android:id="@+id/layout_band_9"
                     android:background="@drawable/bg_button_unselected">
@@ -1093,10 +1104,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/layout_cup"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="150dp"
             android:id="@+id/tv_bust_select"
             android:textSize="10sp"
             android:fontFamily="@font/apercu_medium"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:textColor="@color/color_text"
             android:text="@string/dont_know_measurement"/>
 
@@ -1105,7 +1117,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="65dp"
+            android:paddingBottom="65dp"
             android:layout_alignParentBottom="true">
 
 
@@ -1114,8 +1126,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:id="@+id/tv_back_bra_size"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/ic_back"/>
 
 
@@ -1123,7 +1135,6 @@
             <TextView
                 android:layout_width="165dp"
                 android:layout_height="40dp"
-
                 android:gravity="center"
                 android:id="@+id/tv_bra_continue"
                 android:background="@color/color_background_button_enable"
@@ -1186,6 +1197,15 @@
                 android:padding="15dp"
                 android:id="@+id/tv_uk"
                 android:text="@string/uk"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/grey_3"
+                android:padding="15dp"
+                android:id="@+id/tv_us"
+                android:text="@string/us"/>
 
 
         </LinearLayout>
@@ -1353,6 +1373,7 @@
                 android:id="@+id/tv_select_bra_size"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
+                android:layout_marginBottom="150dp"
                 android:textSize="10sp"
                 android:textColor="@color/color_text"
                 android:fontFamily="@font/apercu_medium"
@@ -1364,7 +1385,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="65dp"
+                android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
 
 
@@ -1373,8 +1394,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:id="@+id/tv_back_bust"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/ic_back"/>
 
 

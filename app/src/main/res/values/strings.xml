@@ -16,11 +16,12 @@
     <string name="eu" translatable="false">EU</string>
     <string name="fr" translatable="false">FR</string>
     <string name="uk" translatable="false">UK</string>
+    <string name="us" translatable="false">US</string>
 
 
-    <string name="find_my_size">Find My Size</string>
+    <string name="find_my_size">FIND MY SIZE</string>
     <string name="check_your_fit">CHECK YOUR FIT</string>
-    <string name="your_size">YOUR SIZE IS</string>
+    <string name="your_size">Your Size is</string>
     <string name="privacy_policy">Pixibo will not share or disclose your personal information to anyone.</string>
     <string name="privacy_powered_by">Powered by</string>
     <string name="privacy_powered_text" translatable="false">Privacy Policy</string>
@@ -33,6 +34,11 @@
 
     <string name="text_continue">CONTINUE</string>
     <string name="dont_know_measurement">Don’t know? Enter measurements instead</string>
+
+    <string name="brand_not_in_list">That brand\'s not in our list. Click "+" to add it.</string>
+    <string name="brand_thanks">Thanks! In the meantime, please select a different brand</string>
+    <string name="brand_category_select">SELECT</string>
+
 
     <string name="apparel_find_right_size">LET\'S FIND THE RIGHT SIZE FOR YOU</string>
     <string name="apparel_body_profile">Your body profile</string>
@@ -59,15 +65,28 @@
     <string name="apparel_brand_size">SIZE</string>
 
 
-    <string name="female_brand_1" translatable="false">MANGO</string>
-    <string name="female_brand_2" translatable="false">DOROTHY PERKINS</string>
-    <string name="female_brand_3" translatable="false">COTTON ON</string>
-    <string name="female_brand_4" translatable="false">ZALORA</string>
+    <string name="female_apparel_brand_1" translatable="false">MANGO</string>
+    <string name="female_apparel_brand_2" translatable="false">DOROTHY PERKINS</string>
+    <string name="female_apparel_brand_3" translatable="false">COTTON ON</string>
+    <string name="female_apparel_brand_4" translatable="false">ZALORA</string>
 
-    <string name="male_brand_1" translatable="false">ABERCROMBIE &amp; FITCH</string>
-    <string name="male_brand_2" translatable="false">TOPMAN</string>
-    <string name="male_brand_3" translatable="false">COTTON ON</string>
-    <string name="male_brand_4" translatable="false">NIKE</string>
+    <string name="male_apparel_brand_1" translatable="false">ABERCROMBIE &amp; FITCH</string>
+    <string name="male_apparel_brand_2" translatable="false">TOPMAN</string>
+    <string name="male_apparel_brand_3" translatable="false">COTTON ON</string>
+    <string name="male_apparel_brand_4" translatable="false">NIKE</string>
+
+
+    <string name="footwear_brand_adidas" translatable="false">ADIDAS</string>
+    <string name="footwear_brand_converse" translatable="false">CONVERSE</string>
+    <string name="footwear_brand_nike" translatable="false">NIKE</string>
+    <string name="footwear_brand_vans" translatable="false">VANS</string>
+    <string name="footwear_brand_puma" translatable="false">PUMA</string>
+    <string name="footwear_brand_onitsuka_tiger" translatable="false">ONITSUKA TIGER</string>
+    <string name="footwear_brand_melissa" translatable="false">MELISSA</string>
+    <string name="footwear_brand_reebok" translatable="false">REEBOK</string>
+    <string name="footwear_brand_birkenstock" translatable="false">BIRKENSTOCK</string>
+    <string name="footwear_brand_aldo" translatable="false">ALDO</string>
+
 
 
     <string name="apparel_last_question">LAST QUESTION!</string>
@@ -83,6 +102,7 @@
 
     <string name="apparel_result_text_best">THIS SIZE SUITS YOU BEST</string>
     <string name="apparel_result_text_check_fit">SEE HOW IT FITS YOUR</string>
+    <string name="apparel_result_text_check_fit_chest">CHEST</string>
     <string name="apparel_result_text_check_fit_bust">BUST</string>
     <string name="apparel_result_text_check_fit_waist">WAIST</string>
     <string name="apparel_result_text_check_fit_hips">HIPS</string>
@@ -113,7 +133,10 @@
     <string name="footwear_fit_what_brand" translatable="false">WHAT BRAND IS IT?</string>
     <string name="footwear_pick_category" translatable="false">Pick the category of </string>
     <string name="footwear_pick_category_2" translatable="false">shoes you own </string>
+    <string name="footwear_pick_category_model" translatable="false">Do you know the model name of your </string>
+    <string name="footwear_pick_category__model2" translatable="false">\? (optional)</string>
     <string name="footwear_category" translatable="false">CATEGORY</string>
+    <string name="footwear_what_model" translatable="false">WHAT MODEL IS IT?</string>
 
 
     <string name="band_au_8" translatable="false">8</string>
@@ -151,6 +174,15 @@
     <string name="band_uk_18" translatable="false">40</string>
     <string name="band_uk_20" translatable="false">42</string>
     <string name="band_uk_22" translatable="false">44</string>
+
+    <string name="band_us_8" translatable="false">30</string>
+    <string name="band_us_10" translatable="false">32</string>
+    <string name="band_us_12" translatable="false">34</string>
+    <string name="band_us_14" translatable="false">36</string>
+    <string name="band_us_16" translatable="false">38</string>
+    <string name="band_us_18" translatable="false">40</string>
+    <string name="band_us_20" translatable="false">42</string>
+    <string name="band_us_22" translatable="false">44</string>
 
     <string name="cup_au_1" translatable="false">AA</string>
     <string name="cup_au_2" translatable="false">A</string>
@@ -199,6 +231,18 @@
     <string name="cup_uk_9" translatable="false">H</string>
     <string name="cup_uk_10" translatable="false">I</string>
     <string name="cup_uk_11" translatable="false">J</string>
+
+    <string name="cup_us_1" translatable="false">A</string>
+    <string name="cup_us_2" translatable="false">B</string>
+    <string name="cup_us_3" translatable="false">C</string>
+    <string name="cup_us_4" translatable="false">D</string>
+    <string name="cup_us_5" translatable="false">DD</string>
+    <string name="cup_us_6" translatable="false">DDD</string>
+    <string name="cup_us_7" translatable="false">E</string>
+    <string name="cup_us_8" translatable="false">F</string>
+    <string name="cup_us_9" translatable="false">G</string>
+    <string name="cup_us_10" translatable="false">H</string>
+    <string name="cup_us_11" translatable="false">I</string>
 
     <string name="apparel_female_top">top</string>
     <string name="apparel_female_dress">dress</string>

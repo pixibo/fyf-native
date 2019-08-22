@@ -32,6 +32,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.Locale;
 
+import static com.pixibo.zalora.Utils.Utils.TYPE.ConversionTracking;
 import static com.pixibo.zalora.Utils.Utils.TYPE.MergeProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ResetProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.SizeFromApi;
@@ -44,9 +45,11 @@ public class MainActivity extends AppCompatActivity implements Result {
     private LinearLayout layout_button;
     private String clientId = "qe3uhcp1kh11";
     private String skuId = "A9D56SH00ED8EDGS";
+//    private String altId = "10214810760805751";
     private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";
+    private String brand = "";
     private String sizeUrl = null;
     private String response = null;
 
@@ -72,11 +75,30 @@ public class MainActivity extends AppCompatActivity implements Result {
 
         uID = Utils.deviceID(this);
 
-
+        Locale locale;
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
-        conf.setLocale(new Locale(preferredLanguage)); // API 17+ only.
+        switch (preferredLanguage)
+        {
+            case "en":
+                locale = new Locale("en");
+                break;
+            case "in":
+                locale = new Locale("in");
+                break;
+            case "hk":
+                locale = new Locale("zh","HK");
+                break;
+            case "tw":
+                locale = new Locale("zh","TW");
+                break;
+            default:
+                locale = new Locale("en");
+                break;
+
+        }
+        conf.setLocale(locale); // API 17+ only.
         res.updateConfiguration(conf, dm);
 
 
@@ -108,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                     intent.putExtra("dataType",dataType);
                     intent.putExtra("gender",gender);
                     intent.putExtra("clientId",clientId);
+                    intent.putExtra("brand",brand);
                     intent.putExtra("skuId",skuId);
                     intent.putExtra("altId",altId);
                     intent.putExtra("uID",uID);
@@ -182,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements Result {
     }
 
 
-    private void altIdHasProfile(String altId, String uID) {
+    private void altIdHasProfile() {
 
 
         try {
@@ -266,6 +289,44 @@ public class MainActivity extends AppCompatActivity implements Result {
         }
     }
 
+    private void pixiboConversionTracking( String clientId, JSONArray products, String sku, Number price, String size, Number quantity, String transaction, Number amount, String currency) {
+
+
+        try {
+
+            JSONObject body = new JSONObject();
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+
+
+                body.put("clientId", clientId);
+                body.put("products", products);
+                body.put("sku", sku);
+                body.put("price", price);
+                body.put("size", size);
+                if(quantity != null && !quantity.equals("")){
+                    body.put("quantity", quantity);
+                }
+                body.put("transaction", transaction);
+                body.put("amount", amount);
+                body.put("currency", currency);
+
+                POST post = new POST(this, "https://discoverysvc.pixibo.com/uid" , body,ConversionTracking, this);
+                post.execute();
+
+
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
 
 
 
@@ -287,6 +348,11 @@ public class MainActivity extends AppCompatActivity implements Result {
                         if (userObject.has("type")) {
 
                             dataType = userObject.optString("type");
+
+                            if (Arrays.asList(footwear_array).contains(dataType))
+                            {
+                                brand = userObject.optString("brandName");
+                            }
 
                             gender = userObject.optString("gender");
 
@@ -338,21 +404,51 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                                 }
 
-//                                else if (Arrays.asList(footwear_array).contains(type))
-//                                {
-//                                    if(gender.equals("male")){
-//                                        sizeUrl = getMaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-//                                    }
-//                                    else if(gender.equals("female")){
-//                                        sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-//                                    }
-//                                }
-//
-//                                else if (Arrays.asList(lingerie_array).contains(type))
+                                else if (Arrays.asList(footwear_array).contains(dataType))
+                                {
+                                    if(gender.equals("male")){
+
+                                        sizeUrl = getMaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
+
+                                        if(sizeUrl != null){
+
+                                            fetchSizeFromApi(sizeUrl);
+                                        }
+
+                                        else
+                                        {
+                                            layout_button.setVisibility(View.VISIBLE);
+                                            SpannableString content;
+                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
+                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                                            tv_find_my_size.setText(content);
+                                        }
+                                    }
+
+                                    else if(gender.equals("female")){
+
+                                        sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
+
+                                        if(sizeUrl != null){
+
+                                            fetchSizeFromApi(sizeUrl);
+                                        }
+                                        else
+                                        {
+                                            layout_button.setVisibility(View.VISIBLE);
+                                            SpannableString content;
+                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
+                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                                            tv_find_my_size.setText(content);
+                                        }
+                                    }
+                                }
+
+//                                else if (Arrays.asList(lingerie_array).contains(dataType))
 //                                {
 //                                    sizeUrl = null;
 //                                }
-//
+
 
                             }
                             else
@@ -360,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                                 layout_button.setVisibility(View.VISIBLE);
                                 SpannableString content;
-                                content = new SpannableString("FIND MY SIZE");
+                                content = new SpannableString(getResources().getString(R.string.find_my_size));
                                 content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                                 tv_find_my_size.setText(content);
                             }
@@ -371,7 +467,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                         {
                             layout_button.setVisibility(View.VISIBLE);
                             SpannableString content;
-                            content = new SpannableString("FIND MY SIZE");
+                            content = new SpannableString(getResources().getString(R.string.find_my_size));
                             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                             tv_find_my_size.setText(content);
                         }
@@ -401,13 +497,18 @@ public class MainActivity extends AppCompatActivity implements Result {
                             dataType = userObject.optString("type");
                             gender = userObject.optString("gender");
 
+                            if (Arrays.asList(footwear_array).contains(dataType))
+                            {
+                                brand = userObject.optString("brandName");
+                            }
+
                             if(userObject.has("userInfo"))
                             {
                                 JSONObject userInfoObject = new JSONObject(userObject.optString("userInfo"));
 
                                 if (!userInfoObject.optString("uid").equals(null))
                                 {
-                                    altIdHasProfile(userInfoObject.optString("altId"),userInfoObject.optString("uid"));
+                                    altIdHasProfile();
                                 }
                                 else
                                 {
@@ -431,7 +532,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                                         {
                                             layout_button.setVisibility(View.VISIBLE);
                                             SpannableString content;
-                                            content = new SpannableString("FIND MY SIZE");
+                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
                                             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                                             tv_find_my_size.setText(content);
                                         }
@@ -450,7 +551,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                                         {
                                             layout_button.setVisibility(View.VISIBLE);
                                             SpannableString content;
-                                            content = new SpannableString("FIND MY SIZE");
+                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
                                             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                                             tv_find_my_size.setText(content);
                                         }
@@ -460,21 +561,47 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                                 }
 
-//                                else if (Arrays.asList(footwear_array).contains(type))
-//                                {
-//                                    if(gender.equals("male")){
-//                                        sizeUrl = getMaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-//                                    }
-//                                    else if(gender.equals("female")){
-//                                        sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-//                                    }
-//                                }
-//
-//                                else if (Arrays.asList(lingerie_array).contains(type))
+                                else if (Arrays.asList(footwear_array).contains(dataType))
+                                {
+                                    if(gender.equals("male")){
+
+                                        sizeUrl = getMaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
+
+                                        if(sizeUrl != null){
+                                            fetchSizeFromApi(sizeUrl);
+                                        }
+                                        else
+                                        {
+                                            layout_button.setVisibility(View.VISIBLE);
+                                            SpannableString content;
+                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
+                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                                            tv_find_my_size.setText(content);
+                                        }
+                                    }
+                                    else if(gender.equals("female")){
+
+                                        sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
+
+                                        if(sizeUrl != null){
+                                            fetchSizeFromApi(sizeUrl);
+                                        }
+                                        else
+                                        {
+                                            layout_button.setVisibility(View.VISIBLE);
+                                            SpannableString content;
+                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
+                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                                            tv_find_my_size.setText(content);
+                                        }
+                                    }
+                                }
+
+//                                else if (Arrays.asList(lingerie_array).contains(dataType))
 //                                {
 //                                    sizeUrl = null;
 //                                }
-//
+
 
                             }
                             else
@@ -482,7 +609,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                                 layout_button.setVisibility(View.VISIBLE);
                                 SpannableString content;
-                                content = new SpannableString("FIND MY SIZE");
+                                content = new SpannableString(getResources().getString(R.string.find_my_size));
                                 content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                                 tv_find_my_size.setText(content);
                             }
@@ -493,7 +620,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                         {
                             layout_button.setVisibility(View.VISIBLE);
                             SpannableString content;
-                            content = new SpannableString("FIND MY SIZE");
+                            content = new SpannableString(getResources().getString(R.string.find_my_size));
                             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                             tv_find_my_size.setText(content);
                         }
@@ -574,15 +701,6 @@ public class MainActivity extends AppCompatActivity implements Result {
                     if (statusCode == 200)
                     {
                         JSONObject object = new JSONObject(result);
-
-//                        String [] ids = {object.optString("uid"),object.optString("altId")};
-//
-//                        for (String id : ids) {
-//
-//                            if (id.equals(object.optString("uid"))) {
-//                                resetClientProfile(clientId,id);
-//                            }
-//                        }
                     }
                 }
                 catch (Exception e)
@@ -602,27 +720,11 @@ public class MainActivity extends AppCompatActivity implements Result {
             if(resultCode == Activity.RESULT_OK){
                 boolean recommended = data.getBooleanExtra("recommended",false);
                 String result = data.getStringExtra("result");
-                SpannableString content;
-                String returnedText = "";
 
+                setButtonText(result,recommended);
 
                 Log.e("recommended", String.valueOf(recommended));
                 Log.e("result",result);
-
-                if(recommended){
-                    returnedText = "Your size is "+result;
-                    content = new SpannableString(returnedText);
-
-                }
-                else{
-                    returnedText = "CHECK YOUR FIT";
-                    content = new SpannableString(returnedText);
-                }
-
-                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-
-                tv_find_my_size.setText(content);
-
 
             }
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -632,38 +734,12 @@ public class MainActivity extends AppCompatActivity implements Result {
     }
 
 
-    public void updateData(boolean recommended ,String result )
-    {
-        SpannableString content;
-        String returnedText = "";
-
-
-        Log.e("recommended", String.valueOf(recommended));
-        Log.e("result",result);
-
-        if(recommended){
-            returnedText = "Your size is "+result;
-            content = new SpannableString(returnedText);
-
-        }
-        else{
-            returnedText = "CHECK YOUR FIT";
-            content = new SpannableString(returnedText);
-        }
-
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-
-        tv_find_my_size.setText(content);
-
-
-    }
-
 
     public String getApparelFemaleUrl(JSONObject userInfoObject, String[] apparel_array, String clientId, String skuId, String uID) throws JSONException {
         JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
         String url = null;
 
-        if(whoisObject.has("female")){
+        if(whoisObject.has("female")  &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}")){
 
             JSONObject femaleObject = new JSONObject(whoisObject.optString("female"));
 
@@ -730,7 +806,12 @@ public class MainActivity extends AppCompatActivity implements Result {
 
         JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
         String url = null;
-        if(whoisObject.has("male")){
+
+       // Log.e("male",new JSONObject(userInfoObject.optString("whois")).optString("male"));
+
+        if(whoisObject.has("male")  &&!new JSONObject(userInfoObject.optString("whois")).optString("male").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals("{}") )
+        {
+
 
             JSONObject maleObject = new JSONObject(whoisObject.optString("male"));
 
@@ -746,7 +827,10 @@ public class MainActivity extends AppCompatActivity implements Result {
             String range = "";
             String sizeType = "";
             String size = "";
+
+
             JSONArray maleReferenceBrandsArray = new JSONArray(maleObject.optString("referenceBrands"));
+
             if(maleReferenceBrandsArray.length() > 0){
                 JSONObject maleReferenceBrandsObject = null;
                 for (int i = 0; i<maleReferenceBrandsArray.length(); i++){
@@ -776,6 +860,89 @@ public class MainActivity extends AppCompatActivity implements Result {
 
         return url;
     }
+
+    public String getFemaleFootwearUrl(JSONObject userInfoObject, String[] footwear_array, String clientId, String skuId, String uID) throws JSONException {
+        JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
+        String url = null;
+
+
+        if(whoisObject.has("female")  &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}")){
+
+            JSONObject femaleObject = new JSONObject(whoisObject.optString("female"));
+            String brand = "";
+            String categoryType = "";
+            String model = "";
+            String footwearWidthType = "";
+            String sizeType = "";
+            String size = "";
+            JSONArray femaleReferenceBrandsArray = new JSONArray(femaleObject.optString("referenceBrands"));
+            if(femaleReferenceBrandsArray.length() > 0){
+                JSONObject femaleReferenceBrandsObject = null;
+                for (int i = 0; i<femaleReferenceBrandsArray.length(); i++){
+                    JSONObject referenceObject = femaleReferenceBrandsArray.getJSONObject(i);
+                    String category= referenceObject.optString("category");
+                    if(Arrays.asList(footwear_array).contains(category)){
+                        femaleReferenceBrandsObject = referenceObject;
+                    }
+                }
+                if(femaleReferenceBrandsObject != null){
+                    brand = femaleReferenceBrandsObject.optString("brand");
+                    model = femaleReferenceBrandsObject.optString("model");
+                    categoryType = femaleReferenceBrandsObject.optString("categoryType");
+                    footwearWidthType = femaleReferenceBrandsObject.optString("footwearWidthType");
+                    sizeType = femaleReferenceBrandsObject.optString("sizeType");
+                    size = femaleReferenceBrandsObject.optString("size");
+                }
+            }
+            if(!brand.equals("") && !footwearWidthType.equals("") && !sizeType.equals("") && !size.equals("")){
+                url = "http://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&sizeType="+sizeType+"&size="+size+"&footwearWidthType="+footwearWidthType+"&categoryType="+categoryType+"&model="+model;
+            }
+
+        }
+        return url;
+    }
+
+    public String getMaleFootwearUrl(JSONObject userInfoObject, String[] footwear_array, String clientId, String skuId, String uID) throws JSONException {
+        JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
+        String url = null;
+
+
+        if(whoisObject.has("male")  &&!new JSONObject(userInfoObject.optString("whois")).optString("male").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals("{}") )
+        {
+            JSONObject maleObject = new JSONObject(whoisObject.optString("male"));
+            String brand = "";
+            String categoryType = "";
+            String model = "";
+            String footwearWidthType = "";
+            String sizeType = "";
+            String size = "";
+            JSONArray maleReferenceBrandsArray = new JSONArray(maleObject.optString("referenceBrands"));
+            if(maleReferenceBrandsArray.length() > 0){
+                JSONObject maleReferenceBrandsObject = null;
+                for (int i = 0; i<maleReferenceBrandsArray.length(); i++){
+                    JSONObject referenceObject = maleReferenceBrandsArray.getJSONObject(i);
+                    String category= referenceObject.optString("category");
+                    if(Arrays.asList(footwear_array).contains(category)){
+                        maleReferenceBrandsObject = referenceObject;
+                    }
+                }
+                if(maleReferenceBrandsObject != null){
+                    brand = maleReferenceBrandsObject.optString("brand");
+                    model = maleReferenceBrandsObject.optString("model");
+                    categoryType = maleReferenceBrandsObject.optString("categoryType");
+                    footwearWidthType = maleReferenceBrandsObject.optString("footwearWidthType");
+                    sizeType = maleReferenceBrandsObject.optString("sizeType");
+                    size = maleReferenceBrandsObject.optString("size");
+                }
+            }
+            if(!brand.equals("") && !footwearWidthType.equals("") && !sizeType.equals("") && !size.equals("")){
+                url = "http://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&sizeType="+sizeType+"&size="+size+"&footwearWidthType="+footwearWidthType+"&categoryType="+categoryType+"&model="+model;
+            }
+
+        }
+        return url;
+    }
+
 
 
     public void setButtonText(String size,boolean isRecommended)

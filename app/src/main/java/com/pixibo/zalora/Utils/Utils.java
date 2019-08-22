@@ -41,8 +41,8 @@ public class Utils {
 
 
     public static enum TYPE {
-        ValidateUserUid,ValidateUserAltId,BrandSuggestion,BrandSearch,BrandSizes,SizeFromApi,MergeProfile,ResetProfile,UpdateProfile,BodyProfile,
-        Track,BraSize,GetSize;
+        ValidateUserUid,ValidateUserAltId,BrandSuggestion,BrandSizes,SizeFromApi,MergeProfile,ResetProfile,UpdateProfile,BodyProfile,
+        Track,BraSize,GetSize,ConversionTracking,BrandCategorySuggestion;
     }
 
 
@@ -304,6 +304,7 @@ public class Utils {
 
         switch (text) {
             case "Tops":
+
                 if (gender.equals("female"))
                 {
                     singularText = context.getResources().getString(R.string.apparel_female_top);

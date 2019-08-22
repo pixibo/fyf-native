@@ -31,7 +31,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_find_my_size"
             android:text="@string/find_my_size"
-            android:textAllCaps="true"
             android:textColor="@color/color_text"
             android:fontFamily="@font/apercu_regular"
             android:textSize="14sp"
