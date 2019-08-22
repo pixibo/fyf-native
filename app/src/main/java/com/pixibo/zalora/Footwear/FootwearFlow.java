@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.webkit.JsResult;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandCategorySuggestion;
+import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSizeSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSuggestion;
 
 public class FootwearFlow extends AppCompatActivity implements Result, View.OnClickListener {
@@ -53,7 +55,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
     private RelativeLayout layout_brand_search,layout_add,layout_brands;
     private RelativeLayout layout_brand,layout_brand_category,layout_brand_category_model,layout_brand_size;
-    private LinearLayout layout_brand_category_selection,layout_brand_category_model_selection;
+    private LinearLayout layout_brand_category_selection,layout_brand_category_model_selection,layout_size_type;
 
 
     private String category = "";
@@ -67,13 +69,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     private String categoryType = "";
     private String categoryModel = "";
     private String brandCategorySuggestion = "";
+    private String brandSizeSuggestion = "";
+    private String sizeType = "";
     private boolean isBrandModelPresent = false ;
 
 
-    private TextView tv_category,tv_brand_category,tv_category_model,tv_brand_category_model,tv_brand_fit;
+    private TextView tv_category,tv_brand_category,tv_category_model,tv_brand_category_model,tv_brand_fit,tv_type_size;
 
     private TextView tv_brand_1,tv_brand_2,tv_brand_3,tv_brand_4,tv_brand_5,tv_brand_6;
     private TextView tv_brand_category_1,tv_brand_category_2,tv_brand_category_3,tv_brand_category_4,tv_brand_category_5,tv_brand_category_6,tv_brand_category_7,tv_brand_category_8;
+    private TextView tv_size_1,tv_size_2,tv_size_3,tv_size_4,tv_size_5,tv_size_6,tv_size_7,tv_size_8,tv_size_9,tv_size_10,tv_size_11,tv_size_12,tv_size_13;
+    private TextView tv_type_1,tv_type_2,tv_type_3,tv_type_4,tv_type_5,tv_type_6,tv_type_7,tv_type_8;
     private TextView tv_brand_error;
     private TextView tv_brand_continue,tv_brand_category_continue,tv_brand_category_model_continue;
     private TextView tv_brand_category_skip,tv_brand_model_skip;
@@ -112,6 +118,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_brand_category_model = findViewById(R.id.tv_brand_category_model);
         tv_category_model = findViewById(R.id.tv_category_model);
         tv_brand_fit = findViewById(R.id.tv_brand_fit);
+        tv_type_size = findViewById(R.id.tv_type_size);
 
         tv_brand_error = findViewById(R.id.tv_brand_error);
 
@@ -121,6 +128,30 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_brand_4 = findViewById(R.id.tv_brand_4);
         tv_brand_5 = findViewById(R.id.tv_brand_5);
         tv_brand_6 = findViewById(R.id.tv_brand_6);
+
+        tv_type_1 = findViewById(R.id.tv_type_1);
+        tv_type_2 = findViewById(R.id.tv_type_2);
+        tv_type_3 = findViewById(R.id.tv_type_3);
+        tv_type_4 = findViewById(R.id.tv_type_4);
+        tv_type_5 = findViewById(R.id.tv_type_5);
+        tv_type_6 = findViewById(R.id.tv_type_6);
+        tv_type_7 = findViewById(R.id.tv_type_7);
+        tv_type_8 = findViewById(R.id.tv_type_8);
+
+
+        tv_size_1 = findViewById(R.id.tv_size_1);
+        tv_size_2 = findViewById(R.id.tv_size_2);
+        tv_size_3 = findViewById(R.id.tv_size_3);
+        tv_size_4 = findViewById(R.id.tv_size_4);
+        tv_size_5 = findViewById(R.id.tv_size_5);
+        tv_size_6 = findViewById(R.id.tv_size_6);
+        tv_size_7 = findViewById(R.id.tv_size_7);
+        tv_size_8 = findViewById(R.id.tv_size_8);
+        tv_size_9 = findViewById(R.id.tv_size_9);
+        tv_size_10 = findViewById(R.id.tv_size_10);
+        tv_size_11 = findViewById(R.id.tv_size_11);
+        tv_size_12 = findViewById(R.id.tv_size_12);
+        tv_size_13 = findViewById(R.id.tv_size_13);
 
         tv_brand_category_1 = findViewById(R.id.tv_brand_category_1);
         tv_brand_category_2 = findViewById(R.id.tv_brand_category_2);
@@ -157,6 +188,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
         layout_brand_category_selection = findViewById(R.id.layout_brand_category_selection);
         layout_brand_category_model_selection = findViewById(R.id.layout_brand_category_model_selection);
+        layout_size_type = findViewById(R.id.layout_size_type);
 
 
         layout_brand = findViewById(R.id.layout_brand);
@@ -328,6 +360,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 {
 
                     progress(3);
+
                     tv_category_model.setText(getResources().getString(R.string.footwear_pick_category_model) + " " + brand + " "+ categoryType + " " + getResources().getString(R.string.footwear_pick_category__model2));
 
                     layout_brand_category.setVisibility(View.GONE);
@@ -347,6 +380,10 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     }
                     else
                     {
+                        progress(5);
+
+                        get_brand_sizes(gender,category,brand);
+
                         layout_brand_size.setVisibility(View.VISIBLE);
 
                         if (categoryModel.equals(""))
@@ -373,6 +410,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 layout_brand_category.setVisibility(View.GONE);
                 layout_brand_size.setVisibility(View.VISIBLE);
 
+                get_brand_sizes(gender,category,brand);
+
                 if (categoryModel.equals(""))
                 {
                     tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
@@ -388,7 +427,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
             @Override
             public void onClick(View view) {
 
-                progress(4);
+                progress(2);
                 layout_brand_category_model.setVisibility(View.GONE);
                 layout_brand_category.setVisibility(View.VISIBLE);
             }
@@ -401,6 +440,10 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 layout_brand_category_model.setVisibility(View.GONE);
                 layout_brand_size.setVisibility(View.VISIBLE);
+
+                progress(5);
+
+                get_brand_sizes(gender,category,brand);
 
                 if (categoryModel.equals(""))
                 {
@@ -420,6 +463,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 layout_brand_category_model.setVisibility(View.GONE);
                 layout_brand_size.setVisibility(View.VISIBLE);
+
+                get_brand_sizes(gender,category,brand);
 
                 if (categoryModel.equals(""))
                 {
@@ -471,6 +516,25 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
 
+        tv_type_size.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (layout_size_type.getVisibility() == View.VISIBLE)
+                {
+                    layout_size_type.setVisibility(View.GONE);
+                    tv_type_size.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+                }
+                else
+                {
+                    layout_size_type.setVisibility(View.VISIBLE);
+                    tv_type_size.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                }
+            }
+        });
+
+
+
 
 //        tv_category_model
 
@@ -493,6 +557,14 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_brand_category_7.setOnClickListener(this);
         tv_brand_category_8.setOnClickListener(this);
 
+        tv_type_1.setOnClickListener(this);
+        tv_type_2.setOnClickListener(this);
+        tv_type_3.setOnClickListener(this);
+        tv_type_4.setOnClickListener(this);
+        tv_type_5.setOnClickListener(this);
+        tv_type_6.setOnClickListener(this);
+        tv_type_7.setOnClickListener(this);
+        tv_type_8.setOnClickListener(this);
 
         setDefaultBrands();
         get_brands(gender,category);
@@ -873,6 +945,96 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 break;
 
+
+            case R.id.tv_type_1:
+
+
+                sizeType = tv_type_1.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
+
+            case R.id.tv_type_2:
+
+
+                sizeType = tv_type_2.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
+
+            case R.id.tv_type_3:
+
+                sizeType = tv_type_3.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
+
+            case R.id.tv_type_4:
+
+                sizeType = tv_type_4.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
+
+            case R.id.tv_type_5:
+
+                sizeType = tv_type_5.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
+
+            case R.id.tv_type_6:
+
+                sizeType = tv_type_6.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
+
+            case R.id.tv_type_7:
+
+                sizeType = tv_type_7.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
+
+            case R.id.tv_type_8:
+
+                sizeType = tv_type_8.getText().toString();
+
+                tv_type_size.setText(sizeType);
+                setBrandSize(brandSizeSuggestion,sizeType);
+                layout_size_type.setVisibility(View.GONE);
+
+                break;
+
         }
     }
 
@@ -928,6 +1090,27 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
                 GET get = new GET(this, URI.base2 +"brands/list?gender="+gender.toLowerCase()+"&category="+category.toLowerCase()+"&brand="+brand , BrandCategorySuggestion, this);
+                // Utils.showLoading(SettingActivity.this, false);
+                get.execute();
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
+    private void get_brand_sizes(String gender  ,String category ,String brand) {
+
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+                GET get = new GET(this, URI.base2 +"brands/charts/"+gender.toLowerCase()+"/"+category.toLowerCase()+"/"+brand , BrandSizeSuggestion, this);
                 // Utils.showLoading(SettingActivity.this, false);
                 get.execute();
             } else {
@@ -998,6 +1181,45 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 {
                     e.printStackTrace();
                 }
+                break;
+
+
+            case BrandSizeSuggestion:
+                try
+                {
+                    if (statusCode == 200)
+                    {
+
+                        JSONObject jsonObject = new JSONObject(result);
+
+                        JSONArray jsonArray = new JSONArray(jsonObject.getString("regular"));
+
+                        if (jsonArray.length() > 0)
+                        {
+                            brandSizeSuggestion = jsonObject.getString("regular") ;
+
+//                            Log.e("regular",brandSizeSuggestion);
+                            setBrandSize(brandSizeSuggestion,jsonArray.getJSONObject(0).getString("region"));
+//
+//                            tv_brand_category.setText(getResources().getString(R.string.brand_category_select));
+//                            tv_brand_category.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+//                            layout_brand_category_selection.setVisibility(View.GONE);
+
+
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
@@ -1074,6 +1296,219 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     }
 
 
+    public void setSize(String result)
+    {
+        try {
+
+            JSONArray charts = new JSONArray(result);
+
+
+            for (int i = 0; i < charts.length(); i++)
+            {
+
+                JSONObject chartsObj = charts.getJSONObject(i);
+
+                Log.e("size",chartsObj.getString("size"));
+
+                if ( i == 0)
+                {
+                    tv_size_1.setText(chartsObj.getString("size"));
+                    tv_size_1.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 1)
+                {
+                    tv_size_2.setText(chartsObj.getString("size"));
+                    tv_size_2.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 2)
+                {
+                    tv_size_3.setText(chartsObj.getString("size"));
+                    tv_size_3.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 3)
+                {
+                    tv_size_4.setText(chartsObj.getString("size"));
+                    tv_size_4.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 4)
+                {
+                    tv_size_5.setText(chartsObj.getString("size"));
+                    tv_size_5.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 5)
+                {
+                    tv_size_6.setText(chartsObj.getString("size"));
+                    tv_size_6.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 6)
+                {
+                    tv_size_7.setText(chartsObj.getString("size"));
+                    tv_size_7.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 7)
+                {
+                    tv_size_8.setText(chartsObj.getString("size"));
+                    tv_size_8.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 8)
+                {
+                    tv_size_9.setText(chartsObj.getString("size"));
+                    tv_size_9.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 9)
+                {
+                    tv_size_10.setText(chartsObj.getString("size"));
+                    tv_size_10.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 10)
+                {
+                    tv_size_11.setText(chartsObj.getString("size"));
+                    tv_size_11.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 11)
+                {
+                    tv_size_12.setText(chartsObj.getString("size"));
+                    tv_size_12.setVisibility(View.VISIBLE);
+                }
+
+                if (i == 12)
+                {
+                    tv_size_13.setText(chartsObj.getString("size"));
+                    tv_size_13.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setBrandSize(String result , String region)
+    {
+        try {
+
+            Log.e("region",region);
+
+            JSONArray regular = new JSONArray(result);
+
+
+            for (int i = 0; i < regular.length(); i++)
+            {
+
+                JSONObject obj = regular.getJSONObject(i);
+
+                if ( i == 0)
+                {
+                    tv_type_1.setText(obj.getString("region"));
+                    tv_type_1.setVisibility(View.VISIBLE);
+                }
+                if ( i == 1)
+                {
+                    tv_type_2.setText(obj.getString("region"));
+                    tv_type_2.setVisibility(View.VISIBLE);
+                }
+                if ( i == 2)
+                {
+                    tv_type_3.setText(obj.getString("region"));
+                    tv_type_3.setVisibility(View.VISIBLE);
+                }
+                if ( i == 3)
+                {
+                    tv_type_4.setText(obj.getString("region"));
+                    tv_type_4.setVisibility(View.VISIBLE);
+                }
+                if ( i == 4)
+                {
+                    tv_type_5.setText(obj.getString("region"));
+                    tv_type_5.setVisibility(View.VISIBLE);
+                }
+                if ( i == 5)
+                {
+                    tv_type_6.setText(obj.getString("region"));
+                    tv_type_6.setVisibility(View.VISIBLE);
+                }
+                if ( i == 6)
+                {
+                    tv_type_7.setText(obj.getString("region"));
+                    tv_type_7.setVisibility(View.VISIBLE);
+                }
+                if ( i == 7)
+                {
+                    tv_type_8.setText(obj.getString("region"));
+                    tv_type_8.setVisibility(View.VISIBLE);
+                }
+
+                switch (region)
+                {
+                    case "EU":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+
+                    case "US":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+
+                    case "UK":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+
+                    case "DE":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+
+                    case "FR":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+
+                    case "IT":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+
+                    case "ES":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+
+                    case "JP":
+                        tv_type_size.setText(obj.getString("region"));
+                        setSize(obj.getString("charts"));
+                        break;
+                }
+
+                //loop is repeating here in switch condition
+
+
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
     public void setBrandCategoryModel(String categoryType)
     {
         try {
@@ -1136,29 +1571,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                             isBrandModelPresent = true;
 
-//                            if ( j == 0)
-//                            {
-//                                tv_brand_category_model_1.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
-//                                tv_brand_category_model_1.setVisibility(View.VISIBLE);
-//                            }
-//
-//                            if (j == 1)
-//                            {
-//                                tv_brand_category_model_2.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
-//                                tv_brand_category_model_2.setVisibility(View.VISIBLE);
-//                            }
-//
-//                            if (j == 2)
-//                            {
-//                                tv_brand_category_model_3.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
-//                                tv_brand_category_model_3.setVisibility(View.VISIBLE);
-//                            }
-//
-//                            if (j == 3)
-//                            {
-//                                tv_brand_category_model_4.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
-//                                tv_brand_category_model_4.setVisibility(View.VISIBLE);
-//                            }
                         }
 
                         brandAdapter.notifyDataSetChanged();
@@ -1169,13 +1581,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 }
 
             }
-
-
-
-
-
-
-
 
         } catch (JSONException e) {
             e.printStackTrace();
