@@ -137,6 +137,8 @@
     <string name="footwear_pick_category__model2" translatable="false">\? (optional)</string>
     <string name="footwear_category" translatable="false">CATEGORY</string>
     <string name="footwear_what_model" translatable="false">WHAT MODEL IS IT?</string>
+    <string name="footwear_what_size" translatable="false">What size is your </string>
+    <string name="footwear_what_size_2" translatable="false">?</string>
 
 
     <string name="band_au_8" translatable="false">8</string>

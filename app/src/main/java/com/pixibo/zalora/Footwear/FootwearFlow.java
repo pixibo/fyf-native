@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pixibo.zalora.Adapter.BrandAdapter;
-import com.pixibo.zalora.Apparel.ApparelFlow;
+import com.pixibo.zalora.Adapter.BrandCategoryModelAdapter;
 import com.pixibo.zalora.Model.BrandModel;
 import com.pixibo.zalora.R;
 import com.pixibo.zalora.Utils.Utils;
@@ -42,15 +42,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
     private ArrayList<BrandModel> brandModelArrayList = new ArrayList<>();
+    private ArrayList<BrandModel> brandCategoryModelArrayList = new ArrayList<>();
     private BrandAdapter brandAdapter;
-    private RecyclerView recycler_brand_suggestion;
+    private BrandCategoryModelAdapter brandCategoryModelAdapter;
+    private RecyclerView recycler_brand_suggestion,recycler_brand_category_model;
 
     private EditText et_what_brand;
 
     private boolean isBrandSelected = false;
 
     private RelativeLayout layout_brand_search,layout_add,layout_brands;
-    private RelativeLayout layout_brand,layout_brand_category,layout_brand_category_model;
+    private RelativeLayout layout_brand,layout_brand_category,layout_brand_category_model,layout_brand_size;
     private LinearLayout layout_brand_category_selection,layout_brand_category_model_selection;
 
 
@@ -64,15 +66,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     private String brand = "";
     private String categoryType = "";
     private String categoryModel = "";
+    private String brandCategorySuggestion = "";
+    private boolean isBrandModelPresent = false ;
 
 
-    private TextView tv_category,tv_brand_category,tv_category_model,tv_brand_category_model;
+    private TextView tv_category,tv_brand_category,tv_category_model,tv_brand_category_model,tv_brand_fit;
 
     private TextView tv_brand_1,tv_brand_2,tv_brand_3,tv_brand_4,tv_brand_5,tv_brand_6;
     private TextView tv_brand_category_1,tv_brand_category_2,tv_brand_category_3,tv_brand_category_4,tv_brand_category_5,tv_brand_category_6,tv_brand_category_7,tv_brand_category_8;
-    private TextView tv_brand_category_model_1,tv_brand_category_model_2,tv_brand_category_model_3,tv_brand_category_model_4,tv_brand_category_model_5,tv_brand_category_model_6,tv_brand_category_model_7,tv_brand_category_model_8;
     private TextView tv_brand_error;
     private TextView tv_brand_continue,tv_brand_category_continue,tv_brand_category_model_continue;
+    private TextView tv_brand_category_skip,tv_brand_model_skip;
     private TextView tv_back_brand_category,tv_back_brand_model_category;
     private RelativeLayout layout_progress_1,layout_progress_2,layout_progress_3,layout_progress_4,layout_progress_5,layout_progress_6;
 
@@ -99,6 +103,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
         recycler_brand_suggestion = findViewById(R.id.recycler_brand_suggestion);
+        recycler_brand_category_model = findViewById(R.id.recycler_brand_category_model);
 
         iv_shoe_category = findViewById(R.id.iv_shoe_category);
 
@@ -106,6 +111,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_brand_category = findViewById(R.id.tv_brand_category);
         tv_brand_category_model = findViewById(R.id.tv_brand_category_model);
         tv_category_model = findViewById(R.id.tv_category_model);
+        tv_brand_fit = findViewById(R.id.tv_brand_fit);
 
         tv_brand_error = findViewById(R.id.tv_brand_error);
 
@@ -126,16 +132,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_brand_category_8 = findViewById(R.id.tv_brand_category_8);
 
 
-        tv_brand_category_model_1 = findViewById(R.id.tv_brand_category_model_1);
-        tv_brand_category_model_2 = findViewById(R.id.tv_brand_category_model_2);
-        tv_brand_category_model_3 = findViewById(R.id.tv_brand_category_model_3);
-        tv_brand_category_model_4 = findViewById(R.id.tv_brand_category_model_4);
-//        tv_brand_category_model_5 = findViewById(R.id.tv_brand_category_model_5);
-//        tv_brand_category_model_6 = findViewById(R.id.tv_brand_category_model_6);
-//        tv_brand_category_model_7 = findViewById(R.id.tv_brand_category_model_7);
-//        tv_brand_category_model_8 = findViewById(R.id.tv_brand_category_model_8);
-
-
         layout_progress_1 = findViewById(R.id.layout_progress_1);
         layout_progress_2 = findViewById(R.id.layout_progress_2);
         layout_progress_3 = findViewById(R.id.layout_progress_3);
@@ -146,6 +142,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_brand_continue = findViewById(R.id.tv_brand_continue);
         tv_brand_category_continue = findViewById(R.id.tv_brand_category_continue);
         tv_brand_category_model_continue = findViewById(R.id.tv_brand_category_model_continue);
+
+        tv_brand_category_skip = findViewById(R.id.tv_brand_category_skip);
+        tv_brand_model_skip = findViewById(R.id.tv_brand_model_skip);
 
         tv_back_brand_category = findViewById(R.id.tv_back_brand_category);
         tv_back_brand_model_category = findViewById(R.id.tv_back_brand_model_category);
@@ -163,6 +162,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         layout_brand = findViewById(R.id.layout_brand);
         layout_brand_category = findViewById(R.id.layout_brand_category);
         layout_brand_category_model = findViewById(R.id.layout_brand_category_model);
+        layout_brand_size = findViewById(R.id.layout_brand_size);
 
 
         brandAdapter = new BrandAdapter(brandModelArrayList, FootwearFlow.this, new BrandAdapter.onItemClickListener() {
@@ -182,6 +182,27 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         recycler_brand_suggestion.setItemAnimator(new DefaultItemAnimator());
         recycler_brand_suggestion.setLayoutManager(mLayoutManager);
         recycler_brand_suggestion.setAdapter(brandAdapter);
+
+        brandCategoryModelAdapter = new BrandCategoryModelAdapter(brandCategoryModelArrayList, FootwearFlow.this, new BrandCategoryModelAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(BrandModel suggestions) {
+
+                categoryModel = suggestions.getName();
+
+                tv_brand_category_model.setText(categoryModel);
+                tv_brand_category_model.setBackground(getDrawable(R.drawable.bg_edit_enabled));
+
+                layout_brand_category_model_selection.setVisibility(View.GONE);
+
+                tv_brand_category_model_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
+            }
+        });
+
+        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        recycler_brand_category_model.setItemAnimator(new DefaultItemAnimator());
+        recycler_brand_category_model.setLayoutManager(mLayoutManager2);
+        recycler_brand_category_model.setAdapter(brandCategoryModelAdapter);
 
 
         et_what_brand.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -279,6 +300,11 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                     layout_brand.setVisibility(View.GONE);
                     layout_brand_category.setVisibility(View.VISIBLE);
+
+                    iv_shoe_category.setVisibility(View.GONE);
+
+                    tv_brand_category.setText(getResources().getString(R.string.brand_category_select));
+                    tv_brand_category.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
                 }
 
             }
@@ -305,19 +331,58 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_category_model.setText(getResources().getString(R.string.footwear_pick_category_model) + " " + brand + " "+ categoryType + " " + getResources().getString(R.string.footwear_pick_category__model2));
 
                     layout_brand_category.setVisibility(View.GONE);
-                    layout_brand_category_model.setVisibility(View.VISIBLE);
+
+                    if (isBrandModelPresent)
+                    {
+                        layout_brand_category_model.setVisibility(View.VISIBLE);
+
+                        categoryModel = "";
+
+                        tv_brand_category_model.setText(getResources().getString(R.string.brand_category_select));
+                        tv_brand_category_model.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+
+                        layout_brand_category_model_selection.setVisibility(View.GONE);
+
+                        // brand category model will be set to default when going back then pressing continue
+                    }
+                    else
+                    {
+                        layout_brand_size.setVisibility(View.VISIBLE);
+
+                        if (categoryModel.equals(""))
+                        {
+                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                        }
+                        else
+                        {
+                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                        }
+                    }
+
+
                 }
 
 
             }
         });
 
-//        tv_brand_category_skip.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+        tv_brand_category_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                layout_brand_category.setVisibility(View.GONE);
+                layout_brand_size.setVisibility(View.VISIBLE);
+
+                if (categoryModel.equals(""))
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
+                else
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
+            }
+        });
 
         tv_back_brand_model_category.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -330,9 +395,42 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         });
 
 
+        tv_brand_category_model_continue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                layout_brand_category_model.setVisibility(View.GONE);
+                layout_brand_size.setVisibility(View.VISIBLE);
+
+                if (categoryModel.equals(""))
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
+                else
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
+            }
+        });
 
 
+        tv_brand_model_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                layout_brand_category_model.setVisibility(View.GONE);
+                layout_brand_size.setVisibility(View.VISIBLE);
+
+                if (categoryModel.equals(""))
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
+                else
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
+            }
+        });
 
 
 
@@ -394,16 +492,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_brand_category_6.setOnClickListener(this);
         tv_brand_category_7.setOnClickListener(this);
         tv_brand_category_8.setOnClickListener(this);
-
-
-        tv_brand_category_model_1.setOnClickListener(this);
-        tv_brand_category_model_2.setOnClickListener(this);
-        tv_brand_category_model_3.setOnClickListener(this);
-        tv_brand_category_model_4.setOnClickListener(this);
-//        tv_brand_category_model_5.setOnClickListener(this);
-//        tv_brand_category_model_6.setOnClickListener(this);
-//        tv_brand_category_model_7.setOnClickListener(this);
-//        tv_brand_category_model_8.setOnClickListener(this);
 
 
         setDefaultBrands();
@@ -696,9 +784,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
-
-
-
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
@@ -710,6 +796,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
@@ -721,6 +808,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
@@ -732,6 +820,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
@@ -743,6 +832,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
@@ -754,6 +844,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
@@ -765,6 +856,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
@@ -776,21 +868,10 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_brand_category.setText(categoryType);
                 setCategoryImage(categoryType);
+                setBrandCategoryModel(categoryType);
                 layout_brand_category_selection.setVisibility(View.GONE);
 
                 break;
-
-
-            case R.id.tv_brand_category_model_1:
-
-                categoryModel = tv_brand_category_model_1.getText().toString();
-
-                tv_brand_category_model.setText(categoryModel);
-
-                layout_brand_category_model_selection.setVisibility(View.GONE);
-
-                break;
-
 
         }
     }
@@ -899,6 +980,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                         if (jsonArray.length() > 0)
                         {
+                            brandCategorySuggestion = result ;
                             setBrandCategory(result);
 
                             tv_brand_category.setText(getResources().getString(R.string.brand_category_select));
@@ -936,6 +1018,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 if ( i == 0)
                 {
+                    setBrandCategoryModel(result);
                     tv_brand_category_1.setText(obj.getString("category"));
                     tv_brand_category_1.setVisibility(View.VISIBLE);
                 }
@@ -991,69 +1074,107 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     }
 
 
-    public void setBrandCategoryModel(String result)
+    public void setBrandCategoryModel(String categoryType)
     {
         try {
 
-            JSONArray range = new JSONArray(result);
+            brandCategoryModelArrayList.clear();
 
+            tv_brand_category_model.setText(getResources().getString(R.string.brand_category_select));
+            tv_brand_category_model.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
 
-            for (int i = 0; i < range.length(); i++)
+            JSONArray category = new JSONArray(brandCategorySuggestion);
+
+            for (int i = 0; i < category.length(); i++)
             {
 
-                JSONObject obj = range.getJSONObject(i);
+                JSONObject obj = category.getJSONObject(i);
 
-                Log.e("category",obj.getString("category"));
-
-                if ( i == 0)
+                if (obj.getString("category").equals(categoryType))
                 {
-                    tv_brand_category_model_1.setText(obj.getString("category"));
-                    tv_brand_category_model_1.setVisibility(View.VISIBLE);
-                }
 
-                if (i == 1)
-                {
-                    tv_brand_category_model_2.setText(obj.getString("category"));
-                    tv_brand_category_model_2.setVisibility(View.VISIBLE);
-                }
+                    String[] strArray = null;
 
-                if (i == 2)
-                {
-                    tv_brand_category_model_3.setText(obj.getString("category"));
-                    tv_brand_category_model_3.setVisibility(View.VISIBLE);
-                }
+                    if (!obj.optString("models").equals("[]"))
+                    {
+                        strArray = obj.optString("models").split(",") ;
+                    }
 
-                if (i == 3)
-                {
-                    tv_brand_category_model_4.setText(obj.getString("category"));
-                    tv_brand_category_model_4.setVisibility(View.VISIBLE);
-                }
 
-//                if (i == 4)
-//                {
-//                    tv_brand_category_model_5.setText(obj.getString("category"));
-//                    tv_brand_category_model_5.setVisibility(View.VISIBLE);
-//                }
+                    if (strArray == null)
+                    {
+                        Log.e("Length","0");
+                        isBrandModelPresent = false ;
+                    }
+
+
+                    else
+                    {
+
+                        if (strArray.length < 4)
+                        {
+                            final float scale = getResources().getDisplayMetrics().density;
+                            int pixels = (int) (200 * scale + 0.5f);
+                            recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                        }
+
+                        for (int j = 0; j < strArray.length; j++)
+                        {
+
+                            final float scale = getResources().getDisplayMetrics().density;
+                            int pixels = (int) (200 * scale + 0.5f);
+
+                            recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+
+                            BrandModel brandModel = new BrandModel();
+                            brandModel.setName(strArray[j].replaceAll("[\"^\\[\\]]",""));
+
+                            brandCategoryModelArrayList.add(brandModel);
+
+
+                            Log.e("models",strArray[j].replaceAll("[\"^\\[\\]]",""));
+
+                            isBrandModelPresent = true;
+
+//                            if ( j == 0)
+//                            {
+//                                tv_brand_category_model_1.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
+//                                tv_brand_category_model_1.setVisibility(View.VISIBLE);
+//                            }
 //
-//                if (i == 5)
-//                {
-//                    tv_brand_category_model_6.setText(obj.getString("category"));
-//                    tv_brand_category_model_6.setVisibility(View.VISIBLE);
-//                }
+//                            if (j == 1)
+//                            {
+//                                tv_brand_category_model_2.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
+//                                tv_brand_category_model_2.setVisibility(View.VISIBLE);
+//                            }
 //
-//                if (i == 6)
-//                {
-//                    tv_brand_category_model_7.setText(obj.getString("category"));
-//                    tv_brand_category_model_7.setVisibility(View.VISIBLE);
-//                }
+//                            if (j == 2)
+//                            {
+//                                tv_brand_category_model_3.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
+//                                tv_brand_category_model_3.setVisibility(View.VISIBLE);
+//                            }
 //
-//                if (i == 7)
-//                {
-//                    tv_brand_category_model_8.setText(obj.getString("category"));
-//                    tv_brand_category_model_8.setVisibility(View.VISIBLE);
-//                }
+//                            if (j == 3)
+//                            {
+//                                tv_brand_category_model_4.setText(strArray[j].replaceAll("[\"^\\[\\]]",""));
+//                                tv_brand_category_model_4.setVisibility(View.VISIBLE);
+//                            }
+                        }
+
+                        brandAdapter.notifyDataSetChanged();
+                    }
+
+
+
+                }
 
             }
+
+
+
+
+
+
 
 
         } catch (JSONException e) {
