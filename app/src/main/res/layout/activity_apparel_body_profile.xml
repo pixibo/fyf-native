@@ -13,56 +13,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:id="@+id/layout_header"
-        android:layout_height="60dp">
-
-
         <RelativeLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/layout_privacy">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/privacy" />
-
-        </RelativeLayout>
-
-
-        <TextView
+            android:id="@+id/layout_header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tv_header_text"
-            android:text="@string/header_text"
-            android:visibility="gone"
-            android:gravity="center"
-            android:textSize="10sp"
-            android:textColor="@color/color_text"
-            android:layout_toEndOf="@id/layout_privacy"
-            android:layout_toStartOf="@id/layout_close"/>
+            android:layout_height="60dp">
 
 
-        <RelativeLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/layout_close"
-            android:layout_alignParentEnd="true">
+            <RelativeLayout
+                android:id="@+id/layout_privacy"
+                android:layout_width="60dp"
+                android:layout_height="60dp">
 
-            <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_close"
-                />
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/privacy" />
 
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_header_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/layout_close"
+                android:layout_toEndOf="@id/layout_privacy"
+                android:gravity="center"
+                android:text="@string/header_text"
+                android:textColor="@color/color_text"
+                android:textSize="10sp"
+                android:visibility="gone" />
+
+
+            <RelativeLayout
+                android:id="@+id/layout_close"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_close" />
+
+
+            </RelativeLayout>
 
         </RelativeLayout>
-
-    </RelativeLayout>
 
 
       <!--  Body profile layout starts here -->
@@ -1486,6 +1485,39 @@
                 android:gravity="center_vertical"
                 />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_what_brand"
+                android:textSize="11sp"
+                android:textColor="@color/color_error"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:id="@+id/tv_brand_error"
+                android:fontFamily="@font/apercu_regular"
+                android:text="@string/brand_not_in_list"/>
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone"
+                android:layout_below="@+id/tv_what_brand"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/layout_add">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_add"
+                    />
+
+            </RelativeLayout>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -1503,6 +1535,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
+                    android:textAllCaps="true"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
                     android:textColor="@color/grey_3"
@@ -1518,6 +1551,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
+                    android:textAllCaps="true"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1535,6 +1569,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
+                    android:textAllCaps="true"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1551,6 +1586,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
+                    android:textAllCaps="true"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1566,6 +1602,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
+                    android:textAllCaps="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
@@ -1728,8 +1765,9 @@
                         android:id="@+id/tv_range_1"
                         android:fontFamily="@font/apercu_regular"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:textColor="@color/color_text"
-                        android:text="REGULAR"/>
+                        android:text="@string/apparel_regular"/>
 
 
                 </RelativeLayout>
@@ -1752,8 +1790,9 @@
                         android:id="@+id/tv_range_2"
                         android:fontFamily="@font/apercu_regular"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:textColor="@color/grey_3"
-                        android:text="PETITE"/>
+                        android:text="@string/apparel_petite"/>
 
 
                 </RelativeLayout>
@@ -1776,8 +1815,9 @@
                         android:id="@+id/tv_range_3"
                         android:fontFamily="@font/apercu_regular"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:textColor="@color/grey_3"
-                        android:text="PLUS"/>
+                        android:text="@string/apparel_plus"/>
 
 
                 </RelativeLayout>
@@ -1794,7 +1834,7 @@
                 android:id="@+id/tv_brand_band"
                 android:layout_marginTop="30dp"
                 android:layout_below="@+id/layout_range"
-                android:text="@string/apparel_bra_band"/>
+                android:text="@string/apparel_bra_size"/>
 
 
             <TextView
@@ -2595,7 +2635,7 @@
                     android:background="@color/color_background_button_enable"
                     android:textColor="@color/white"
                     android:fontFamily="@font/apercu_medium"
-                    android:text="@string/apparel_last_fit_tell_size"
+                    android:text="@string/text_continue"
                     android:layout_alignParentEnd="true"
                     />
 
@@ -2608,9 +2648,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/layout_result"
-            android:visibility="gone"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
+            android:visibility="gone"
             android:layout_below="@+id/layout_header">
 
 

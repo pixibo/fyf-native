@@ -42,7 +42,7 @@ public class Utils {
 
     public static enum TYPE {
         ValidateUserUid,ValidateUserAltId,BrandSuggestion,BrandSizes,SizeFromApi,MergeProfile,ResetProfile,UpdateProfile,BodyProfile,
-        Track,BraSize,GetSize,ConversionTracking,BrandCategorySuggestion,BrandSizeSuggestion;
+        Track,BraSize,GetSize,ConversionTracking,BrandCategorySuggestion,BrandSizeSuggestion,UpdateData,NewBrand;
     }
 
 

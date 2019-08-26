@@ -64,4 +64,39 @@
     <string name="apparel_male_pant">celena</string>
     <string name="apparel_male_short">celana pendek</string>
     <string name="apparel_male_outerwear">outerwear</string>
+    <string name="loader_text" translatable="false">Mencari size yang tepat untuk Anda</string>
+    <string name="footwear_result_not_recommended">MAAF, PRODUK DALAM UKURAN ANDA TIDAK TERSEDIA</string>
+    <string name="footwear_result_continue">LANJUTKAN BELANJA</string>
+    <string name="footwear_right_size">TEMUKAN UKURAN YANG TEPAT UNTUK ANDA</string>
+    <string name="footwear_what_model">MODEL APA ITU?</string>
+    <string name="footwear_get_recommendation">Sepatu apa yang kamu pakai?</string>
+    <string name="footwear_fit_what_brand">Brand apa ini?</string>
+    <string name="footwear_pick_category">"Apa kategori dari sepatu "</string>
+    <string name="footwear_pick_category_2">Anda? (pilihan)</string>
+    <string name="footwear_category">KATEGORI</string>
+    <string name="brand_category_select">PILIH</string>
+    <string name="footwear_pick_category_model">Apa nama model</string>
+    <string name="footwear_pick_category__model2">Anda? (pilihan)</string>
+    <string name="footwear_what_size">Berapa ukuran</string>
+    <string name="footwear_what_size_2" translatable="false">sepatu Anda?</string>
+    <string name="footwear_width">LEBAR</string>
+    <string name="footwear_result_best_size">UKURAN INI PALING SESUAI UNTUK ANDA</string>
+    <string name="brand_not_in_list">Brand ini tidak terdapat dalam daftar kami. Klik \"+\" untuk menambahkan.</string>
+    <string name="brand_thanks">Coba cari brand lain</string>
+    <string name="privacy_powered_text" translatable="false">Kebijakan Privasi</string>
+    <string name="error_age" translatable="false">Nilai harus di antara 15 dan 80</string>
+    <string name="error_bust_cm" translatable="false">Nilai harus di antara 75 dan 155</string>
+    <string name="error_bust_in" translatable="false">Nilai harus di antara 30 dan 61</string>
+    <string name="header_text" translatable="false">"UNTUK PRODUK INI SEPERTINYA UKURAN ANDA ADALAH "</string>
+    <string name="header_text_2" translatable="false">" "</string>
+    <string name="apparel_brand_fav_size" translatable="false">Berapa ukuran</string>
+    <string name="apparel_brand_fav_size_2" translatable="false">favorit Anda dari</string>
+    <string name="apparel_brand_fav_size_3" translatable="false">\?</string>
+    <string name="apparel_petite">Mini Size</string>
+    <string name="apparel_plus">Plus Size</string>
+    <string name="apparel_regular">Regular</string>
+    <string name="ft">ft</string>
+    <string name="in">in</string>
+    <string name="kg">kg</string>
+    <string name="lb">lbs</string>
 </resources>

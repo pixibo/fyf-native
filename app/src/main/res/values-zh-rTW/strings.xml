@@ -64,4 +64,39 @@
     <string name="apparel_male_pant">長褲</string>
     <string name="apparel_male_short">短褲</string>
     <string name="apparel_male_outerwear">外套</string>
+    <string name="loader_text" translatable="false">正為您尋找合適尺寸</string>
+    <string name="footwear_result_not_recommended">很抱歉，目前暫無您的尺寸</string>
+    <string name="footwear_result_continue">繼續購物</string>
+    <string name="footwear_right_size">為您尋找合適的尺寸</string>
+    <string name="footwear_what_model">是哪個款式?</string>
+    <string name="footwear_get_recommendation">您穿什麼鞋？</string>
+    <string name="footwear_fit_what_brand">是哪個品牌？</string>
+    <string name="footwear_pick_category">您的</string>
+    <string name="footwear_pick_category_2">鞋是哪個款式? (可跳過）</string>
+    <string name="footwear_category">鞋款</string>
+    <string name="brand_category_select">選擇</string>
+    <string name="footwear_pick_category_model">您的</string>
+    <string name="footwear_pick_category__model2">是哪個model? (可跳過）</string>
+    <string name="footwear_what_size">您的</string>
+    <string name="footwear_what_size_2" translatable="false">是哪個尺寸？</string>
+    <string name="footwear_width">鞋寬</string>
+    <string name="footwear_result_best_size">您最合適的尺寸是</string>
+    <string name="brand_not_in_list">資料庫裡暫無此品牌。添加品牌請按“+”</string>
+    <string name="brand_thanks">請輸入其他品牌</string>
+    <string name="error_age">數值必須在 15 和 80 之間</string>
+    <string name="error_bust_cm" translatable="false">數值必須在 75 和 155 之間</string>
+    <string name="error_bust_in" translatable="false">數值必須在 30 和 61 之間</string>
+    <string name="header_text" translatable="false">看來您的合適尺寸是</string>
+    <string name="header_text_2" translatable="false">" "</string>
+    <string name="apparel_brand_fav_size" translatable="false">您的</string>
+    <string name="apparel_brand_fav_size_3" translatable="false">是哪個尺寸？</string>
+    <string name="apparel_brand_fav_size_2" translatable="false">" "</string>
+    <string name="apparel_petite">嬌小</string>
+    <string name="apparel_plus">加大</string>
+    <string name="apparel_regular">標準</string>
+    <string name="ft">英尺</string>
+    <string name="in">英尺</string>
+    <string name="kg">公斤</string>
+    <string name="lb">磅</string>
+    <string name="privacy_powered_text" translatable="false">" "</string>
 </resources>

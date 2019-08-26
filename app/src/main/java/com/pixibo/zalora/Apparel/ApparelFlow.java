@@ -23,12 +23,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pixibo.zalora.Adapter.BrandAdapter;
+import com.pixibo.zalora.Footwear.FootwearFlow;
 import com.pixibo.zalora.Model.BrandModel;
 import com.pixibo.zalora.R;
 import com.pixibo.zalora.Utils.LocalData;
 import com.pixibo.zalora.Utils.Utils;
 import com.pixibo.zalora.Utils.WebResources.GET;
 import com.pixibo.zalora.Utils.WebResources.NetworkUtils;
+import com.pixibo.zalora.Utils.WebResources.POST;
 import com.pixibo.zalora.Utils.WebResources.Result;
 import com.pixibo.zalora.Utils.WebResources.URI;
 
@@ -45,6 +47,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.BraSize;
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSizes;
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.GetSize;
+import static com.pixibo.zalora.Utils.Utils.TYPE.NewBrand;
 import static com.pixibo.zalora.Utils.Utils.TYPE.Track;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 
@@ -59,7 +62,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     private EditText et_age,et_height,et_weight, et_height_in,et_bust,et_what_brand;
 
     private RelativeLayout layout_age,layout_weight,layout_height;
-    private RelativeLayout layout_body_profile,layout_bra_profile,layout_bust,layout_brand,layout_brand_search,layout_brand_fit,layout_fit_preference,layout_brands,layout_result;
+    private RelativeLayout layout_body_profile,layout_bra_profile,layout_bust,layout_brand,layout_brand_search,layout_brand_fit,layout_fit_preference,layout_brands,layout_result,layout_add;
     private RelativeLayout layout_height_cm,layout_height_ft,layout_weight_kg,layout_weight_lb,layout_bust_cm,layout_bust_in;
     private TextView tv_error_age,tv_error_height,tv_error_weight,tv_error_bust;
     private TextView tv_continue,tv_bust_continue,tv_bra_continue,tv_brand_continue,tv_brand_fav_continue,tv_fit_continue;
@@ -147,6 +150,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     private boolean isBust = false;
     private boolean isBustCM = true;
     private boolean isBrandSelected = false;
+    private boolean isBrandCategorySelected = false;
 
     private String clientId = "";
     private String skuId = "";
@@ -155,6 +159,9 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
     boolean isEdit = false ;
     boolean isNew = false ;
+    boolean isAgeFilled = true ;
+    boolean isWeightFilled = true ;
+    boolean isHeightFilled = true ;
 
     String[] apparel_array = new String[]{"Tops", "Dresses", "Coats", "Jeans", "Jumpsuits", "Outwear", "Pants", "Shirts", "Skirts", "Shorts"};
     String[] footwear_array = new String[]{"Shoes"};
@@ -163,11 +170,13 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
     private LinearLayout layout_pref_1,layout_pref_2,layout_pref_3,layout_pref_4,layout_pref_5,layout_pref_6,layout_pref_7,layout_pref_8,layout_start_over;
     private RelativeLayout layout_fit_bust,layout_fit_waist,layout_fit_hips,layout_loading;
-    private TextView tv_fit_bust,tv_fit_waist,tv_fit_hips,tv_size,tv_not_fit,tv_suits_best,tv_fit_size,tv_edit,tv_add_cart;
+    private TextView tv_fit_bust,tv_fit_waist,tv_fit_hips,tv_size,tv_not_fit,tv_suits_best,tv_fit_size,tv_edit,tv_add_cart,tv_brand_error;
 
     private String bust8Bit = "";
     private String waist8Bit = "";
     private String hip8Bit = "";
+
+    private String preferredLanguage = "";
 
     private RelativeLayout layout_progress_1,layout_progress_2,layout_progress_3,layout_progress_4,layout_progress_5,layout_progress_6;
 
@@ -194,6 +203,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         skuId = intent.getStringExtra("skuId");
         altId = intent.getStringExtra("altId");
         uID = intent.getStringExtra("uID");
+        preferredLanguage = intent.getStringExtra("preferredLanguage");
         isEdit = intent.getBooleanExtra("isEdit",false);
         isNew = intent.getBooleanExtra("isNew",false);
 
@@ -303,6 +313,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         layout_fit_preference = findViewById(R.id.layout_fit_preference);
         layout_brands = findViewById(R.id.layout_brands);
         layout_result = findViewById(R.id.layout_result);
+        layout_add = findViewById(R.id.layout_add);
+
 
         tv_back_brand = findViewById(R.id.tv_back_brand);
         tv_back_brand_fav = findViewById(R.id.tv_back_brand_fav);
@@ -485,6 +497,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         tv_fit_size = findViewById(R.id.tv_fit_size);
         tv_edit = findViewById(R.id.tv_edit);
         tv_add_cart = findViewById(R.id.tv_add_cart);
+        tv_brand_error = findViewById(R.id.tv_brand_error);
 
 
         tv_fit_bust = findViewById(R.id.tv_fit_bust);
@@ -528,6 +541,26 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (charSequence.toString().trim().length() == 0)
+                {
+                    isAgeFilled = false ;
+                }
+                else
+                {
+                    isAgeFilled = true;
+                }
+
+
+                if (isAgeFilled && isHeightFilled && isWeightFilled)
+                {
+                    tv_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                }
+                else
+                {
+                    tv_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+                }
+
                 layout_age.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
                 tv_error_age.setVisibility(View.GONE);
             }
@@ -546,6 +579,26 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (charSequence.toString().trim().length() == 0)
+                {
+                    isHeightFilled = false ;
+                }
+                else
+                {
+                    isHeightFilled = true;
+                }
+
+
+                if (isAgeFilled && isHeightFilled && isWeightFilled)
+                {
+                    tv_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                }
+                else
+                {
+                    tv_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+                }
+
                 layout_height.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
                 tv_error_height.setVisibility(View.GONE);
             }
@@ -564,6 +617,28 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (charSequence.toString().trim().length() == 0)
+                {
+                    isWeightFilled = false ;
+                }
+                else
+                {
+                    isWeightFilled = true;
+                }
+
+
+
+                if (isAgeFilled && isHeightFilled && isWeightFilled)
+                {
+                    tv_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                }
+
+                else
+                {
+                    tv_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+                }
+
                 layout_weight.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
                 tv_error_weight.setVisibility(View.GONE);
             }
@@ -777,6 +852,21 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
 
+        layout_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                newBrandRequest(category,et_what_brand.getText().toString());
+
+                et_what_brand.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                layout_add.setVisibility(View.GONE);
+                tv_brand_error.setText(getResources().getString(R.string.brand_thanks));
+                layout_brands.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+
         tv_privacy_policy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -960,21 +1050,25 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             public void onClick(View view) {
 
 
-                isCM = true ;
+                if (!isCM)
+                {
+                    isCM = true ;
 
-                height_cm = String.valueOf(Utils.convertFeetandInchesToCentimeter(et_height.getText().toString(),et_height_in.getText().toString()));
+                    height_cm = String.valueOf(Utils.convertFeetandInchesToCentimeter(et_height.getText().toString(),et_height_in.getText().toString()));
 
-                et_height_in.setVisibility(View.GONE);
-                tv_quotes.setVisibility(View.GONE);
-                tv_dquotes.setVisibility(View.GONE);
+                    et_height_in.setVisibility(View.GONE);
+                    tv_quotes.setVisibility(View.GONE);
+                    tv_dquotes.setVisibility(View.GONE);
 
-                tv_height_cm.setTypeface(bold_text);
-                tv_height_cm.setTextColor(getResources().getColor(R.color.black));
+                    tv_height_cm.setTypeface(bold_text);
+                    tv_height_cm.setTextColor(getResources().getColor(R.color.black));
 
-                tv_height_ft.setTypeface(normal_text);
-                tv_height_ft.setTextColor(getResources().getColor(R.color.grey));
+                    tv_height_ft.setTypeface(normal_text);
+                    tv_height_ft.setTextColor(getResources().getColor(R.color.grey));
 
-                et_height.setText(height_cm);
+                    et_height.setText(height_cm);
+                }
+
 
             }
         });
@@ -983,23 +1077,28 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
-                isCM = false ;
 
-                height_ft = Utils.centimeterToFeet(et_height.getText().toString());
-                height_in = Utils.centimeterToFeetInch(et_height.getText().toString());
 
-                et_height_in.setVisibility(View.VISIBLE);
-                tv_quotes.setVisibility(View.VISIBLE);
-                tv_dquotes.setVisibility(View.VISIBLE);
+                if (isCM)
+                {
+                    isCM = false ;
+                    height_ft = Utils.centimeterToFeet(et_height.getText().toString());
+                    height_in = Utils.centimeterToFeetInch(et_height.getText().toString());
 
-                tv_height_cm.setTypeface(normal_text);
-                tv_height_cm.setTextColor(getResources().getColor(R.color.grey));
+                    et_height_in.setVisibility(View.VISIBLE);
+                    tv_quotes.setVisibility(View.VISIBLE);
+                    tv_dquotes.setVisibility(View.VISIBLE);
 
-                tv_height_ft.setTypeface(bold_text);
-                tv_height_ft.setTextColor(getResources().getColor(R.color.black));
+                    tv_height_cm.setTypeface(normal_text);
+                    tv_height_cm.setTextColor(getResources().getColor(R.color.grey));
 
-                et_height.setText(height_ft);
-                et_height_in.setText(height_in);
+                    tv_height_ft.setTypeface(bold_text);
+                    tv_height_ft.setTextColor(getResources().getColor(R.color.black));
+
+                    et_height.setText(height_ft);
+                    et_height_in.setText(height_in);
+                }
+
             }
         });
 
@@ -1007,18 +1106,22 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
-                isKG = true;
+                if (!isKG)
+                {
+                    isKG = true;
 
-                weight = Utils.lbTokg(et_weight.getText().toString());
+                    weight = Utils.lbTokg(et_weight.getText().toString());
 
 
-                tv_weight_kg.setTypeface(bold_text);
-                tv_weight_kg.setTextColor(getResources().getColor(R.color.black));
+                    tv_weight_kg.setTypeface(bold_text);
+                    tv_weight_kg.setTextColor(getResources().getColor(R.color.black));
 
-                tv_weight_lb.setTypeface(normal_text);
-                tv_weight_lb.setTextColor(getResources().getColor(R.color.grey));
+                    tv_weight_lb.setTypeface(normal_text);
+                    tv_weight_lb.setTextColor(getResources().getColor(R.color.grey));
 
-                et_weight.setText(weight);
+                    et_weight.setText(weight);
+                }
+
 
             }
         });
@@ -1027,17 +1130,21 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
-                isKG = false;
+                if(isKG)
+                {
+                    isKG = false;
 
-                weight = Utils.kgTolb(et_weight.getText().toString());
+                    weight = Utils.kgTolb(et_weight.getText().toString());
 
-                tv_weight_kg.setTypeface(normal_text);
-                tv_weight_kg.setTextColor(getResources().getColor(R.color.grey));
+                    tv_weight_kg.setTypeface(normal_text);
+                    tv_weight_kg.setTextColor(getResources().getColor(R.color.grey));
 
-                tv_weight_lb.setTypeface(bold_text);
-                tv_weight_lb.setTextColor(getResources().getColor(R.color.black));
+                    tv_weight_lb.setTypeface(bold_text);
+                    tv_weight_lb.setTextColor(getResources().getColor(R.color.black));
 
-                et_weight.setText(weight);
+                    et_weight.setText(weight);
+                }
+
             }
         });
 
@@ -1045,20 +1152,24 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
-                isBustCM = true;
+                if (!isBustCM)
+                {
+                    isBustCM = true;
 
-                bust = Utils.InchTocentimeter(et_bust.getText().toString());
+                    bust = Utils.InchTocentimeter(et_bust.getText().toString());
 
-                tv_bust_in.setTypeface(normal_text);
-                tv_bust_in.setTextColor(getResources().getColor(R.color.grey));
+                    tv_bust_in.setTypeface(normal_text);
+                    tv_bust_in.setTextColor(getResources().getColor(R.color.grey));
 
-                tv_bust_cm.setTypeface(bold_text);
-                tv_bust_cm.setTextColor(getResources().getColor(R.color.black));
+                    tv_bust_cm.setTypeface(bold_text);
+                    tv_bust_cm.setTextColor(getResources().getColor(R.color.black));
 
-                tv_error_bust.setVisibility(View.GONE);
-                layout_height_bust.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                    tv_error_bust.setVisibility(View.GONE);
+                    layout_height_bust.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
 
-                et_bust.setText(bust);
+                    et_bust.setText(bust);
+                }
+
             }
         });
 
@@ -1066,20 +1177,24 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
-                isBustCM = false;
+                if (isBustCM)
+                {
+                    isBustCM = false;
 
-                bust = Utils.centimeterToInch(et_bust.getText().toString());
+                    bust = Utils.centimeterToInch(et_bust.getText().toString());
 
-                tv_bust_cm.setTypeface(normal_text);
-                tv_bust_cm.setTextColor(getResources().getColor(R.color.grey));
+                    tv_bust_cm.setTypeface(normal_text);
+                    tv_bust_cm.setTextColor(getResources().getColor(R.color.grey));
 
-                tv_bust_in.setTypeface(bold_text);
-                tv_bust_in.setTextColor(getResources().getColor(R.color.black));
+                    tv_bust_in.setTypeface(bold_text);
+                    tv_bust_in.setTextColor(getResources().getColor(R.color.black));
 
-                tv_error_bust.setVisibility(View.GONE);
-                layout_height_bust.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                    tv_error_bust.setVisibility(View.GONE);
+                    layout_height_bust.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
 
-                et_bust.setText(bust);
+                    et_bust.setText(bust);
+                }
+
             }
         });
 
@@ -1713,14 +1828,25 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     layout_brand.setVisibility(View.GONE);
                     layout_brand_fit.setVisibility(View.VISIBLE);
 
+                    clearRangeButton();
+
                     get_brand_sizes(gender,category,brand);
 
 
                     localData.setBrand(brand);
 
-                    tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+
-                            Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+getResources().getString(R.string.apparel_brand_fav_size_2)+" "+
-                            brand+" "+getResources().getString(R.string.apparel_brand_fav_size_3));
+                    if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
+                    {
+                        tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+brand+" "+
+                                Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+
+                                getResources().getString(R.string.apparel_brand_fav_size_3));
+                    }
+                    else
+                    {
+                        tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+
+                                Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+getResources().getString(R.string.apparel_brand_fav_size_2)+" "+
+                                brand+" "+getResources().getString(R.string.apparel_brand_fav_size_3));
+                    }
 
 
                     trackEvent(clientId, skuId, "click", "pdp", "refBrand_continue",uID);
@@ -1738,6 +1864,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             public void onClick(View view) {
 
                 progress(5);
+
+                isBrandCategorySelected = false;
 
                 layout_body_profile.setVisibility(View.GONE);
                 layout_bust.setVisibility(View.GONE);
@@ -1764,6 +1892,10 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         tv_brand_fav_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                isBrandCategorySelected = false;
+
                 progress(5);
                 layout_body_profile.setVisibility(View.GONE);
                 layout_bust.setVisibility(View.GONE);
@@ -1791,12 +1923,16 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             public void onClick(View view) {
 
                 brandBand = tv_brand_range.getText().toString().toLowerCase();
+
+                isBrandCategorySelected = true;
+
                 progress(5);
                 layout_body_profile.setVisibility(View.GONE);
                 layout_bust.setVisibility(View.GONE);
                 layout_bra_profile.setVisibility(View.GONE);
                 layout_brand.setVisibility(View.GONE);
                 layout_brand_fit.setVisibility(View.GONE);
+
                 layout_fit_preference.setVisibility(View.VISIBLE);
 
                 tv_fit_tight.setTextColor(getResources().getColor(R.color.grey_3));
@@ -1821,6 +1957,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             }
         });
 
+
+
         tv_fit_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1829,6 +1967,21 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 Log.e("fitPreference",fitPreference);
 
                 localData.setFitPreference(fitPreference);
+
+
+
+                switch (fitPreference)
+                {
+                    case "1":
+                        tv_fit_size.setText(getResources().getString(R.string.apparel_last_fit_tight));
+                        break;
+                    case "2":
+                        tv_fit_size.setText(getResources().getString(R.string.apparel_last_fit_regular));
+                        break;
+                    case "3":
+                        tv_fit_size.setText(getResources().getString(R.string.apparel_last_fit_loose));
+                        break;
+                }
 
                 trackEvent(clientId, skuId, "click", "pdp", "fitPreference_continue",uID);
 
@@ -1855,25 +2008,36 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
+                if (isBrandCategorySelected)
+                {
 
-                layout_body_profile.setVisibility(View.GONE);
-                layout_bust.setVisibility(View.GONE);
-                layout_bra_profile.setVisibility(View.GONE);
-                layout_brand.setVisibility(View.VISIBLE);
-                layout_brand_fit.setVisibility(View.GONE);
-                layout_fit_preference.setVisibility(View.GONE);
-                layout_result.setVisibility(View.GONE);
+                    layout_body_profile.setVisibility(View.GONE);
+                    layout_bust.setVisibility(View.GONE);
+                    layout_bra_profile.setVisibility(View.GONE);
+                    layout_brand.setVisibility(View.GONE);
+                    layout_brand_fit.setVisibility(View.VISIBLE);
+                    layout_fit_preference.setVisibility(View.GONE);
+                    layout_result.setVisibility(View.GONE);
 
-                progress(3);
+                    progress(4);
 
-                setDefaultBrands();
+                }
+                else
+                {
+                    layout_body_profile.setVisibility(View.VISIBLE);
+                    layout_bust.setVisibility(View.GONE);
+                    layout_bra_profile.setVisibility(View.GONE);
+                    layout_brand.setVisibility(View.GONE);
+                    layout_brand_fit.setVisibility(View.GONE);
+                    layout_fit_preference.setVisibility(View.GONE);
+                    layout_result.setVisibility(View.GONE);
 
-                layout_brands.setVisibility(View.VISIBLE);
+                    progress(1);
 
+                    setDefaultBrands();
 
-//            tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+
-//                    category+" "+getResources().getString(R.string.apparel_brand_fav_size_2)+" "+
-//                    brand+" "+getResources().getString(R.string.apparel_brand_fav_size_3));
+                    layout_brands.setVisibility(View.VISIBLE);
+                }
 
 
 
@@ -1978,14 +2142,23 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         layout_range_1.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
         tv_range_1.setTextColor(getResources().getColor(R.color.color_text_grey));
 
+
         layout_range_2.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
         tv_range_2.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_range_3.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
         tv_range_3.setTextColor(getResources().getColor(R.color.color_text_grey));
 
-
     }
+
+    public void clearRangeButton()
+    {
+        layout_range_1.setVisibility(View.GONE);
+        layout_range_2.setVisibility(View.GONE);
+        layout_range_3.setVisibility(View.GONE);
+    }
+
+
     public void clearAllBand()
     {
 
@@ -3770,6 +3943,19 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     temp.add(d);
                 }
 
+                et_what_brand.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                layout_add.setVisibility(View.GONE);
+                tv_brand_error.setVisibility(View.GONE);
+                layout_brands.setVisibility(View.VISIBLE);
+
+            }
+
+            if (temp.size() == 0)
+            {
+                layout_add.setVisibility(View.VISIBLE);
+                tv_brand_error.setVisibility(View.VISIBLE);
+                layout_brands.setVisibility(View.INVISIBLE);
+                et_what_brand.setBackground(getResources().getDrawable(R.drawable.bg_button_error));
             }
         }
         brandAdapter.updateList(temp);
@@ -3946,6 +4132,36 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     }
 
 
+    private void newBrandRequest(String category, String brandName) {
+
+
+        try {
+
+            JSONObject object = new JSONObject();
+
+            object.put("clientId",clientId);
+            object.put("uid",uID);
+            object.put("category",category);
+            object.put("brandName",brandName);
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+
+                POST post = new POST(this, "https://discoverysvc.pixibo.com/brand" , object,NewBrand, this);
+                post.execute();
+
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
+
 
     private void getFinalSize(String uID, String ht, String wt , String age , String ftp , String rg , String bs , String cu , String brand , String range , String sizeType , String size , String bu) {
 
@@ -4013,7 +4229,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                     brandCharts = result ;
                     JSONObject object = new JSONObject(result);
-
 
 
                     if (object.has("regular"))
@@ -4226,13 +4441,13 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                                 if (fysObject.getString("size").contains("INT"))
                                 {
                                     tv_header_text.setText(getResources().getString(R.string.header_text)+" "+
-                                            fysObject.getString("size").replace("INT",getResources().getString(R.string.international))+" \n"+ getResources().getString(R.string.header_text_2));
+                                            fysObject.getString("size").replace("INT",getResources().getString(R.string.international))+ getResources().getString(R.string.header_text_2));
                                 }
 
                                 else
                                 {
                                     tv_header_text.setText(getResources().getString(R.string.header_text)+" "+
-                                            fysObject.getString("size")+" \n"+ getResources().getString(R.string.header_text_2));
+                                            fysObject.getString("size")+ getResources().getString(R.string.header_text_2));
                                 }
 
 
@@ -4325,7 +4540,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                                 tv_not_fit.setVisibility(View.GONE);
                                 tv_suits_best.setText(getResources().getText(R.string.apparel_result_text_best));
-                                tv_size.setText(getResources().getString(R.string.apparel_result_size) +" "+fysObject.getString("size").replace("INT",""));
+                                tv_size.setText(fysObject.getString("size"));
                             }
 
                             else
@@ -4334,7 +4549,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                                 size = fysObject.getString("size");
 
                                 tv_suits_best.setText(getResources().getText(R.string.apparel_result_closest_match));
-                                tv_size.setText(getResources().getString(R.string.apparel_result_size) +" "+fysObject.getString("size").replace("INT",""));
+                                tv_size.setText(fysObject.getString("size"));
                                 tv_not_fit.setVisibility(View.VISIBLE);
                             }
 
@@ -4409,9 +4624,19 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             {
                 get_brand_sizes(gender,category,brand);
 
-                tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+
-                        Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+getResources().getString(R.string.apparel_brand_fav_size_2)+" "+
-                        brand+" "+getResources().getString(R.string.apparel_brand_fav_size_3));
+                if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
+                {
+                    tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+brand+" "+
+                            Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+
+                            getResources().getString(R.string.apparel_brand_fav_size_3));
+                }
+                else
+                {
+                    tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+
+                            Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+getResources().getString(R.string.apparel_brand_fav_size_2)+" "+
+                            brand+" "+getResources().getString(R.string.apparel_brand_fav_size_3));
+                }
+
 
                 if (!bu.equals(""))
                 {
