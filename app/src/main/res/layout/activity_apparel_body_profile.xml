@@ -1124,10 +1124,10 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:id="@+id/tv_back_bra_size"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/ic_back"/>
+                android:drawableStart="@drawable/ic_back"/>
 
 
 
@@ -1392,10 +1392,10 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:id="@+id/tv_back_bust"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/ic_back"/>
+                    android:drawableStart="@drawable/ic_back"/>
 
 
 
@@ -1650,10 +1650,10 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="true"
                     android:id="@+id/tv_back_brand"
-                    android:background="@drawable/ic_back"/>
+                    android:drawableStart="@drawable/ic_back"/>
 
 
 
@@ -1888,14 +1888,14 @@
                     android:layout_height="28dp"
                     android:layout_marginEnd="15dp"
                     android:id="@+id/layout_brand_size_1"
-                    android:background="@drawable/bg_button_selected">
+                    android:background="@drawable/bg_button_unselected">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:id="@+id/tv_brand_size_1"
-                        android:textColor="@color/color_text"
+                        android:textColor="@color/color_text_grey"
                         android:text="8"/>
 
                 </RelativeLayout>
@@ -2341,6 +2341,18 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_error_size"
+                android:textColor="@color/color_error"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/apercu_regular"
+                android:textSize="11sp"
+                android:text="@string/apparel_size_error"
+                android:layout_below="@+id/layout_brand_size"/>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -2444,10 +2456,10 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="true"
                     android:id="@+id/tv_back_brand_fav"
-                    android:background="@drawable/ic_back"/>
+                    android:drawableStart="@drawable/ic_back"/>
 
 
 
@@ -2471,7 +2483,7 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:id="@+id/tv_brand_fav_continue"
-                    android:background="@color/color_background_button_enable"
+                    android:background="@color/color_background_button_disabled"
                     android:textColor="@color/white"
                     android:fontFamily="@font/apercu_medium"
                     android:text="@string/text_continue"
@@ -2619,10 +2631,11 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="true"
+                    android:paddingEnd="5dp"
                     android:id="@+id/tv_back_fit"
-                    android:background="@drawable/ic_back"/>
+                    android:drawableStart="@drawable/ic_back"/>
 
 
 
@@ -3086,6 +3099,74 @@
                 android:textColor="@color/black"
                 android:text="@string/loader_text"
                 />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_error"
+            android:visibility="gone"
+            android:background="@color/white">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_centerInParent="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/error_text"
+                    android:gravity="center"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textColor="@color/black"
+                    android:text="@string/error_text"
+                    />
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="165dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="40dp"
+                    android:id="@+id/layout_try_again"
+                    android:background="@color/color_background_button_enable">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:id="@+id/tv_try_again"
+                        android:textSize="14sp"
+                        android:drawableStart="@drawable/ic_startover_white"
+                        android:layout_centerInParent="true"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/error_try_again"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+
 
 
         </RelativeLayout>

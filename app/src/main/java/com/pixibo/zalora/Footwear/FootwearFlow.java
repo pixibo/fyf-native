@@ -375,12 +375,13 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 tv_brand_continue.setBackgroundColor(getResources().getColor(R.color.color_background_button_disabled));
                 et_what_brand.setTextColor(getResources().getColor(R.color.grey_3));
 
+                clearAllBrands();
 
                 if (charSequence.toString().trim().length()>=1)
                 {
                     brand_filter(charSequence.toString());
 
-                    clearAllBrands();
+
                 }
 
                 if (!brand.equalsIgnoreCase(charSequence.toString()))

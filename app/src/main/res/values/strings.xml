@@ -26,6 +26,8 @@
     <string name="privacy_powered_by">Powered by</string>
     <string name="privacy_powered_text">Privacy Policy</string>
     <string name="loader_text">Finding the best size for you</string>
+    <string name="error_text">Oops! \nSomething went wrong</string>
+    <string name="error_try_again">TRY AGAIN</string>
     <string name="bust_text">Place the measuring tape around the fullest part of your bust, keeping the tape level around your body. If needed, round up to the nearest whole number.</string>
 
     <string name="header_text">LOOKS LIKE YOU’RE A SIZE </string>
@@ -68,6 +70,8 @@
     <string name="apparel_petite">PETITE</string>
     <string name="apparel_plus">PLUS</string>
 
+    <string name="apparel_size_error">Please select a size to continue</string>
+
 
     <string name="female_apparel_brand_1" translatable="false">Mango</string>
     <string name="female_apparel_brand_2" translatable="false">Dorothy Perkins</string>
@@ -100,8 +104,8 @@
     <string name="apparel_last_fit_loose">LOOSE</string>
     <string name="apparel_last_fit_tell_size" translatable="false">TELL ME MY SIZE</string>
     <string name="apparel_last_fit_regular_text">Regular fit means that you prefer to wear this item as it was intended by the brand.</string>
-    <string name="apparel_last_fit_tight_text">Tight fit means that you prefer this item to fit closer to the body for a contoured, slim silhouette</string>
-    <string name="apparel_last_fit_loose_text">Loose fit means that you prefer this item to fit looser on the body for a less structured, relaxed silhouette</string>
+    <string name="apparel_last_fit_tight_text">Tight fit means that you prefer this item to fit closer to the body for a contoured, slim silhouette.</string>
+    <string name="apparel_last_fit_loose_text">Loose fit means that you prefer this item to fit looser on the body for a less structured, relaxed silhouette.</string>
 
 
     <string name="apparel_result_text_best">THIS SIZE SUITS YOU BEST</string>

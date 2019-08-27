@@ -78,7 +78,7 @@
     <string name="footwear_pick_category_model">Apa nama model</string>
     <string name="footwear_pick_category__model2">Anda? (pilihan)</string>
     <string name="footwear_what_size">Berapa ukuran</string>
-    <string name="footwear_what_size_2" translatable="false">sepatu Anda?</string>
+    <string name="footwear_what_size_2" translatable="false">sepatu Anda\\?</string>
     <string name="footwear_width">LEBAR</string>
     <string name="footwear_result_best_size">UKURAN INI PALING SESUAI UNTUK ANDA</string>
     <string name="brand_not_in_list">Brand ini tidak terdapat dalam daftar kami. Klik \"+\" untuk menambahkan.</string>
@@ -99,4 +99,7 @@
     <string name="in">in</string>
     <string name="kg">kg</string>
     <string name="lb">lbs</string>
+    <string name="apparel_size_error">Pilih ukuran untuk melanjutkan</string>
+    <string name="error_text">Oops! Terjadi Kesalahan</string>
+    <string name="error_try_again">COBA LAGI</string>
 </resources>
