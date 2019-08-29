@@ -16,6 +16,7 @@
         <RelativeLayout
             android:id="@+id/layout_header"
             android:layout_width="match_parent"
+
             android:layout_height="60dp">
 
 
@@ -168,7 +169,6 @@
             android:layout_marginTop="10dp"
             android:id="@+id/layout_height"
             android:gravity="start"
-
             android:background="@drawable/bg_edit_disabled"
             android:padding="2dp"
             android:layout_below="@+id/tv_height"
@@ -203,6 +203,7 @@
                 android:layout_height="match_parent"
                 android:gravity="end"
                 android:maxLines="1"
+                android:maxLength="2"
                 android:inputType="number"
                 android:visibility="gone"
                 android:id="@+id/et_height_in"
@@ -1735,7 +1736,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:id="@+id/tv_range"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="25dp"
                 android:layout_below="@+id/tv_size_fav_category"
                 android:text="@string/apparel_brand_range"/>
 
@@ -2613,6 +2614,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:gravity="center"
+                android:textSize="11sp"
                 android:id="@+id/tv_fit_text"
                 android:textColor="@color/color_text"
                 android:text="@string/apparel_last_fit_regular_text"
@@ -2675,7 +2677,8 @@
                 android:layout_marginTop="15dp"
                 android:id="@+id/tv_not_fit"
                 android:textSize="10sp"
-                android:visibility="gone"
+                android:visibility="invisible"
+                android:gravity="center"
                 android:textAllCaps="true"
                 android:textColor="@color/color_error"
                 android:text="@string/apparel_result_not_fit"
@@ -2687,8 +2690,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="33dp"
+                android:layout_marginTop="6dp"
                 android:textSize="12sp"
+                android:layout_below="@+id/tv_not_fit"
                 android:id="@+id/tv_suits_best"
                 android:textColor="@color/black"
                 android:textAllCaps="true"
@@ -2700,10 +2704,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_suits_best"
                 android:textSize="40sp"
                 android:id="@+id/tv_size"
                 android:fontFamily="@font/apercu_medium"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:text="@string/apparel_result_size"
                 />

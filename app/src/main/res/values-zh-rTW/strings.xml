@@ -32,6 +32,7 @@
     <string name="apparel_result_start_over">重新開始</string>
     <string name="apparel_result_text_best">您最合適的尺寸是</string>
     <string name="apparel_result_text_check_fit">查看尺寸合身度</string>
+    <string name="apparel_result_text_check_fit_chest">胸圍</string>
     <string name="apparel_result_text_check_fit_bust">胸圍</string>
     <string name="apparel_result_text_check_fit_hips">臀圍</string>
     <string name="apparel_result_text_check_fit_waist">腰圍</string>
@@ -64,8 +65,9 @@
     <string name="apparel_male_pant">長褲</string>
     <string name="apparel_male_short">短褲</string>
     <string name="apparel_male_outerwear">外套</string>
-    <string name="loader_text" translatable="false">正為您尋找合適尺寸</string>
+    <string name="loader_text" >正為您尋找合適尺寸</string>
     <string name="footwear_result_not_recommended">很抱歉，目前暫無您的尺寸</string>
+    <string name="footwear_result_out_of_stock" >很抱歉， 目前暫無此尺寸</string>
     <string name="footwear_result_continue">繼續購物</string>
     <string name="footwear_right_size">為您尋找合適的尺寸</string>
     <string name="footwear_what_model">是哪個款式?</string>
@@ -78,19 +80,19 @@
     <string name="footwear_pick_category_model">您的</string>
     <string name="footwear_pick_category__model2">是哪個model? (可跳過）</string>
     <string name="footwear_what_size">您的</string>
-    <string name="footwear_what_size_2" translatable="false">是哪個尺寸\\？</string>
+    <string name="footwear_what_size_2" >是哪個尺寸\\？</string>
     <string name="footwear_width">鞋寬</string>
     <string name="footwear_result_best_size">您最合適的尺寸是</string>
     <string name="brand_not_in_list">資料庫裡暫無此品牌。添加品牌請按“+”</string>
     <string name="brand_thanks">請輸入其他品牌</string>
     <string name="error_age">數值必須在 15 和 80 之間</string>
-    <string name="error_bust_cm" translatable="false">數值必須在 75 和 155 之間</string>
-    <string name="error_bust_in" translatable="false">數值必須在 30 和 61 之間</string>
-    <string name="header_text" translatable="false">看來您的合適尺寸是</string>
-    <string name="header_text_2" translatable="false">" "</string>
-    <string name="apparel_brand_fav_size" translatable="false">您的</string>
-    <string name="apparel_brand_fav_size_3" translatable="false">是哪個尺寸？</string>
-    <string name="apparel_brand_fav_size_2" translatable="false">" "</string>
+    <string name="error_bust_cm" >數值必須在 75 和 155 之間</string>
+    <string name="error_bust_in">數值必須在 30 和 61 之間</string>
+    <string name="header_text" >看來您的合適尺寸是</string>
+    <string name="header_text_2" >" "</string>
+    <string name="apparel_brand_fav_size" >您的</string>
+    <string name="apparel_brand_fav_size_3" >是哪個尺寸？</string>
+    <string name="apparel_brand_fav_size_2" >" "</string>
     <string name="apparel_petite">嬌小</string>
     <string name="apparel_plus">加大</string>
     <string name="apparel_regular">標準</string>
@@ -98,8 +100,12 @@
     <string name="in">英尺</string>
     <string name="kg">公斤</string>
     <string name="lb">磅</string>
-    <string name="privacy_powered_text" translatable="false">" "</string>
+    <string name="privacy_powered_text" >" "</string>
     <string name="apparel_size_error">請選取尺寸以繼續</string>
     <string name="error_text">哦！出了點問題</string>
     <string name="error_try_again">再試一次</string>
+    <string name="error_height_cm">數值必須在 140 和 190 之間</string>
+    <string name="error_height_ft">數值必須在 4\'7\" 和 6\'3\" 之間</string>
+    <string name="error_weight_kg">數值必須在 40 和 110 之間</string>
+    <string name="error_weight_lb">數值必須在 88 和 243 之間</string>
 </resources>

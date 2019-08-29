@@ -12,6 +12,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.UnderlineSpan;
@@ -23,7 +24,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pixibo.zalora.Adapter.BrandAdapter;
-import com.pixibo.zalora.Footwear.FootwearFlow;
 import com.pixibo.zalora.Model.BrandModel;
 import com.pixibo.zalora.R;
 import com.pixibo.zalora.Utils.LocalData;
@@ -49,6 +49,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.GetSize;
 import static com.pixibo.zalora.Utils.Utils.TYPE.NewBrand;
 import static com.pixibo.zalora.Utils.Utils.TYPE.Track;
+import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateData;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 
 
@@ -119,7 +120,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     String age = "0";
     String htp = "";
     String wtp = "";
-    String ftp = "";
+    String ftp = "0";
     String rg = "";
     String bs = "";
     String cu = "";
@@ -157,7 +158,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     private String altId = "";
     private String uID = "";
 
-    boolean isEdit = false ;
     boolean isNew = false ;
     boolean isAgeFilled = true ;
     boolean isWeightFilled = true ;
@@ -190,7 +190,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_apparel_body_profile);
+        setContentView(R.layout.activity_apparel_flow);
 
         localData = new LocalData(this);
 
@@ -204,7 +204,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         altId = intent.getStringExtra("altId");
         uID = intent.getStringExtra("uID");
         preferredLanguage = intent.getStringExtra("preferredLanguage");
-        isEdit = intent.getBooleanExtra("isEdit",false);
         isNew = intent.getBooleanExtra("isNew",false);
 
 
@@ -677,6 +676,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 if (b)
                 {
                     layout_age.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                    et_age.setSelection(et_age.getText().length());
                 }
                 else
                 {
@@ -692,6 +692,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 if (b)
                 {
                     layout_height.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                    et_height.setSelection(et_height.getText().length());
                 }
                 else
                 {
@@ -707,6 +708,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 if (b)
                 {
                     layout_weight.setBackground(getResources().getDrawable(R.drawable.bg_edit_enabled));
+                    et_weight.setSelection(et_weight.getText().length());
                 }
                 else
                 {
@@ -961,6 +963,10 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         layout_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("recommended",isRecommended);
+                returnIntent.putExtra("result",size);
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
@@ -1058,7 +1064,13 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 {
                     isCM = true ;
 
-                    height_cm = String.valueOf(Utils.convertFeetandInchesToCentimeter(et_height.getText().toString(),et_height_in.getText().toString()));
+                    Log.e("et_height",et_height.getText().toString());
+                    Log.e("et_height_in",et_height_in.getText().toString());
+
+                    height_cm = Utils.convertFeetandInchesToCentimeter(et_height.getText().toString(),et_height_in.getText().toString());
+
+                    Log.e("height_cm",height_cm);
+
 
                     et_height_in.setVisibility(View.GONE);
                     tv_quotes.setVisibility(View.GONE);
@@ -1070,7 +1082,17 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     tv_height_ft.setTypeface(normal_text);
                     tv_height_ft.setTextColor(getResources().getColor(R.color.grey));
 
+
+
+
+                    int maxLength = 5;
+                    InputFilter[] fArray = new InputFilter[1];
+                    fArray[0] = new InputFilter.LengthFilter(maxLength);
+                    et_height.setFilters(fArray);
+
+
                     et_height.setText(height_cm);
+
                 }
 
 
@@ -1086,6 +1108,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 if (isCM)
                 {
                     isCM = false ;
+
                     height_ft = Utils.centimeterToFeet(et_height.getText().toString());
                     height_in = Utils.centimeterToFeetInch(et_height.getText().toString());
 
@@ -1101,6 +1124,12 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                     et_height.setText(height_ft);
                     et_height_in.setText(height_in);
+
+
+                    int maxLength = 1;
+                    InputFilter[] fArray = new InputFilter[1];
+                    fArray[0] = new InputFilter.LengthFilter(maxLength);
+                    et_height.setFilters(fArray);
                 }
 
             }
@@ -1287,6 +1316,23 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
                 isBust = false;
+
+
+                if (!isCM)
+                {
+                    et_height.setText(Utils.centimeterToFeet(localData.getHeight()));
+                    et_height_in.setText(Utils.centimeterToFeetInch(localData.getHeight()));
+                }
+                else
+                {
+                    et_height.setText(localData.getHeight());
+                }
+
+
+
+                et_weight.setText(localData.getWeight());
+                et_age.setText(localData.getAge());
+
                 layout_body_profile.setVisibility(View.VISIBLE);
                 layout_bra_profile.setVisibility(View.GONE);
                 progress(1);
@@ -1298,6 +1344,26 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
                 isBust = false;
+
+                if (!isCM)
+                {
+                    et_height.setText(Utils.centimeterToFeet(localData.getHeight()));
+                    et_height_in.setText(Utils.centimeterToFeetInch(localData.getHeight()));
+
+                    et_height.setText(height_ft);
+                    et_height_in.setText(height_in);
+
+                }
+                else
+                {
+                    et_height.setText(localData.getHeight());
+                }
+
+                et_weight.setText(localData.getWeight());
+                et_age.setText(localData.getAge());
+
+
+
                 layout_body_profile.setVisibility(View.VISIBLE);
                 progress(1);
                 layout_bust.setVisibility(View.GONE);
@@ -1320,6 +1386,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     layout_bust.setVisibility(View.VISIBLE);
                     layout_bra_profile.setVisibility(View.GONE);
                     layout_brand.setVisibility(View.GONE);
+
+                    et_bust.setText(localData.getBust());
                 }
                 else
                 {
@@ -2159,7 +2227,9 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
         tv_fav_category.setText(getResources().getString(R.string.apparel_fit_fav_category)+" "+ Utils.convertApparelType(category,gender, ApparelFlow.this));
 
-        validate_user(clientId,skuId);
+        //validate_user(clientId,skuId);
+
+        getData();
 
         get_brands(gender,category);
     }
@@ -4050,6 +4120,36 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    private void getData() {
+
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+
+                if (altId.equals(""))
+                {
+                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+uID , ValidateUserUid, this);
+                    get.execute();
+                }
+                else
+                {
+                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+altId , ValidateUserUid, this);
+                    get.execute();
+                }
+
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
 
     private void get_brands(String gender ,String category) {
 
@@ -4249,6 +4349,107 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+
+
+
+    private void updateUserDetails() {
+
+        try {
+
+            JSONObject object = new JSONObject();
+            JSONObject femaleObject = new JSONObject();
+            JSONObject maleObject = new JSONObject();
+            JSONObject whois = new JSONObject();
+            JSONObject referenceBrands = new JSONObject();
+            JSONArray referenceBrandsArray = new JSONArray();
+
+            object.put("uid",uID);
+            object.put("gender",gender);
+            object.put("altId",altId);
+            object.put("type",category.toLowerCase());
+
+
+            if (gender.equals("male"))
+            {
+
+                maleObject.put("height",Integer.parseInt(localData.getHeight()));
+                maleObject.put("weight",Integer.parseInt(localData.getWeight()));
+                maleObject.put("age",Integer.parseInt(localData.getAge()));
+
+                maleObject.put("heightPreference","cm");
+                maleObject.put("weightPreference","kg");
+
+                femaleObject.put("fitPreference",localData.getFitPreference());
+
+
+                referenceBrands.put("category",category);
+                referenceBrands.put("brand",localData.getBand());
+                referenceBrands.put("range",localData.getBrandRange());
+                referenceBrands.put("sizeType",localData.getRegion());
+                referenceBrands.put("size",localData.getBrandSize());
+                referenceBrandsArray.put(0,referenceBrands);
+
+                maleObject.put("referenceBrands",referenceBrandsArray);
+
+                whois.put("male",maleObject);
+            }
+
+            else if (gender.equals("female"))
+            {
+
+                femaleObject.put("height",Integer.parseInt(localData.getHeight()));
+                femaleObject.put("weight",Integer.parseInt(localData.getWeight()));
+                femaleObject.put("age",Integer.parseInt(localData.getAge()));
+
+                femaleObject.put("heightPreference","cm");
+                femaleObject.put("weightPreference","kg");
+
+                femaleObject.put("region",localData.getRegion());
+                femaleObject.put("band",Integer.parseInt(localData.getBand()));
+                femaleObject.put("cup",localData.getCup());
+                femaleObject.put("fitPreference",localData.getFitPreference());
+
+                if (!localData.getBust().equals(""))
+                {
+                    femaleObject.put("bust",Integer.parseInt(localData.getBust()));
+                }
+
+                referenceBrands.put("category",category);
+                referenceBrands.put("brand",localData.getBrand());
+                referenceBrands.put("range",localData.getBrandRange());
+                referenceBrands.put("sizeType",localData.getRegion());
+                referenceBrands.put("size",localData.getBrandSize());
+
+
+                referenceBrandsArray.put(0,referenceBrands);
+
+                femaleObject.put("referenceBrands",referenceBrandsArray);
+                whois.put("female",femaleObject);
+            }
+
+            object.put("whois",whois);
+
+
+            Log.e("Data", String.valueOf(object));
+
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+
+                POST post = new POST(this, "https://discoverysvc.pixibo.com/uid" ,object, UpdateData, this);
+                post.execute();
+
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
     @Override
     public void getWebResponse(String result, Utils.TYPE type, int statusCode) {
 
@@ -4324,11 +4525,9 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     if (statusCode == 200)
                     {
 
-                        JSONObject userObject = new JSONObject(result);
+                      //  JSONObject userObject = new JSONObject(result);
 
-                        if(userObject.has("userInfo"))
-                        {
-                            JSONObject userInfoObject = new JSONObject(userObject.optString("userInfo"));
+                            JSONObject userInfoObject = new JSONObject(result);
 
                             if (!userInfoObject.optString("uid").equals(null))
                             {
@@ -4340,10 +4539,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                             JSONObject whoIs = new JSONObject(userInfoObject.optString("whois"));
 
-                            Log.e("whoIs male", String.valueOf(whoIs.has("male")));
-                            Log.e("whoIs female", String.valueOf(whoIs.has("female")));
-
-                            if (userInfoObject.optString("whois").contains("female") && userObject.optString("gender").equals("female") &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}"))
+                            if (userInfoObject.optString("whois").contains("female") && gender.equals("female") &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}"))
                             {
                                 JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
                                 JSONObject femaleObject = new JSONObject(whoisObject.optString("female"));
@@ -4399,7 +4595,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
 
-                            else if (whoIs.has("male") && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals("{}") && userObject.optString("gender").equals("male"))
+                            else if (whoIs.has("male") && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals("{}") && gender.equals("male"))
                             {
                                 JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
 
@@ -4458,12 +4654,11 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                                 layout_body_profile.setVisibility(View.VISIBLE);
                             }
                         }
-
-                        }
                         else
                         {
                             layout_body_profile.setVisibility(View.VISIBLE);
                         }
+
 
 
                     }
@@ -4479,6 +4674,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 try
                 {
 
+                    updateUserDetails();
+
                     JSONObject object = new JSONObject(result);
 
                     if (object.has("fys"))
@@ -4491,6 +4688,9 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                             if (fysObject.getBoolean("recommended"))
                             {
+
+                                isRecommended = true ;
+                                size = fysObject.getString("size");
 
                                 if (fysObject.getString("size").contains("INT"))
                                 {
@@ -4513,6 +4713,11 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                             else
                             {
+
+                                isRecommended = false  ;
+
+                                size = fysObject.getString("size");
+
                                 tv_header_text.setVisibility(View.GONE);
 
                                 layout_header.setBackground(null);
@@ -4533,6 +4738,12 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 try
                 {
 
+
+                    tv_header_text.setVisibility(View.GONE);
+
+                    layout_header.setBackgroundColor(getResources().getColor(R.color.color_background));
+
+                    updateUserDetails();
 
 
                     Handler handler = new Handler();
@@ -4592,7 +4803,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                                 isRecommended = true ;
                                 size = fysObject.getString("size");
 
-                                tv_not_fit.setVisibility(View.GONE);
+                                tv_not_fit.setVisibility(View.INVISIBLE);
                                 tv_suits_best.setText(getResources().getText(R.string.apparel_result_text_best));
                                 tv_size.setText(fysObject.getString("size").replace("INT",getResources().getString(R.string.international)));
                             }
@@ -4639,18 +4850,24 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         Log.e("brandSize", brandSize);
 
 
-//        localData.setHeight(ht);
-//        localData.setWeight(wt);
-//        localData.setAge(age);
-//        localData.setFitPreference(ftp);
-//        localData.setRegion(rg);
-//        localData.setBand(bs);
-//        localData.setCup(cu);
-//        localData.setBust(bu);
-//        localData.setBrand(brand);
-//        localData.setBrandRange(range);
-//        localData.setBrandBand(sizeType);
-//        localData.setBrandSize(brandSize);
+        localData.setHeight(ht);
+        localData.setWeight(wt);
+        localData.setAge(age);
+        localData.setFitPreference(ftp);
+        localData.setRegion(rg);
+        localData.setBand(bs);
+        localData.setCup(cu);
+        localData.setBust(bu);
+        localData.setBrand(brand);
+        localData.setBrandRange(range);
+        localData.setBrandBand(sizeType);
+        localData.setBrandSize(brandSize);
+
+        if (!brandSize.equals(""))
+        {
+            get_brand_sizes(gender,category,brand);
+            isBrandCategorySelected = true;
+        }
 
 
         if (!isNew)
@@ -4660,13 +4877,13 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             {
                 if (altId.equals(""))
                 {
-                    getFinalSize(uID,ht,wt,age,localData.getFitPreference(),localData.getRegion(),localData.getBand(),localData.getCup(),
-                            localData.getBrand(),localData.getBrandRange(),localData.getBrandBand(),localData.getBrandSize(),localData.getBust());
+                    getFinalSize(uID,ht,wt,age,ftp,rg,bs,cu,
+                            brand,range,sizeType,brandSize,bu);
                 }
                 else
                 {
-                    getFinalSize(altId,localData.getHeight(),localData.getWeight(),localData.getAge(),localData.getFitPreference(),localData.getRegion(),localData.getBand(),localData.getCup(),
-                            localData.getBrand(),localData.getBrandRange(),localData.getBrandBand(),localData.getBrandSize(),localData.getBust());
+                    getFinalSize(altId,ht,wt,age,ftp,rg,bs,cu,
+                            brand,range,sizeType,brandSize,bu);
                 }
             }
             else if (!range.equals(""))

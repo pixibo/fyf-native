@@ -43,8 +43,8 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 public class MainActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "sl8zvzsjelpg";
-    private String skuId = "BC421AADC2CE9DGS";
+    private String clientId = "qe3uhcp1kh11";
+    private String skuId = "A9D56SH00ED8EDGS";
 //    private String altId = "10214810760805751";
     private String altId = "";
     private String uID = "";
@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements Result {
                     intent.putExtra("altId",altId);
                     intent.putExtra("uID",uID);
                     intent.putExtra("preferredLanguage",preferredLanguage);
-                    intent.putExtra("isEdit",false);
                     intent.putExtra("isNew",false);
                     startActivityForResult(intent,111);
                 }
@@ -152,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements Result {
 
 
         validate_user(clientId,skuId);
+
+        //getData();
 
     }
 
@@ -185,6 +186,39 @@ public class MainActivity extends AppCompatActivity implements Result {
             Log.e("Exception",e.getMessage());
         }
     }
+
+
+
+    private void getData() {
+
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+
+                if (altId.equals(""))
+                {
+                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+uID , ValidateUserUid, this);
+                    get.execute();
+                }
+                else
+                {
+                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+altId , ValidateUserUid, this);
+                    get.execute();
+                }
+
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
 
 
     private void fetchSizeFromApi(String url) {
@@ -629,6 +663,8 @@ public class MainActivity extends AppCompatActivity implements Result {
                             tv_find_my_size.setText(content);
                         }
 
+
+
                     }
 
                     else
@@ -660,7 +696,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                                 }
                                 else{
                                   //  Log.e("size","not_recommended");
-                                    setButtonText(null,recommended);
+                                    setButtonText("abc",recommended);
                                 }
 
 
@@ -726,9 +762,6 @@ public class MainActivity extends AppCompatActivity implements Result {
                 String result = data.getStringExtra("result");
 
                 setButtonText(result,recommended);
-
-                Log.e("recommended", String.valueOf(recommended));
-                Log.e("result",result);
 
             }
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -951,6 +984,10 @@ public class MainActivity extends AppCompatActivity implements Result {
 
     public void setButtonText(String size,boolean isRecommended)
     {
+
+        Log.e("isRecommended", String.valueOf(isRecommended));
+        Log.e("size",size);
+
         String returnedText;
 
         if(size == null){
@@ -971,16 +1008,20 @@ public class MainActivity extends AppCompatActivity implements Result {
 
         if(isRecommended){
 
+            returnedText = getResources().getString(R.string.your_size) +" "+size;
             content = new SpannableString(returnedText);
 
         }
         else{
+
+            returnedText = getResources().getString(R.string.check_your_fit);
             content = new SpannableString(returnedText);
         }
 
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
 
         tv_find_my_size.setText(content);
+
         layout_button.setVisibility(View.VISIBLE);
     }
 

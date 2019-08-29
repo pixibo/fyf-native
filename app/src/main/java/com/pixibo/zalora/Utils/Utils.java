@@ -168,7 +168,6 @@ public class Utils {
         if(!TextUtils.isEmpty(centemeter)) {
             double dCentimeter = Double.valueOf(centemeter);
             feetPart = (int) Math.floor((dCentimeter / 2.54) / 12);
-            inchesPart = (int) Math.floor((dCentimeter / 2.54) - (feetPart * 12));
         }
         if (feetPart == 0)
         {
@@ -187,7 +186,7 @@ public class Utils {
         if(!TextUtils.isEmpty(centemeter)) {
             double dCentimeter = Double.valueOf(centemeter);
             feetPart = (int) Math.floor((dCentimeter / 2.54) / 12);
-            inchesPart = (int) Math.floor((dCentimeter / 2.54) - (feetPart * 12));
+            inchesPart = (int) Math.ceil((dCentimeter / 2.54) - (feetPart * 12));
         }
         if (inchesPart == 0)
         {
@@ -285,7 +284,7 @@ public class Utils {
 
         }
 
-        cm  = (int) Math.ceil ((heightInFeet * 30.48) + (heightInInches * 2.54));
+        cm  = (int) Math.floor ((heightInFeet * 30.48) + (heightInInches * 2.54));
 
 
         if (cm == 0)

@@ -43,6 +43,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.BrandCategorySuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSizeSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.GetSize;
+import static com.pixibo.zalora.Utils.Utils.TYPE.Track;
 import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateData;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 
@@ -2168,6 +2169,27 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         }
     }
 
+    private void trackEvent(String clientID ,String SKUID,String eventType,String page,String event,String uid ) {
+
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+                GET get = new GET(this, "https://sizeguidev2.pixibo.com/event/"+clientID+"/"+SKUID+"?eventType="+eventType+"&page="+page+"&event="+event+"&uid="+uid+"&source=app" , Track, this);
+                // Utils.showLoading(SettingActivity.this, false);
+                get.execute();
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
 
     private void updateUserDetails() {
 
@@ -2175,7 +2197,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             JSONObject object = new JSONObject();
             JSONObject femaleObject = new JSONObject();
-            JSONObject braOptions = new JSONObject();
+           // JSONObject braOptions = new JSONObject();
             JSONObject heelToToe = new JSONObject();
             JSONObject whois = new JSONObject();
             JSONObject referenceBrands = new JSONObject();
@@ -2211,9 +2233,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 femaleObject.put("region","");
                 femaleObject.put("fitPreference","");
 
-                braOptions.put("band","");
-                braOptions.put("cup","");
-                braOptions.put("region","");
+//                braOptions.put("band","");
+//                braOptions.put("cup","");
+//                braOptions.put("region","");
 
                 heelToToe.put("unit","");
                 heelToToe.put("footwearWidthType","");
@@ -2230,7 +2252,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 referenceBrandsArray.put(0,referenceBrands);
 
                 femaleObject.put("referenceBrands",referenceBrandsArray);
-                femaleObject.put("braOptions",braOptions);
+//                femaleObject.put("braOptions",braOptions);
                 femaleObject.put("heelToToe",heelToToe);
 
 
