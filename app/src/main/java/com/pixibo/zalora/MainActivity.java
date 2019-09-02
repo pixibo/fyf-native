@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements Result {
             default:
                 locale = new Locale("en");
                 break;
-
         }
 
 

@@ -74,13 +74,13 @@
     <string name="footwear_get_recommendation">Sepatu apa yang kamu pakai?</string>
     <string name="footwear_fit_what_brand">Brand apa ini?</string>
     <string name="footwear_pick_category">"Apa kategori dari sepatu "</string>
-    <string name="footwear_pick_category_2">Anda? (pilihan)</string>
+    <string name="footwear_pick_category_2">"Anda? "</string>
     <string name="footwear_category">KATEGORI</string>
     <string name="brand_category_select">PILIH</string>
     <string name="footwear_pick_category_model">Apa nama model</string>
-    <string name="footwear_pick_category__model2">Anda? (pilihan)</string>
+    <string name="footwear_pick_category__model2">Anda?</string>
     <string name="footwear_what_size">Berapa ukuran</string>
-    <string name="footwear_what_size_2" >sepatu Anda\\?</string>
+    <string name="footwear_what_size_2" >" sepatu Anda ?"</string>
     <string name="footwear_width">LEBAR</string>
     <string name="footwear_result_best_size">UKURAN INI PALING SESUAI UNTUK ANDA</string>
     <string name="brand_not_in_list">Brand ini tidak terdapat dalam daftar kami. Klik \"+\" untuk menambahkan.</string>
@@ -108,4 +108,6 @@
     <string name="apparel_size_error">Pilih ukuran untuk melanjutkan</string>
     <string name="error_text">Oops! Terjadi Kesalahan</string>
     <string name="error_try_again">COBA LAGI</string>
+    <string name="footwear_pick_category_optional">(pilihan)</string>
+    <string name="footwear_result_add_to_cart">TAMBAHKAN KE TAS</string>
 </resources>

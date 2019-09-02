@@ -77,6 +77,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_header"
             android:id="@+id/layout_brand"
+            android:visibility="gone"
             android:paddingBottom="3dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
@@ -127,7 +128,7 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:maxLines="1"
-                android:inputType="text"
+                android:inputType="textNoSuggestions"
                 android:id="@+id/et_what_brand"
                 android:background="@drawable/bg_edit_disabled"
                 android:fontFamily="@font/apercu_regular"
@@ -154,7 +155,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:visibility="gone"
                 android:layout_below="@+id/tv_what_brand"
                 android:layout_alignParentEnd="true"
@@ -374,8 +374,6 @@
                 android:text="@string/footwear_pick_category"/>
 
 
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -403,6 +401,18 @@
                 android:padding="13dp"
                 android:gravity="center_vertical"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_brand_category"
+                android:textSize="11sp"
+                android:visibility="gone"
+                android:id="@+id/tv_error_category"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_error"
+                android:text="@string/error_required"/>
             
             
             
@@ -434,78 +444,14 @@
 
 
 
-                <TextView
+                <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_1" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_2" />
+                    android:layout_height="10dp"
+                    android:scrollbars="vertical"
+                    android:id="@+id/recycler_brand_category_selection">
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_3" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_4" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_5" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_6" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_7" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/grey_3"
-                    android:padding="15dp"
-                    android:id="@+id/tv_brand_category_8" />
+                </android.support.v7.widget.RecyclerView>
 
 
             </LinearLayout>
@@ -634,6 +580,18 @@
                 android:padding="13dp"
                 android:gravity="center_vertical"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_brand_category_model"
+                android:textSize="11sp"
+                android:visibility="gone"
+                android:id="@+id/tv_error_category_model"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_error"
+                android:text="@string/error_required"/>
 
 
 

@@ -74,13 +74,13 @@
     <string name="footwear_get_recommendation">您穿什麼鞋？</string>
     <string name="footwear_fit_what_brand">是哪個品牌？</string>
     <string name="footwear_pick_category">您的</string>
-    <string name="footwear_pick_category_2">鞋是哪個款式? (可跳過）</string>
+    <string name="footwear_pick_category_2">鞋是哪個款式?</string>
     <string name="footwear_category">鞋款</string>
     <string name="brand_category_select">選擇</string>
     <string name="footwear_pick_category_model">您的</string>
-    <string name="footwear_pick_category__model2">是哪個model? (可跳過）</string>
+    <string name="footwear_pick_category__model2">是哪個model?</string>
     <string name="footwear_what_size">您的</string>
-    <string name="footwear_what_size_2" >是哪個尺寸\\？</string>
+    <string name="footwear_what_size_2" >是哪個尺寸 ？</string>
     <string name="footwear_width">鞋寬</string>
     <string name="footwear_result_best_size">您最合適的尺寸是</string>
     <string name="brand_not_in_list">資料庫裡暫無此品牌。添加品牌請按“+”</string>
@@ -108,4 +108,6 @@
     <string name="error_height_ft">數值必須在 4\'7\" 和 6\'3\" 之間</string>
     <string name="error_weight_kg">數值必須在 40 和 110 之間</string>
     <string name="error_weight_lb">數值必須在 88 和 243 之間</string>
+    <string name="footwear_pick_category_optional">" (可跳過）"</string>
+    <string name="footwear_result_add_to_cart">加入購物車</string>
 </resources>

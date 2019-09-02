@@ -141,22 +141,24 @@
     <string name="footwear_fit_what_brand">WHAT BRAND IS IT?</string>
     <string name="footwear_pick_category">"What is the category of your "</string>
     <string name="footwear_pick_category_2">shoes?</string>
+    <string name="footwear_pick_category_optional">(optional)</string>
     <string name="footwear_pick_category_model">"What is the model name of your "</string>
-    <string name="footwear_pick_category__model2">shoes? (optional)</string>
+    <string name="footwear_pick_category__model2">shoes?</string>
     <string name="footwear_category">CATEGORY</string>
     <string name="footwear_what_model">WHAT MODEL IS IT?</string>
     <string name="footwear_what_size">What size is your </string>
-    <string name="footwear_what_size_2">\?</string>
+    <string name="footwear_what_size_2"> shoes \?</string>
     <string name="footwear_width" >WIDTH</string>
     <string name="footwear_regular" >REGULAR</string>
     <string name="footwear_narrow" >NARROW</string>
     <string name="footwear_wide" >WIDE</string>
     <string name="footwear_extra_wide" >EXTRA WIDE</string>
     <string name="footwear_result_continue" >continue shopping</string>
+    <string name="footwear_result_add_to_cart">ADD TO BAG</string>
 
 
     <string name="footwear_result_best_size" >THIS SIZE SUITS YOU BEST</string>
-    <string name="footwear_result_not_recommended" >Sorry this item does not \ncome in your size</string>
+    <string name="footwear_result_not_recommended" >Sorry, this item does not \ncome in your size</string>
     <string name="footwear_result_out_of_stock" >SORRY, THIS ITEM IS OUT OF STOCK IN THIS SIZE</string>
 
 
