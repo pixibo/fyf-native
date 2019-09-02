@@ -110,4 +110,18 @@
     <string name="error_weight_lb">數值必須在 88 和 243 之間</string>
     <string name="footwear_pick_category_optional">" (可跳過）"</string>
     <string name="footwear_result_add_to_cart">加入購物車</string>
+    <string name="shoe_boots_female">靴子</string>
+    <string name="shoe_boots_male">靴子</string>
+    <string name="shoe_flats">平底鞋</string>
+    <string name="shoe_flipflop">涼鞋及拖鞋</string>
+    <string name="shoe_gym">運動鞋</string>
+    <string name="shoe_heels">高跟鞋</string>
+    <string name="shoe_hiking">登山鞋</string>
+    <string name="shoe_loafers">皮便鞋及船型鞋</string>
+    <string name="shoe_mules">懶人鞋</string>
+    <string name="shoe_oxfords_female">牛津鞋及皮鞋</string>
+    <string name="shoe_oxfords_male">牛津鞋及皮鞋</string>
+    <string name="shoe_running">跑步鞋</string>
+    <string name="shoe_sneakers">球鞋</string>
+    <string name="shoe_wedges">楔形鞋</string>
 </resources>

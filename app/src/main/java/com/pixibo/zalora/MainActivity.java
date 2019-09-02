@@ -43,10 +43,10 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 public class MainActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "qe3uhcp1kh11";
-    private String skuId = "A9D56SH00ED8EDGS";
-//    private String altId = "10214810760805751";
-    private String altId = "";
+    private String clientId = "sl8zvzsjelpg";
+    private String skuId = "E5F46AAE81DCFDGS";
+    private String altId = "10214810760805751";
+//    private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";
     private String brand = "";
@@ -410,6 +410,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                                         sizeUrl = getApparelMaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
 
                                         if(sizeUrl != null){
+
                                             fetchSizeFromApi(sizeUrl);
                                         }
                                         else
@@ -901,6 +902,7 @@ public class MainActivity extends AppCompatActivity implements Result {
         JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
         String url = null;
 
+         Log.e("female",new JSONObject(userInfoObject.optString("whois")).optString("female"));
 
         if(whoisObject.has("female")  &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}")){
 
@@ -911,6 +913,7 @@ public class MainActivity extends AppCompatActivity implements Result {
             String footwearWidthType = "";
             String sizeType = "";
             String size = "";
+
             JSONArray femaleReferenceBrandsArray = new JSONArray(femaleObject.optString("referenceBrands"));
             if(femaleReferenceBrandsArray.length() > 0){
                 JSONObject femaleReferenceBrandsObject = null;
@@ -942,6 +945,8 @@ public class MainActivity extends AppCompatActivity implements Result {
         JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
         String url = null;
 
+        Log.e("male",new JSONObject(userInfoObject.optString("whois")).optString("male"));
+
 
         if(whoisObject.has("male")  &&!new JSONObject(userInfoObject.optString("whois")).optString("male").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals("{}") )
         {
@@ -952,6 +957,7 @@ public class MainActivity extends AppCompatActivity implements Result {
             String footwearWidthType = "";
             String sizeType = "";
             String size = "";
+
             JSONArray maleReferenceBrandsArray = new JSONArray(maleObject.optString("referenceBrands"));
             if(maleReferenceBrandsArray.length() > 0){
                 JSONObject maleReferenceBrandsObject = null;

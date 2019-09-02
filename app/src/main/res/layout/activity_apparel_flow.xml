@@ -478,7 +478,7 @@
             android:layout_marginTop="11dp"
             android:id="@+id/tv_type_size"
             android:background="@drawable/bg_dropdown"
-            android:text="AU"
+            android:text="EU"
             android:drawableEnd="@drawable/ic_dropdown"
             android:fontFamily="@font/apercu_regular"
             android:textColor="@color/grey_3"
@@ -1284,7 +1284,6 @@
                     android:layout_height="match_parent"
                     android:gravity="end"
                     android:maxLines="1"
-                    android:text="75"
                     android:inputType="number"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
@@ -1478,7 +1477,7 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:maxLines="1"
-                android:inputType="text"
+                android:inputType="textNoSuggestions"
                 android:id="@+id/et_what_brand"
                 android:background="@drawable/bg_edit_disabled"
                 android:fontFamily="@font/apercu_regular"
@@ -2552,6 +2551,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:id="@+id/tv_fit_tight"
                         android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
@@ -2574,6 +2574,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:id="@+id/tv_fit_regular"
                         android:textColor="@color/color_text"
                         android:fontFamily="@font/apercu_regular"
@@ -2594,6 +2595,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:id="@+id/tv_fit_loose"
                         android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
@@ -2663,9 +2665,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/layout_result"
+            android:visibility="gone"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:visibility="gone"
             android:layout_below="@+id/layout_header">
 
 
@@ -2975,7 +2977,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="130dp"
                 android:gravity="center"
                 android:layout_below="@+id/layout_fit_preference_result">
 

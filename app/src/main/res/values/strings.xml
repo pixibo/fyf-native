@@ -31,7 +31,7 @@
     <string name="bust_text">Place the measuring tape around the fullest part of your bust, keeping the tape level around your body. If needed, round up to the nearest whole number.</string>
 
     <string name="header_text">LOOKS LIKE YOU’RE A SIZE </string>
-    <string name="header_text_2">\nFOR THIS ITEM</string>
+    <string name="header_text_2">FOR THIS ITEM</string>
     <string name="international" translatable="false">INTERNATIONAL </string>
 
     <string name="text_continue">CONTINUE</string>
@@ -99,9 +99,9 @@
 
     <string name="apparel_last_question">LAST QUESTION!</string>
     <string name="apparel_last_fit">How would you like this item to fit?</string>
-    <string name="apparel_last_fit_tight">TIGHT</string>
-    <string name="apparel_last_fit_regular">REGULAR</string>
-    <string name="apparel_last_fit_loose">LOOSE</string>
+    <string name="apparel_last_fit_tight">Tight</string>
+    <string name="apparel_last_fit_regular">Regular</string>
+    <string name="apparel_last_fit_loose">Loose</string>
     <string name="apparel_last_fit_tell_size" translatable="false">TELL ME MY SIZE</string>
     <string name="apparel_last_fit_regular_text">Regular fit means that you prefer to wear this item as it was intended by the brand.</string>
     <string name="apparel_last_fit_tight_text">Tight fit means that you prefer this item to fit closer to the body for a contoured, slim silhouette.</string>
@@ -275,12 +275,33 @@
     <string name="apparel_female_short">short</string>
     <string name="apparel_female_skirt">skirt</string>
     <string name="apparel_female_outerwear">outerwear</string>
+    <string name="apparel_female_coat">coat</string>
 
     <string name="apparel_male_top">top</string>
     <string name="apparel_male_shirt">shirt</string>
     <string name="apparel_male_pant">pant</string>
     <string name="apparel_male_short">short</string>
     <string name="apparel_male_outerwear">outerwear</string>
+
+    <string name="apparel_shoes">shoes</string>
+    <string name="apparel_bra">bra</string>
+
+
+
+    <string name="shoe_flipflop">Flip-flops &amp; Sandals</string>
+    <string name="shoe_boots_male">Boots &amp; Chukkas</string>
+    <string name="shoe_boots_female">Boots</string>
+    <string name="shoe_sneakers">Sneakers</string>
+    <string name="shoe_hiking">Hiking &amp; Trail shoes</string>
+    <string name="shoe_wedges">Platforms &amp; Wedges</string>
+    <string name="shoe_running">Running Shoes</string>
+    <string name="shoe_gym">Training &amp; Gym shoes</string>
+    <string name="shoe_flats">Flats</string>
+    <string name="shoe_heels">Heels &amp; Pumps</string>
+    <string name="shoe_mules">Mules &amp; Slip-ons</string>
+    <string name="shoe_loafers">Loafers &amp; Boat Shoes</string>
+    <string name="shoe_oxfords_male">Oxfords &amp; Derbies</string>
+    <string name="shoe_oxfords_female">Oxfords &amp; Loafers</string>
 
 
 </resources>

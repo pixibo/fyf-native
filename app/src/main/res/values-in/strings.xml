@@ -50,7 +50,7 @@
     <string name="apparel_fit_fav_category">Ceritakan tentang [kategori] favorit Anda</string>
     <string name="privacy_policy">Pixibo tidak akan membagikan atau mengungkapkan informasi pribadi Anda kepada siapa pun.</string>
     <string name="privacy_powered_by">Kebijakan Privasi</string>
-    <string name="your_size">您的尺碼是</string>
+    <string name="your_size">UKURAN ANDA ANDALAH</string>
     <string name="check_your_fit">CEK UKURAN ANDA</string>
     <string name="apparel_female_top">atasan</string>
     <string name="apparel_female_dress">dress</string>
@@ -110,4 +110,18 @@
     <string name="error_try_again">COBA LAGI</string>
     <string name="footwear_pick_category_optional">(pilihan)</string>
     <string name="footwear_result_add_to_cart">TAMBAHKAN KE TAS</string>
+    <string name="shoe_boots_female">Boots</string>
+    <string name="shoe_boots_male">Boots &amp; Chukkas</string>
+    <string name="shoe_flats">Flats</string>
+    <string name="shoe_flipflop">Flip Flop &amp; Sandals</string>
+    <string name="shoe_gym">Training &amp; Gym shoes</string>
+    <string name="shoe_heels">Heels &amp; Pumps</string>
+    <string name="shoe_hiking">Hiking &amp; Trail shoes</string>
+    <string name="shoe_loafers">Loafers &amp; Boat Shoes</string>
+    <string name="shoe_mules">Mules &amp; Slip-on</string>
+    <string name="shoe_oxfords_female">Oxfords &amp; Loafers</string>
+    <string name="shoe_oxfords_male">Oxfords &amp; Derbies</string>
+    <string name="shoe_running">Running Shoes</string>
+    <string name="shoe_sneakers">Sneakers</string>
+    <string name="shoe_wedges">Platforms &amp; Wedges</string>
 </resources>

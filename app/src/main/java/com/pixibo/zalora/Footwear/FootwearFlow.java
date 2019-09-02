@@ -320,6 +320,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 et_what_brand.setSelection(et_what_brand.getText().length());
                 layout_brand_search.setVisibility(View.GONE);
                 tv_brand_continue.setBackgroundColor(getResources().getColor(R.color.color_background_button_enable));
+
+                checkBrandSelection(brand);
+
             }
         });
 
@@ -362,9 +365,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 tv_error_category.setVisibility(View.GONE);
 
-                categoryType = suggestions.getName();
+                categoryType = suggestions.getId();
 
-                tv_brand_category.setText(categoryType);
+                tv_brand_category.setText(suggestions.getName());
 
                 setCategoryImage(categoryType);
                 setBrandCategoryModel(categoryType);
@@ -416,8 +419,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 if (charSequence.toString().trim().length()>=1)
                 {
                     brand_filter(charSequence.toString());
-
-
                 }
 
                 if (!brand.equalsIgnoreCase(charSequence.toString()))
@@ -694,39 +695,30 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 Utils.hideSoftKeyboard(FootwearFlow.this);
 
-
-                if (isSizeSelected)
+                if ( width.equals(""))
                 {
+                    width = "regular";
 
-                    if (altId.equals(""))
+                    if (isSizeSelected)
                     {
-                        getFinalSize(uID,brand,sizeType,size,width,categoryType,category);
+
+                        if (altId.equals(""))
+                        {
+                            getFinalSize(uID,brand,sizeType,size,width,categoryType,category);
+                        }
+                        else
+                        {
+                            getFinalSize(altId,brand,sizeType,size,width,categoryType,category);
+                        }
+
+                        updateUserDetails();
+
                     }
                     else
                     {
-                        getFinalSize(altId,brand,sizeType,size,width,categoryType,category);
+                        tv_erroe_size.setVisibility(View.VISIBLE);
                     }
-
-                    updateUserDetails();
-
-                    Log.e("brand",brand);
-                    Log.e("sizeType",sizeType);
-                    Log.e("size",size);
-                    Log.e("footwearWidthType",width);
-                    Log.e("categoryType",categoryType);
-                    Log.e("model",categoryModel);
-                    Log.e("category",category);
-
-
-
                 }
-                else
-                {
-                    tv_erroe_size.setVisibility(View.VISIBLE);
-                }
-
-
-                //https://sizeguidev2.pixibo.com/asset/sl8zvzsjelpg/A9D56SH00ED8EDGS?uid=81c952d2-b7ff-4ea9-958d-175febfcf732&timestamp=1566563902736&mode=showmore&brand=Adidas&sizeType=UK&size=4&footwearWidthType=regular&model=Choleah&categoryType=Boots
 
             }
         });
@@ -2211,7 +2203,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             JSONObject object = new JSONObject();
             JSONObject femaleObject = new JSONObject();
-           // JSONObject braOptions = new JSONObject();
+            JSONObject maleObject = new JSONObject();
             JSONObject heelToToe = new JSONObject();
             JSONObject whois = new JSONObject();
             JSONObject referenceBrands = new JSONObject();
@@ -2222,54 +2214,67 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
             object.put("altId",altId);
             object.put("type",category.toLowerCase());
 
+
+            Log.e("brand",brand);
+            Log.e("sizeType",sizeType);
+            Log.e("size",size);
+            Log.e("footwearWidthType",width);
+            Log.e("categoryType",categoryType);
+            Log.e("model",categoryModel);
+            Log.e("category",category);
+
             if (gender.equals("male"))
             {
-                referenceBrands.put("category",category);
+
+                heelToToe.put("htt",0);
+
                 referenceBrands.put("brand",brand);
-                referenceBrands.put("sizeType",sizeType);
-                referenceBrands.put("size",size);
+                referenceBrands.put("category",category);
                 referenceBrands.put("categoryType",categoryType);
-                referenceBrands.put("model",categoryModel);
                 referenceBrands.put("footwearWidthType",width);
+
+                if (!categoryModel.equals(""))
+                {
+                    referenceBrands.put("model",categoryModel);
+                }
+
+                referenceBrands.put("size",size);
+                referenceBrands.put("sizeType",sizeType);
+
+
                 referenceBrandsArray.put(0,referenceBrands);
 
-                whois.put("male",referenceBrandsArray);
+                maleObject.put("referenceBrands",referenceBrandsArray);
+                maleObject.put("heelToToe",heelToToe);
+
+                whois.put("male",maleObject);
             }
 
             else if (gender.equals("female"))
             {
 
-                femaleObject.put("height","");
-                femaleObject.put("weight","");
-                femaleObject.put("age","");
-                femaleObject.put("band","");
-                femaleObject.put("cup","");
-                femaleObject.put("region","");
-                femaleObject.put("fitPreference","");
+//                femaleObject.put("height",Integer.parseInt(localData.getHeight()));
 
-//                braOptions.put("band","");
-//                braOptions.put("cup","");
-//                braOptions.put("region","");
+                heelToToe.put("htt",0);
 
-                heelToToe.put("unit","");
-                heelToToe.put("footwearWidthType","");
-                heelToToe.put("htt","");
-
-
-                referenceBrands.put("category",category);
                 referenceBrands.put("brand",brand);
-                referenceBrands.put("sizeType",sizeType);
-                referenceBrands.put("size",size);
+                referenceBrands.put("category",category);
                 referenceBrands.put("categoryType",categoryType);
-                referenceBrands.put("model",categoryModel);
                 referenceBrands.put("footwearWidthType",width);
+
+                if (!categoryModel.equals(""))
+                {
+                    referenceBrands.put("model",categoryModel);
+                }
+
+
+                referenceBrands.put("size",size);
+                referenceBrands.put("sizeType",sizeType);
+
                 referenceBrandsArray.put(0,referenceBrands);
 
                 femaleObject.put("referenceBrands",referenceBrandsArray);
-//                femaleObject.put("braOptions",braOptions);
                 femaleObject.put("heelToToe",heelToToe);
-
-
                 whois.put("female",femaleObject);
             }
 
@@ -2281,8 +2286,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
 
-//                POST post = new POST(this, "https://discoverysvc.pixibo.com/uid/" ,object, UpdateData, this);
-//                post.execute();
+                POST post = new POST(this, "https://discoverysvc.pixibo.com/uid" ,object, UpdateData, this);
+                post.execute();
 
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
@@ -2486,18 +2491,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                                     Log.e("femaleObject", String.valueOf(femaleObject));
 
-//                                    ht = femaleObject.optString("height");
-//                                    wt = femaleObject.optString("weight");
-//                                    age = femaleObject.optString("age");
-//
-//                                    ftp = femaleObject.optString("fitPreference");
-//                                    rg = femaleObject.optString("region");
-//                                    bs = femaleObject.optString("band");
-//                                    cu = femaleObject.optString("cup");
-//                                    bu = femaleObject.optString("bust");
-//
-//                                    overbustUnit = "cm";
-
 
                                     JSONArray femaleReferenceBrandsArray = new JSONArray(femaleObject.optString("referenceBrands"));
 
@@ -2509,33 +2502,33 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                                             if(Arrays.asList(footwear_array).contains(category)){
 
                                                 femaleReferenceBrandsObject = referenceObject;
+
+                                                if(femaleReferenceBrandsObject != null){
+
+                                                    brand = femaleReferenceBrandsObject.optString("brand");
+                                                    categoryModel = femaleReferenceBrandsObject.optString("model");
+                                                    categoryType = femaleReferenceBrandsObject.optString("categoryType");
+                                                    width = femaleReferenceBrandsObject.optString("footwearWidthType");
+                                                    sizeType = femaleReferenceBrandsObject.optString("sizeType");
+                                                    size = femaleReferenceBrandsObject.optString("size");
+
+                                                    setScreen();
+                                                }
+                                                else
+                                                {
+                                                    setScreen();
+                                                }
                                             }
-                                        }
-
-                                        if(femaleReferenceBrandsObject != null){
-
-//                                            brand = femaleReferenceBrandsObject.optString("brand");
-//                                            range = femaleReferenceBrandsObject.optString("range");
-//                                            sizeType = femaleReferenceBrandsObject.optString("sizeType");
-//                                            brandSize = femaleReferenceBrandsObject.optString("size");
-
-                                          //  setScreen();
-                                        }
-                                        else
-                                        {
-                                          //  setScreen();
                                         }
 
                                     }
                                     else
                                     {
-                                       // setScreen();
+                                        setScreen();
                                     }
 
 
                                 }
-
-
 
                                 else if (whoIs.has("male") && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals("{}") && userObject.optString("gender").equals("male"))
                                 {
@@ -2544,21 +2537,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                                     JSONObject maleObject = new JSONObject(whoisObject.optString("male"));
 
                                     Log.e("maleObject", String.valueOf(maleObject));
-
-//                                    ht = maleObject.optString("height");
-//                                    wt = maleObject.optString("weight");
-//                                    age = maleObject.optString("age");
-//
-//                                    ftp = maleObject.optString("fitPreference");
-//                                    rg = maleObject.optString("region");
-//                                    bs = maleObject.optString("band");
-//                                    cu = maleObject.optString("cup");
-//
-//                                    brand = "";
-//                                    range = "";
-//                                    sizeType = "";
-//                                    brandSize = "";
-
 
                                     JSONArray maleReferenceBrandsArray = new JSONArray(maleObject.optString("referenceBrands"));
                                     if(maleReferenceBrandsArray.length() > 0){
@@ -2569,27 +2547,25 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                                             if(Arrays.asList(footwear_array).contains(category)){
                                                 maleReferenceBrandsObject = referenceObject;
 
-                                             //   setScreen();
+                                                if(maleReferenceBrandsObject != null){
+                                                    brand = maleReferenceBrandsObject.optString("brand");
+                                                    categoryModel = maleReferenceBrandsObject.optString("model");
+                                                    categoryType = maleReferenceBrandsObject.optString("categoryType");
+                                                    width = maleReferenceBrandsObject.optString("footwearWidthType");
+                                                    sizeType = maleReferenceBrandsObject.optString("sizeType");
+                                                    size = maleReferenceBrandsObject.optString("size");
+                                                }
                                             }
                                             else
                                             {
-                                              //  setScreen();
+                                                setScreen();
                                             }
                                         }
-
-
-                                        if(maleReferenceBrandsObject != null){
-//                                            brand = maleReferenceBrandsObject.optString("brand");
-//                                            range = maleReferenceBrandsObject.optString("range");
-//                                            sizeType = maleReferenceBrandsObject.optString("sizeType");
-//                                            brandSize = maleReferenceBrandsObject.optString("size");
-                                        }
-
                                     }
 
                                     else
                                     {
-                                       // setScreen();
+                                        setScreen();
                                     }
 
                                 }
@@ -2647,7 +2623,87 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 recycler_brand_category_selection.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
 
                 BrandModel brandModel = new BrandModel();
-                brandModel.setName(obj.getString("category"));
+
+
+                switch (obj.getString("category"))
+                {
+                    case "Flip-flops & Sandals":
+                        brandModel.setName(getResources().getString(R.string.shoe_flipflop));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Boots":
+
+                        if (gender.equals("male"))
+                        {
+                            brandModel.setName(getResources().getString(R.string.shoe_boots_male));
+                            brandModel.setId(obj.getString("category"));
+                        }
+                        else if (gender.equals("female"))
+                        {
+                            brandModel.setName(getResources().getString(R.string.shoe_boots_female));
+                            brandModel.setId(obj.getString("category"));
+                        }
+                        break;
+
+                    case "Sneakers":
+                        brandModel.setName(getResources().getString(R.string.shoe_sneakers));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Hiking & Trail":
+                        brandModel.setName(getResources().getString(R.string.shoe_hiking));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Platforms & Wedges":
+                        brandModel.setName(getResources().getString(R.string.shoe_wedges));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Running":
+                        brandModel.setName(getResources().getString(R.string.shoe_running));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Training & Gym":
+                        brandModel.setName(getResources().getString(R.string.shoe_gym));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Flats":
+                        brandModel.setName(getResources().getString(R.string.shoe_flats));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Heels & Pumps":
+                        brandModel.setName(getResources().getString(R.string.shoe_heels));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Mules":
+                        brandModel.setName(getResources().getString(R.string.shoe_mules));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Loafers":
+                        brandModel.setName(getResources().getString(R.string.shoe_loafers));
+                        brandModel.setId(obj.getString("category"));
+                        break;
+
+                    case "Oxfords":
+                        if (gender.equals("male"))
+                        {
+                            brandModel.setName(getResources().getString(R.string.shoe_oxfords_male));
+                            brandModel.setId(obj.getString("category"));
+                        }
+                        else if (gender.equals("female"))
+                        {
+                            brandModel.setName(getResources().getString(R.string.shoe_oxfords_female));
+                            brandModel.setId(obj.getString("category"));
+                        }
+                        break;
+                }
 
                 brandCategoryArrayList.add(brandModel);
 
@@ -3095,6 +3151,38 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     }
 
 
+    public void checkBrandSelection (String brand)
+    {
+        clearAllBrands();
+
+        if (brand.equals(tv_brand_1.getText().toString()))
+        {
+            tv_brand_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+            tv_brand_1.setTextColor(getResources().getColor(R.color.color_text));
+        }
+        else if (brand.equals(tv_brand_2.getText().toString()))
+        {
+            tv_brand_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+            tv_brand_2.setTextColor(getResources().getColor(R.color.color_text));
+        }
+        else if (brand.equals(tv_brand_3.getText().toString()))
+        {
+            tv_brand_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+            tv_brand_3.setTextColor(getResources().getColor(R.color.color_text));
+        }
+        else if (brand.equals(tv_brand_4.getText().toString()))
+        {
+            tv_brand_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+            tv_brand_4.setTextColor(getResources().getColor(R.color.color_text));
+        }
+        else if (brand.equals(tv_brand_5.getText().toString()))
+        {
+            tv_brand_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+            tv_brand_5.setTextColor(getResources().getColor(R.color.color_text));
+        }
+    }
+
+
     public void setCategoryImage(String category)
     {
 
@@ -3229,6 +3317,131 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 layout_progress_6.setVisibility(View.VISIBLE);
                 break;
         }
+    }
+
+
+    public void setScreen()
+    {
+
+        Log.e("uid",uID);
+        Log.e("gender",gender);
+        Log.e("altId",altId);
+        Log.e("type",category.toLowerCase());
+
+
+        Log.e("brand",brand);
+        Log.e("sizeType",sizeType);
+        Log.e("size",size);
+        Log.e("footwearWidthType",width);
+        Log.e("categoryType",categoryType);
+        Log.e("model",categoryModel);
+        Log.e("category",category);
+//
+//
+//        localData.setHeight(ht);
+//        localData.setWeight(wt);
+//        localData.setAge(age);
+//        localData.setFitPreference(ftp);
+//        localData.setRegion(rg);
+//        localData.setBand(bs);
+//        localData.setCup(cu);
+//        localData.setBust(bu);
+//        localData.setBrand(brand);
+//        localData.setBrandRange(range);
+//        localData.setBrandBand(sizeType);
+//        localData.setBrandSize(brandSize);
+//
+
+        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
+        final SpannableStringBuilder sb = new SpannableStringBuilder(getResources().getString(R.string.footwear_pick_category_model) + "" + brand + " "+ categoryType + " " + getResources().getString(R.string.footwear_pick_category__model2)+ getResources().getString(R.string.footwear_pick_category_optional));
+        sb.setSpan(bss, sb.length() - getResources().getString(R.string.footwear_pick_category_optional).length(), sb.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        tv_category_model.setText(sb);
+
+        final StyleSpan bsss = new StyleSpan(android.graphics.Typeface.BOLD);
+        final SpannableStringBuilder sbb = new SpannableStringBuilder(getResources().getString(R.string.footwear_pick_category) + " " + brand + " " + getResources().getString(R.string.footwear_pick_category_2) + getResources().getString(R.string.footwear_pick_category_optional));
+        sbb.setSpan(bsss, sbb.length() - getResources().getString(R.string.footwear_pick_category_optional).length(), sbb.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        tv_category.setText(sbb);
+
+
+
+        if(!width.equals(""))
+        {
+            progress(6);
+            if (altId.equals(""))
+            {
+                getFinalSize(uID,brand,sizeType,size,width,categoryModel,categoryType);
+            }
+            else
+            {
+                getFinalSize(altId,brand,sizeType,size,width,categoryModel,categoryType);
+            }
+        }
+        else if(!categoryModel.equals(""))
+        {
+//            clearAllSize();
+//            layout_brand_category_model.setVisibility(View.GONE);
+//            layout_brand_size.setVisibility(View.VISIBLE);
+//
+//            progress(5);
+//
+//            get_brand_sizes(gender,category,brand);
+//
+//            if (categoryModel.equals(""))
+//            {
+//                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+//            }
+//            else
+//            {
+//                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+//            }
+            layout_brand.setVisibility(View.VISIBLE);
+        }
+        else if(!categoryType.equals(""))
+        {
+//            get_brand_category(gender,category,brand);
+//
+//            layout_brand_category_model.setVisibility(View.VISIBLE);
+//
+//            progress(4);
+//
+//            categoryModel = "";
+//
+//            tv_brand_category_model.setText(getResources().getString(R.string.brand_category_select));
+//            tv_brand_category_model.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+//
+//            tv_brand_category_model_continue.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+//
+//            layout_brand_category_model_selection.setVisibility(View.GONE);
+            layout_brand.setVisibility(View.VISIBLE);
+        }
+        else if(!brand.equals(""))
+        {
+//            get_brand_category(gender,category,brand);
+//
+//            categoryType = "";
+//
+//            tv_brand_category_continue.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+//
+//            progress(2);
+//
+//            layout_brand.setVisibility(View.GONE);
+//            layout_brand_category.setVisibility(View.VISIBLE);
+//
+//            iv_shoe_category.setVisibility(View.GONE);
+//
+//            tv_brand_category.setText(getResources().getString(R.string.brand_category_select));
+//            tv_brand_category.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+            layout_brand.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+          progress(1);
+          layout_brand.setVisibility(View.VISIBLE);
+        }
+
+
+
+
     }
 
 

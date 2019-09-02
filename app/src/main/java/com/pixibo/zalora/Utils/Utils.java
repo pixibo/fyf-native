@@ -330,18 +330,21 @@ public class Utils {
                 }
                 else
                 {
-                    singularText = context.getResources().getString(R.string.apparel_male_top);;
+                    singularText = context.getResources().getString(R.string.apparel_male_top);
                 }
 
                 break;
+
             case "Dresses":
-                singularText = "dress";
+                singularText = context.getResources().getString(R.string.apparel_female_dress);
                 break;
+
             case "Coats":
-                singularText = "coat";
+                singularText =context.getResources().getString(R.string.apparel_female_coat);
                 break;
+
             case "Jeans":
-                singularText = "jeans";
+                singularText = context.getResources().getString(R.string.apparel_female_jeans);
                 break;
 
             case "Outwear":
@@ -389,14 +392,17 @@ public class Utils {
                 break;
 
             case "Shoes":
-                singularText = "shoes";
+                singularText = context.getResources().getString(R.string.apparel_shoes);
                 break;
+
             case "Bra":
-                singularText = "bra";
+                singularText = context.getResources().getString(R.string.apparel_bra);
                 break;
+
             case "Jumpsuits":
-                singularText = "jumpsuit";
+                singularText = context.getResources().getString(R.string.apparel_female_jumpsuit);
                 break;
+
             default:
                 singularText = text.toLowerCase();
                 break;
