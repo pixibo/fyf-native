@@ -695,7 +695,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 Utils.hideSoftKeyboard(FootwearFlow.this);
 
-                if ( width.equals(""))
+                if (!width.equals(""))
                 {
                     width = "regular";
 
