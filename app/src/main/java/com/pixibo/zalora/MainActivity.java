@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements Result {
     private String preferredLanguage = "en";
     private String brand = "";
     private String sizeUrl = null;
-    private String response = null;
 
     private TextView tv_find_my_size;
 
@@ -512,6 +511,15 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                     }
 
+                    else
+                    {
+                        layout_button.setVisibility(View.VISIBLE);
+                        SpannableString content;
+                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                        tv_find_my_size.setText(content);
+                    }
+
                 }
                 catch (Exception e)
                 {
@@ -669,7 +677,11 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                     else
                     {
-
+                        layout_button.setVisibility(View.VISIBLE);
+                        SpannableString content;
+                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                        tv_find_my_size.setText(content);
                     }
                 }
                 catch (Exception e)
@@ -703,6 +715,14 @@ public class MainActivity extends AppCompatActivity implements Result {
                             }
                         }
 
+                    }
+                    else
+                    {
+                        layout_button.setVisibility(View.VISIBLE);
+                        SpannableString content;
+                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                        tv_find_my_size.setText(content);
                     }
 
                 }
@@ -812,6 +832,11 @@ public class MainActivity extends AppCompatActivity implements Result {
                     range = femaleReferenceBrandsObject.optString("range");
                     sizeType = femaleReferenceBrandsObject.optString("sizeType");
                     size = femaleReferenceBrandsObject.optString("size");
+
+                    if (size.equals(""))
+                    {
+                        sizeType = "";
+                    }
                 }
 
             }
@@ -883,6 +908,11 @@ public class MainActivity extends AppCompatActivity implements Result {
                     range = maleReferenceBrandsObject.optString("range");
                     sizeType = maleReferenceBrandsObject.optString("sizeType");
                     size = maleReferenceBrandsObject.optString("size");
+
+                    if (size.equals(""))
+                    {
+                        sizeType = "";
+                    }
                 }
 
             }
@@ -931,6 +961,11 @@ public class MainActivity extends AppCompatActivity implements Result {
                     footwearWidthType = femaleReferenceBrandsObject.optString("footwearWidthType");
                     sizeType = femaleReferenceBrandsObject.optString("sizeType");
                     size = femaleReferenceBrandsObject.optString("size");
+
+                    if (size.equals(""))
+                    {
+                        sizeType = "";
+                    }
                 }
             }
             if(!brand.equals("") && !footwearWidthType.equals("") && !sizeType.equals("") && !size.equals("")){
@@ -975,6 +1010,11 @@ public class MainActivity extends AppCompatActivity implements Result {
                     footwearWidthType = maleReferenceBrandsObject.optString("footwearWidthType");
                     sizeType = maleReferenceBrandsObject.optString("sizeType");
                     size = maleReferenceBrandsObject.optString("size");
+
+                    if (size.equals(""))
+                    {
+                        sizeType = "";
+                    }
                 }
             }
             if(!brand.equals("") && !footwearWidthType.equals("") && !sizeType.equals("") && !size.equals("")){

@@ -96,6 +96,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     private boolean isBrandModelPresent = false ;
     private boolean isSizeSelected = false ;
     private boolean isRecommended = false ;
+    private String preferredLanguage = "";
 
 
     private TextView tv_category,tv_brand_category,tv_category_model,tv_brand_category_model,tv_brand_fit,tv_type_size,tv_width;
@@ -116,7 +117,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
     private RelativeLayout layout_close,layout_privacy,layout_popup;
 
-    private TextView tv_privacy_policy,tv_add_cart;
+    private TextView tv_privacy_policy,tv_description,tv_add_cart;
 
     private ImageView iv_shoe_category;
 
@@ -139,6 +140,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         skuId = intent.getStringExtra("skuId");
         altId = intent.getStringExtra("altId");
         uID = intent.getStringExtra("uID");
+        preferredLanguage = intent.getStringExtra("preferredLanguage");
 
 
         recycler_brand_suggestion = findViewById(R.id.recycler_brand_suggestion);
@@ -244,6 +246,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
         tv_privacy_policy = findViewById(R.id.tv_privacy_policy);
+        tv_description = findViewById(R.id.tv_description);
         tv_add_cart = findViewById(R.id.tv_add_cart);
 
         layout_progress_1 = findViewById(R.id.layout_progress_1);
@@ -307,6 +310,14 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         layout_brand_category_model = findViewById(R.id.layout_brand_category_model);
         layout_brand_size = findViewById(R.id.layout_brand_size);
         layout_result = findViewById(R.id.layout_result);
+
+
+
+        if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
+        {
+            tv_description.setVisibility(View.GONE);
+        }
+
 
 
         brandAdapter = new BrandAdapter(brandModelArrayList, FootwearFlow.this, new BrandAdapter.onItemClickListener() {
@@ -3348,7 +3359,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 //        localData.setBust(bu);
 //        localData.setBrand(brand);
 //        localData.setBrandRange(range);
-//        localData.setBrandBand(sizeType);
+//        localData.setsizeType(sizeType);
 //        localData.setBrandSize(brandSize);
 //
 

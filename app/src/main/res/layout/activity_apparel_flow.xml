@@ -520,14 +520,13 @@
                     android:layout_height="28dp"
                     android:layout_marginEnd="15dp"
                     android:id="@+id/layout_band_1"
-                    android:background="@drawable/bg_button_selected">
+                    android:background="@drawable/bg_button_unselected">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:id="@+id/tv_band_1"
-                        android:textColor="@color/color_text"
                         android:text="8"/>
 
                 </RelativeLayout>
@@ -545,7 +544,6 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:id="@+id/tv_band_2"
-                        android:textColor="@color/color_text_grey"
                         android:text="10"/>
 
                 </RelativeLayout>
@@ -739,6 +737,22 @@
         </LinearLayout>
 
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_band"
+            android:textSize="11sp"
+            android:visibility="gone"
+            android:id="@+id/tv_error_band"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/apercu_regular"
+            android:textColor="@color/color_error"
+            android:text="@string/error_required"/>
+
+
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -774,7 +788,7 @@
                 android:layout_height="28dp"
                 android:layout_marginEnd="15dp"
                 android:id="@+id/layout_cup_1"
-                android:background="@drawable/bg_button_selected">
+                android:background="@drawable/bg_button_unselected">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1098,6 +1112,20 @@
 
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_cup"
+            android:textSize="11sp"
+            android:visibility="gone"
+            android:id="@+id/tv_error_cup"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/apercu_regular"
+            android:textColor="@color/color_error"
+            android:text="@string/error_required"/>
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -1130,14 +1158,12 @@
                 android:layout_marginTop="10dp"
                 android:drawableStart="@drawable/ic_back"/>
 
-
-
             <TextView
                 android:layout_width="165dp"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:id="@+id/tv_bra_continue"
-                android:background="@color/color_background_button_enable"
+                android:background="@color/color_background_button_disabled"
                 android:textColor="@color/white"
                 android:fontFamily="@font/apercu_medium"
                 android:text="@string/text_continue"
@@ -2977,7 +3003,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="150dp"
                 android:gravity="center"
                 android:layout_below="@+id/layout_fit_preference_result">
 
@@ -3187,9 +3213,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/layout_popup"
             android:visibility="gone"
-            android:background="#80FAFAFA">
+            android:id="@+id/layout_popup">
 
             <RelativeLayout
                 android:layout_width="60dp"
@@ -3214,7 +3239,7 @@
 
 
             <android.support.v7.widget.CardView
-                android:layout_width="215dp"
+                android:layout_width="wrap_content"
                 android:background="#efefef"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -3241,14 +3266,27 @@
                         android:layout_width="104dp"
                         android:layout_height="25dp"
                         android:layout_marginStart="5dp"
-                        android:id="@+id/tv_pixibo_logo"
+                        android:id="@+id/iv_pixibo_logo"
                         android:layout_toEndOf="@+id/tv_powred_by"
                         android:src="@drawable/ic_pixibo_logo" />
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="2dp"
+                        android:id="@+id/tv_pixibo_text"
+                        android:layout_toEndOf="@+id/iv_pixibo_logo"
+                        android:text="@string/privacy_after_logo"/>
 
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_pixibo_logo"
+                        android:layout_below="@+id/iv_pixibo_logo"
                         android:textColor="@color/black"
                         android:id="@+id/tv_description"
                         android:textSize="12sp"

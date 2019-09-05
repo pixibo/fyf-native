@@ -85,11 +85,11 @@ public class LocalData {
         return prefs.getString("brandRange","");
     }
 
-    public void setBrandBand(String brandBand) {
+    public void setsizeType(String brandBand) {
         prefs.edit().putString("brandBand", brandBand).apply();
     }
 
-    public String getBrandBand() {
+    public String getsizeType() {
         return prefs.getString("brandBand","");
     }
 

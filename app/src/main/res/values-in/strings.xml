@@ -50,6 +50,8 @@
     <string name="apparel_fit_fav_category">Ceritakan tentang [kategori] favorit Anda</string>
     <string name="privacy_policy">Pixibo tidak akan membagikan atau mengungkapkan informasi pribadi Anda kepada siapa pun.</string>
     <string name="privacy_powered_by">Kebijakan Privasi</string>
+    <string name="privacy_after_logo"> </string>
+
     <string name="your_size">UKURAN ANDA ANDALAH</string>
     <string name="check_your_fit">CEK UKURAN ANDA</string>
     <string name="apparel_female_top">atasan</string>
