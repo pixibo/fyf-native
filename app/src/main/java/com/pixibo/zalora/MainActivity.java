@@ -43,8 +43,8 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 public class MainActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "sl8zvzsjelpg";
-    private String skuId = "BC421AADC2CE9DGS";
+    private String clientId = "qe3uhcp1kh11";
+    private String skuId = "A9D56SH00ED8EDGS";
 //    private String altId = "10214810760805751";
     private String altId = "";
     private String uID = "";

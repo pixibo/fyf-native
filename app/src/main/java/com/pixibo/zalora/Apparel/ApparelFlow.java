@@ -974,13 +974,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         });
 
 
-//        layout_privacy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-
 
         tv_add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1486,18 +1479,19 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                                 {
                                     progress(2);
 
-                                    clearAllBand();
-                                    clearAllCup();
+                                    if (!isEditFlow)
+                                    {
+                                        clearAllBand();
+                                        clearAllCup();
 
-                                    tv_type_size.setText(getResources().getString(R.string.eu));
 
-                                    setEU();
+                                        band = "";
+                                        cup = "";
 
-//                                    layout_band_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
-//                                    tv_band_1.setTextColor(getResources().getColor(R.color.color_text));
-//
-//                                    layout_cup_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
-//                                    tv_cup_1.setTextColor(getResources().getColor(R.color.color_text));
+                                        tv_type_size.setText(getResources().getString(R.string.eu));
+
+                                        setEU("","");
+                                    }
 
                                     tv_error_weight.setVisibility(View.GONE);
                                     layout_bra_profile.setVisibility(View.VISIBLE);
@@ -1514,19 +1508,27 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                                     layout_body_profile.setVisibility(View.GONE);
                                     layout_brand.setVisibility(View.VISIBLE);
 
-                                    setDefaultBrands();
-
-                                    layout_brands.setVisibility(View.VISIBLE);
 
 
-                                    if (altId.equals(""))
+
+                                    if (!isEditFlow)
                                     {
-                                        setBodyProfile(uID,height_cm,weight,age);
+                                        setDefaultBrands();
+
+                                        layout_brands.setVisibility(View.VISIBLE);
+
+
+                                        if (altId.equals(""))
+                                        {
+                                            setBodyProfile(uID,height_cm,weight,age);
+                                        }
+                                        else
+                                        {
+                                            setBodyProfile(altId,height_cm,weight,age);
+                                        }
                                     }
-                                    else
-                                    {
-                                        setBodyProfile(altId,height_cm,weight,age);
-                                    }
+
+
 
 
                                 }
@@ -1783,10 +1785,18 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
 
+
                     tv_header_text.setVisibility(View.GONE);
 
                     layout_header.setBackground(null);
 
+
+                    if (!isEditFlow)
+                    {
+                        isBrandSelected = false;
+                        et_what_brand.setText(null);
+                        tv_brand_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+                    }
 
                     progress(3);
 
@@ -1875,28 +1885,32 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     layout_brand.setVisibility(View.GONE);
                     layout_brand_fit.setVisibility(View.VISIBLE);
 
-                    brandSize = "";
 
-                    clearRangeButton();
-                    clearAllBrandSize();
-
-                    tv_brand_fav_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
-
-                    localData.setBrand(brand);
-
-                    get_brand_sizes(gender,category,brand);
-
-                    if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
+                    if (!isEditFlow)
                     {
-                        tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+brand+" "+
-                                Utils.convertApparelType(category,gender, ApparelFlow.this)+
-                                getResources().getString(R.string.apparel_brand_fav_size_3));
-                    }
-                    else
-                    {
-                        tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+
-                                Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+getResources().getString(R.string.apparel_brand_fav_size_2)+" "+
-                                brand+getResources().getString(R.string.apparel_brand_fav_size_3));
+                        brandSize = "";
+
+                        clearRangeButton();
+                        clearAllBrandSize();
+
+                        tv_brand_fav_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
+                        localData.setBrand(brand);
+
+                        get_brand_sizes(gender,category,brand);
+
+                        if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
+                        {
+                            tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+brand+" "+
+                                    Utils.convertApparelType(category,gender, ApparelFlow.this)+
+                                    getResources().getString(R.string.apparel_brand_fav_size_3));
+                        }
+                        else
+                        {
+                            tv_size_fav_category.setText(getResources().getString(R.string.apparel_brand_fav_size)+" "+
+                                    Utils.convertApparelType(category,gender, ApparelFlow.this)+" "+getResources().getString(R.string.apparel_brand_fav_size_2)+" "+
+                                    brand+getResources().getString(R.string.apparel_brand_fav_size_3));
+                        }
                     }
 
 
@@ -1956,6 +1970,11 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 {
                     progress(2);
 
+                    Log.e("bra bust",bust);
+                    Log.e("bra bcupand",cup);
+                    Log.e("bra braSizeType", braSizeType);
+                    Log.e("bra band", band);
+
                     if (isBust)
                     {
                         layout_body_profile.setVisibility(View.GONE);
@@ -1971,6 +1990,43 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                         layout_bust.setVisibility(View.GONE);
                         layout_bra_profile.setVisibility(View.VISIBLE);
                         layout_brand.setVisibility(View.GONE);
+
+
+                        if (isEditFlow)
+                        {
+                            tv_bra_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
+                            //TODO back flow for bra page when user coming back
+
+                            tv_type_size.setText(braSizeType.toUpperCase());
+
+                            switch (braSizeType)
+                            {
+                                case "au":
+                                    setAU(band,cup);
+                                    break;
+
+                                case "eu":
+                                    setEU(band,cup);
+                                    break;
+
+                                case "fr":
+                                    setFR(band,cup);
+                                    break;
+
+                                case "uk":
+                                    setUK(band,cup);
+                                    break;
+
+                                case "us":
+                                    setUS(band,cup);
+                                    break;
+                            }
+
+
+
+
+                        }
                     }
 
                 }
@@ -1996,10 +2052,10 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
-
                 isBrandCategorySelected = false;
 
                 progress(5);
+
                 layout_body_profile.setVisibility(View.GONE);
                 layout_bust.setVisibility(View.GONE);
                 layout_bra_profile.setVisibility(View.GONE);
@@ -2029,11 +2085,10 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                 if (!brandSize.equals(""))
                 {
-                    sizeType = tv_brand_range.getText().toString().toLowerCase();
+
 
                     isBrandCategorySelected = true;
 
-                    progress(5);
                     layout_body_profile.setVisibility(View.GONE);
                     layout_bust.setVisibility(View.GONE);
                     layout_bra_profile.setVisibility(View.GONE);
@@ -2042,20 +2097,32 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                     layout_fit_preference.setVisibility(View.VISIBLE);
 
-                    tv_fit_tight.setTextColor(getResources().getColor(R.color.grey_3));
-                    tv_fit_regular.setTextColor(getResources().getColor(R.color.color_text));
-                    tv_fit_loose.setTextColor(getResources().getColor(R.color.grey_3));
+                    if (!isEditFlow)
+                    {
 
-                    layout_fit_tight.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-                    layout_fit_regular.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
-                    layout_fit_loose.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+                        sizeType = tv_brand_range.getText().toString().toLowerCase();
+
+                        tv_fit_tight.setTextColor(getResources().getColor(R.color.grey_3));
+                        tv_fit_regular.setTextColor(getResources().getColor(R.color.color_text));
+                        tv_fit_loose.setTextColor(getResources().getColor(R.color.grey_3));
+
+                        layout_fit_tight.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+                        layout_fit_regular.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                        layout_fit_loose.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+
+                        localData.setBrandRange(range);
+                        localData.setsizeType(sizeType);
+                        localData.setBrandSize(brandSize);
+                    }
+
+
+                    progress(5);
+
 
 
                     trackEvent(clientId, skuId, "click", "pdp", "refSize_continue",uID);
 
-                    localData.setBrandRange(range);
-                    localData.setsizeType(sizeType);
-                    localData.setBrandSize(brandSize);
+
 
                     Log.e("Brand range",range);
                     Log.e("Brand band",sizeType);
@@ -2175,7 +2242,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     et_what_brand.setText(localData.getBrand());
 
 
-
                     if (isEditFlow)
                     {
                         tv_brand_fav_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
@@ -2193,7 +2259,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                         clearRangeButton();
 
-                        clearAllBand();
+                        //clearAllBand();
 
                         clearAllBrandSize();
 
@@ -2244,6 +2310,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 }
                 else
                 {
+
                     layout_body_profile.setVisibility(View.VISIBLE);
                     layout_bust.setVisibility(View.GONE);
                     layout_bra_profile.setVisibility(View.GONE);
@@ -2252,7 +2319,48 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                     layout_fit_preference.setVisibility(View.GONE);
                     layout_result.setVisibility(View.GONE);
 
+
                     progress(1);
+
+
+                    if (isEditFlow)
+                    {
+                        layout_body_profile.setVisibility(View.GONE);
+                        layout_bra_profile.setVisibility(View.VISIBLE);
+
+                        progress(2);
+
+
+                        tv_bra_continue.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
+                        //TODO back flow for bra page when user coming back
+
+                        tv_type_size.setText(braSizeType.toUpperCase());
+
+                        switch (braSizeType)
+                        {
+                            case "au":
+                                setAU(band,cup);
+                                break;
+
+                            case "eu":
+                                setEU(band,cup);
+                                break;
+
+                            case "fr":
+                                setFR(band,cup);
+                                break;
+
+                            case "uk":
+                                setUK(band,cup);
+                                break;
+
+                            case "us":
+                                setUS(band,cup);
+                                break;
+                        }
+
+                    }
 
                     setDefaultBrands();
 
@@ -2375,6 +2483,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onItemClick(BrandModel suggestions) {
 
+                isEditFlow = false;
+
                 isBrandSelected = true;
                 brand = suggestions.getName();
                 et_what_brand.setText(suggestions.getName());
@@ -2429,6 +2539,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
     public void clearAllBand()
     {
+
+        isEditFlow = false;
 
         tv_error_band.setVisibility(View.GONE);
 
@@ -2560,6 +2672,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     public void clearAllCup()
     {
 
+        isEditFlow = false;
         tv_error_cup.setVisibility(View.GONE);
 
         layout_cup_1.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
@@ -2621,12 +2734,117 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    public void setAU()
+    public void setAU(String braBand , String braCup)
     {
 
 
         clearAllBand();
         clearAllCup();
+
+
+        switch (braBand)
+        {
+            case "8":
+                tv_band_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "10":
+                tv_band_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "12":
+                tv_band_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "14":
+                tv_band_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "16":
+                tv_band_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "18":
+                tv_band_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "20":
+                tv_band_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "22":
+                tv_band_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
+
+
+        switch (braCup)
+        {
+            case "aa":
+                tv_cup_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "a":
+                tv_cup_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "b":
+                tv_cup_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "c":
+                tv_cup_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "d":
+                tv_cup_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "dd":
+                tv_cup_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "e":
+                tv_cup_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "f":
+                tv_cup_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "g":
+                tv_cup_9.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "h":
+                tv_cup_10.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_10.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "i":
+                tv_cup_11.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_11.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
 
         tv_band_1.setText(getResources().getString(R.string.band_au_8));
         tv_band_2.setText(getResources().getString(R.string.band_au_10));
@@ -2669,7 +2887,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
 
-    public void setEU()
+    public void setEU(String braBand , String braCup)
     {
         tv_band_1.setText(getResources().getString(R.string.band_eu_8));
         tv_band_2.setText(getResources().getString(R.string.band_eu_10));
@@ -2699,6 +2917,112 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         layout_cup_13.setVisibility(View.INVISIBLE);
 
 
+
+
+        switch (braBand)
+        {
+            case "65":
+                tv_band_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "70":
+                tv_band_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "75":
+                tv_band_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "80":
+                tv_band_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "85":
+                tv_band_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "90":
+                tv_band_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "95":
+                tv_band_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "100":
+                tv_band_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
+
+
+        switch (braCup)
+        {
+            case "a":
+                tv_cup_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "b":
+                tv_cup_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "c":
+                tv_cup_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "d":
+                tv_cup_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "e":
+                tv_cup_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "f":
+                tv_cup_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "g":
+                tv_cup_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "h":
+                tv_cup_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "i":
+                tv_cup_9.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "j":
+                tv_cup_10.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_10.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "k":
+                tv_cup_11.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_11.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
+
         tv_au.setBackgroundColor(getResources().getColor(R.color.white));
         tv_eu.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
         tv_fr.setBackgroundColor(getResources().getColor(R.color.white));
@@ -2710,7 +3034,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    public void setFR()
+    public void setFR(String braBand , String braCup)
     {
         tv_band_1.setText(getResources().getString(R.string.band_fr_8));
         tv_band_2.setText(getResources().getString(R.string.band_fr_10));
@@ -2741,6 +3065,112 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
 
+
+        switch (braBand)
+        {
+            case "80":
+                tv_band_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "85":
+                tv_band_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "90":
+                tv_band_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "95":
+                tv_band_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "100":
+                tv_band_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "105":
+                tv_band_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "110":
+                tv_band_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "115":
+                tv_band_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
+
+
+        switch (braCup)
+        {
+            case "a":
+                tv_cup_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "b":
+                tv_cup_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "c":
+                tv_cup_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "d":
+                tv_cup_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "e":
+                tv_cup_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "f":
+                tv_cup_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "g":
+                tv_cup_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "h":
+                tv_cup_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "i":
+                tv_cup_9.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "j":
+                tv_cup_10.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_10.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "k":
+                tv_cup_11.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_11.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
+
+
         tv_au.setBackgroundColor(getResources().getColor(R.color.white));
         tv_eu.setBackgroundColor(getResources().getColor(R.color.white));
         tv_fr.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
@@ -2753,7 +3183,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
 
-    public void setUK()
+    public void setUK(String braBand , String braCup)
     {
         tv_band_1.setText(getResources().getString(R.string.band_uk_8));
         tv_band_2.setText(getResources().getString(R.string.band_uk_10));
@@ -2783,6 +3213,112 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         layout_cup_12.setVisibility(View.INVISIBLE);
         layout_cup_13.setVisibility(View.INVISIBLE);
 
+
+
+
+        switch (braBand)
+        {
+            case "30":
+                tv_band_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "32":
+                tv_band_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "34":
+                tv_band_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "36":
+                tv_band_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "38":
+                tv_band_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "40":
+                tv_band_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "42":
+                tv_band_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "44":
+                tv_band_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
+
+
+        switch (braCup)
+        {
+            case "a":
+                tv_cup_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "b":
+                tv_cup_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "c":
+                tv_cup_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "d":
+                tv_cup_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "dd":
+                tv_cup_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "e":
+                tv_cup_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "f":
+                tv_cup_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "g":
+                tv_cup_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "h":
+                tv_cup_9.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "i":
+                tv_cup_10.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_10.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "j":
+                tv_cup_11.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_11.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
         tv_au.setBackgroundColor(getResources().getColor(R.color.white));
         tv_eu.setBackgroundColor(getResources().getColor(R.color.white));
         tv_fr.setBackgroundColor(getResources().getColor(R.color.white));
@@ -2794,7 +3330,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
 
-    public void setUS()
+    public void setUS(String braBand , String braCup)
     {
         tv_band_1.setText(getResources().getString(R.string.band_us_8));
         tv_band_2.setText(getResources().getString(R.string.band_us_10));
@@ -2824,6 +3360,112 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         layout_cup_12.setVisibility(View.INVISIBLE);
         layout_cup_13.setVisibility(View.INVISIBLE);
 
+
+
+
+        switch (braBand)
+        {
+            case "30":
+                tv_band_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "32":
+                tv_band_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "34":
+                tv_band_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "36":
+                tv_band_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "38":
+                tv_band_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "40":
+                tv_band_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "42":
+                tv_band_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "44":
+                tv_band_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_band_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
+
+
+        switch (braCup)
+        {
+            case "a":
+                tv_cup_1.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_1.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "b":
+                tv_cup_2.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_2.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "c":
+                tv_cup_3.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_3.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "d":
+                tv_cup_4.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_4.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "dd":
+                tv_cup_5.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_5.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "ddd":
+                tv_cup_6.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_6.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "e":
+                tv_cup_7.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_7.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "f":
+                tv_cup_8.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "g":
+                tv_cup_9.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "h":
+                tv_cup_10.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_10.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+
+            case "i":
+                tv_cup_11.setTextColor(getResources().getColor(R.color.color_text));
+                layout_cup_11.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                break;
+        }
+
         tv_au.setBackgroundColor(getResources().getColor(R.color.white));
         tv_eu.setBackgroundColor(getResources().getColor(R.color.white));
         tv_fr.setBackgroundColor(getResources().getColor(R.color.white));
@@ -2833,7 +3475,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         tv_type_size.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
 
     }
-
 
     public void  setBrandRange(String range)
     {
@@ -2939,7 +3580,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     public void setBrandRangeBand(String result , String range , String band , String sizeType , String brandSize)
     {
 
-        Log.e("result",result);
+       // Log.e("result",result);
         Log.e("range",range);
         Log.e("band",band);
         Log.e("sizeType",sizeType);
@@ -2961,16 +3602,12 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                     JSONObject obj = rangeArray.getJSONObject(i);
 
-                    Log.e("region",obj.getString("region").toLowerCase());
+                   // Log.e("region",obj.getString("region").toLowerCase());
 
                     if (obj.getString("region").toLowerCase().equals(sizeType))
                     {
 
                         tv_brand_range.setText(obj.getString("region"));
-
-                        Log.e("region",obj.getString("region"));
-                        Log.e("charts",obj.getString("charts"));
-                        Log.e("regular",object.getString("regular"));
 
                         setBrandBandSize(obj.getString("charts"),brandSize);
 
@@ -2988,44 +3625,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-//        switch (position)
-//        {
-//            case 0:
-//                tv_brand_band_1.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                tv_brand_range.setText(tv_brand_band_1.getText().toString());
-//
-//                break;
-//
-//            case 1:
-//                tv_brand_band_2.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                break;
-//
-//            case 2:
-//                tv_brand_band_3.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                break;
-//
-//            case 3:
-//                tv_brand_band_4.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                break;
-//
-//            case 4:
-//                tv_brand_band_5.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                break;
-//
-//            case 5:
-//                tv_brand_band_6.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                break;
-//
-//            case 6:
-//                tv_brand_band_7.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                break;
-//
-//            case 7:
-//                tv_brand_band_8.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
-//                break;
-//        }
 
         layout_brand_band_selection.setVisibility(View.GONE);
 
@@ -3255,7 +3854,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 JSONObject obj1 = charts.getJSONObject(j);
 
 
-                if (obj1.getString("size").equals(brandSize))
+                if (obj1.getString("size").toLowerCase().equals(brandSize))
                 {
                     Log.e("Position", String.valueOf(j));
                     isSizeMatched = true;
@@ -3792,7 +4391,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 clearAllBand();
                 clearAllCup();
 
-                setAU();
+                setAU("","");
                 tv_type_size.setText(getResources().getString(R.string.au));
                 layout_size_selection.setVisibility(View.GONE);
 
@@ -3806,7 +4405,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 clearAllBand();
                 clearAllCup();
 
-                setEU();
+                setEU("","");
 
                 tv_type_size.setText(getResources().getString(R.string.eu));
                 layout_size_selection.setVisibility(View.GONE);
@@ -3820,7 +4419,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 clearAllBand();
                 clearAllCup();
 
-                setFR();
+                setFR("","");
                 tv_type_size.setText(getResources().getString(R.string.fr));
                 layout_size_selection.setVisibility(View.GONE);
 
@@ -3831,7 +4430,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 clearAllBand();
                 clearAllCup();
 
-                setUK();
+                setUK("","");
                 tv_type_size.setText(getResources().getString(R.string.uk));
                 layout_size_selection.setVisibility(View.GONE);
 
@@ -3842,7 +4441,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 clearAllBand();
                 clearAllCup();
 
-                setUS();
+                setUS("","");
                 tv_type_size.setText(getResources().getString(R.string.us));
                 layout_size_selection.setVisibility(View.GONE);
 
@@ -5368,7 +5967,16 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 }
                 else
                 {
-                    layout_bra_profile.setVisibility(View.VISIBLE);
+                    if (bust.equals(""))
+                    {
+                        layout_bra_profile.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        isBust = true;
+                        layout_bust.setVisibility(View.VISIBLE);
+                    }
+
                 }
             }
             else

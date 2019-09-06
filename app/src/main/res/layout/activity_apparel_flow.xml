@@ -1562,6 +1562,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
+                    android:textScaleX="1.2"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
                     android:textColor="@color/grey_3"
@@ -1578,6 +1579,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
+                    android:textScaleX="1.2"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1596,6 +1598,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
+                    android:textScaleX="1.2"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1613,6 +1616,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
+                    android:textScaleX="1.2"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1629,6 +1633,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
+                    android:textScaleX="1.2"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
@@ -1669,6 +1674,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="65dp"
+                android:layout_below="@+id/layout_brands"
                 android:layout_alignParentBottom="true">
 
 
@@ -1677,7 +1683,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
                     android:id="@+id/tv_back_brand"
                     android:drawableStart="@drawable/ic_back"/>
 
@@ -1686,7 +1692,7 @@
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:id="@+id/tv_brand_skip"
                     android:layout_toStartOf="@+id/tv_brand_continue"
@@ -1707,6 +1713,7 @@
                     android:textColor="@color/white"
                     android:fontFamily="@font/apercu_medium"
                     android:text="@string/text_continue"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     />
 
@@ -3004,6 +3011,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="150dp"
+                android:id="@+id/layout_prefered_fit"
                 android:gravity="center"
                 android:layout_below="@+id/layout_fit_preference_result">
 
@@ -3048,6 +3056,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_prefered_fit"
                 android:layout_marginBottom="65dp"
                 android:layout_alignParentBottom="true">
 
@@ -3057,8 +3066,9 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_alignParentBottom="true"
                     android:id="@+id/layout_start_over">
 
 
@@ -3093,6 +3103,7 @@
                     android:fontFamily="@font/apercu_medium"
                     android:text="@string/apparel_result_add_to_cart"
                     android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
                     />
 
             </RelativeLayout>
