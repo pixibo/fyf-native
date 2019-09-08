@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements Result {
     private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";
+    private String [] availableSizeList = {"S", "M", "XL"};
     private String brand = "";
     private String sizeUrl = null;
 
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                     intent.putExtra("altId",altId);
                     intent.putExtra("uID",uID);
                     intent.putExtra("preferredLanguage",preferredLanguage);
+                    intent.putExtra("availableSizeList",availableSizeList);
                     intent.putExtra("isNew",false);
                     startActivityForResult(intent,111);
                 }
@@ -135,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                     intent.putExtra("altId",altId);
                     intent.putExtra("uID",uID);
                     intent.putExtra("preferredLanguage",preferredLanguage);
+                    intent.putExtra("availableSizeList",availableSizeList);
                     startActivityForResult(intent,111);
                 }
                 else

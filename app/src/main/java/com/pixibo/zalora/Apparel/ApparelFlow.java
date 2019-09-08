@@ -103,7 +103,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
     private RelativeLayout layout_close,layout_privacy,layout_header,layout_popup;
 
-    private TextView tv_header_text,tv_privacy_policy,tv_description;
+    private TextView tv_header_text,tv_privacy_policy,tv_description,tb_out_of_stock;
 
     private TextView tv_brand_1,tv_brand_2,tv_brand_3,tv_brand_4,tv_brand_5;
 
@@ -135,10 +135,13 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     private String gender = "";
     private String range = "";
     private String brandCharts = "";
+
     private String clientId = "";
     private String skuId = "";
     private String altId = "";
     private String uID = "";
+    private String [] availableSizeList ;
+
     private String bust8Bit = "";
     private String waist8Bit = "";
     private String hip8Bit = "";
@@ -193,6 +196,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         altId = intent.getStringExtra("altId");
         uID = intent.getStringExtra("uID");
         preferredLanguage = intent.getStringExtra("preferredLanguage");
+        availableSizeList = intent.getStringArrayExtra("availableSizeList");
         isNew = intent.getBooleanExtra("isNew",false);
 
 
@@ -254,6 +258,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
         tv_privacy_policy = findViewById(R.id.tv_privacy_policy);
         tv_description = findViewById(R.id.tv_description);
+        tb_out_of_stock = findViewById(R.id.tb_out_of_stock);
 
         tv_brand_1 = findViewById(R.id.tv_brand_1);
         tv_brand_2 = findViewById(R.id.tv_brand_2);
@@ -5785,6 +5790,15 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                             setFit(bust8Bit);
 
+
+                            if (availableSizeList.toString().contains(fysObject.getString("size")))
+                            {
+                                tb_out_of_stock.setVisibility(View.VISIBLE);
+                            }
+                            else
+                            {
+                                tb_out_of_stock.setVisibility(View.GONE);
+                            }
 
                             if (fysObject.getBoolean("recommended"))
                             {

@@ -85,6 +85,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     private String skuId = "";
     private String altId = "";
     private String uID = "";
+    private String [] availableSizeList ;
+
+
     private String brand = "";
     private String categoryType = "";
     private String categoryModel = "";
@@ -109,7 +112,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     private RelativeLayout layout_next_1,layout_back_1,layout_next_2,layout_back_2,layout_next_3,layout_back_3,layout_next_4,layout_back_4,layout_next_5,layout_back_5,layout_next_6;
     private TextView tv_brand_error,tv_error_category,tv_error_category_model,tv_erroe_size,tv_size_result,tv_not_recommended;
     private TextView tv_brand_continue,tv_brand_category_continue,tv_brand_category_model_continue,tv_brand_size_continue;
-    private TextView tv_brand_category_skip,tv_brand_model_skip;
+    private TextView tv_brand_category_skip,tv_brand_model_skip,tb_out_of_stock;
     private TextView tv_back_brand_category,tv_back_brand_model_category,tv_back_brand_size;
     private RelativeLayout layout_progress_1,layout_progress_2,layout_progress_3,layout_progress_4,layout_progress_5,layout_progress_6;
     private RelativeLayout layout_size_1,layout_size_2,layout_size_3,layout_size_4,layout_size_5,layout_size_6,layout_size_7,layout_size_8,layout_size_9,layout_size_10,layout_size_11,
@@ -141,6 +144,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         altId = intent.getStringExtra("altId");
         uID = intent.getStringExtra("uID");
         preferredLanguage = intent.getStringExtra("preferredLanguage");
+        availableSizeList = intent.getStringArrayExtra("availableSizeList");
 
 
         recycler_brand_suggestion = findViewById(R.id.recycler_brand_suggestion);
@@ -281,6 +285,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         tv_back_brand_category = findViewById(R.id.tv_back_brand_category);
         tv_back_brand_model_category = findViewById(R.id.tv_back_brand_model_category);
         tv_back_brand_size = findViewById(R.id.tv_back_brand_size);
+        tb_out_of_stock = findViewById(R.id.tb_out_of_stock);
 
         et_what_brand = findViewById(R.id.et_what_brand);
 
@@ -622,6 +627,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 layout_brand_category.setVisibility(View.GONE);
                 layout_brand.setVisibility(View.VISIBLE);
+                layout_brands.setVisibility(View.VISIBLE);
 
             }
         });
@@ -712,9 +718,14 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 Utils.hideSoftKeyboard(FootwearFlow.this);
 
+               if(width.equals(""))
+               {
+                   width = "regular";
+               }
+
+
                 if (!width.equals(""))
                 {
-                    width = "regular";
 
                     if (isSizeSelected)
                     {
@@ -2440,6 +2451,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                             {
                                 JSONObject fysObject = new JSONObject(String.valueOf(fys.get(0)));
 
+
+                            if (availableSizeList.toString().contains(fysObject.getString("size")))
+                            {
+                                tb_out_of_stock.setVisibility(View.VISIBLE);
+                            }
+                            else
+                            {
+                                tb_out_of_stock.setVisibility(View.GONE);
+                            }
+
+
                                 if (fysObject.getBoolean("recommended"))
                                 {
                                     isRecommended = true ;
@@ -3385,7 +3407,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
 
-        if(!width.equals("") && !categoryType.equals("") )
+        if(!width.equals("") && !size.equals("") )
         {
             progress(6);
 
@@ -3446,7 +3468,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             progress(2);
 
-            layout_brands.setVisibility(View.GONE);
+            layout_brand.setVisibility(View.GONE);
             layout_brand_category.setVisibility(View.VISIBLE);
 
             iv_shoe_category.setVisibility(View.GONE);
