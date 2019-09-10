@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pixibo.zalora.Apparel.ApparelFlow;
+import com.pixibo.zalora.Bra.BraFlow;
 import com.pixibo.zalora.Footwear.FootwearFlow;
 import com.pixibo.zalora.Utils.Utils;
 import com.pixibo.zalora.Utils.WebResources.GET;
@@ -43,13 +44,13 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 public class MainActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "qe3uhcp1kh11";
-    private String skuId = "A9D56SH00ED8EDGS";
-//    private String altId = "10214810760805751";
+    private String clientId = "sl8zvzsjelpg";
+    private String skuId = "BC421AADC2CE9DGS";
+//    private String altId = "10115632608494085";
     private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";
-    private String [] availableSizeList = {"S", "M", "XL"};
+    private String [] availableSizeList = {"S","M","L","XL"};
     private String brand = "";
     private String sizeUrl = null;
 
@@ -142,7 +143,17 @@ public class MainActivity extends AppCompatActivity implements Result {
                 }
                 else
                 {
-                    Toast.makeText(MainActivity.this,"Lingerie",Toast.LENGTH_SHORT).show();
+                    intent = new Intent(MainActivity.this, BraFlow.class);
+                    intent.putExtra("dataType",dataType);
+                    intent.putExtra("gender",gender);
+                    intent.putExtra("clientId",clientId);
+                    intent.putExtra("brand",brand);
+                    intent.putExtra("skuId",skuId);
+                    intent.putExtra("altId",altId);
+                    intent.putExtra("uID",uID);
+                    intent.putExtra("preferredLanguage",preferredLanguage);
+                    intent.putExtra("availableSizeList",availableSizeList);
+                    startActivityForResult(intent,111);
                 }
 
 
@@ -972,7 +983,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                 }
             }
             if(!brand.equals("") && !footwearWidthType.equals("") && !sizeType.equals("") && !size.equals("")){
-                url = "http://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&sizeType="+sizeType+"&size="+size+"&footwearWidthType="+footwearWidthType+"&categoryType="+categoryType+"&model="+model;
+                url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&sizeType="+sizeType+"&size="+size+"&footwearWidthType="+footwearWidthType+"&categoryType="+categoryType+"&model="+model;
             }
 
         }
@@ -1021,7 +1032,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                 }
             }
             if(!brand.equals("") && !footwearWidthType.equals("") && !sizeType.equals("") && !size.equals("")){
-                url = "http://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&sizeType="+sizeType+"&size="+size+"&footwearWidthType="+footwearWidthType+"&categoryType="+categoryType+"&model="+model;
+                url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&sizeType="+sizeType+"&size="+size+"&footwearWidthType="+footwearWidthType+"&categoryType="+categoryType+"&model="+model;
             }
 
         }

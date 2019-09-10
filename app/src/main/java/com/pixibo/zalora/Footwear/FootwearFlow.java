@@ -2452,7 +2452,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                                 JSONObject fysObject = new JSONObject(String.valueOf(fys.get(0)));
 
 
-                            if (availableSizeList.toString().contains(fysObject.getString("size")))
+                            if (availableSizeList.toString().toLowerCase().contains(fysObject.getString("size").toLowerCase()))
                             {
                                 tb_out_of_stock.setVisibility(View.VISIBLE);
                             }
@@ -2597,6 +2597,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                                                     width = maleReferenceBrandsObject.optString("footwearWidthType");
                                                     sizeType = maleReferenceBrandsObject.optString("sizeType");
                                                     size = maleReferenceBrandsObject.optString("size");
+
+                                                    setScreen();
                                                 }
                                             }
                                             else
@@ -2643,15 +2645,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             brandCategoryArrayList.clear();
 
-
-
-            if (range.length() < 4)
-            {
-                final float scale = getResources().getDisplayMetrics().density;
-                int pixels = (int) (200 * scale + 0.4f);
-                recycler_brand_category_selection.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
-            }
-
+            float scale = getResources().getDisplayMetrics().density;
+            int pixels;
 
             for (int i = 0; i < range.length(); i++)
             {
@@ -2659,11 +2654,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 JSONObject obj = range.getJSONObject(i);
 
                 Log.e("category",obj.getString("category"));
-
-                final float scale = getResources().getDisplayMetrics().density;
-                int pixels = (int) (200 * scale + 0.5f);
-
-                recycler_brand_category_selection.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
 
                 BrandModel brandModel = new BrandModel();
 
@@ -2687,6 +2677,16 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                             brandModel.setName(getResources().getString(R.string.shoe_boots_female));
                             brandModel.setId(obj.getString("category"));
                         }
+                        break;
+
+                    case "Boots & Chukkas":
+
+                        if (gender.equals("male"))
+                        {
+                            brandModel.setName(getResources().getString(R.string.shoe_boots_male));
+                            brandModel.setId(obj.getString("category"));
+                        }
+
                         break;
 
                     case "Sneakers":
@@ -2751,6 +2751,41 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 brandCategoryArrayList.add(brandModel);
 
             }
+
+
+
+            switch (brandCategoryArrayList.size())
+            {
+
+                case 1:
+                    pixels= (int) (50 * scale + 0.5f);
+                    recycler_brand_category_selection.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                    Log.e("Case","1");
+                    break;
+
+                case 2:
+                    pixels = (int) (100 * scale + 0.5f);
+                    recycler_brand_category_selection.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                    Log.e("Case","2");
+
+                case 3:
+                    pixels = (int) (150 * scale + 0.5f);
+                    recycler_brand_category_selection.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                    Log.e("Case","3");
+
+            }
+
+
+            if (brandCategoryArrayList.size() >= 4)
+            {
+                scale = getResources().getDisplayMetrics().density;
+                pixels = (int) (200 * scale + 0.5f);
+                recycler_brand_category_selection.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+            }
+
+
+            Log.e("Length", String.valueOf(brandCategoryArrayList.size()));
+
 
             Collections.sort(brandCategoryArrayList, new Comparator<BrandModel>() {
 
@@ -3142,21 +3177,14 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     else
                     {
 
-                        if (strArray.length < 4)
-                        {
-                            final float scale = getResources().getDisplayMetrics().density;
-                            int pixels = (int) (200 * scale + 0.4f);
-                            recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
-                        }
+
+                        float scale = getResources().getDisplayMetrics().density;
+                        int pixels;
+
+
 
                         for (int j = 0; j < strArray.length; j++)
                         {
-
-                            final float scale = getResources().getDisplayMetrics().density;
-                            int pixels = (int) (200 * scale + 0.5f);
-
-                            recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
-
                             BrandModel brandModel = new BrandModel();
                             brandModel.setName(strArray[j].replaceAll("[\"^\\[\\]]",""));
 
@@ -3170,6 +3198,37 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                         }
 
 
+
+                        switch (brandCategoryModelArrayList.size())
+                        {
+
+                            case 1:
+                                pixels= (int) (50 * scale + 0.5f);
+                                recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                                Log.e("Case","1");
+                                break;
+
+                            case 2:
+                                pixels = (int) (100 * scale + 0.5f);
+                                recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                                Log.e("Case","2");
+
+                            case 3:
+                                pixels = (int) (150 * scale + 0.5f);
+                                recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                                Log.e("Case","3");
+
+                        }
+
+                        if (brandCategoryModelArrayList.size() >= 4)
+                        {
+                            scale = getResources().getDisplayMetrics().density;
+                            pixels = (int) (200 * scale + 0.5f);
+                            recycler_brand_category_model.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
+                        }
+
+
+                        Log.e("Length", String.valueOf(brandCategoryModelArrayList.size()));
 
                         Collections.sort(brandCategoryModelArrayList, new Comparator<BrandModel>() {
 
@@ -3240,6 +3299,18 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 break;
 
             case "Boots":
+
+                if (gender.equals("male"))
+                {
+                    iv_shoe_category.setImageDrawable(getResources().getDrawable(R.drawable.ic_boots_male));
+                }
+                else if (gender.equals("female"))
+                {
+                    iv_shoe_category.setImageDrawable(getResources().getDrawable(R.drawable.ic_boots_female));
+                }
+                break;
+
+            case "Boots & Chukkas":
 
                 if (gender.equals("male"))
                 {

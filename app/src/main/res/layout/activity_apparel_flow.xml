@@ -1562,7 +1562,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
-                    android:textScaleX="1.2"
+                    android:textScaleX="1"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
                     android:textColor="@color/grey_3"
@@ -1579,7 +1579,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
-                    android:textScaleX="1.2"
+                    android:textScaleX="1"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1598,7 +1598,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
-                    android:textScaleX="1.2"
+                    android:textScaleX="1"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1616,7 +1616,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
-                    android:textScaleX="1.2"
+                    android:textScaleX="1"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/apercu_regular"
                     android:background="@drawable/bg_button_unselected"
@@ -1633,7 +1633,7 @@
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
                     android:textAllCaps="true"
-                    android:textScaleX="1.2"
+                    android:textScaleX="1"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="11dp"
                     android:fontFamily="@font/apercu_regular"
@@ -2699,8 +2699,6 @@
             android:layout_height="match_parent"
             android:id="@+id/layout_result"
             android:visibility="gone"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:layout_below="@+id/layout_header">
 
 
@@ -2750,11 +2748,28 @@
 
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/tv_size"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tb_out_of_stock"
+                android:visibility="gone"
+                android:textSize="11sp"
+                android:fontFamily="@font/apercu_regular"
+                android:gravity="center"
+                android:background="@color/color_button_uselected_bg"
+                android:textColor="@color/grey_4"
+                android:text="@string/footwear_result_out_of_stock"/>
+
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="90dp"
                 android:layout_below="@+id/tv_size"
                 android:id="@+id/tv_check_fit"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/apercu_regular"
@@ -2766,6 +2781,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:id="@+id/layout_fit_result"
                 android:layout_below="@+id/tv_check_fit">
 
@@ -2840,6 +2857,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:id="@+id/layout_fit_preference_result"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:layout_height="3dp"
                 android:layout_marginTop="23dp"
                 android:layout_below="@+id/layout_fit_result">
@@ -2975,6 +2994,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/apparel_result_text_fit_tight"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:textSize="10sp"
                 android:fontFamily="@font/apercu_regular"
                 android:textColor="@color/grey_3"
@@ -2986,6 +3007,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="6dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/apparel_result_text_fit_perfect"
                 android:textSize="10sp"
                 android:fontFamily="@font/apercu_regular"
@@ -2998,6 +3021,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="6dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/apparel_result_text_fit_loose"
                 android:textSize="10sp"
                 android:fontFamily="@font/apercu_regular"
@@ -3058,6 +3083,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_prefered_fit"
                 android:layout_marginBottom="65dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:layout_alignParentBottom="true">
 
 
