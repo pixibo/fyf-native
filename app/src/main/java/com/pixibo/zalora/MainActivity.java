@@ -44,13 +44,13 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 public class MainActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "sl8zvzsjelpg";
-    private String skuId = "BC421AADC2CE9DGS";
+    private String clientId = "qe3uhcp1kh11";
+    private String skuId = "A9D56SH00ED8EDGS";
 //    private String altId = "10115632608494085";
     private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";
-    private String [] availableSizeList = {"S","M","L","XL"};
+    private String [] availableSizeList = {"S","M","L","XL","UK 16"};
     private String brand = "";
     private String sizeUrl = null;
 

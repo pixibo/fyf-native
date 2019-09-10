@@ -1557,7 +1557,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="MANGO"
+                    android:text=""
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -1574,7 +1574,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="COTTON ON"
+                    android:text=""
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -1593,7 +1593,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="Dorothy Perkins"
+                    android:text=""
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -1611,7 +1611,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="Dorothy Perkins"
+                    android:text=""
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
@@ -1628,7 +1628,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:text="Dorothy Perkins"
+                    android:text=""
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textSize="12sp"
