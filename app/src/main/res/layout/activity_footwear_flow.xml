@@ -1485,7 +1485,7 @@
                 android:id="@+id/tv_erroe_size"
                 android:fontFamily="@font/apercu_regular"
                 android:layout_below="@+id/layout_brand_sizes"
-                android:text="error message here if no selection"/>
+                android:text="@string/error_required"/>
 
 
 

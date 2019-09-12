@@ -21,8 +21,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +40,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_API_27" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="63cd6c7f" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -46,11 +53,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="29">
+              <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="1054" lean-forward="true" selection-start-line="1054" selection-end-line="1054" />
+              <folding>
+                <element signature="e#16649#17298#0" expanded="true" />
+                <element signature="e#17297#17298#0" expanded="true" />
+                <element signature="e#17756#18387#0" expanded="true" />
+                <element signature="e#18386#18387#0" expanded="true" />
+                <element signature="e#27749#28963#0" expanded="true" />
+                <element signature="e#28962#28963#0" expanded="true" />
+                <element signature="e#40063#40358#0" expanded="true" />
+                <element signature="e#40357#40358#0" expanded="true" />
+                <element signature="e#116397#116444#0" expanded="true" />
+                <element signature="e#117108#117160#0" expanded="true" />
+                <element signature="e#117393#117447#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,26 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>brand_fit</find>
-      <find>layout_brands</find>
-      <find>tv_type_1</find>
-      <find>tv_type_size</find>
-      <find>tv_brand_error</find>
-      <find>what</find>
-      <find>recycler_brand_category_model</find>
-      <find>Length</find>
-      <find>scale</find>
-      <find>tv_brand_band_3</find>
-      <find>tv_cup_1</find>
-      <find>tv_cup_2</find>
-      <find>layout_cup_2</find>
-      <find>8182</find>
-      <find>layout_band_2</find>
-      <find>tv_au</find>
-      <find>tv_con</find>
-      <find>layout_fit_bust</find>
-      <find>getsize</find>
-      <find>brandSize</find>
       <find>what_bra</find>
       <find>Brand Selection</find>
       <find>Brand Selection</find>
@@ -97,6 +115,26 @@
       <find>layout_brands.setVisibility</find>
       <find>layout_brand.setvis</find>
       <find>setdefa</find>
+      <find>result</find>
+      <find>close</find>
+      <find>tv_back_f</find>
+      <find>tv_con</find>
+      <find>layout_cup_5</find>
+      <find>layout_band_5</find>
+      <find>tv_brand_continue</find>
+      <find>GetSize</find>
+      <find>layout_result.setVisibility</find>
+      <find>BodyProfile</find>
+      <find>bold</find>
+      <find>reset</find>
+      <find>v</find>
+      <find>tv_type_4</find>
+      <find>setTypeface</find>
+      <find>tv_size_type</find>
+      <find>tv_type_size</find>
+      <find>layout_brand</find>
+      <find>conti</find>
+      <find>start</find>
     </findStrings>
     <replaceStrings>
       <replace>category</replace>
@@ -129,30 +167,34 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_startover_white.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_body_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Model/BrandModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/WebResources/GET.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-in/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/LocalData.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/card_brand_suggession.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="180" />
+    <option name="y" value="132" />
+    <option name="width" value="1080" />
+    <option name="height" value="659" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -162,17 +204,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -184,7 +216,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -196,11 +227,69 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Adapter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Apparel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Footwear" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_API_27" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-10T12:43:00.198Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="63cd6c7f" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-12T15:28:37.226Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="Pixel_API_27" />
@@ -323,20 +412,20 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4993804" visible="true" weight="0.22317597" />
-      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.22317597" />
+      <window_info id="Structure" order="2" sideWeight="0.50208336" side_tool="true" weight="0.22317597" />
       <window_info id="Favorites" order="3" sideWeight="0.5006196" side_tool="true" weight="0.23247497" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.32928064" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49893504" weight="0.16604708" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.3283767" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49893504" weight="0.40520447" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32961586" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32928064" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50106496" side_tool="true" weight="0.44579533" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50106496" side_tool="true" weight="0.4448575" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32928064" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.4969021" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
@@ -346,7 +435,7 @@
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.23961662" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.23891273" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="StringPreview" order="7" />
       <window_info anchor="right" id="Assistant" order="8" weight="0.32960597" />
@@ -397,13 +486,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java</url>
-          <line>2742</line>
+          <line>2815</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java</url>
-          <line>3882</line>
+          <line>3943</line>
           <properties class="com.pixibo.zalora.Apparel.ApparelFlow" method="setBrandBandSize">
             <option name="EMULATED" value="true" />
           </properties>
@@ -471,23 +560,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Model/BrandModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -524,14 +596,6 @@
           <caret line="284" column="21" selection-start-line="284" selection-start-column="21" selection-end-line="284" selection-end-column="21" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/WebResources/GET.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -571,13 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
           <caret line="113" column="37" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="158" column="38" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -621,14 +678,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_wedges_female.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="606" column="48" lean-forward="true" selection-start-line="606" selection-start-column="48" selection-end-line="606" selection-end-column="48" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/view/View.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -648,121 +697,99 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="944">
-          <caret line="65" column="42" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
+        <state relative-caret-position="210">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="6383" column="28" selection-start-line="6383" selection-start-column="28" selection-end-line="6383" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="129" column="18" selection-start-line="129" selection-start-column="18" selection-end-line="129" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="1483" column="41" lean-forward="true" selection-start-line="1483" selection-start-column="41" selection-end-line="1483" selection-end-column="41" />
+          <folding>
+            <element signature="e#28009#28037#0" expanded="true" />
+            <element signature="e#59970#59994#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="1455" column="41" selection-start-line="1455" selection-start-column="29" selection-end-line="1455" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="1507" column="37" selection-start-line="1507" selection-start-column="37" selection-end-line="1507" selection-end-column="37" />
+        <state relative-caret-position="467">
+          <caret line="62" selection-start-line="62" selection-end-line="65" selection-end-column="5" />
           <folding>
-            <element signature="e#69539#71746#0" expanded="true" />
-            <element signature="e#71745#71746#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="1337" lean-forward="true" selection-start-line="1337" selection-end-line="1337" />
-          <folding>
-            <element signature="e#43544#43600#0" expanded="true" />
-            <element signature="e#43642#43700#0" expanded="true" />
-            <element signature="e#43742#43796#0" expanded="true" />
-            <element signature="e#43838#43892#0" expanded="true" />
-            <element signature="e#43934#43988#0" expanded="true" />
-            <element signature="e#44052#44108#0" expanded="true" />
-            <element signature="e#44129#44187#0" expanded="true" />
-            <element signature="e#44237#44291#0" expanded="true" />
-            <element signature="e#44311#44365#0" expanded="true" />
-            <element signature="e#44414#44468#0" expanded="true" />
-            <element signature="e#45348#45404#0" expanded="true" />
-            <element signature="e#45425#45483#0" expanded="true" />
-            <element signature="e#45532#45586#0" expanded="true" />
-            <element signature="e#45606#45660#0" expanded="true" />
-            <element signature="e#45708#45762#0" expanded="true" />
-            <element signature="e#44912#44966#0" expanded="true" />
-            <element signature="e#45008#45072#0" expanded="true" />
-            <element signature="e#46682#46738#0" expanded="true" />
-            <element signature="e#46759#46813#0" expanded="true" />
-            <element signature="e#46862#46926#0" expanded="true" />
-            <element signature="e#46940#46994#0" expanded="true" />
-            <element signature="e#47042#47096#0" expanded="true" />
-            <element signature="e#45536#45590#0" expanded="true" />
-            <element signature="e#45632#45696#0" expanded="true" />
-            <element signature="e#47962#48018#0" expanded="true" />
-            <element signature="e#48045#48099#0" expanded="true" />
-            <element signature="e#48148#48212#0" expanded="true" />
-            <element signature="e#48220#48274#0" expanded="true" />
-            <element signature="e#48322#48376#0" expanded="true" />
-            <element signature="e#46214#46268#0" expanded="true" />
-            <element signature="e#46310#46364#0" expanded="true" />
-            <element signature="e#46406#46463#0" expanded="true" />
-            <element signature="e#49289#49345#0" expanded="true" />
-            <element signature="e#49378#49432#0" expanded="true" />
-            <element signature="e#49481#49535#0" expanded="true" />
-            <element signature="e#49555#49612#0" expanded="true" />
-            <element signature="e#49649#49703#0" expanded="true" />
-            <element signature="e#46733#46789#0" expanded="true" />
-            <element signature="e#46831#46885#0" expanded="true" />
-            <element signature="e#46927#46981#0" expanded="true" />
-            <element signature="e#47023#47081#0" expanded="true" />
-            <element signature="e#47123#47177#0" expanded="true" />
-            <element signature="e#50563#50619#0" expanded="true" />
-            <element signature="e#50651#50705#0" expanded="true" />
-            <element signature="e#50754#50808#0" expanded="true" />
-            <element signature="e#50828#50886#0" expanded="true" />
-            <element signature="e#50923#50977#0" expanded="true" />
-            <element signature="e#51890#51946#0" expanded="true" />
-            <element signature="e#51967#52025#0" expanded="true" />
-            <element signature="e#52074#52128#0" expanded="true" />
-            <element signature="e#52148#52202#0" expanded="true" />
-            <element signature="e#52250#52304#0" expanded="true" />
-            <element signature="e#53164#53220#0" expanded="true" />
-            <element signature="e#53241#53299#0" expanded="true" />
-            <element signature="e#53348#53402#0" expanded="true" />
-            <element signature="e#53422#53476#0" expanded="true" />
-            <element signature="e#53524#53578#0" expanded="true" />
-            <element signature="e#48793#48849#0" expanded="true" />
-            <element signature="e#48891#48952#0" expanded="true" />
-            <element signature="e#48994#49048#0" expanded="true" />
-            <element signature="e#54498#54554#0" expanded="true" />
-            <element signature="e#54586#54642#0" expanded="true" />
-            <element signature="e#54691#54752#0" expanded="true" />
-            <element signature="e#54772#54826#0" expanded="true" />
-            <element signature="e#54858#54912#0" expanded="true" />
-            <element signature="e#49416#49472#0" expanded="true" />
-            <element signature="e#49514#49575#0" expanded="true" />
-            <element signature="e#49617#49671#0" expanded="true" />
-            <element signature="e#55777#55833#0" expanded="true" />
-            <element signature="e#55870#55926#0" expanded="true" />
-            <element signature="e#55975#56036#0" expanded="true" />
-            <element signature="e#56056#56110#0" expanded="true" />
-            <element signature="e#56137#56191#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="259">
+          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="29">
+          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="1054" lean-forward="true" selection-start-line="1054" selection-end-line="1054" />
+          <folding>
+            <element signature="e#16649#17298#0" expanded="true" />
+            <element signature="e#17297#17298#0" expanded="true" />
+            <element signature="e#17756#18387#0" expanded="true" />
+            <element signature="e#18386#18387#0" expanded="true" />
+            <element signature="e#27749#28963#0" expanded="true" />
+            <element signature="e#28962#28963#0" expanded="true" />
+            <element signature="e#40063#40358#0" expanded="true" />
+            <element signature="e#40357#40358#0" expanded="true" />
+            <element signature="e#116397#116444#0" expanded="true" />
+            <element signature="e#117108#117160#0" expanded="true" />
+            <element signature="e#117393#117447#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

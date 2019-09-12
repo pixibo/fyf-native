@@ -12,12 +12,15 @@
         <activity android:name=".Bra.BraFlow"></activity>
         <activity
             android:name=".Footwear.FootwearFlow"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Apparel.ApparelFlow"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
+
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

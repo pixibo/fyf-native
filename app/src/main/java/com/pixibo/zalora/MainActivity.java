@@ -44,8 +44,8 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 public class MainActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "sl8zvzsjelpg";
-    private String skuId = "BC421AADC2CE9DGS";
+    private String clientId = "qe3uhcp1kh11";
+    private String skuId = "A9D56SH00ED8EDGS";
 //    private String altId = "10115632608494085";
     private String altId = "";
     private String uID = "";
@@ -792,8 +792,10 @@ public class MainActivity extends AppCompatActivity implements Result {
         if (requestCode == 111) {
 
             if(resultCode == Activity.RESULT_OK){
+
                 boolean recommended = data.getBooleanExtra("recommended",false);
-                String result = data.getStringExtra("result");
+                String result = "";
+                result = data.getStringExtra("result");
 
                 setButtonText(result,recommended);
 
@@ -1049,7 +1051,8 @@ public class MainActivity extends AppCompatActivity implements Result {
 
         String returnedText;
 
-        if(size == null){
+        if(size == null || size.equals("")){
+
             returnedText = getResources().getString(R.string.find_my_size);
         }
         else if(size.equals("not_recommended") ){
