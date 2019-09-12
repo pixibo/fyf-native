@@ -1069,7 +1069,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
         validate_user(clientId,skuId);
 
-        setDefaultBrands();
+        setDefaultBrands(brand);
         get_brands(gender,category);
     }
 
@@ -1114,7 +1114,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
 
-    public void setDefaultBrands()
+    public void setDefaultBrands(String newBrand)
     {
 
         switch (clientId)
@@ -1128,7 +1128,18 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_nike));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_converse))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_nike)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_vans))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
+
                 }
 
                 else if (gender.equals("male"))
@@ -1138,7 +1149,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_nike));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_converse))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_nike)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_vans))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
                 break;
 
@@ -1151,7 +1172,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_onitsuka_tiger));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_nike))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_onitsuka_tiger)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_vans))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
 
                 else if (gender.equals("male"))
@@ -1161,7 +1192,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_onitsuka_tiger));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_nike))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_onitsuka_tiger)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_vans))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
                 break;
 
@@ -1174,7 +1215,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_melissa));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_nike))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_vans)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_melissa))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
 
                 else if (gender.equals("male"))
@@ -1184,7 +1235,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_converse));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_nike))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_vans)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_converse))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
                 break;
 
@@ -1197,7 +1258,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_melissa));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_converse))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_nike)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_vans))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
 
                 else if (gender.equals("male"))
@@ -1207,7 +1278,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_nike));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_vans));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_converse))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_nike)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_vans))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
                 break;
 
@@ -1220,7 +1301,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_birkenstock));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_aldo));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_reebok))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_birkenstock)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_aldo))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
 
                 else if (gender.equals("male"))
@@ -1230,7 +1321,17 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     tv_brand_3.setText(getResources().getString(R.string.footwear_brand_birkenstock));
                     tv_brand_4.setText(getResources().getString(R.string.footwear_brand_aldo));
                     tv_brand_5.setText(getResources().getString(R.string.footwear_brand_puma));
-                    tv_brand_6.setText(brand);
+
+                    if (newBrand.equals(getResources().getString(R.string.footwear_brand_adidas)) || newBrand.equals(getResources().getString(R.string.footwear_brand_reebok))
+                            || newBrand.equals(getResources().getString(R.string.footwear_brand_birkenstock)) ||newBrand.equals(getResources().getString(R.string.footwear_brand_aldo))
+                            ||newBrand.equals(getResources().getString(R.string.footwear_brand_puma)))
+                    {
+                        tv_brand_6.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        tv_brand_6.setText(brand);
+                    }
                 }
                 break;
         }
