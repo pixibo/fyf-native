@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements Result {
     private LinearLayout layout_button;
     private String clientId = "qe3uhcp1kh11";
     private String skuId = "A9D56SH00ED8EDGS";
-//    private String altId = "10115632608494085";
+//    private String altId = "10214810760805751";
     private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";

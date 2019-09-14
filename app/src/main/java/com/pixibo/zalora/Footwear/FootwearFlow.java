@@ -516,6 +516,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                     tv_brand_category.setText(getResources().getString(R.string.brand_category_select));
                     tv_brand_category.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+
+                    trackEvent(clientId,skuId,"click","pdp","refBrand_continue",uID);
                 }
                 else
                 {
@@ -553,6 +555,10 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     layout_brand_category.setVisibility(View.GONE);
                     layout_brand_category_selection.setVisibility(View.GONE);
                     tv_error_category_model.setVisibility(View.GONE);
+
+
+                    trackEvent(clientId,skuId,"click","pdp","refShoecat_continue",uID);
+
 
                     if (isBrandModelPresent)
                     {
@@ -616,6 +622,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 categoryModel = "";
                 width = "";
 
+                trackEvent(clientId,skuId,"click","pdp","refShoecat_skip",uID);
+
+
                 get_brand_sizes(gender,category,brand);
 
                 if (categoryModel.equals(""))
@@ -666,6 +675,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                     get_brand_sizes(gender,category,brand);
 
+                    trackEvent(clientId,skuId,"click","pdp","refShoemodel_continue",uID);
+
+
                     if (categoryModel.equals(""))
                     {
                         tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
@@ -704,6 +716,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 layout_brand_size.setVisibility(View.VISIBLE);
 
                 get_brand_sizes(gender,category,brand);
+
+                trackEvent(clientId,skuId,"click","pdp","refShoemodel_skip",uID);
+
 
                 if (categoryModel.equals(""))
                 {
@@ -753,6 +768,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                     if (isSizeSelected)
                     {
+
+                        trackEvent(clientId,skuId,"click","pdp","refSize_continue",uID);
+
 
                         if (altId.equals(""))
                         {
@@ -1019,6 +1037,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
             @Override
             public void onClick(View view) {
 
+                trackEvent(clientId,skuId,"click","pdp","addBag",uID);
+
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",isRecommended);
                 returnIntent.putExtra("result",size);
@@ -1039,7 +1059,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 resetData();
 
                 progress(1);
-
 
                 clearSizeType();
                 clearWidth();
@@ -2502,6 +2521,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
             Log.e("Exception",e.getMessage());
         }
     }
+
+
 
 
 

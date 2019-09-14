@@ -984,6 +984,9 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
+                trackEvent(clientId,skuId,"click","pdp","addBag",uID);
+
+
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",isRecommended);
                 returnIntent.putExtra("result",size);
@@ -2026,23 +2029,23 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                             switch (braSizeType)
                             {
                                 case "au":
-                                    setAU(band,cup);
+                                    setAU(band.toLowerCase(),cup.toLowerCase());
                                     break;
 
                                 case "eu":
-                                    setEU(band,cup);
+                                    setEU(band.toLowerCase(),cup.toLowerCase());
                                     break;
 
                                 case "fr":
-                                    setFR(band,cup);
+                                    setFR(band.toLowerCase(),cup.toLowerCase());
                                     break;
 
                                 case "uk":
-                                    setUK(band,cup);
+                                    setUK(band.toLowerCase(),cup.toLowerCase());
                                     break;
 
                                 case "us":
-                                    setUS(band,cup);
+                                    setUS(band.toLowerCase(),cup.toLowerCase());
                                     break;
                             }
 
@@ -2409,26 +2412,26 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                         tv_type_size.setText(braSizeType.toUpperCase());
 
-                        switch (braSizeType)
+                        switch (braSizeType.toLowerCase())
                         {
                             case "au":
-                                setAU(band,cup);
+                                setAU(band.toLowerCase(),cup.toLowerCase());
                                 break;
 
                             case "eu":
-                                setEU(band,cup);
+                                setEU(band.toLowerCase(),cup.toLowerCase());
                                 break;
 
                             case "fr":
-                                setFR(band,cup);
+                                setFR(band.toLowerCase(),cup.toLowerCase());
                                 break;
 
                             case "uk":
-                                setUK(band,cup);
+                                setUK(band.toLowerCase(),cup.toLowerCase());
                                 break;
 
                             case "us":
-                                setUS(band,cup);
+                                setUS(band.toLowerCase(),cup.toLowerCase());
                                 break;
                         }
 
