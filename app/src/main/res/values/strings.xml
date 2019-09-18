@@ -162,6 +162,17 @@
     <string name="footwear_result_not_recommended">Sorry, this item does not \ncome in your size</string>
     <string name="footwear_result_out_of_stock">SORRY, THIS ITEM IS OUT OF STOCK IN THIS SIZE</string>
 
+    <string name="bra_right_size">Get a size recommendation based on a bra you already wear.</string>
+    <string name="bra_brand_not_listed">Brand is not listed here</string>
+    <string name="bra_bra_size">What\'s the size of the bra?</string>
+    <string name="bra_type_wired">WIRED</string>
+    <string name="bra_type_unwired">UNWIRED</string>
+
+
+    <string name="bra_brand_cotton_on_body" translatable="false">Cotton On Body</string>
+    <string name="bra_brand_gap" translatable="false">Gap</string>
+    <string name="bra_brand_ck" translatable="false">Calvin Klein</string>
+
 
     <string name="band_au_8" translatable="false">8</string>
     <string name="band_au_10" translatable="false">10</string>

@@ -5297,21 +5297,21 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
         try {
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
-                GET get = new GET(this, URI.base2 +"brands/charts/"+gender.toLowerCase()+"/"+category.toLowerCase()+"/"+brand , BrandSizes, this);
-                // Utils.showLoading(SettingActivity.this, false);
-                get.execute();
-            } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
-            }
-
-        } catch (Exception e) {
-            //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
-            e.printStackTrace();
-            Log.e("Exception",e.getMessage());
+        if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            GET get = new GET(this, URI.base2 +"brands/charts/"+gender.toLowerCase()+"/"+category.toLowerCase()+"/"+brand , BrandSizes, this);
+            // Utils.showLoading(SettingActivity.this, false);
+            get.execute();
+        } else {
+            Utils.showToast(this,getResources().getString(R.string.no_internet));
         }
+
+    } catch (Exception e) {
+        //Utils.hideLoading();
+        Utils.showToast(this,getResources().getString(R.string.something_wrong));
+        e.printStackTrace();
+        Log.e("Exception",e.getMessage());
     }
+}
 
 
     private void trackEvent(String clientID ,String SKUID,String eventType,String page,String event,String uid ) {

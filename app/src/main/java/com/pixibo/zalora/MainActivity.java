@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
     private String clientId = "qe3uhcp1kh11";
-    private String skuId = "A9D56SH00ED8EDGS";
+    private String skuId = "UN337US0SU6QMY";
 //    private String altId = "10214810760805751";
     private String altId = "";
     private String uID = "";
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                     intent.putExtra("availableSizeList",availableSizeList);
                     startActivityForResult(intent,111);
                 }
-                else
+                else if (Arrays.asList(lingerie_array).contains(dataType))
                 {
                     intent = new Intent(MainActivity.this, BraFlow.class);
                     intent.putExtra("dataType",dataType);
@@ -163,8 +163,6 @@ public class MainActivity extends AppCompatActivity implements Result {
 
 
         validate_user(clientId,skuId);
-
-        //getData();
 
     }
 
@@ -495,10 +493,23 @@ public class MainActivity extends AppCompatActivity implements Result {
                                     }
                                 }
 
-//                                else if (Arrays.asList(lingerie_array).contains(dataType))
-//                                {
-//                                    sizeUrl = null;
-//                                }
+                                else if (Arrays.asList(lingerie_array).contains(dataType))
+                                {
+                                    sizeUrl = null;
+
+                                    if(sizeUrl != null){
+
+                                        fetchSizeFromApi(sizeUrl);
+                                    }
+                                    else
+                                    {
+                                        layout_button.setVisibility(View.VISIBLE);
+                                        SpannableString content;
+                                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                                        tv_find_my_size.setText(content);
+                                    }
+                                }
 
 
                             }
@@ -644,6 +655,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                                         sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
 
                                         if(sizeUrl != null){
+
                                             fetchSizeFromApi(sizeUrl);
                                         }
                                         else
@@ -657,10 +669,23 @@ public class MainActivity extends AppCompatActivity implements Result {
                                     }
                                 }
 
-//                                else if (Arrays.asList(lingerie_array).contains(dataType))
-//                                {
-//                                    sizeUrl = null;
-//                                }
+                                else if (Arrays.asList(lingerie_array).contains(dataType))
+                                {
+                                    sizeUrl = null;
+
+                                    if(sizeUrl != null){
+
+                                        fetchSizeFromApi(sizeUrl);
+                                    }
+                                    else
+                                    {
+                                        layout_button.setVisibility(View.VISIBLE);
+                                        SpannableString content;
+                                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                                        tv_find_my_size.setText(content);
+                                    }
+                                }
 
 
                             }

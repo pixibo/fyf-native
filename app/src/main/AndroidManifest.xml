@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bra.BraFlow"></activity>
+        <activity
+            android:name=".Bra.BraFlow"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Footwear.FootwearFlow"
             android:windowSoftInputMode="adjustPan"
