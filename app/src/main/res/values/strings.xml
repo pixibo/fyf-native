@@ -167,6 +167,9 @@
     <string name="bra_bra_size">What\'s the size of the bra?</string>
     <string name="bra_type_wired">WIRED</string>
     <string name="bra_type_unwired">UNWIRED</string>
+    <string name="bra_type">TYPE</string>
+    <string name="bra_result_best_size">For this style, the best size for you is</string>
+    <string name="bra_result_how_fit">How should it fit?</string>
 
 
     <string name="bra_brand_cotton_on_body" translatable="false">Cotton On Body</string>

@@ -506,6 +506,7 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
+                        android:visibility="invisible"
                         android:id="@+id/layout_band_next_1"
                         android:background="@drawable/bg_button_unselected">
 
@@ -776,6 +777,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_next"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -1023,7 +1025,7 @@
                 android:id="@+id/tv_type"
                 android:layout_marginTop="30dp"
                 android:layout_below="@+id/layout_cup"
-                android:text="@string/apparel_bra_cup"/>
+                android:text="@string/bra_type"/>
 
 
             <LinearLayout
@@ -1040,7 +1042,7 @@
                     android:layout_width="0dp"
                     android:id="@+id/layout_type_wired"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_button_selected"
+                    android:background="@drawable/bg_button_unselected"
                     android:layout_weight="1">
 
                     <TextView
@@ -1049,9 +1051,9 @@
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
                         android:id="@+id/tv_type_wired"
-                        android:textColor="@color/color_text"
+                        android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
-                        android:text="@string/apparel_result_text_check_fit_bust"
+                        android:text="@string/bra_type_wired"
                         />
 
                 </RelativeLayout>
@@ -1073,7 +1075,7 @@
                         android:id="@+id/tv_type_unwired"
                         android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
-                        android:text="@string/apparel_result_text_check_fit_waist"
+                        android:text="@string/bra_type_unwired"
                         />
 
                 </RelativeLayout>
@@ -1115,10 +1117,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_type"
+                android:paddingTop="30dp"
                 android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
-
-
 
 
                 <TextView
@@ -1177,6 +1179,502 @@
 
 
         <!--Bra profile ends here-->
+
+
+
+        <!--   brand result screens starts here -->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_header"
+            android:id="@+id/layout_result"
+            android:visibility="gone"
+            android:paddingBottom="3dp">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/layout_recommended"
+                android:layout_centerHorizontal="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:id="@+id/tv_result_best_size"
+                    android:textColor="@color/black"
+                    android:text="@string/bra_result_best_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/apercu_bold"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tv_size_result"
+                    android:textSize="40sp"
+                    android:textColor="@color/black"
+                    android:text="EU 38" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginTop="43dp"
+                    android:background="@drawable/bg_result_tell_more"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_how_fit"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textColor="@color/grey_4"
+                    android:layout_marginTop="60dp"
+                    android:text="@string/bra_result_how_fit"
+                    />
+
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/layout_recommended"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tb_out_of_stock"
+                android:visibility="gone"
+                android:textSize="11sp"
+                android:fontFamily="@font/apercu_regular"
+                android:gravity="center"
+                android:background="@color/color_button_uselected_bg"
+                android:textColor="@color/grey_4"
+                android:text="@string/footwear_result_out_of_stock"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="200dp"
+                android:id="@+id/tv_not_recommended"
+                android:visibility="gone"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/black"
+                android:text="@string/footwear_result_not_recommended"
+                />
+
+
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:layout_marginBottom="65dp"
+                android:layout_alignParentBottom="true">
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/layout_start_over">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_start_over"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/grey_3"
+                        android:fontFamily="@font/apercu_regular"
+                        android:text="@string/apparel_result_start_over" />
+
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="165dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:id="@+id/tv_add_cart"
+                    android:textAllCaps="true"
+                    android:background="@color/color_background_button_enable"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/apercu_medium"
+                    android:text="@string/footwear_result_add_to_cart"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_loading"
+            android:visibility="gone"
+            android:background="@color/white">
+
+
+
+            <ProgressBar
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:indeterminateTint="@color/black"
+                android:layout_above="@+id/loader_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="12sp"
+                android:id="@+id/loader_text"
+                android:textAllCaps="true"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/black"
+                android:text="@string/loader_text"
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_loading"
+            android:visibility="gone"
+            android:background="@color/white">
+
+
+
+            <ProgressBar
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:indeterminateTint="@color/black"
+                android:layout_above="@+id/loader_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="12sp"
+                android:id="@+id/loader_text"
+                android:textAllCaps="true"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/black"
+                android:text="@string/loader_text"
+                />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_error"
+            android:visibility="gone"
+            android:background="@color/white">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_centerInParent="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/error_text"
+                    android:gravity="center"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textColor="@color/black"
+                    android:text="@string/error_text"
+                    />
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="165dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="40dp"
+                    android:id="@+id/layout_try_again"
+                    android:background="@color/color_background_button_enable">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:id="@+id/tv_try_again"
+                        android:textSize="14sp"
+                        android:drawableStart="@drawable/ic_startover_white"
+                        android:layout_centerInParent="true"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/error_try_again"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+        <!--privacy policy popup-->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:id="@+id/layout_popup">
+
+            <RelativeLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/layout_privacy_popup">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/privacy" />
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/popup_corner" />
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="wrap_content"
+                android:background="#efefef"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="52dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#efefef"
+                    android:padding="14dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="2dp"
+                        android:id="@+id/tv_powred_by"
+                        android:text="@string/privacy_powered_by"/>
+
+                    <ImageView
+                        android:layout_width="104dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="5dp"
+                        android:id="@+id/iv_pixibo_logo"
+                        android:layout_toEndOf="@+id/tv_powred_by"
+                        android:src="@drawable/ic_pixibo_logo" />
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="2dp"
+                        android:id="@+id/tv_pixibo_text"
+                        android:layout_toEndOf="@+id/iv_pixibo_logo"
+                        android:text="@string/privacy_after_logo"/>
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_pixibo_logo"
+                        android:textColor="@color/black"
+                        android:id="@+id/tv_description"
+                        android:textSize="12sp"
+                        android:lineHeight="18sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/privacy_policy"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_description"
+                        android:text="@string/privacy_powered_text"
+                        android:textSize="12sp"
+                        android:textColor="@color/grey_3"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:id="@+id/tv_privacy_policy"/>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/tv_privacy_policy"
+                        android:layout_marginBottom="5dp"
+                        android:layout_alignStart="@+id/tv_privacy_policy"
+                        android:layout_alignEnd="@+id/tv_privacy_policy"
+                        android:background="@color/grey_3"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#d3d3d3"
+            android:layout_alignParentBottom="true">
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:id="@+id/layout_progress_1">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_2">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_3">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_4">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_5">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:id="@+id/layout_progress_6">
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
 
     </RelativeLayout>
