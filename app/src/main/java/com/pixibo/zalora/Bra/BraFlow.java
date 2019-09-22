@@ -1,7 +1,9 @@
 package com.pixibo.zalora.Bra;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -100,12 +102,19 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private TextView tv_type_wired,tv_type_unwired;
     private RelativeLayout layout_type_wired,layout_type_unwired;
 
+    private RelativeLayout layout_fit_how,layout_recommended;
+    private TextView tv_how_fit;
+
     private RelativeLayout layout_cup_back,layout_cup_next,layout_cup_next_2,layout_cup_back_2;
     private RelativeLayout layout_band_next_1,layout_band_back_1;
 
     private TextView tv_type_size,tb_out_of_stock,tv_not_recommended,tv_add_cart,tv_size_result;
 
-    private LinearLayout layout_size_selection,layout_recommended,layout_start_over;
+    private LinearLayout layout_size_selection,layout_start_over,layout_cup_row1,layout_cup_row2;
+
+    private RelativeLayout layout_close,layout_privacy,layout_popup;
+
+    private TextView tv_privacy_policy,tv_description;
 
     private boolean isBrandSelected = false;
     private boolean isEditFlow = false;
@@ -154,6 +163,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         layout_recommended = findViewById(R.id.layout_recommended);
         layout_start_over = findViewById(R.id.layout_start_over);
 
+
         layout_brand = findViewById(R.id.layout_brand);
         layout_bra_profile = findViewById(R.id.layout_bra_profile);
         layout_result = findViewById(R.id.layout_result);
@@ -161,14 +171,26 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_not_recommended = findViewById(R.id.tv_not_recommended);
         tv_add_cart = findViewById(R.id.tv_add_cart);
         tv_size_result = findViewById(R.id.tv_size_result);
+        tv_privacy_policy = findViewById(R.id.tv_privacy_policy);
+        tv_description = findViewById(R.id.tv_description);
+
+        layout_close = findViewById(R.id.layout_close);
+        layout_privacy = findViewById(R.id.layout_privacy);
+        layout_popup = findViewById(R.id.layout_popup);
 
         layout_cup_back = findViewById(R.id.layout_cup_back);
         layout_cup_next = findViewById(R.id.layout_cup_next);
         layout_cup_next_2 = findViewById(R.id.layout_cup_next_2);
         layout_cup_back_2 = findViewById(R.id.layout_cup_back_2);
+        layout_cup_row1 = findViewById(R.id.layout_cup_row1);
+        layout_cup_row2 = findViewById(R.id.layout_cup_row2);
 
         layout_band_next_1 = findViewById(R.id.layout_band_next_1);
         layout_band_back_1 = findViewById(R.id.layout_band_back_1);
+
+        layout_fit_how = findViewById(R.id.layout_fit_how);
+
+        tv_how_fit = findViewById(R.id.tv_how_fit);
 
         tv_brand_continue = findViewById(R.id.tv_brand_continue);
         tv_bra_continue = findViewById(R.id.tv_bra_continue);
@@ -268,11 +290,21 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         layout_cup_11.setOnClickListener(this);
         layout_cup_12.setOnClickListener(this);
 
-        SpannableString content;
+        SpannableString content, content2;
 
         content = new SpannableString(getResources().getString(R.string.bra_brand_not_listed));
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         tv_brand_not_listed.setText(content);
+
+        content2 = new SpannableString(getResources().getString(R.string.bra_result_how_fit));
+        content2.setSpan(new UnderlineSpan(), 0, content2.length(), 0);
+        tv_how_fit.setText(content2);
+
+
+        if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
+        {
+            tv_description.setVisibility(View.GONE);
+        }
 
 
         brandAdapter = new BrandAdapter(brandModelArrayList, BraFlow.this, new BrandAdapter.onItemClickListener() {
@@ -376,6 +408,26 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         });
 
 
+        layout_cup_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_cup_row1.setVisibility(View.GONE);
+                layout_cup_row2.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        layout_cup_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_cup_row1.setVisibility(View.VISIBLE);
+                layout_cup_row2.setVisibility(View.GONE);
+
+            }
+        });
+
+
+
         layout_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -386,6 +438,22 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_add.setVisibility(View.GONE);
                 tv_brand_error.setText(getResources().getString(R.string.brand_thanks));
                 layout_brands.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        tv_how_fit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (layout_fit_how.getVisibility() == View.VISIBLE)
+                {
+                    layout_fit_how.setVisibility(View.GONE);
+                }
+                else
+                {
+                    layout_fit_how.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -438,6 +506,73 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 checkBraSize(band,cup,isWired);
             }
         });
+
+
+        layout_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("recommended",isRecommended);
+                returnIntent.putExtra("result",size);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+            }
+        });
+
+        tv_privacy_policy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://wearepixibo.com/privacypolicy"));
+                startActivity(browserIntent);
+            }
+        });
+
+        layout_popup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                layout_popup.setVisibility(View.GONE);
+            }
+        });
+
+        layout_privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (layout_popup.getVisibility() == View.VISIBLE)
+                {
+                    layout_popup.setVisibility(View.GONE);
+                }
+                else
+                {
+                    layout_popup.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
+
+        layout_start_over.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                resetData();
+
+               // progress(1);
+
+                clearAllBands();
+                clearAllCup();
+
+                braSizeTypeAdapter.updatePosition(0);
+
+                braSizeTypeAdapter.notifyDataSetChanged();
+
+                layout_brand.setVisibility(View.VISIBLE);
+                layout_result.setVisibility(View.GONE);
+
+            }
+        });
+
 
         tv_brand_continue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1136,32 +1271,39 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             if (i == 5)
             {
                 tv_cup_6.setText(list.get(i).toString());
+                layout_cup_6.setVisibility(View.VISIBLE);
                 layout_cup_back.setVisibility(View.VISIBLE);
                 layout_cup_next.setVisibility(View.VISIBLE);
             }
             if (i == 6)
             {
                 tv_cup_7.setText(list.get(i).toString());
+                layout_cup_7.setVisibility(View.VISIBLE);
             }
             if (i == 7)
             {
                 tv_cup_8.setText(list.get(i).toString());
+                layout_cup_8.setVisibility(View.VISIBLE);
             }
             if (i == 8)
             {
                 tv_cup_9.setText(list.get(i).toString());
+                layout_cup_9.setVisibility(View.VISIBLE);
             }
             if (i == 9)
             {
                 tv_cup_10.setText(list.get(i).toString());
+                layout_cup_10.setVisibility(View.VISIBLE);
             }
             if (i == 10)
             {
                 tv_cup_11.setText(list.get(i).toString());
+                layout_cup_11.setVisibility(View.VISIBLE);
             }
             if (i == 11)
             {
                 tv_cup_12.setText(list.get(i).toString());
+                layout_cup_12.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -1613,25 +1755,60 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_cup_5.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_6.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_cup_6.setVisibility(View.GONE);
         tv_cup_6.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_7.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_cup_7.setVisibility(View.GONE);
         tv_cup_7.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_cup_8.setVisibility(View.GONE);
         tv_cup_8.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_cup_9.setVisibility(View.GONE);
         tv_cup_9.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_10.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_cup_10.setVisibility(View.GONE);
         tv_cup_10.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_11.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_cup_11.setVisibility(View.GONE);
         tv_cup_11.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_12.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_cup_12.setVisibility(View.GONE);
         tv_cup_12.setTextColor(getResources().getColor(R.color.color_text_grey));
+
+    }
+
+    public void resetData()
+    {
+        et_what_brand.setText(null);
+
+        isBrandSelected = false ;
+
+        brand = "";
+        cup = "";
+        isWired = "";
+        bandFit = "";
+        cupFit = "";
+        strapsFit = "";
+        band = "";
+        region = "";
+        braSizeChart = "";
+        size = "";
+
+        isWired = "";
+
+        tv_type_unwired.setTextColor(getResources().getColor(R.color.grey_3));
+        layout_type_unwired.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+
+        tv_type_wired.setTextColor(getResources().getColor(R.color.grey_3));
+        layout_type_wired.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+
 
     }
 }

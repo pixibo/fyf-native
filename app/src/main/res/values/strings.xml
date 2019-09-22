@@ -170,6 +170,12 @@
     <string name="bra_type">TYPE</string>
     <string name="bra_result_best_size">For this style, the best size for you is</string>
     <string name="bra_result_how_fit">How should it fit?</string>
+    <string name="bra_result_tell_more">Tell us more about how your bra fits to make sure.</string>
+    <string name="bra_result_tell_more_text">The band on a new bra should fit properly on the last clasp. Straps should lie flat without slipping or digging. Lean forward and gently pull your breasts forward to fill out your cups. If there are no lumps or bulges, it’s the right fit.</string>
+    <string name="bra_result_taken_account">We’ve taken into account how your current bra fits.</string>
+    <string name="bra_result_accurate_fit">For a more accurate assessment, finish answering questions about how your bra fits.</string>
+    <string name="bra_cup_fit">How do the cups fit?</string>
+    <string name="bra_cup_gaps">Where are the gaps?</string>
 
 
     <string name="bra_brand_cotton_on_body" translatable="false">Cotton On Body</string>
