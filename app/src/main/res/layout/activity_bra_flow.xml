@@ -61,8 +61,7 @@
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_close"
-                />
+                android:src="@drawable/ic_close" />
 
 
         </RelativeLayout>
@@ -525,7 +524,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:visibility="gone"
                     android:id="@+id/layout_band_row2">
 
@@ -536,6 +534,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_band_back_1"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -553,6 +552,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_band_6"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -571,6 +571,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_band_7"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -588,6 +589,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_band_8"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -605,6 +607,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_band_9"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -622,6 +625,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_band_10"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -803,6 +807,7 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
+                        android:visibility="invisible"
                         android:id="@+id/layout_cup_back"
                         android:background="@drawable/bg_button_unselected">
 
@@ -819,6 +824,7 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
+                        android:visibility="invisible"
                         android:id="@+id/layout_cup_6"
                         android:background="@drawable/bg_button_unselected">
 
@@ -837,6 +843,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_7"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -854,6 +861,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_8"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -871,6 +879,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_9"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -888,6 +897,7 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_next_2"
+                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -913,6 +923,7 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
+                        android:visibility="invisible"
                         android:id="@+id/layout_cup_back_2"
                         android:background="@drawable/bg_button_unselected">
 
@@ -929,6 +940,7 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
+                        android:visibility="invisible"
                         android:id="@+id/layout_cup_10"
                         android:background="@drawable/bg_button_unselected">
 
@@ -946,6 +958,7 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
+                        android:visibility="invisible"
                         android:id="@+id/layout_cup_11"
                         android:background="@drawable/bg_button_unselected">
 
@@ -1551,7 +1564,7 @@
                 android:textSize="18sp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/apercu_regular"
-                android:text="@string/bra_bra_size"/>
+                android:text="@string/bra_band_feel"/>
 
 
 
@@ -1560,6 +1573,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:orientation="vertical"
+                android:id="@+id/layout_bra_sizes"
                 android:layout_below="@+id/tv_bra_size">
 
 
@@ -1571,9 +1585,10 @@
                     android:layout_height="90dp">
 
                     <ImageView
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:layout_margin="5dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_bra_digging_in_unselected"
                         android:id="@+id/ic_digging_in"/>
 
                     <TextView
@@ -1595,8 +1610,9 @@
                         android:layout_below="@+id/tv_digging_in"
                         android:text="The band digs in and feels tight"
                         android:textSize="11sp"
+                        android:id="@+id/tv_digging_in_description"
                         android:fontFamily="@font/apercu_regular"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey_4"
                         android:layout_marginTop="5dp"/>
 
 
@@ -1613,9 +1629,10 @@
                     android:layout_height="90dp">
 
                     <ImageView
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:layout_margin="5dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_bra_straight_unselected"
                         android:id="@+id/ic_straight"/>
 
                     <TextView
@@ -1637,8 +1654,9 @@
                         android:layout_below="@+id/tv_straight"
                         android:text="The band feels comfortable and is parallel to the floor"
                         android:textSize="11sp"
+                        android:id="@+id/tv_straight_description"
                         android:fontFamily="@font/apercu_regular"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey_4"
                         android:layout_marginTop="5dp"/>
 
 
@@ -1653,9 +1671,10 @@
                     android:layout_height="90dp">
 
                     <ImageView
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:layout_margin="5dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_bra_riding_up_unselected"
                         android:id="@+id/ic_riding_up"/>
 
                     <TextView
@@ -1677,8 +1696,9 @@
                         android:layout_below="@+id/tv_riding_up"
                         android:text="The band rides up when I lift my arms "
                         android:textSize="11sp"
+                        android:id="@+id/tv_riding_up_description"
                         android:fontFamily="@font/apercu_regular"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey_4"
                         android:layout_marginTop="5dp"/>
 
 
@@ -1687,6 +1707,86 @@
 
 
             </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_bra_sizes"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_bra_sizes_text"
+                android:textAllCaps="true"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_text"
+                android:textSize="12sp" />
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_bra_sizes_text"
+                android:paddingTop="30dp"
+                android:paddingBottom="65dp"
+                android:layout_alignParentBottom="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:id="@+id/tv_back_band_feel"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:drawableStart="@drawable/ic_back"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_bra_feel_button"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true">
+
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_bra_feel_no"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_no"
+                        android:layout_marginEnd="5dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_bra_feel_yes"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_yes"
+                        android:layout_marginStart="5dp"
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+
+            </RelativeLayout>
+
 
 
 
@@ -1699,13 +1799,11 @@
 <!--        Bra cup feel page ends here-->
 
 
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_header"
-            android:id="@+id/layout_cup_feel"
+            android:id="@+id/layout_cup_fit"
             android:visibility="gone"
             android:layout_marginTop="2dp"
             android:paddingStart="20dp"
@@ -1732,7 +1830,6 @@
                 android:layout_below="@+id/tv_cup_size">
 
 
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:background="@drawable/bg_dropdown"
@@ -1740,9 +1837,10 @@
                     android:layout_height="90dp">
 
                     <ImageView
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:layout_margin="5dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_cup_right_unselected"
                         android:id="@+id/ic_just_right"/>
 
                     <TextView
@@ -1764,8 +1862,9 @@
                         android:layout_below="@+id/tv_just_right"
                         android:text="The breasts fill the cups fully"
                         android:textSize="11sp"
+                        android:id="@+id/tv_just_right_description"
                         android:fontFamily="@font/apercu_regular"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey_4"
                         android:layout_marginTop="5dp"/>
 
 
@@ -1782,9 +1881,10 @@
                     android:layout_height="90dp">
 
                     <ImageView
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:layout_margin="5dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_cup_slipping_unselected"
                         android:id="@+id/ic_slipping"/>
 
                     <TextView
@@ -1806,8 +1906,9 @@
                         android:layout_below="@+id/tv_slipping"
                         android:text="The breasts are bulging out of the cups"
                         android:textSize="11sp"
+                        android:id="@+id/tv_slipping_description"
                         android:fontFamily="@font/apercu_regular"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey_4"
                         android:layout_marginTop="5dp"/>
 
 
@@ -1822,9 +1923,10 @@
                     android:layout_height="90dp">
 
                     <ImageView
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:layout_margin="5dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_gaps_unselected"
                         android:id="@+id/ic_gap"/>
 
                     <TextView
@@ -1846,8 +1948,9 @@
                         android:layout_below="@+id/tv_gap"
                         android:text="There are gaps between my breasts and the cups"
                         android:textSize="11sp"
+                        android:id="@+id/tv_gap_description"
                         android:fontFamily="@font/apercu_regular"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey_4"
                         android:layout_marginTop="5dp"/>
 
 
@@ -1875,6 +1978,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_header"
             android:id="@+id/layout_gaps"
+            android:visibility="gone"
             android:layout_marginTop="2dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
@@ -1998,6 +2102,530 @@
 
 
 <!--         Gap page ends here-->
+
+
+
+<!--        Bra style page starts here-->
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_header"
+            android:id="@+id/layout_bra_style"
+            android:visibility="gone"
+            android:layout_marginTop="2dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_bra_style"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/apercu_regular"
+                android:text="@string/bra_fav_style"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:orientation="vertical"
+                android:layout_below="@+id/tv_bra_style">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_full_coverage"
+                    android:layout_height="76dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:id="@+id/ic_full_coverage"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_full_coverage"
+                        android:text="Full coverage bra"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_full_coverage"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_full_coverage"
+                        android:layout_below="@+id/tv_full_coverage"
+                        android:text="High neckline that is designed to cover almost all of your breast."
+                        android:textSize="10sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="5dp"/>
+
+
+                </RelativeLayout>
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_half_cup"
+                    android:layout_marginTop="4dp"
+                    android:layout_height="76dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:id="@+id/ic_half_cup"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_half_cup"
+                        android:text="Half-cup demi"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_half_cup"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_half_cup"
+                        android:layout_below="@+id/tv_half_cup"
+                        android:text="Less upper breast coverage with the cup coverage 1” above the nipple point."
+                        android:textSize="10sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="5dp"/>
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_pushup"
+                    android:layout_marginTop="4dp"
+                    android:layout_height="76dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:id="@+id/ic_pushup"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_pushup"
+                        android:text="Plunge / Push Up"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_pushup"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_pushup"
+                        android:layout_below="@+id/tv_pushup"
+                        android:text="Very low cut deep neckline with thin center front."
+                        android:textSize="10sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="5dp"/>
+
+
+                </RelativeLayout>
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_strapless"
+                    android:layout_marginTop="4dp"
+                    android:layout_height="76dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:id="@+id/ic_strapless"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strapless"
+                        android:text="Strapless / Balconette bra"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_strapless"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strapless"
+                        android:layout_below="@+id/tv_strapless"
+                        android:text="Has more of a horizontal line along the top of the cups with half cup coverage."
+                        android:textSize="10sp"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="5dp"/>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <!--        Bra style page ends here-->
+
+
+
+        <!--        Bra strap fit page starts here-->
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_header"
+            android:id="@+id/layout_strap_fit"
+            android:layout_marginTop="2dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_bra_strap_fit"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/apercu_regular"
+                android:text="@string/bra_strap_fit"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="62dp"
+                android:orientation="vertical"
+                android:layout_below="@+id/tv_bra_strap_fit">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_strap_digging_in"
+                    android:layout_height="92dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/ic_strap_digging_in_unselected"
+                        android:id="@+id/ic_strap_digging_in"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strap_digging_in"
+                        android:text="Digging in"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_strap_digging_in"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strap_digging_in"
+                        android:layout_below="@+id/tv_strap_digging_in"
+                        android:text="The straps are leaving marks on my shoulder"
+                        android:textSize="11sp"
+                        android:id="@+id/tv_strap_digging_in_description"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/grey_4"
+                        android:layout_marginTop="5dp"/>
+
+
+                </RelativeLayout>
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_strap_fit_fine"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="92dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/ic_strap_fit_fine_unselected"
+                        android:id="@+id/ic_strap_fit_fine"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strap_fit_fine"
+                        android:text="Fit fine"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_strap_fit_fine"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strap_fit_fine"
+                        android:layout_below="@+id/tv_strap_fit_fine"
+                        android:text="The straps are comfortable with two fingers underneath"
+                        android:textSize="11sp"
+                        android:id="@+id/tv_strap_fit_fine_description"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/grey_4"
+                        android:layout_marginTop="5dp"/>
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_strap_not_up"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="92dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/ic_strap_not_staying_unselected"
+                        android:id="@+id/ic_strap_not_up"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strap_not_up"
+                        android:text="Not staying up"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_strap_not_up"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_strap_not_up"
+                        android:layout_below="@+id/tv_strap_not_up"
+                        android:text="Even after tightening the straps, they do not stay up"
+                        android:textSize="11sp"
+                        android:id="@+id/tv_strap_not_up_description"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/grey_4"
+                        android:layout_marginTop="5dp"/>
+
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <!--        Bra strap fit page ends here-->
+
+        <!--        Underwire side page starts here-->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_header"
+            android:id="@+id/layout_underwire_side"
+            android:visibility="gone"
+            android:layout_marginTop="2dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_underwire_side"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/apercu_regular"
+                android:text="@string/bra_underwire_bust"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:orientation="vertical"
+                android:layout_below="@+id/tv_underwire_side">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_digging_arms"
+                    android:layout_height="90dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:id="@+id/ic_digging_arms"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_digging_arms"
+                        android:text="They are digging up my arms"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_digging_arms"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_around_bust"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="90dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:id="@+id/ic_around_bust"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_around_bust"
+                        android:text="They sit nicely around my bust"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_around_bust"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_digging_chest"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="90dp">
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:id="@+id/ic_digging_chest"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/ic_digging_chest"
+                        android:text="They are digging into my chest"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_digging_chest"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <!--         Underwire side page ends here-->
+
+
+
 
 
         <RelativeLayout

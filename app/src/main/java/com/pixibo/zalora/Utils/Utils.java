@@ -45,7 +45,7 @@ public class Utils {
 
     public static enum TYPE {
         ValidateUserUid,ValidateUserAltId,BrandSuggestion,BrandSizes,SizeFromApi,MergeProfile,ResetProfile,UpdateProfile,BodyProfile,
-        Track,BraSize,GetSize,ConversionTracking,BrandCategorySuggestion,BrandSizeSuggestion,UpdateData,NewBrand;
+        Track,BraSize,GetSize,ConversionTracking,BrandCategorySuggestion,BrandSizeSuggestion,UpdateData,NewBrand,validateSKU;
     }
 
 
@@ -203,7 +203,7 @@ public class Utils {
         int inchesPart = 0;
         if(!TextUtils.isEmpty(centemeter)) {
             double dCentimeter = Double.valueOf(centemeter);
-            inchesPart = (int) Math.floor((dCentimeter * 0.393));
+            inchesPart = (int) Math.ceil((dCentimeter * 0.393));
         }
         if (inchesPart == 0)
         {
@@ -217,10 +217,11 @@ public class Utils {
     }
 
     public static String InchTocentimeter(String inch) {
+
         int cmPart = 0;
         if(!TextUtils.isEmpty(inch)) {
             double dCm = Double.valueOf(inch);
-            cmPart = (int) Math.ceil((dCm * 2.54));
+            cmPart = (int) Math.floor((dCm * 2.54));
         }
         if (cmPart == 0)
         {

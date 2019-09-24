@@ -3,6 +3,7 @@ package com.pixibo.zalora.Bra;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
@@ -18,6 +19,7 @@ import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -88,9 +90,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private EditText et_what_brand;
 
     private RelativeLayout layout_brand_search,layout_add,layout_brands,layout_loading;
-    private RelativeLayout layout_brand,layout_bra_profile,layout_result;
+    private RelativeLayout layout_brand,layout_bra_profile,layout_result,layout_band_feel,layout_cup_fit,layout_gaps,layout_strap_fit;
     private TextView tv_brand_continue,tv_bra_continue;
-    private TextView tv_back_bra;
+    private TextView tv_back_bra,tv_back_band_feel;
     private TextView tv_brand_1,tv_brand_2,tv_brand_3,tv_brand_4,tv_brand_5;
 
     private TextView tv_band_1,tv_band_2,tv_band_3,tv_band_4,tv_band_5,tv_band_6,tv_band_7,tv_band_8,tv_band_9,tv_band_10;
@@ -110,11 +112,30 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
     private TextView tv_type_size,tb_out_of_stock,tv_not_recommended,tv_add_cart,tv_size_result;
 
-    private LinearLayout layout_size_selection,layout_start_over,layout_cup_row1,layout_cup_row2;
+    private LinearLayout layout_size_selection,layout_start_over,layout_cup_row1,layout_cup_row2,layout_cup_row3,layout_band_row1,layout_band_row2;
 
     private RelativeLayout layout_close,layout_privacy,layout_popup;
 
     private TextView tv_privacy_policy,tv_description;
+
+    private RelativeLayout layout_digging_in,layout_straight,layout_riding_up;
+    private TextView tv_digging_in,tv_straight,tv_riding_up;
+    private TextView tv_digging_in_description,tv_straight_description,tv_riding_up_description;
+    private TextView tv_bra_sizes_text,tv_bra_feel_no,tv_bra_feel_yes;
+    private ImageView ic_digging_in,ic_straight,ic_riding_up;
+    private LinearLayout layout_bra_feel_button;
+
+
+    private RelativeLayout layout_just_right,layout_slipping,layout_gap;
+    private TextView tv_just_right,tv_slipping,tv_gap;
+    private TextView tv_just_right_description,tv_slipping_description,tv_gap_description;
+    private ImageView ic_just_right,ic_slipping,ic_gap;
+
+
+    private RelativeLayout layout_strap_digging_in,layout_strap_fit_fine,layout_strap_not_up;
+    private TextView tv_strap_digging_in,tv_strap_fit_fine,tv_strap_not_up;
+    private TextView tv_strap_digging_in_description,tv_strap_fit_fine_description,tv_strap_not_up_description;
+    private ImageView ic_strap_digging_in,ic_strap_fit_fine,ic_strap_not_up;
 
     private boolean isBrandSelected = false;
     private boolean isEditFlow = false;
@@ -167,6 +188,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         layout_brand = findViewById(R.id.layout_brand);
         layout_bra_profile = findViewById(R.id.layout_bra_profile);
         layout_result = findViewById(R.id.layout_result);
+        layout_band_feel = findViewById(R.id.layout_band_feel);
+        layout_cup_fit = findViewById(R.id.layout_cup_fit);
+        layout_gaps = findViewById(R.id.layout_gaps);
+        layout_strap_fit = findViewById(R.id.layout_strap_fit);
+
+
         tb_out_of_stock = findViewById(R.id.tb_out_of_stock);
         tv_not_recommended = findViewById(R.id.tv_not_recommended);
         tv_add_cart = findViewById(R.id.tv_add_cart);
@@ -180,10 +207,16 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
         layout_cup_back = findViewById(R.id.layout_cup_back);
         layout_cup_next = findViewById(R.id.layout_cup_next);
+
         layout_cup_next_2 = findViewById(R.id.layout_cup_next_2);
         layout_cup_back_2 = findViewById(R.id.layout_cup_back_2);
+
         layout_cup_row1 = findViewById(R.id.layout_cup_row1);
         layout_cup_row2 = findViewById(R.id.layout_cup_row2);
+        layout_cup_row3 = findViewById(R.id.layout_cup_row3);
+
+        layout_band_row1= findViewById(R.id.layout_band_row1);
+        layout_band_row2 = findViewById(R.id.layout_band_row2);
 
         layout_band_next_1 = findViewById(R.id.layout_band_next_1);
         layout_band_back_1 = findViewById(R.id.layout_band_back_1);
@@ -196,6 +229,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_bra_continue = findViewById(R.id.tv_bra_continue);
 
         tv_back_bra = findViewById(R.id.tv_back_bra);
+        tv_back_band_feel = findViewById(R.id.tv_back_band_feel);
 
         et_what_brand = findViewById(R.id.et_what_brand);
 
@@ -203,6 +237,67 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
         recycler_brand_suggestion = findViewById(R.id.recycler_brand_suggestion);
         recycler_bra_sizeType = findViewById(R.id.recycler_bra_sizeType);
+
+        layout_digging_in = findViewById(R.id.layout_digging_in);
+        layout_straight = findViewById(R.id.layout_straight);
+        layout_riding_up = findViewById(R.id.layout_riding_up);
+
+
+        tv_digging_in = findViewById(R.id.tv_digging_in);
+        tv_straight = findViewById(R.id.tv_straight);
+        tv_riding_up = findViewById(R.id.tv_riding_up);
+
+        tv_digging_in_description = findViewById(R.id.tv_digging_in_description);
+        tv_straight_description = findViewById(R.id.tv_straight_description);
+        tv_riding_up_description = findViewById(R.id.tv_riding_up_description);
+
+        ic_digging_in = findViewById(R.id.ic_digging_in);
+        ic_straight = findViewById(R.id.ic_straight);
+        ic_riding_up = findViewById(R.id.ic_riding_up);
+
+        tv_bra_sizes_text = findViewById(R.id.tv_bra_sizes_text);
+        tv_bra_feel_no = findViewById(R.id.tv_bra_feel_no);
+        tv_bra_feel_yes = findViewById(R.id.tv_bra_feel_yes);
+
+
+        layout_just_right = findViewById(R.id.layout_just_right);
+        layout_slipping = findViewById(R.id.layout_slipping);
+        layout_gap = findViewById(R.id.layout_gap);
+
+
+        tv_just_right = findViewById(R.id.tv_just_right);
+        tv_slipping = findViewById(R.id.tv_slipping);
+        tv_gap = findViewById(R.id.tv_gap);
+
+        tv_just_right_description = findViewById(R.id.tv_just_right_description);
+        tv_slipping_description = findViewById(R.id.tv_slipping_description);
+        tv_gap_description = findViewById(R.id.tv_gap_description);
+
+        ic_just_right = findViewById(R.id.ic_just_right);
+        ic_slipping = findViewById(R.id.ic_slipping);
+        ic_gap = findViewById(R.id.ic_gap);
+
+        layout_strap_digging_in = findViewById(R.id.layout_strap_digging_in);
+        layout_strap_fit_fine = findViewById(R.id.layout_strap_fit_fine);
+        layout_strap_not_up = findViewById(R.id.layout_strap_not_up);
+
+        tv_strap_digging_in = findViewById(R.id.tv_strap_digging_in);
+        tv_strap_fit_fine = findViewById(R.id.tv_strap_fit_fine);
+        tv_strap_not_up = findViewById(R.id.tv_strap_not_up);
+
+        tv_strap_digging_in_description = findViewById(R.id.tv_strap_digging_in_description);
+        tv_strap_fit_fine_description = findViewById(R.id.tv_strap_fit_fine_description);
+        tv_strap_not_up_description = findViewById(R.id.tv_strap_not_up_description);
+
+        ic_strap_digging_in = findViewById(R.id.ic_strap_digging_in);
+        ic_strap_fit_fine = findViewById(R.id.ic_strap_fit_fine);
+        ic_strap_not_up = findViewById(R.id.ic_strap_not_up);
+
+        tv_bra_sizes_text = findViewById(R.id.tv_bra_sizes_text);
+        tv_bra_feel_no = findViewById(R.id.tv_bra_feel_no);
+        tv_bra_feel_yes = findViewById(R.id.tv_bra_feel_yes);
+
+        layout_bra_feel_button = findViewById(R.id.layout_bra_feel_button);
 
         tv_brand_1 = findViewById(R.id.tv_brand_1);
         tv_brand_2 = findViewById(R.id.tv_brand_2);
@@ -338,10 +433,20 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_size_selection.setVisibility(View.GONE);
 
-                setBraSizes(braSizeChart,region);
+                hideAllBands();
+                hideAllCup();
 
                 clearAllBands();
                 clearAllCup();
+
+                layout_cup_row1.setVisibility(View.VISIBLE);
+                layout_cup_row2.setVisibility(View.GONE);
+
+                layout_band_row1.setVisibility(View.VISIBLE);
+                layout_band_row2.setVisibility(View.GONE);
+
+                setBraSizes(braSizeChart,region);
+
                 checkBraSize(band,cup,isWired);
 
                 braSizeTypeAdapter.notifyDataSetChanged();
@@ -427,6 +532,44 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         });
 
 
+        layout_cup_next_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_cup_row2.setVisibility(View.GONE);
+                layout_cup_row3.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        layout_cup_back_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_cup_row2.setVisibility(View.VISIBLE);
+                layout_cup_row3.setVisibility(View.GONE);
+
+            }
+        });
+
+
+        layout_band_next_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_band_row1.setVisibility(View.GONE);
+                layout_band_row2.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        layout_band_back_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_band_row1.setVisibility(View.VISIBLE);
+                layout_band_row2.setVisibility(View.GONE);
+
+            }
+        });
+
+
 
         layout_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -438,6 +581,18 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_add.setVisibility(View.GONE);
                 tv_brand_error.setText(getResources().getString(R.string.brand_thanks));
                 layout_brands.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        tv_add_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("recommended",isRecommended);
+                returnIntent.putExtra("result",size);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
             }
         });
 
@@ -641,13 +796,176 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
 
 
+        tv_back_band_feel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout_cup_fit.setVisibility(View.GONE);
+                layout_band_feel.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+        layout_digging_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearBraSize();
+                layout_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_digging_in.setTextColor(getResources().getColor(R.color.color_text));
+                tv_digging_in_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_digging_in.setImageResource(R.drawable.ic_bra_digging_in_selected);
+
+                tv_bra_sizes_text.setText(getResources().getString(R.string.bra_feel_digging));
+
+                layout_bra_feel_button.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        layout_straight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearBraSize();
+                layout_straight.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_straight.setTextColor(getResources().getColor(R.color.color_text));
+                tv_straight_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_straight.setImageResource(R.drawable.ic_bra_straight_selected);
+
+                tv_bra_sizes_text.setText("");
+
+                layout_bra_feel_button.setVisibility(View.GONE);
+
+                layout_cup_fit.setVisibility(View.VISIBLE);
+                layout_band_feel.setVisibility(View.GONE);
+
+
+            }
+        });
+
+        layout_riding_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearBraSize();
+                layout_riding_up.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_riding_up.setTextColor(getResources().getColor(R.color.color_text));
+                tv_riding_up_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_riding_up.setImageResource(R.drawable.ic_bra_riding_up_selected);
+
+                tv_bra_sizes_text.setText(getResources().getString(R.string.bra_feel_riding_up));
+
+                layout_bra_feel_button.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        layout_just_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearCupFit();
+                layout_just_right.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_just_right.setTextColor(getResources().getColor(R.color.color_text));
+                tv_just_right_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_just_right.setImageResource(R.drawable.ic_cup_right_selected);
+
+
+                layout_cup_fit.setVisibility(View.GONE);
+                layout_strap_fit.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        layout_slipping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearCupFit();
+                layout_slipping.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_slipping.setTextColor(getResources().getColor(R.color.color_text));
+                tv_slipping_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_slipping.setImageResource(R.drawable.ic_cup_slipping_selected);
+
+                layout_cup_fit.setVisibility(View.GONE);
+                layout_strap_fit.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        layout_gap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearCupFit();
+                layout_gap.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_gap.setTextColor(getResources().getColor(R.color.color_text));
+                tv_gap_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_gap.setImageResource(R.drawable.ic_gaps_selected);
+
+                layout_cup_fit.setVisibility(View.GONE);
+                layout_gaps.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+        layout_strap_digging_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearStrapFit();
+                layout_strap_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_strap_digging_in.setTextColor(getResources().getColor(R.color.color_text));
+                tv_strap_digging_in_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_strap_digging_in.setImageResource(R.drawable.ic_strap_digging_in_selected);
+
+
+//                layout_cup_fit.setVisibility(View.GONE);
+//                layout_strap_fit.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        layout_strap_fit_fine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearStrapFit();
+                layout_strap_fit_fine.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_strap_fit_fine.setTextColor(getResources().getColor(R.color.color_text));
+                tv_strap_fit_fine_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_strap_fit_fine.setImageResource(R.drawable.ic_strap_fit_fine_selected);
+
+//                layout_cup_fit.setVisibility(View.GONE);
+//                layout_strap_fit.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        layout_strap_not_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clearStrapFit();
+                layout_strap_not_up.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_strap_not_up.setTextColor(getResources().getColor(R.color.color_text));
+                tv_strap_not_up_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_strap_not_up.setImageResource(R.drawable.ic_strap_not_staying_selected);
+
+//                layout_cup_fit.setVisibility(View.GONE);
+//                layout_gaps.setVisibility(View.VISIBLE);
+
+            }
+        });
+
 
         tv_brand_1.setOnClickListener(this);
         tv_brand_2.setOnClickListener(this);
         tv_brand_3.setOnClickListener(this);
         tv_brand_4.setOnClickListener(this);
         tv_brand_5.setOnClickListener(this);
-
 
         get_brands(gender,category);
         setDefaultBrands();
@@ -933,6 +1251,22 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                                 tv_type_size.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
 
+                                hideAllBands();
+                                hideAllCup();
+
+                                clearAllBands();
+                                clearAllCup();
+
+                                isWired = "";
+                                wired = false;
+
+                                tv_type_wired.setTextColor(getResources().getColor(R.color.grey_3));
+                                layout_type_wired.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+
+                                tv_type_unwired.setTextColor(getResources().getColor(R.color.grey_3));
+                                layout_type_unwired.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+
+
                                 setBraSizes(braSizeChart,obj.getString("region"));
                             }
 
@@ -1202,44 +1536,55 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             if (i == 0)
             {
                 tv_band_1.setText(list.get(i).toString());
+                layout_band_1.setVisibility(View.VISIBLE);
             }
             if (i == 1)
             {
                 tv_band_2.setText(list.get(i).toString());
+                layout_band_2.setVisibility(View.VISIBLE);
             }
             if (i == 2)
             {
                 tv_band_3.setText(list.get(i).toString());
+                layout_band_3.setVisibility(View.VISIBLE);
             }
             if (i == 3)
             {
                 tv_band_4.setText(list.get(i).toString());
+                layout_band_4.setVisibility(View.VISIBLE);
             }
             if (i == 4)
             {
                 tv_band_5.setText(list.get(i).toString());
+                layout_band_5.setVisibility(View.VISIBLE);
             }
             if (i == 5)
             {
                 tv_band_6.setText(list.get(i).toString());
+                layout_band_6.setVisibility(View.VISIBLE);
+
                 layout_band_next_1.setVisibility(View.VISIBLE);
                 layout_band_back_1.setVisibility(View.VISIBLE);
             }
             if (i == 6)
             {
                 tv_band_7.setText(list.get(i).toString());
+                layout_band_7.setVisibility(View.VISIBLE);
             }
             if (i == 7)
             {
                 tv_band_8.setText(list.get(i).toString());
+                layout_band_8.setVisibility(View.VISIBLE);
             }
             if (i == 8)
             {
                 tv_band_9.setText(list.get(i).toString());
+                layout_band_9.setVisibility(View.VISIBLE);
             }
             if (i == 9)
             {
                 tv_band_10.setText(list.get(i).toString());
+                layout_band_10.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -1251,27 +1596,33 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             if (i == 0)
             {
                 tv_cup_1.setText(list.get(i).toString());
+                layout_cup_1.setVisibility(View.VISIBLE);
             }
             if (i == 1)
             {
                 tv_cup_2.setText(list.get(i).toString());
+                layout_cup_2.setVisibility(View.VISIBLE);
             }
             if (i == 2)
             {
                 tv_cup_3.setText(list.get(i).toString());
+                layout_cup_3.setVisibility(View.VISIBLE);
             }
             if (i == 3)
             {
                 tv_cup_4.setText(list.get(i).toString());
+                layout_cup_4.setVisibility(View.VISIBLE);
             }
             if (i == 4)
             {
                 tv_cup_5.setText(list.get(i).toString());
+                layout_cup_5.setVisibility(View.VISIBLE);
             }
             if (i == 5)
             {
                 tv_cup_6.setText(list.get(i).toString());
                 layout_cup_6.setVisibility(View.VISIBLE);
+
                 layout_cup_back.setVisibility(View.VISIBLE);
                 layout_cup_next.setVisibility(View.VISIBLE);
             }
@@ -1700,6 +2051,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     public void clearAllBands()
     {
         band = "";
+
         layout_band_1.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
         tv_band_1.setTextColor(getResources().getColor(R.color.color_text_grey));
 
@@ -1729,6 +2081,34 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
         layout_band_10.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
         tv_band_10.setTextColor(getResources().getColor(R.color.color_text_grey));
+
+    }
+
+    public void hideAllBands()
+    {
+
+        layout_band_1.setVisibility(View.INVISIBLE);
+
+        layout_band_2.setVisibility(View.INVISIBLE);
+
+        layout_band_3.setVisibility(View.INVISIBLE);
+
+        layout_band_4.setVisibility(View.INVISIBLE);
+
+        layout_band_5.setVisibility(View.INVISIBLE);
+
+        layout_band_6.setVisibility(View.INVISIBLE);
+
+        layout_band_7.setVisibility(View.INVISIBLE);
+
+        layout_band_8.setVisibility(View.INVISIBLE);
+
+        layout_band_9.setVisibility(View.INVISIBLE);
+
+        layout_band_10.setVisibility(View.INVISIBLE);
+
+        layout_band_next_1.setVisibility(View.INVISIBLE);
+        layout_band_back_1.setVisibility(View.INVISIBLE);
     }
 
 
@@ -1755,33 +2135,118 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_cup_5.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_6.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_6.setVisibility(View.GONE);
         tv_cup_6.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_7.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_7.setVisibility(View.GONE);
         tv_cup_7.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_8.setVisibility(View.GONE);
+        layout_cup_8.setVisibility(View.INVISIBLE);
         tv_cup_8.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_9.setVisibility(View.GONE);
         tv_cup_9.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_10.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_10.setVisibility(View.GONE);
         tv_cup_10.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_11.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_11.setVisibility(View.GONE);
         tv_cup_11.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_12.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_12.setVisibility(View.GONE);
         tv_cup_12.setTextColor(getResources().getColor(R.color.color_text_grey));
 
+
+    }
+
+
+    public void hideAllCup()
+    {
+
+        layout_cup_1.setVisibility(View.INVISIBLE);
+
+        layout_cup_2.setVisibility(View.INVISIBLE);
+
+        layout_cup_3.setVisibility(View.INVISIBLE);
+
+        layout_cup_4.setVisibility(View.INVISIBLE);
+
+        layout_cup_5.setVisibility(View.INVISIBLE);
+
+        layout_cup_6.setVisibility(View.INVISIBLE);
+
+        layout_cup_7.setVisibility(View.INVISIBLE);
+
+        layout_cup_8.setVisibility(View.INVISIBLE);
+
+        layout_cup_9.setVisibility(View.INVISIBLE);
+
+        layout_cup_10.setVisibility(View.INVISIBLE);
+
+        layout_cup_11.setVisibility(View.INVISIBLE);
+
+        layout_cup_12.setVisibility(View.INVISIBLE);
+
+        layout_cup_back.setVisibility(View.INVISIBLE);
+        layout_cup_next.setVisibility(View.INVISIBLE);
+
+
+    }
+
+    public void clearBraSize()
+    {
+        layout_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_digging_in.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_digging_in_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_digging_in.setImageResource(R.drawable.ic_bra_digging_in_unselected);
+
+        layout_straight.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_straight.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_straight_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_straight.setImageResource(R.drawable.ic_bra_straight_unselected);
+
+        layout_riding_up.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_riding_up.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_riding_up_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_riding_up.setImageResource(R.drawable.ic_bra_riding_up_unselected);
+    }
+
+
+    public void clearCupFit()
+    {
+        layout_just_right.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_just_right.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_just_right_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_just_right.setImageResource(R.drawable.ic_cup_right_unselected);
+
+        layout_slipping.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_slipping.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_slipping_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_slipping.setImageResource(R.drawable.ic_cup_slipping_unselected);
+
+        layout_gap.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_gap.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_gap_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_gap.setImageResource(R.drawable.ic_gaps_unselected);
+    }
+
+
+    public void clearStrapFit()
+    {
+        layout_strap_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_strap_digging_in.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_strap_digging_in_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_strap_digging_in.setImageResource(R.drawable.ic_strap_digging_in_unselected);
+
+        layout_strap_fit_fine.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_strap_fit_fine.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_strap_fit_fine_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_strap_fit_fine.setImageResource(R.drawable.ic_strap_fit_fine_unselected);
+
+        layout_strap_not_up.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
+        tv_strap_not_up.setTextColor(getResources().getColor(R.color.grey_4));
+        tv_strap_not_up_description.setTextColor(getResources().getColor(R.color.grey_4));
+        ic_strap_not_up.setImageResource(R.drawable.ic_strap_not_staying_unselected);
     }
 
     public void resetData()
@@ -1804,10 +2269,10 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         isWired = "";
 
         tv_type_unwired.setTextColor(getResources().getColor(R.color.grey_3));
-        layout_type_unwired.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_type_unwired.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
 
         tv_type_wired.setTextColor(getResources().getColor(R.color.grey_3));
-        layout_type_wired.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        layout_type_wired.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
 
 
     }

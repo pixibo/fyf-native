@@ -3,9 +3,10 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
+        <device id="4.7in WXGA" />
+        <device id="pixel_2" />
         <device id="pixel_3a" />
         <device id="4.65in 720p (Galaxy Nexus)" />
-        <device id="4.7in WXGA" />
       </config>
     </shared>
   </component>
@@ -21,10 +22,23 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/drawable-hdpi/ic_wedges_female.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/drawable-mdpi/ic_wedges_female.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_wedges_female.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/drawable-xhdpi/ic_wedges_female.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/drawable-xxhdpi/ic_wedges_female.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/drawable-xxxhdpi/ic_wedges_female.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_wedges_female.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_wedges_female.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,54 +64,47 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="296" column="45" lean-forward="true" selection-start-line="296" selection-start-column="45" selection-end-line="296" selection-end-column="45" />
-              <folding>
-                <element signature="e#12387#12440#0" expanded="true" />
-                <element signature="e#17409#17597#0" expanded="true" />
-                <element signature="e#17596#17597#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="46" column="42" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="1969" column="51" lean-forward="true" selection-start-line="1969" selection-start-column="51" selection-end-line="1969" selection-end-column="51" />
+            <state relative-caret-position="621">
+              <caret line="954" column="91" lean-forward="true" selection-start-line="954" selection-start-column="91" selection-end-line="954" selection-end-column="91" />
               <folding>
-                <element signature="e#49686#49716#0" expanded="true" />
-                <element signature="e#51573#51607#0" expanded="true" />
-                <element signature="e#53443#53476#0" expanded="true" />
-                <element signature="e#55081#55109#0" expanded="true" />
-                <element signature="e#55599#55634#0" expanded="true" />
-                <element signature="e#56235#56263#0" expanded="true" />
-                <element signature="e#60417#60439#0" expanded="true" />
-                <element signature="e#66957#66978#0" expanded="true" />
-                <element signature="e#73467#73489#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#34285#34966#0" expanded="true" />
+                <element signature="e#34965#34966#0" expanded="true" />
+                <element signature="e#35034#35709#0" expanded="true" />
+                <element signature="e#35708#35709#0" expanded="true" />
+                <element signature="e#35760#36414#0" expanded="true" />
+                <element signature="e#36413#36414#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="177" column="30" selection-start-line="177" selection-start-column="18" selection-end-line="177" selection-end-column="30" />
+            <state relative-caret-position="168">
+              <caret line="2491" column="51" lean-forward="true" selection-start-line="2491" selection-start-column="51" selection-end-line="2491" selection-end-column="51" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="23" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="23" />
+            <state relative-caret-position="2685">
+              <caret line="179" column="31" selection-start-line="179" selection-start-column="18" selection-end-line="179" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -114,24 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tv_brand_1</find>
-      <find>tv_brand_range</find>
-      <find>add</find>
-      <find>tv_brand_band_1</find>
-      <find>layout_brand_band_selection</find>
-      <find>setBrandRangeRegular</find>
-      <find>tv_brand_band_</find>
-      <find>BrandSizes</find>
-      <find>brand_band</find>
-      <find>recycler_brand_category_model</find>
-      <find>tv_brand_</find>
-      <find>region</find>
-      <find>tv_band_5</find>
-      <find>,tv_band_10</find>
-      <find>tv_cup_5</find>
-      <find>tv_band_10</find>
-      <find>tv_cup_</find>
-      <find>tv_band_</find>
       <find>layout_band_1</find>
       <find>tv_band</find>
       <find>tv_bra_continue</find>
@@ -139,11 +128,29 @@
       <find>layout_result</find>
       <find>tv_band_1</find>
       <find>layout_close</find>
-      <find>start</find>
-      <find>layout_cup_next</find>
       <find>layout_cup_6</find>
       <find>tv_cup_6</find>
       <find>tv_gap</find>
+      <find>ValidateUserAltId</find>
+      <find>.toUpperCase()</find>
+      <find>tv_add_cart</find>
+      <find>cart</find>
+      <find>layout_cup_next</find>
+      <find>layout_digging_in</find>
+      <find>Intent</find>
+      <find>edit</find>
+      <find>bcupand</find>
+      <find>tv_con</find>
+      <find>sta</find>
+      <find>start</find>
+      <find>brand</find>
+      <find>discoverysvc.pixibo.com/bra</find>
+      <find>brandSize</find>
+      <find>regular</find>
+      <find>tv_back</find>
+      <find>out_brand.setVisibility</find>
+      <find>layout_strap_fit</find>
+      <find>clearCupFit</find>
     </findStrings>
     <replaceStrings>
       <replace>category</replace>
@@ -185,7 +192,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_startover_white.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_body_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Model/BrandModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/WebResources/GET.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-in/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml" />
@@ -196,51 +202,33 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BraSizeType.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BraSizeTypeAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/bg_result_tell_more.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="180" />
-    <option name="y" value="112" />
-    <option name="width" value="1080" />
-    <option name="height" value="676" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -248,16 +236,214 @@
               <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
               <item name="app" type="616d4139:PackageViewModuleNode" />
             </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-hdpi" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-mdpi" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-xhdpi" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-xxhdpi" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-xxxhdpi" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-hdpi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-mdpi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-xhdpi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-xxhdpi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-xxxhdpi" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope">
+        <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
               <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="drawable-hdpi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="drawable-mdpi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="drawable-xhdpi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="drawable-xxhdpi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/GitHub/fyf-native" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="drawable-xxxhdpi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -267,26 +453,30 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_API_27" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-22T17:56:26.565Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-24T09:22:15.158Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="Pixel_API_27" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-mdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.pixibo.zalora.Bra" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/app/src/main/res" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-mdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -387,10 +577,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.18383405" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.19456366" />
       <window_info id="Structure" order="2" sideWeight="0.50208336" side_tool="true" weight="0.22317597" />
       <window_info id="Favorites" order="3" sideWeight="0.5006196" side_tool="true" weight="0.23247497" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -399,51 +588,51 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3283767" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49893504" weight="0.57744735" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49840257" weight="0.4012158" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32961586" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32928064" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50106496" side_tool="true" weight="0.4448575" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50159746" side_tool="true" weight="0.44883487" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32928064" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3283767" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.32713756" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.32961586" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32961586" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" />
-      <window_info active="true" anchor="right" id="Preview" order="5" visible="true" weight="0.3190272" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.30543634" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="StringPreview" order="7" />
       <window_info anchor="right" id="Assistant" order="8" weight="0.32960597" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4993804" visible="true" weight="0.15379113" />
-      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.19456366" />
+      <window_info id="Structure" order="2" sideWeight="0.50208336" side_tool="true" weight="0.22317597" />
       <window_info id="Favorites" order="3" sideWeight="0.5006196" side_tool="true" weight="0.23247497" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.32961586" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49946752" weight="0.44857496" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.3283767" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49840257" weight="0.4012158" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32961586" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32928064" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5005325" side_tool="true" weight="0.4508612" />
-      <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.40768278" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50159746" side_tool="true" weight="0.44883487" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.32928064" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.32713756" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.32961586" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32961586" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.34620887" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.30543634" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="StringPreview" order="7" />
       <window_info anchor="right" id="Assistant" order="8" weight="0.32960597" />
@@ -470,7 +659,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java</url>
-          <line>3946</line>
+          <line>3970</line>
           <properties class="com.pixibo.zalora.Apparel.ApparelFlow" method="setBrandBandSize">
             <option name="EMULATED" value="true" />
           </properties>
@@ -524,12 +713,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="47" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="android-dummy:///Users/shekhar/Documents/GitHub/fyf-native/app/Translations Editor">
       <provider selected="true" editor-type-id="string-resource-editor" />
@@ -605,12 +794,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_brand_suggession.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -619,14 +808,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -670,42 +851,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="1666" lean-forward="true" selection-start-line="1666" selection-end-line="1666" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="205" column="67" selection-start-line="205" selection-start-column="67" selection-end-line="205" selection-end-column="67" />
-        </state>
-      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="1710" selection-start-line="1710" selection-end-line="1884" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_unselected.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -723,16 +883,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54375">
-          <caret line="3790" column="41" selection-start-line="3790" selection-start-column="41" selection-end-line="3790" selection-end-column="41" />
-          <folding>
-            <element signature="e#36898#37277#0" expanded="true" />
-            <element signature="e#37276#37277#0" expanded="true" />
-            <element signature="e#37881#38282#0" expanded="true" />
-            <element signature="e#38281#38282#0" expanded="true" />
-            <element signature="e#41683#42288#0" expanded="true" />
-            <element signature="e#42287#42288#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="286">
+          <caret line="2500" lean-forward="true" selection-start-line="2500" selection-end-line="2500" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_bra_digging_in_unselected.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_bra_straight_unselected.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="632">
+          <caret line="219" selection-start-line="219" selection-end-line="219" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31104">
+          <caret line="2256" column="56" lean-forward="true" selection-start-line="2256" selection-start-column="56" selection-end-line="2256" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -743,40 +924,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="296" column="45" lean-forward="true" selection-start-line="296" selection-start-column="45" selection-end-line="296" selection-end-column="45" />
-          <folding>
-            <element signature="e#12387#12440#0" expanded="true" />
-            <element signature="e#17409#17597#0" expanded="true" />
-            <element signature="e#17596#17597#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="177" column="30" selection-start-line="177" selection-start-column="18" selection-end-line="177" selection-end-column="30" />
+        <state relative-caret-position="2685">
+          <caret line="179" column="31" selection-start-line="179" selection-start-column="18" selection-end-line="179" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="1969" column="51" lean-forward="true" selection-start-line="1969" selection-start-column="51" selection-end-line="1969" selection-end-column="51" />
+        <state relative-caret-position="168">
+          <caret line="2491" column="51" lean-forward="true" selection-start-line="2491" selection-start-column="51" selection-end-line="2491" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="954" column="91" lean-forward="true" selection-start-line="954" selection-start-column="91" selection-end-line="954" selection-end-column="91" />
           <folding>
-            <element signature="e#49686#49716#0" expanded="true" />
-            <element signature="e#51573#51607#0" expanded="true" />
-            <element signature="e#53443#53476#0" expanded="true" />
-            <element signature="e#55081#55109#0" expanded="true" />
-            <element signature="e#55599#55634#0" expanded="true" />
-            <element signature="e#56235#56263#0" expanded="true" />
-            <element signature="e#60417#60439#0" expanded="true" />
-            <element signature="e#66957#66978#0" expanded="true" />
-            <element signature="e#73467#73489#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#34285#34966#0" expanded="true" />
+            <element signature="e#34965#34966#0" expanded="true" />
+            <element signature="e#35034#35709#0" expanded="true" />
+            <element signature="e#35708#35709#0" expanded="true" />
+            <element signature="e#35760#36414#0" expanded="true" />
+            <element signature="e#36413#36414#0" expanded="true" />
           </folding>
         </state>
       </provider>

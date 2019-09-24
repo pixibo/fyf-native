@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pixibo.zalora.Apparel.ApparelFlow;
 import com.pixibo.zalora.Bra.BraFlow;
@@ -38,8 +37,8 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.MergeProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ResetProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.SizeFromApi;
 import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateProfile;
-import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserAltId;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
+import static com.pixibo.zalora.Utils.Utils.TYPE.validateSKU;
 
 public class MainActivity extends AppCompatActivity implements Result {
 
@@ -162,12 +161,12 @@ public class MainActivity extends AppCompatActivity implements Result {
         });
 
 
-        validate_user(clientId,skuId);
+        validate_sku(clientId,skuId);
 
     }
 
 
-    private void validate_user(String clientId , String skuId) {
+    private void validate_sku(String clientId , String skuId) {
 
 
         try {
@@ -176,12 +175,12 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                 if (altId.equals(""))
                 {
-                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+uID , ValidateUserUid, this);
+                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+uID , validateSKU, this);
                     get.execute();
                 }
                 else
                 {
-                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+altId , ValidateUserAltId, this);
+                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+altId , validateSKU, this);
                     get.execute();
                 }
 
@@ -199,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
 
 
-    private void getData() {
+    private void validateUser() {
 
 
         try {
@@ -253,13 +252,13 @@ public class MainActivity extends AppCompatActivity implements Result {
     }
 
 
-    private void altIdHasProfile() {
+    private void altIdHasProfile(String UID) {
 
 
         try {
 
             if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
-                GET get = new GET(this, "https://discoverysvc.pixibo.com/merge/users/"+altId+"/"+uID , MergeProfile, this);
+                GET get = new GET(this, "https://discoverysvc.pixibo.com/merge/users/"+UID+"/"+uID , MergeProfile, this);
                 // Utils.showLoading(SettingActivity.this, false);
                 get.execute();
             } else {
@@ -383,156 +382,52 @@ public class MainActivity extends AppCompatActivity implements Result {
 
         switch (type)
         {
+
+            case validateSKU:
+
+                if (statusCode ==200)
+                {
+                    try
+                    {
+                        JSONObject userObject = new JSONObject(result);
+
+                        dataType = userObject.optString("type");
+
+                        gender = userObject.optString("gender");
+
+                        brand = userObject.optString("brandName");
+
+                        validateUser();
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                break;
+
+
             case ValidateUserUid:
                 try
                 {
 
                     if (statusCode == 200)
                     {
+                        JSONObject userObject = new JSONObject(result);
 
-
-                    JSONObject userObject = new JSONObject(result);
-
-                        if (userObject.has("type")) {
-
-                            dataType = userObject.optString("type");
-
-                            if (Arrays.asList(footwear_array).contains(dataType))
-                            {
-                                brand = userObject.optString("brandName");
-                            }
-
-                            gender = userObject.optString("gender");
-
-                            if(userObject.has("userInfo"))
-                            {
-                                JSONObject userInfoObject = new JSONObject(userObject.optString("userInfo"));
-
-                                if (userInfoObject.optString("uid").equals(null))
-                                {
-                                    updateCreateUserData(uID);
-                                }
-
-
-                                if(Arrays.asList(apparel_array).contains(dataType)){
-
-                                    if(gender.equals("male"))
-                                    {
-                                        sizeUrl = getApparelMaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
-
-                                        if(sizeUrl != null){
-
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-                                    }
-                                    else if(gender.equals("female"))
-                                    {
-                                        sizeUrl = getApparelFemaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
-
-                                        if(sizeUrl != null){
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-
-                                    }
-
-                                }
-
-                                else if (Arrays.asList(footwear_array).contains(dataType))
-                                {
-                                    if(gender.equals("male")){
-
-                                        sizeUrl = getMaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-
-                                        if(sizeUrl != null){
-
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-                                    }
-
-                                    else if(gender.equals("female")){
-
-                                        sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-
-                                        if(sizeUrl != null){
-
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-                                    }
-                                }
-
-                                else if (Arrays.asList(lingerie_array).contains(dataType))
-                                {
-                                    sizeUrl = null;
-
-                                    if(sizeUrl != null){
-
-                                        fetchSizeFromApi(sizeUrl);
-                                    }
-                                    else
-                                    {
-                                        layout_button.setVisibility(View.VISIBLE);
-                                        SpannableString content;
-                                        content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                        tv_find_my_size.setText(content);
-                                    }
-                                }
-
-
-                            }
-                            else
-                            {
-
-                                layout_button.setVisibility(View.VISIBLE);
-                                SpannableString content;
-                                content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                tv_find_my_size.setText(content);
-                            }
-
-
+                        if (!userObject.optString("uid").equals(uID))
+                        {
+                            altIdHasProfile(userObject.optString("uid"));
                         }
                         else
                         {
-                            layout_button.setVisibility(View.VISIBLE);
-                            SpannableString content;
-                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                            tv_find_my_size.setText(content);
+                            updateCreateUserData(uID);
+                            getData(userObject);
                         }
+
+
 
                     }
 
@@ -552,182 +447,6 @@ public class MainActivity extends AppCompatActivity implements Result {
                 }
                 break;
 
-
-            case ValidateUserAltId:
-                try
-                {
-
-                    if (statusCode == 200)
-                    {
-
-
-                    JSONObject userObject = new JSONObject(result);
-
-                        if (userObject.has("type")) {
-
-                            dataType = userObject.optString("type");
-                            gender = userObject.optString("gender");
-
-                            if (Arrays.asList(footwear_array).contains(dataType))
-                            {
-                                brand = userObject.optString("brandName");
-                            }
-
-                            if(userObject.has("userInfo"))
-                            {
-                                JSONObject userInfoObject = new JSONObject(userObject.optString("userInfo"));
-
-                                if (!userInfoObject.optString("uid").equals(null))
-                                {
-                                    altIdHasProfile();
-                                }
-                                else
-                                {
-                                    updateCreateUserData(uID);
-                                }
-
-                                Log.e("type",dataType);
-                                Log.e("gender",gender);
-
-                                if(Arrays.asList(apparel_array).contains(dataType)){
-
-                                    if(gender.equals("male"))
-                                    {
-                                        Log.e("Gender inside",gender);
-
-                                        sizeUrl = getApparelMaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
-                                        if(sizeUrl != null){
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-                                    }
-                                    else if(gender.equals("female"))
-                                    {
-                                        Log.e("Gender inside",gender);
-
-                                        sizeUrl = getApparelFemaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
-
-                                        if(sizeUrl != null){
-
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-
-
-                                    }
-
-                                }
-
-                                else if (Arrays.asList(footwear_array).contains(dataType))
-                                {
-                                    if(gender.equals("male")){
-
-                                        sizeUrl = getMaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-
-                                        if(sizeUrl != null){
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-                                    }
-                                    else if(gender.equals("female")){
-
-                                        sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
-
-                                        if(sizeUrl != null){
-
-                                            fetchSizeFromApi(sizeUrl);
-                                        }
-                                        else
-                                        {
-                                            layout_button.setVisibility(View.VISIBLE);
-                                            SpannableString content;
-                                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                            tv_find_my_size.setText(content);
-                                        }
-                                    }
-                                }
-
-                                else if (Arrays.asList(lingerie_array).contains(dataType))
-                                {
-                                    sizeUrl = null;
-
-                                    if(sizeUrl != null){
-
-                                        fetchSizeFromApi(sizeUrl);
-                                    }
-                                    else
-                                    {
-                                        layout_button.setVisibility(View.VISIBLE);
-                                        SpannableString content;
-                                        content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                        tv_find_my_size.setText(content);
-                                    }
-                                }
-
-
-                            }
-                            else
-                            {
-
-                                layout_button.setVisibility(View.VISIBLE);
-                                SpannableString content;
-                                content = new SpannableString(getResources().getString(R.string.find_my_size));
-                                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                tv_find_my_size.setText(content);
-                            }
-
-
-                        }
-                        else
-                        {
-                            layout_button.setVisibility(View.VISIBLE);
-                            SpannableString content;
-                            content = new SpannableString(getResources().getString(R.string.find_my_size));
-                            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                            tv_find_my_size.setText(content);
-                        }
-
-
-
-                    }
-
-                    else
-                    {
-                        layout_button.setVisibility(View.VISIBLE);
-                        SpannableString content;
-                        content = new SpannableString(getResources().getString(R.string.find_my_size));
-                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                        tv_find_my_size.setText(content);
-                    }
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-                break;
 
             case SizeFromApi:
                 try
@@ -778,6 +497,8 @@ public class MainActivity extends AppCompatActivity implements Result {
                     {
                         JSONObject object = new JSONObject(result);
 
+
+
                         String [] ids = {object.optString("uid"),uID};
 
                         for (String id : ids) {
@@ -786,6 +507,13 @@ public class MainActivity extends AppCompatActivity implements Result {
                                 resetClientProfile(clientId,id);
                             }
                         }
+
+                        getData(object);
+
+                        uID = object.optString("uid");
+                        altId = object.optString("altId");
+
+
                     }
                 }
                 catch (Exception e)
@@ -1110,6 +838,118 @@ public class MainActivity extends AppCompatActivity implements Result {
         tv_find_my_size.setText(content);
 
         layout_button.setVisibility(View.VISIBLE);
+    }
+
+
+    public void getData(JSONObject userInfoObject)
+    {
+        try
+        {
+            if(Arrays.asList(apparel_array).contains(dataType)){
+
+                if(gender.equals("male"))
+                {
+                    Log.e("Gender inside",gender);
+
+                    sizeUrl = getApparelMaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
+
+                    if(sizeUrl != null){
+
+                        fetchSizeFromApi(sizeUrl);
+                    }
+                    else
+                    {
+                        layout_button.setVisibility(View.VISIBLE);
+                        SpannableString content;
+                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                        tv_find_my_size.setText(content);
+                    }
+                }
+                else if(gender.equals("female"))
+                {
+                    Log.e("Gender inside",gender);
+
+                    sizeUrl = getApparelFemaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
+
+                    if(sizeUrl != null){
+
+                        fetchSizeFromApi(sizeUrl);
+                    }
+                    else
+                    {
+                        layout_button.setVisibility(View.VISIBLE);
+                        SpannableString content;
+                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                        tv_find_my_size.setText(content);
+                    }
+
+
+                }
+
+            }
+
+            else if (Arrays.asList(footwear_array).contains(dataType))
+            {
+                if(gender.equals("male")){
+
+                    sizeUrl = getMaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
+
+                    if(sizeUrl != null){
+
+                        fetchSizeFromApi(sizeUrl);
+                    }
+                    else
+                    {
+                        layout_button.setVisibility(View.VISIBLE);
+                        SpannableString content;
+                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                        tv_find_my_size.setText(content);
+                    }
+                }
+                else if(gender.equals("female")){
+
+                    sizeUrl = getFemaleFootwearUrl(userInfoObject,footwear_array, clientId, skuId, uID);
+
+                    if(sizeUrl != null){
+
+                        fetchSizeFromApi(sizeUrl);
+                    }
+                    else
+                    {
+                        layout_button.setVisibility(View.VISIBLE);
+                        SpannableString content;
+                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                        tv_find_my_size.setText(content);
+                    }
+                }
+            }
+
+            else if (Arrays.asList(lingerie_array).contains(dataType))
+            {
+                sizeUrl = null;
+
+                if(sizeUrl != null){
+
+                    fetchSizeFromApi(sizeUrl);
+                }
+                else
+                {
+                    layout_button.setVisibility(View.VISIBLE);
+                    SpannableString content;
+                    content = new SpannableString(getResources().getString(R.string.find_my_size));
+                    content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                    tv_find_my_size.setText(content);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 

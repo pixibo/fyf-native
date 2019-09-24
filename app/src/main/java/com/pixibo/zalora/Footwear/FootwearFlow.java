@@ -2459,8 +2459,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     referenceBrands.put("model",categoryModel);
                 }
 
-                referenceBrands.put("size",size);
-                referenceBrands.put("sizeType",sizeType);
+                referenceBrands.put("size",size.toUpperCase());
+                referenceBrands.put("sizeType",sizeType.toUpperCase());
 
 
                 referenceBrandsArray.put(0,referenceBrands);
@@ -2489,8 +2489,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 }
 
 
-                referenceBrands.put("size",size);
-                referenceBrands.put("sizeType",sizeType);
+                referenceBrands.put("size",size.toUpperCase());
+                referenceBrands.put("sizeType",sizeType.toUpperCase());
 
                 referenceBrandsArray.put(0,referenceBrands);
 
