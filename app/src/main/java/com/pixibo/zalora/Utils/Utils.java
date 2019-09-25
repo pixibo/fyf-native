@@ -70,7 +70,7 @@ public class Utils {
         String id = Settings.Secure.getString(context.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
-       // Secure.getString(MainActivity.this.getContentResolver(), Secure.ANDROID_ID)
+       // Secure.getString(PixiboActivity.this.getContentResolver(), Secure.ANDROID_ID)
         return id;
     }
 

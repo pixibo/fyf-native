@@ -40,12 +40,12 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 import static com.pixibo.zalora.Utils.Utils.TYPE.validateSKU;
 
-public class MainActivity extends AppCompatActivity implements Result {
+public class PixiboActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
     private String clientId = "qe3uhcp1kh11";
     private String skuId = "UN337US0SU6QMY";
-//    private String altId = "10214810760805751";
+//    private String altId = "10115632608494085";
     private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";
@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity implements Result {
     private String sizeUrl = null;
 
     private TextView tv_find_my_size;
-
-    //  private String uId = Utils.deviceID(this);
 
     String[] apparel_array = new String[]{"Tops", "Dresses", "Coats", "Jeans", "Jumpsuits", "Outwear", "Pants", "Shirts", "Skirts", "Shorts"};
     String[] footwear_array = new String[]{"Shoes"};
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements Result {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pixibo);
 
         intent = getIntent();
 
@@ -113,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                 if(Arrays.asList(apparel_array).contains(dataType))
                 {
-                    intent = new Intent(MainActivity.this, ApparelFlow.class);
+                    intent = new Intent(PixiboActivity.this, ApparelFlow.class);
                     intent.putExtra("dataType",dataType);
                     intent.putExtra("gender",gender);
                     intent.putExtra("clientId",clientId);
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                 else if (Arrays.asList(footwear_array).contains(dataType))
                 {
-                    intent = new Intent(MainActivity.this, FootwearFlow.class);
+                    intent = new Intent(PixiboActivity.this, FootwearFlow.class);
                     intent.putExtra("dataType",dataType);
                     intent.putExtra("gender",gender);
                     intent.putExtra("clientId",clientId);
@@ -142,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements Result {
                 }
                 else if (Arrays.asList(lingerie_array).contains(dataType))
                 {
-                    intent = new Intent(MainActivity.this, BraFlow.class);
+                    intent = new Intent(PixiboActivity.this, BraFlow.class);
                     intent.putExtra("dataType",dataType);
                     intent.putExtra("gender",gender);
                     intent.putExtra("clientId",clientId);
@@ -198,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
 
 
-    private void validateUser() {
+    private void getUserInfo() {
 
 
         try {
@@ -230,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
 
 
-    private void fetchSizeFromApi(String url) {
+    private void getSize(String url) {
 
 
         try {
@@ -252,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements Result {
     }
 
 
-    private void altIdHasProfile(String UID) {
+    private void mergeProfile(String UID) {
 
 
         try {
@@ -397,7 +395,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                         brand = userObject.optString("brandName");
 
-                        validateUser();
+                        getUserInfo();
                     }
                     catch (Exception e)
                     {
@@ -419,16 +417,13 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                         if (!userObject.optString("uid").equals(uID))
                         {
-                            altIdHasProfile(userObject.optString("uid"));
+                            mergeProfile(userObject.optString("uid"));
                         }
                         else
                         {
                             updateCreateUserData(uID);
                             getData(userObject);
                         }
-
-
-
                     }
 
                     else
@@ -638,8 +633,6 @@ public class MainActivity extends AppCompatActivity implements Result {
         JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
         String url = null;
 
-       // Log.e("male",new JSONObject(userInfoObject.optString("whois")).optString("male"));
-
         if(whoisObject.has("male")  &&!new JSONObject(userInfoObject.optString("whois")).optString("male").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("male").equals("{}") )
         {
 
@@ -799,25 +792,7 @@ public class MainActivity extends AppCompatActivity implements Result {
     public void setButtonText(String size,boolean isRecommended)
     {
 
-        Log.e("isRecommended", String.valueOf(isRecommended));
-        Log.e("size",size);
-
         String returnedText;
-
-        if(size == null || size.equals("")){
-
-            returnedText = getResources().getString(R.string.find_my_size);
-        }
-        else if(size.equals("not_recommended") ){
-            returnedText = getResources().getString(R.string.check_your_fit);
-        }
-        else if(size.equals("invalid_sku")){
-            returnedText = "invalid_sku";
-        }
-        else {
-            returnedText = getResources().getString(R.string.your_size) +" "+size;
-        }
-
 
         SpannableString content;
 
@@ -849,13 +824,12 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                 if(gender.equals("male"))
                 {
-                    Log.e("Gender inside",gender);
 
                     sizeUrl = getApparelMaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
 
                     if(sizeUrl != null){
 
-                        fetchSizeFromApi(sizeUrl);
+                        getSize(sizeUrl);
                     }
                     else
                     {
@@ -868,13 +842,12 @@ public class MainActivity extends AppCompatActivity implements Result {
                 }
                 else if(gender.equals("female"))
                 {
-                    Log.e("Gender inside",gender);
 
                     sizeUrl = getApparelFemaleUrl(userInfoObject,apparel_array, clientId, skuId, uID);
 
                     if(sizeUrl != null){
 
-                        fetchSizeFromApi(sizeUrl);
+                        getSize(sizeUrl);
                     }
                     else
                     {
@@ -898,7 +871,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                     if(sizeUrl != null){
 
-                        fetchSizeFromApi(sizeUrl);
+                        getSize(sizeUrl);
                     }
                     else
                     {
@@ -915,7 +888,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                     if(sizeUrl != null){
 
-                        fetchSizeFromApi(sizeUrl);
+                        getSize(sizeUrl);
                     }
                     else
                     {
@@ -934,7 +907,7 @@ public class MainActivity extends AppCompatActivity implements Result {
 
                 if(sizeUrl != null){
 
-                    fetchSizeFromApi(sizeUrl);
+                    getSize(sizeUrl);
                 }
                 else
                 {
@@ -948,6 +921,11 @@ public class MainActivity extends AppCompatActivity implements Result {
         }
         catch (Exception e)
         {
+            layout_button.setVisibility(View.VISIBLE);
+            SpannableString content;
+            content = new SpannableString(getResources().getString(R.string.find_my_size));
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            tv_find_my_size.setText(content);
             e.printStackTrace();
         }
     }

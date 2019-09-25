@@ -180,6 +180,7 @@
     <string name="bra_strap_fit">How do the straps fit?</string>
     <string name="bra_fav_style">What is the style of your favourite bra?</string>
     <string name="bra_underwire_bust">How do the under wires fit on the side of your bust?</string>
+    <string name="bra_underwire_bust_front">How do the front center and underwire fit?</string>
     <string name="bra_feel_digging">Does fastening on a looser hook help?</string>
     <string name="bra_feel_riding_up">Do you wear the same bra more than 2 days in a row?</string>
     <string name="bra_feel_yes">Yes</string>

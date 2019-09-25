@@ -3226,7 +3226,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 if ( i == 0)
                 {
-
                     tv_type_1.setText(obj.getString("region"));
                     tv_type_1.setVisibility(View.VISIBLE);
 
@@ -3473,13 +3472,24 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
     public void clearSizeType()
     {
         tv_type_1.setTypeface(normal_text);
+        tv_type_1.setVisibility(View.GONE);
         tv_type_2.setTypeface(normal_text);
+        tv_type_2.setVisibility(View.GONE);
         tv_type_3.setTypeface(normal_text);
+        tv_type_3.setVisibility(View.GONE);
         tv_type_4.setTypeface(normal_text);
+        tv_type_4.setVisibility(View.GONE);
         tv_type_5.setTypeface(normal_text);
+        tv_type_5.setVisibility(View.GONE);
         tv_type_6.setTypeface(normal_text);
+        tv_type_6.setVisibility(View.GONE);
         tv_type_7.setTypeface(normal_text);
+        tv_type_7.setVisibility(View.GONE);
         tv_type_8.setTypeface(normal_text);
+        tv_type_8.setVisibility(View.GONE);
+
+
+
     }
 
 
@@ -3805,7 +3815,6 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
         brandCategorySuggestion = "";
         brandSizeSuggestion = "";
         sizeType = "";
-        size = "";
         width = "regular";
 
     }
