@@ -74,7 +74,6 @@
 
     <RelativeLayout
         android:id="@+id/layout_brand"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_header"
@@ -1034,6 +1033,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_cup"
+                android:textSize="11sp"
+                android:visibility="gone"
+                android:id="@+id/tv_error_cup"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_error"
+                android:text="@string/error_required"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:id="@+id/tv_type"
@@ -1113,14 +1126,13 @@
             </LinearLayout>
 
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_cup"
+                android:layout_below="@+id/layout_type"
                 android:textSize="11sp"
                 android:visibility="gone"
-                android:id="@+id/tv_error_cup"
+                android:id="@+id/tv_error_wire"
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/apercu_regular"
                 android:textColor="@color/color_error"
@@ -1208,7 +1220,6 @@
             android:visibility="gone"
             android:layout_below="@+id/layout_header"
             android:id="@+id/layout_bra_profile_noBrand">
-
 
 
             <TextView
@@ -1902,6 +1913,19 @@
             </LinearLayout>
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_cup_noBrand"
+                android:textSize="11sp"
+                android:visibility="gone"
+                android:id="@+id/tv_error_cup_noBrand"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_error"
+                android:text="@string/error_required"/>
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1989,10 +2013,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_cup_noBrand"
+                android:layout_below="@+id/layout_type_noBrand"
                 android:textSize="11sp"
                 android:visibility="gone"
-                android:id="@+id/tv_error_cup_noBrand"
+                android:id="@+id/tv_error_wire_noBrand"
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/apercu_regular"
                 android:textColor="@color/color_error"
@@ -2037,7 +2061,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/layout_size_selection_noBrand"
+                android:id="@+id/layout_sizeType_selection"
                 android:padding=".5dp"
                 android:visibility="gone"
                 android:clickable="false"
@@ -2046,16 +2070,52 @@
                 android:orientation="vertical">
 
 
-
-                <android.support.v7.widget.RecyclerView
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:scrollbars="vertical"
-                    android:id="@+id/recycler_bra_sizeType_noBrand">
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_3"
+                    android:background="@color/color_button_selected_bg"
+                    android:padding="15dp"
+                    android:id="@+id/tv_au"
+                    android:text="@string/au"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_eu"
+                    android:text="@string/eu"/>
 
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_fr"
+                    android:text="@string/fr"/>
 
-                </android.support.v7.widget.RecyclerView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_uk"
+                    android:text="@string/uk"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_3"
+                    android:padding="15dp"
+                    android:id="@+id/tv_us"
+                    android:text="@string/us"/>
 
 
             </LinearLayout>
@@ -3041,10 +3101,28 @@
 
 
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_gap_options"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_bra_style_text"
+                android:textAllCaps="true"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_text"
+                android:textSize="12sp" />
+
+
+
+
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_gap_options"
+                android:layout_below="@+id/tv_bra_style_text"
                 android:paddingTop="30dp"
                 android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
@@ -3122,6 +3200,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_header"
             android:id="@+id/layout_bra_style"
+            android:visibility="gone"
             android:layout_marginTop="2dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
@@ -3144,6 +3223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
                 android:orientation="vertical"
+                android:id="@+id/layout_style_options"
                 android:layout_below="@+id/tv_bra_style">
 
 
@@ -3321,6 +3401,56 @@
 
 
             </LinearLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_style_options"
+                android:paddingTop="30dp"
+                android:paddingBottom="65dp"
+                android:layout_alignParentBottom="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:id="@+id/tv_back_bra_style"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:drawableStart="@drawable/ic_back"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_style_button"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true">
+
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_style_not_sure"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_yes"
+                        android:layout_marginStart="5dp"
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
 
 
 
@@ -3561,6 +3691,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
                 android:orientation="vertical"
+                android:id="@+id/layout_underwire_front_options"
                 android:layout_below="@+id/tv_underwire_front">
 
 
@@ -3661,6 +3792,28 @@
 
 
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_underwire_front_options"
+                android:paddingTop="30dp"
+                android:paddingBottom="65dp"
+                android:layout_alignParentBottom="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:id="@+id/tv_back_layout_underwire_front"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:drawableStart="@drawable/ic_back"/>
+
+
+            </RelativeLayout>
+
+
+
         </RelativeLayout>
 
 
@@ -3698,6 +3851,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
                 android:orientation="vertical"
+                android:id="@+id/layout_underwire_side_options"
                 android:layout_below="@+id/tv_underwire_side">
 
 
@@ -3798,13 +3952,32 @@
 
 
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_underwire_side_options"
+                android:paddingTop="30dp"
+                android:paddingBottom="65dp"
+                android:layout_alignParentBottom="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:id="@+id/tv_back_layout_underwire_side"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:drawableStart="@drawable/ic_back"/>
+
+
+            </RelativeLayout>
+
+
+
         </RelativeLayout>
 
 
         <!--         Underwire side page ends here-->
-
-
-
 
 
         <RelativeLayout
