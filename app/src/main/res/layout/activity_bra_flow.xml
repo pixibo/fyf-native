@@ -2677,7 +2677,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/layout_bra_feel_button"
+                    android:id="@+id/layout_isOld_button"
                     android:visibility="gone"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true">
@@ -2688,7 +2688,7 @@
                         android:layout_height="40dp"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:id="@+id/tv_bra_feel_no"
+                        android:id="@+id/tv_isOld_no"
                         android:background="@color/color_background_button_disabled"
                         android:textColor="@color/white"
                         android:fontFamily="@font/apercu_medium"
@@ -2702,7 +2702,89 @@
                         android:layout_height="40dp"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:id="@+id/tv_bra_feel_yes"
+                        android:id="@+id/tv_isOld_yes"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_yes"
+                        android:layout_marginStart="5dp"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_bra_looser_hook_button"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true">
+
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_bra_looser_hook_no"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_no"
+                        android:layout_marginEnd="5dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_bra_looser_hook_yes"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_yes"
+                        android:layout_marginStart="5dp"
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_bra_tight_hook_button"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true">
+
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_bra_tight_hook_no"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_no"
+                        android:layout_marginEnd="5dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_bra_tight_hook_yes"
                         android:background="@color/color_background_button_disabled"
                         android:textColor="@color/white"
                         android:fontFamily="@font/apercu_medium"
@@ -2728,7 +2810,225 @@
 <!--        Bra band feel page ends here-->
 
 
-<!--        Bra cup feel page ends here-->
+        <!--        Bra old page starts here-->
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_header"
+            android:id="@+id/layout_bra_old"
+            android:visibility="gone"
+            android:layout_marginTop="2dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_bra_old"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/apercu_regular"
+                android:text="@string/bra_how_old"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:orientation="vertical"
+                android:id="@+id/layout_bra_old_options"
+                android:layout_below="@+id/tv_bra_old">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_bought_recently"
+                    android:layout_height="70dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bought recently"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_bought_recently"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_6months"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="70dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1-6 months old"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_6months"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_12months"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="70dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7-12 months old"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_12months"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"/>
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_dropdown"
+                    android:id="@+id/layout_1year"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="70dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="More than 1 year"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_1year"
+                        android:fontFamily="@font/apercu_regular"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"/>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_bra_old_options"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_old_bra_text"
+                android:textAllCaps="true"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_text"
+                android:textSize="12sp" />
+
+
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_old_bra_text"
+                android:paddingTop="30dp"
+                android:paddingBottom="65dp"
+                android:layout_alignParentBottom="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:id="@+id/tv_back_old_bra"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:drawableStart="@drawable/ic_back"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_old_bra_page_button"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true">
+
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_old_bra_page_no"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_no"
+                        android:layout_marginEnd="5dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="102dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:id="@+id/tv_old_bra_page_yes"
+                        android:background="@color/color_background_button_disabled"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/apercu_medium"
+                        android:text="@string/bra_feel_yes"
+                        android:layout_marginStart="5dp"
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <!--         Bra Old page ends here-->
+
+
+<!--        Bra cup fit page starts here-->
 
 
         <RelativeLayout
@@ -3401,6 +3701,22 @@
 
 
             </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_style_options"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_style_options_text"
+                android:textAllCaps="true"
+                android:text="@string/bra_not_sure"
+                android:fontFamily="@font/apercu_regular"
+                android:textColor="@color/color_text"
+                android:textSize="12sp" />
+
 
 
 

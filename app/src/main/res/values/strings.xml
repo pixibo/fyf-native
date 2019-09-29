@@ -177,15 +177,18 @@
     <string name="bra_band_feel">How does your band feel?</string>
     <string name="bra_cup_fit">How do the cups fit?</string>
     <string name="bra_cup_gaps">Where are the gaps?</string>
+    <string name="bra_how_old">How old is your bra?</string>
     <string name="bra_strap_fit">How do the straps fit?</string>
     <string name="bra_fav_style">What is the style of your favourite bra?</string>
     <string name="bra_underwire_bust">How do the under wires fit on the side of your bust?</string>
     <string name="bra_underwire_bust_front">How do the front center and underwire fit?</string>
     <string name="bra_feel_digging">Does fastening on a looser hook help?</string>
-    <string name="bra_feel_riding_up">Do you wear the same bra more than 2 days in a row?</string>
+    <string name="bra_tighter_hook">Does fastening on a tighter hook help?</string>
+    <string name="bra_isOld_bra">Do you wear the same bra more than 2 days in a row?</string>
     <string name="bra_stap_gap">Does tightening the straps get rid of gap?</string>
     <string name="bra_feel_yes">Yes</string>
     <string name="bra_feel_no">No</string>
+    <string name="bra_not_sure">Not Sure</string>
 
 
     <string name="bra_brand_cotton_on_body" translatable="false">Cotton On Body</string>
