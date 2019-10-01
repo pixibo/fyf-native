@@ -189,6 +189,8 @@
     <string name="bra_feel_yes">Yes</string>
     <string name="bra_feel_no">No</string>
     <string name="bra_not_sure">Not Sure</string>
+    <string name="bar_edit">Edit</string>
+
 
 
     <string name="bra_brand_cotton_on_body" translatable="false">Cotton On Body</string>

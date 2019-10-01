@@ -985,8 +985,11 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
 
-                trackEvent(clientId,skuId,"click","pdp","addBag",uID);
+                Log.e("Screen","Result");
+                Log.e("Action","Add to Bag");
+                Log.e("Event","addBag");
 
+                trackEvent(clientId,skuId,"click","pdp","addBag",uID);
 
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",isRecommended);
@@ -1543,6 +1546,10 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
                                 }
+
+                                Log.e("Screen","Body Profile");
+                                Log.e("Action","Continue Button");
+                                Log.e("Event","bodyProfile_continue");
 
                                 trackEvent(clientId,skuId,"click","pdp","bodyProfile_continue",uID);
 
@@ -2506,6 +2513,9 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 layout_fit_preference.setVisibility(View.VISIBLE);
 
 
+                trackEvent(clientId, skuId, "click", "pdp", "fitPreference_edit",uID);
+
+
                 switch (localData.getFitPreference())
                 {
                     case "1":
@@ -2565,6 +2575,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                 resetData();
                 progress(1);
+
+                trackEvent(clientId, skuId, "click", "pdp", "startOver",uID);
 
                 tv_header_text.setVisibility(View.GONE);
 
@@ -5340,6 +5352,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
     private void trackEvent(String clientID ,String SKUID,String eventType,String page,String event,String uid ) {
+
 
 
         try {

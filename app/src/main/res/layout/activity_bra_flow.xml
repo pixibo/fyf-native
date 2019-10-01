@@ -1389,7 +1389,6 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
-                        android:visibility="invisible"
                         android:id="@+id/layout_band_next_1_noBrand"
                         android:background="@drawable/bg_button_unselected">
 
@@ -1417,7 +1416,6 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_band_back_1_noBrand"
-                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -1665,7 +1663,6 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_next_noBrand"
-                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -1690,7 +1687,6 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
-                        android:visibility="invisible"
                         android:id="@+id/layout_cup_back_noBrand"
                         android:background="@drawable/bg_button_unselected">
 
@@ -1707,7 +1703,6 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
-                        android:visibility="invisible"
                         android:id="@+id/layout_cup_6_noBrand"
                         android:background="@drawable/bg_button_unselected">
 
@@ -1726,7 +1721,6 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_7_noBrand"
-                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -1744,7 +1738,6 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_8_noBrand"
-                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -1762,7 +1755,6 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_9_noBrand"
-                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -1780,7 +1772,6 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_next_2_noBrand"
-                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -1806,7 +1797,6 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
-                        android:visibility="invisible"
                         android:id="@+id/layout_cup_back_2_noBrand"
                         android:background="@drawable/bg_button_unselected">
 
@@ -1823,7 +1813,6 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
-                        android:visibility="invisible"
                         android:id="@+id/layout_cup_10_noBrand"
                         android:background="@drawable/bg_button_unselected">
 
@@ -1841,7 +1830,6 @@
                         android:layout_weight="1"
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
-                        android:visibility="invisible"
                         android:id="@+id/layout_cup_11_noBrand"
                         android:background="@drawable/bg_button_unselected">
 
@@ -1906,7 +1894,6 @@
                             android:text=">"/>
 
                     </RelativeLayout>
-
                 </LinearLayout>
 
 
@@ -2193,7 +2180,6 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:visibility="gone"
                         android:id="@+id/layout_tell_more">
 
                         <ImageView
@@ -2268,6 +2254,8 @@
 
 
 
+
+
                     </RelativeLayout>
 
 
@@ -2276,6 +2264,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:visibility="gone"
                         android:id="@+id/layout_accurate_fit">
 
                         <ImageView

@@ -1060,6 +1060,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 progress(1);
 
+                trackEvent(clientId,skuId,"click","pdp","startOver",uID);
+
                 clearSizeType();
                 clearWidth();
 

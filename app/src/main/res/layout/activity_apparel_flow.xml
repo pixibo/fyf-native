@@ -594,6 +594,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:id="@+id/tv_band_5"
+
                         android:text="16"/>
 
                 </RelativeLayout>
