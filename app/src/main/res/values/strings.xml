@@ -162,7 +162,7 @@
     <string name="footwear_result_not_recommended">Sorry, this item does not \ncome in your size</string>
     <string name="footwear_result_out_of_stock">SORRY, THIS ITEM IS OUT OF STOCK IN THIS SIZE</string>
 
-    <string name="bra_right_size">Get a size recommendation based on a bra you already wear.</string>
+    <string name="bra_right_size">Get a size recommendation based on a bra you already wear</string>
     <string name="bra_brand_not_listed">Brand is not listed here</string>
     <string name="bra_bra_size">What\'s the size of the bra?</string>
     <string name="bra_type_wired">WIRED</string>
@@ -179,7 +179,7 @@
     <string name="bra_cup_gaps">Where are the gaps?</string>
     <string name="bra_how_old">How old is your bra?</string>
     <string name="bra_strap_fit">How do the straps fit?</string>
-    <string name="bra_fav_style">What is the style of your favourite bra?</string>
+    <string name="bra_fav_style">What is the style of your bra?</string>
     <string name="bra_underwire_bust">How do the under wires fit on the side of your bust?</string>
     <string name="bra_underwire_bust_front">How do the front center and underwire fit?</string>
     <string name="bra_feel_digging">Does fastening on a looser hook help?</string>
@@ -190,6 +190,39 @@
     <string name="bra_feel_no">No</string>
     <string name="bra_not_sure">Not Sure</string>
     <string name="bar_edit">Edit</string>
+    <string name="bar_band_feel_digs_in">It Digs In</string>
+    <string name="bar_band_feel_digs_in_desc">The band digs in and feels tight</string>
+    <string name="bar_band_feel_straight">It’s straight</string>
+    <string name="bar_band_feel_straight_desc">The band feels comfortable and is parallel to the floor</string>
+    <string name="bar_band_feel_rides_up">It rides up</string>
+    <string name="bar_band_feel_rides_up_desc">The band rides up when I lift my arms</string>
+    <string name="bar_old_brought_recently">Bought recently</string>
+    <string name="bar_old_6_months">1–6 months old</string>
+    <string name="bar_old_12_months">7–12 months old</string>
+    <string name="bar_old_1_year">More than 1 year</string>
+    <string name="bar_cup_fit_right">Just right</string>
+    <string name="bar_cup_fit_right_desc">My breasts fill the cups perfectly</string>
+    <string name="bar_cup_fit_slipping">slipping out</string>
+    <string name="bar_cup_fit_slipping_desc">My breasts spill out of the cups</string>
+    <string name="bar_cup_fit_gaps">Gaps or Wrinkles</string>
+    <string name="bar_cup_fit_gaps_desc">My breasts spill out of the cups</string>
+    <string name="bar_gaps_at_top">Only at the top</string>
+    <string name="bar_gaps_all_over">All over</string>
+    <string name="bar_gaps_at_bottom">Only at the bottom</string>
+    <string name="bar_style_full">Full coverage bra</string>
+    <string name="bar_style_full_desc">High neckline that is designed to cover almost all of your breast.</string>
+    <string name="bar_style_half">Half-cup demi bra</string>
+    <string name="bar_style_half_desc">Less upper breast coverage and with the cup coverage 1" above the nipple point.</string>
+    <string name="bar_style_pushup">Plunge or Push-Up bra</string>
+    <string name="bar_style_pushup_desc">Very low cut deep neckline with thin center front.</string>
+    <string name="bar_style_strapless">Strapless / Balconette bra</string>
+    <string name="bar_style_strapless_desc">Has more of a horizontal line along the top of the cups with half cup coverage.</string>
+    <string name="bar_strap_fit_digs_in">They dig in</string>
+    <string name="bar_strap_fit_digs_in_desc">The straps leave marks on my shoulder</string>
+    <string name="bar_strap_fit_fine">Fit fine</string>
+    <string name="bar_strap_fit_fine_desc">The straps are comfortable and I can fit two fingers underneath</string>
+    <string name="bar_strap_fit_not_stay_up">They do not stay up</string>
+    <string name="bar_strap_fit_not_stay_up_desc">Even after tightening the straps, they do not stay up</string>
 
 
 

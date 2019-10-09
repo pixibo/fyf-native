@@ -16,18 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feabbe48-a71c-47ff-990d-0dec6aec2600" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -40,7 +30,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_API_27" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="63cd6c7f" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -53,23 +43,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="942" column="24" selection-start-line="942" selection-start-column="24" selection-end-line="942" selection-end-column="24" />
+            <state relative-caret-position="302">
+              <caret line="4189" column="28" selection-start-line="4189" selection-start-column="16" selection-end-line="4189" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#33154#33213#0" expanded="true" />
-                <element signature="e#33299#33342#0" expanded="true" />
-                <element signature="e#33410#33438#0" expanded="true" />
-                <element signature="e#33586#33614#0" expanded="true" />
-                <element signature="e#41509#41782#0" expanded="true" />
-                <element signature="e#41781#41782#0" expanded="true" />
-                <element signature="e#41884#42157#0" expanded="true" />
-                <element signature="e#42156#42157#0" expanded="true" />
-                <element signature="e#57357#57608#0" expanded="true" />
-                <element signature="e#57607#57608#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,21 +58,55 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="2708" column="66" selection-start-line="2708" selection-start-column="37" selection-end-line="2708" selection-end-column="66" />
+            <state relative-caret-position="409">
+              <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
               <folding>
-                <element signature="e#90380#90414#0" expanded="true" />
+                <element signature="e#100429#100460#0" expanded="true" />
+                <element signature="e#101082#101118#0" expanded="true" />
+                <element signature="e#102338#102370#0" expanded="true" />
+                <element signature="e#103024#103061#0" expanded="true" />
+                <element signature="e#104331#104363#0" expanded="true" />
+                <element signature="e#105020#105057#0" expanded="true" />
+                <element signature="e#110963#110984#0" expanded="true" />
+                <element signature="e#113594#113628#0" expanded="true" />
+                <element signature="e#114507#114533#0" expanded="true" />
+                <element signature="e#115405#115432#0" expanded="true" />
+                <element signature="e#116303#116327#0" expanded="true" />
+                <element signature="e#121829#121856#0" expanded="true" />
+                <element signature="e#122516#122548#0" expanded="true" />
+                <element signature="e#123768#123798#0" expanded="true" />
+                <element signature="e#124452#124487#0" expanded="true" />
+                <element signature="e#125680#125706#0" expanded="true" />
+                <element signature="e#126345#126376#0" expanded="true" />
+                <element signature="e#129546#129571#0" expanded="true" />
+                <element signature="e#130830#130857#0" expanded="true" />
+                <element signature="e#132121#132149#0" expanded="true" />
+                <element signature="e#136453#136476#0" expanded="true" />
+                <element signature="e#137680#137704#0" expanded="true" />
+                <element signature="e#138373#138402#0" expanded="true" />
+                <element signature="e#139629#139653#0" expanded="true" />
+                <element signature="e#140307#140336#0" expanded="true" />
+                <element signature="e#141549#141575#0" expanded="true" />
+                <element signature="e#142223#142254#0" expanded="true" />
+                <element signature="e#143478#143507#0" expanded="true" />
+                <element signature="e#144164#144198#0" expanded="true" />
+                <element signature="e#149120#149143#0" expanded="true" />
+                <element signature="e#149829#149865#0" expanded="true" />
+                <element signature="e#151111#151139#0" expanded="true" />
+                <element signature="e#151811#151844#0" expanded="true" />
+                <element signature="e#153084#153119#0" expanded="true" />
+                <element signature="e#153785#153825#0" expanded="true" />
               </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="191" column="26" selection-start-line="191" selection-start-column="18" selection-end-line="191" selection-end-column="26" />
+            <state relative-caret-position="518">
+              <caret line="223" column="59" lean-forward="true" selection-start-line="223" selection-start-column="59" selection-end-line="223" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -109,8 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tv_bra_feel_yes</find>
-      <find>tv_isOld_no</find>
       <find>tv_old_bra_text</find>
       <find>layout_bra_old</find>
       <find>tv_old_bra_page_no</find>
@@ -139,6 +151,8 @@
       <find>layout_bra_looser_hook_button</find>
       <find>tv_bra_looser_hook_yes</find>
       <find>edit</find>
+      <find>layout_strap</find>
+      <find>layout_cup_8</find>
     </findStrings>
     <replaceStrings>
       <replace>category</replace>
@@ -202,15 +216,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="1440" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -220,35 +235,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Apparel" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -609,11 +596,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="1440" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.14663805" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.10915868" />
       <window_info id="Structure" order="2" sideWeight="0.50208336" side_tool="true" weight="0.22317597" />
       <window_info id="Favorites" order="3" sideWeight="0.5006196" side_tool="true" weight="0.23247497" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -622,7 +609,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49928468" weight="0.32713756" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49713877" weight="0.5947955" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49713877" weight="0.41438702" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32961586" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32928064" />
@@ -636,7 +623,7 @@
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.28612304" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.2859425" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="StringPreview" order="7" />
       <window_info anchor="right" id="Assistant" order="8" weight="0.32960597" />
@@ -799,12 +786,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_brand_suggession.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Adapter/BrandCategoryModelAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -888,6 +875,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
@@ -896,9 +884,9 @@
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pixibo.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
@@ -907,7 +895,6 @@
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -917,12 +904,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
           <caret line="1542" column="46" selection-start-line="1542" selection-start-column="37" selection-end-line="1542" selection-end-column="46" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/java/lang/Override.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -973,48 +960,72 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2696" column="12" lean-forward="true" selection-start-line="2696" selection-start-column="12" selection-end-line="2696" selection-end-column="37" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="191" column="26" selection-start-line="191" selection-start-column="18" selection-end-line="191" selection-end-column="26" />
+        <state relative-caret-position="302">
+          <caret line="4189" column="28" selection-start-line="4189" selection-start-column="16" selection-end-line="4189" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="2708" column="66" selection-start-line="2708" selection-start-column="37" selection-end-line="2708" selection-end-column="66" />
+        <state relative-caret-position="409">
+          <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
           <folding>
-            <element signature="e#90380#90414#0" expanded="true" />
+            <element signature="e#100429#100460#0" expanded="true" />
+            <element signature="e#101082#101118#0" expanded="true" />
+            <element signature="e#102338#102370#0" expanded="true" />
+            <element signature="e#103024#103061#0" expanded="true" />
+            <element signature="e#104331#104363#0" expanded="true" />
+            <element signature="e#105020#105057#0" expanded="true" />
+            <element signature="e#110963#110984#0" expanded="true" />
+            <element signature="e#113594#113628#0" expanded="true" />
+            <element signature="e#114507#114533#0" expanded="true" />
+            <element signature="e#115405#115432#0" expanded="true" />
+            <element signature="e#116303#116327#0" expanded="true" />
+            <element signature="e#121829#121856#0" expanded="true" />
+            <element signature="e#122516#122548#0" expanded="true" />
+            <element signature="e#123768#123798#0" expanded="true" />
+            <element signature="e#124452#124487#0" expanded="true" />
+            <element signature="e#125680#125706#0" expanded="true" />
+            <element signature="e#126345#126376#0" expanded="true" />
+            <element signature="e#129546#129571#0" expanded="true" />
+            <element signature="e#130830#130857#0" expanded="true" />
+            <element signature="e#132121#132149#0" expanded="true" />
+            <element signature="e#136453#136476#0" expanded="true" />
+            <element signature="e#137680#137704#0" expanded="true" />
+            <element signature="e#138373#138402#0" expanded="true" />
+            <element signature="e#139629#139653#0" expanded="true" />
+            <element signature="e#140307#140336#0" expanded="true" />
+            <element signature="e#141549#141575#0" expanded="true" />
+            <element signature="e#142223#142254#0" expanded="true" />
+            <element signature="e#143478#143507#0" expanded="true" />
+            <element signature="e#144164#144198#0" expanded="true" />
+            <element signature="e#149120#149143#0" expanded="true" />
+            <element signature="e#149829#149865#0" expanded="true" />
+            <element signature="e#151111#151139#0" expanded="true" />
+            <element signature="e#151811#151844#0" expanded="true" />
+            <element signature="e#153084#153119#0" expanded="true" />
+            <element signature="e#153785#153825#0" expanded="true" />
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="942" column="24" selection-start-line="942" selection-start-column="24" selection-end-line="942" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#33154#33213#0" expanded="true" />
-            <element signature="e#33299#33342#0" expanded="true" />
-            <element signature="e#33410#33438#0" expanded="true" />
-            <element signature="e#33586#33614#0" expanded="true" />
-            <element signature="e#41509#41782#0" expanded="true" />
-            <element signature="e#41781#41782#0" expanded="true" />
-            <element signature="e#41884#42157#0" expanded="true" />
-            <element signature="e#42156#42157#0" expanded="true" />
-            <element signature="e#57357#57608#0" expanded="true" />
-            <element signature="e#57607#57608#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="518">
+          <caret line="223" column="59" lean-forward="true" selection-start-line="223" selection-start-column="59" selection-end-line="223" selection-end-column="59" />
         </state>
       </provider>
     </entry>

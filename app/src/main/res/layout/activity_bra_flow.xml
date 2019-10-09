@@ -860,7 +860,6 @@
                         android:layout_height="28dp"
                         android:layout_marginEnd="15dp"
                         android:id="@+id/layout_cup_8"
-                        android:visibility="invisible"
                         android:background="@drawable/bg_button_unselected">
 
                         <TextView
@@ -2516,7 +2515,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_digging_in"
-                        android:text="It’s digging in"
+                        android:text="@string/bar_band_feel_digs_in"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_digging_in"
@@ -2529,7 +2528,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_digging_in"
                         android:layout_below="@+id/tv_digging_in"
-                        android:text="The band digs in and feels tight"
+                        android:text="@string/bar_band_feel_digs_in_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_digging_in_description"
                         android:fontFamily="@font/apercu_regular"
@@ -2560,7 +2559,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_straight"
-                        android:text="It’s straight"
+                        android:text="@string/bar_band_feel_straight"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_straight"
@@ -2573,8 +2572,9 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_straight"
                         android:layout_below="@+id/tv_straight"
-                        android:text="The band feels comfortable and is parallel to the floor"
+                        android:text="@string/bar_band_feel_straight_desc"
                         android:textSize="11sp"
+                        android:paddingEnd="10dp"
                         android:id="@+id/tv_straight_description"
                         android:fontFamily="@font/apercu_regular"
                         android:textColor="@color/grey_4"
@@ -2602,7 +2602,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_riding_up"
-                        android:text="It’s riding up"
+                        android:text="@string/bar_band_feel_rides_up"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_riding_up"
@@ -2615,7 +2615,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_riding_up"
                         android:layout_below="@+id/tv_riding_up"
-                        android:text="The band rides up when I lift my arms "
+                        android:text="@string/bar_band_feel_rides_up_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_riding_up_description"
                         android:fontFamily="@font/apercu_regular"
@@ -2847,7 +2847,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bought recently"
+                        android:text="@string/bar_old_brought_recently"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_bought_recently"
@@ -2869,7 +2869,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1-6 months old"
+                        android:text="@string/bar_old_6_months"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_6months"
@@ -2891,7 +2891,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="7-12 months old"
+                        android:text="@string/bar_old_12_months"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_12months"
@@ -2914,7 +2914,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="More than 1 year"
+                        android:text="@string/bar_old_1_year"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_1year"
@@ -3069,7 +3069,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_just_right"
-                        android:text="Just right"
+                        android:text="@string/bar_cup_fit_right"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_just_right"
@@ -3082,7 +3082,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_just_right"
                         android:layout_below="@+id/tv_just_right"
-                        android:text="The breasts fill the cups fully"
+                        android:text="@string/bar_cup_fit_right_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_just_right_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3113,7 +3113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_slipping"
-                        android:text="slipping out"
+                        android:text="@string/bar_cup_fit_slipping"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_slipping"
@@ -3126,7 +3126,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_slipping"
                         android:layout_below="@+id/tv_slipping"
-                        android:text="The breasts are bulging out of the cups"
+                        android:text="@string/bar_cup_fit_slipping_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_slipping_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3155,7 +3155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_gap"
-                        android:text="GAPS OR WRINKLES"
+                        android:text="@string/bar_cup_fit_gaps"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_gap"
@@ -3168,7 +3168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_gap"
                         android:layout_below="@+id/tv_gap"
-                        android:text="There are gaps between my breasts and the cups"
+                        android:text="@string/bar_cup_fit_gaps_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_gap_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3203,48 +3203,6 @@
                     android:drawableStart="@drawable/ic_back"/>
 
 
-               <!-- <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/layout_bra_feel_button"
-                    android:visibility="gone"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true">
-
-
-                    <TextView
-                        android:layout_width="102dp"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        android:id="@+id/tv_bra_feel_no"
-                        android:background="@color/color_background_button_disabled"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/apercu_medium"
-                        android:text="@string/bra_feel_no"
-                        android:layout_marginEnd="5dp"
-
-                        />
-
-                    <TextView
-                        android:layout_width="102dp"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        android:id="@+id/tv_bra_feel_yes"
-                        android:background="@color/color_background_button_disabled"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/apercu_medium"
-                        android:text="@string/bra_feel_yes"
-                        android:layout_marginStart="5dp"
-                        />
-
-
-                </LinearLayout>
--->
-
-
-
 
             </RelativeLayout>
 
@@ -3253,7 +3211,7 @@
         </RelativeLayout>
 
 
-<!--        Bra cup feel page ends here-->
+<!--        Bra cup fit page ends here-->
 
 
 <!--        Gap page starts here-->
@@ -3311,7 +3269,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_at_top"
-                        android:text="ONLY AT THE TOP"
+                        android:text="@string/bar_gaps_at_top"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_at_top"
@@ -3342,7 +3300,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_all_over"
-                        android:text="ALL OVER"
+                        android:text="@string/bar_gaps_all_over"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_all_over"
@@ -3372,7 +3330,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_at_bottom"
-                        android:text="ONLY AT THE BOTTOM"
+                        android:text="@string/bar_gaps_at_bottom"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_at_bottom"
@@ -3534,7 +3492,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_full_coverage"
-                        android:text="Full coverage bra"
+                        android:text="@string/bar_style_full"
                         android:textSize="12sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_full_coverage"
@@ -3547,7 +3505,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_full_coverage"
                         android:layout_below="@+id/tv_full_coverage"
-                        android:text="High neckline that is designed to cover almost all of your breast."
+                        android:text="@string/bar_style_full_desc"
                         android:textSize="10sp"
                         android:id="@+id/tv_full_coverage_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3578,7 +3536,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_half_cup"
-                        android:text="Half-cup demi"
+                        android:text="@string/bar_style_half"
                         android:textSize="12sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_half_cup"
@@ -3591,7 +3549,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_half_cup"
                         android:layout_below="@+id/tv_half_cup"
-                        android:text="Less upper breast coverage with the cup coverage 1” above the nipple point."
+                        android:text="@string/bar_style_half_desc"
                         android:textSize="10sp"
                         android:id="@+id/tv_half_cup_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3621,7 +3579,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_pushup"
-                        android:text="Plunge / Push Up"
+                        android:text="@string/bar_style_pushup"
                         android:textSize="12sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_pushup"
@@ -3634,7 +3592,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_pushup"
                         android:layout_below="@+id/tv_pushup"
-                        android:text="Very low cut deep neckline with thin center front."
+                        android:text="@string/bar_style_pushup_desc"
                         android:textSize="10sp"
                         android:id="@+id/tv_pushup_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3665,7 +3623,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strapless"
-                        android:text="Strapless / Balconette bra"
+                        android:text="@string/bar_style_strapless"
                         android:textSize="12sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_strapless"
@@ -3678,7 +3636,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strapless"
                         android:layout_below="@+id/tv_strapless"
-                        android:text="Has more of a horizontal line along the top of the cups with half cup coverage."
+                        android:text="@string/bar_style_strapless_desc"
                         android:textSize="10sp"
                         android:id="@+id/tv_strapless_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3821,7 +3779,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strap_digging_in"
-                        android:text="Digging in"
+                        android:text="@string/bar_strap_fit_digs_in"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_strap_digging_in"
@@ -3834,7 +3792,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strap_digging_in"
                         android:layout_below="@+id/tv_strap_digging_in"
-                        android:text="The straps are leaving marks on my shoulder"
+                        android:text="@string/bar_strap_fit_digs_in_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_strap_digging_in_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3865,7 +3823,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strap_fit_fine"
-                        android:text="Fit fine"
+                        android:text="@string/bar_strap_fit_fine"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_strap_fit_fine"
@@ -3878,7 +3836,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strap_fit_fine"
                         android:layout_below="@+id/tv_strap_fit_fine"
-                        android:text="The straps are comfortable with two fingers underneath"
+                        android:text="@string/bar_strap_fit_fine_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_strap_fit_fine_description"
                         android:fontFamily="@font/apercu_regular"
@@ -3908,7 +3866,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strap_not_up"
-                        android:text="Not staying up"
+                        android:text="@string/bar_strap_fit_not_stay_up"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_strap_not_up"
@@ -3921,7 +3879,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_strap_not_up"
                         android:layout_below="@+id/tv_strap_not_up"
-                        android:text="Even after tightening the straps, they do not stay up"
+                        android:text="@string/bar_strap_fit_not_stay_up_desc"
                         android:textSize="11sp"
                         android:id="@+id/tv_strap_not_up_description"
                         android:fontFamily="@font/apercu_regular"

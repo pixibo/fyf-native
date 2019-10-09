@@ -1792,9 +1792,39 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 tv_strap_digging_in_description.setTextColor(getResources().getColor(R.color.color_text));
                 ic_strap_digging_in.setImageResource(R.drawable.ic_strap_digging_in_selected);
 
-
                 layout_strap_fit.setVisibility(View.GONE);
-                layout_underwire_front.setVisibility(View.VISIBLE);
+
+                if (wired_noBrand || wired)
+                {
+                    layout_underwire_front.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    if (altId.equals(""))
+                    {
+                        if (tellMore)
+                        {
+                            getFinalSize(uID,brand,band,cup,region,wired);
+                        }
+                        else
+                        {
+                            getFinalSize(uID,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
+                        }
+                    }
+                    else
+                    {
+                        if (tellMore)
+                        {
+                            getFinalSize(altId,brand,band,cup,region,wired);
+                        }
+                        else
+                        {
+                            getFinalSize(altId,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
+                        }
+                    }
+                }
+
+
                 Log.e("strapsFit",strapsFit);
 
             }
@@ -1812,9 +1842,37 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 tv_strap_fit_fine_description.setTextColor(getResources().getColor(R.color.color_text));
                 ic_strap_fit_fine.setImageResource(R.drawable.ic_strap_fit_fine_selected);
 
-
                 layout_strap_fit.setVisibility(View.GONE);
-                layout_underwire_front.setVisibility(View.VISIBLE);
+
+                if (wired_noBrand || wired)
+                {
+                    layout_underwire_front.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    if (altId.equals(""))
+                    {
+                        if (tellMore)
+                        {
+                            getFinalSize(uID,brand,band,cup,region,wired);
+                        }
+                        else
+                        {
+                            getFinalSize(uID,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
+                        }
+                    }
+                    else
+                    {
+                        if (tellMore)
+                        {
+                            getFinalSize(altId,brand,band,cup,region,wired);
+                        }
+                        else
+                        {
+                            getFinalSize(altId,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
+                        }
+                    }
+                }
                 Log.e("strapsFit",strapsFit);
 
             }
@@ -1831,8 +1889,38 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 tv_strap_not_up_description.setTextColor(getResources().getColor(R.color.color_text));
                 ic_strap_not_up.setImageResource(R.drawable.ic_strap_not_staying_selected);
 
+
                 layout_strap_fit.setVisibility(View.GONE);
-                layout_underwire_front.setVisibility(View.VISIBLE);
+
+                if (wired_noBrand || wired)
+                {
+                    layout_underwire_front.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    if (altId.equals(""))
+                    {
+                        if (tellMore)
+                        {
+                            getFinalSize(uID,brand,band,cup,region,wired);
+                        }
+                        else
+                        {
+                            getFinalSize(uID,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
+                        }
+                    }
+                    else
+                    {
+                        if (tellMore)
+                        {
+                            getFinalSize(altId,brand,band,cup,region,wired);
+                        }
+                        else
+                        {
+                            getFinalSize(altId,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
+                        }
+                    }
+                }
                 Log.e("strapsFit",strapsFit);
 
             }
