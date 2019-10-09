@@ -779,6 +779,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 {
                     brand_filter(charSequence.toString());
                 }
+                else
+                {
+                    layout_brands.setVisibility(View.VISIBLE);
+                    layout_brand_search.setVisibility(View.GONE);
+
+                }
 
                 if (!brand.equalsIgnoreCase(charSequence.toString()))
                 {
@@ -1002,6 +1008,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             public void onClick(View view) {
                 layout_brand.setVisibility(View.GONE);
                 layout_bra_profile_noBrand.setVisibility(View.VISIBLE);
+                layout_sizeType_selection.setVisibility(View.GONE);
+
 
                 brandNotListed = true;
 
