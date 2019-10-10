@@ -3,6 +3,7 @@ package com.pixibo.zalora;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -43,10 +44,10 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.validateSKU;
 public class PixiboActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "qe3uhcp1kh11";
-    private String skuId = "UN337US0SU6QMY";
-//    private String altId = "10115632608494085";
-    private String altId = "";
+    private String clientId = "sl8zvzsjelpg";
+    private String skuId = "BC421AADC2CE9DGS";
+    private String altId = "10214810760805751";
+//    private String altId = "";
     private String uID = "";
     private String preferredLanguage = "en";
     private String [] availableSizeList = {"S","M","L","XL","UK 16"};
@@ -64,6 +65,8 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
     private Intent intent;
 
+    Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +74,9 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
         intent = getIntent();
 
-        uID = Utils.deviceID(this);
+        mContext = this;
+
+        uID = Utils.deviceID(mContext);
 
         Locale locale;
         Resources res = getResources();
@@ -164,26 +169,38 @@ public class PixiboActivity extends AppCompatActivity implements Result {
     }
 
 
+    public void get_final_size(String clientID , String skuID,String altID, Context context)
+    {
+
+        mContext = context;
+        clientId = clientID;
+        skuId = skuID;
+        altId = altID;
+        uID = Utils.deviceID(mContext);
+        validate_sku(clientId,skuId);
+    }
+
+
     private void validate_sku(String clientId , String skuId) {
 
 
         try {
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
 
                 if (altId.equals(""))
                 {
-                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+uID , validateSKU, this);
+                    GET get = new GET(mContext, URI.validate +clientId+"/"+skuId+"?uid="+uID , validateSKU, this);
                     get.execute();
                 }
                 else
                 {
-                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+altId , validateSKU, this);
+                    GET get = new GET(mContext, URI.validate +clientId+"/"+skuId+"?uid="+altId , validateSKU, this);
                     get.execute();
                 }
 
             } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
@@ -201,26 +218,26 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
         try {
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
 
                 if (altId.equals(""))
                 {
-                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+uID , ValidateUserUid, this);
+                    GET get = new GET(mContext, "https://discoverysvc.pixibo.com/uid/"+uID , ValidateUserUid, this);
                     get.execute();
                 }
                 else
                 {
-                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+altId , ValidateUserUid, this);
+                    GET get = new GET(mContext, "https://discoverysvc.pixibo.com/uid/"+altId , ValidateUserUid, this);
                     get.execute();
                 }
 
             } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -233,17 +250,17 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
         try {
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
                 GET get = new GET(this, url , SizeFromApi, this);
-                // Utils.showLoading(SettingActivity.this, false);
+                // Utils.showLoading(SettingActivity.mContext, false);
                 get.execute();
             } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -255,17 +272,17 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
         try {
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
                 GET get = new GET(this, "https://discoverysvc.pixibo.com/merge/users/"+UID+"/"+uID , MergeProfile, this);
-                // Utils.showLoading(SettingActivity.this, false);
+                // Utils.showLoading(SettingActivity.mContext, false);
                 get.execute();
             } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -277,17 +294,17 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
         try {
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
                 GET get = new GET(this, "https://discoverysvc.pixibo.com/reset/"+clientId+"/"+uID , ResetProfile, this);
-                // Utils.showLoading(SettingActivity.this, false);
+                // Utils.showLoading(SettingActivity.mContext, false);
                 get.execute();
             } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -302,7 +319,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
             JSONObject body = new JSONObject();
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
 
                 if (altId.equals(""))
                 {
@@ -323,12 +340,12 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 }
 
             } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -341,7 +358,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
             JSONObject body = new JSONObject();
 
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+            if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
 
 
                 body.put("clientId", clientId);
@@ -361,12 +378,12 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
 
             } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -491,7 +508,6 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     if (statusCode == 200)
                     {
                         JSONObject object = new JSONObject(result);
-
 
 
                         String [] ids = {object.optString("uid"),uID};
@@ -792,6 +808,10 @@ public class PixiboActivity extends AppCompatActivity implements Result {
     public void setButtonText(String size,boolean isRecommended)
     {
 
+//        MainActivity mainActivity = new MainActivity();
+//
+//        mainActivity.updated_size(size,isRecommended);
+//
         String returnedText;
 
         SpannableString content;

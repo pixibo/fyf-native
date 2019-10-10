@@ -3161,6 +3161,7 @@
                 android:layout_centerInParent="true"
                 android:textSize="12sp"
                 android:id="@+id/loader_text"
+                android:visibility="invisible"
                 android:textAllCaps="true"
                 android:fontFamily="@font/apercu_regular"
                 android:textColor="@color/black"
