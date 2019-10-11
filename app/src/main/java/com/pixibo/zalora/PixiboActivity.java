@@ -13,6 +13,7 @@ import android.text.style.UnderlineSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -67,6 +68,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
     Context mContext;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,58 +112,103 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         tv_find_my_size = findViewById(R.id.tv_find_my_size);
 
 
-        layout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if(Arrays.asList(apparel_array).contains(dataType))
+        {
+            intent = new Intent(PixiboActivity.this, ApparelFlow.class);
+            intent.putExtra("dataType",dataType);
+            intent.putExtra("gender",gender);
+            intent.putExtra("clientId",clientId);
+            intent.putExtra("skuId",skuId);
+            intent.putExtra("altId",altId);
+            intent.putExtra("uID",uID);
+            intent.putExtra("preferredLanguage",preferredLanguage);
+            intent.putExtra("availableSizeList",availableSizeList);
+            intent.putExtra("isNew",false);
+            startActivityForResult(intent,111);
+        }
 
-                if(Arrays.asList(apparel_array).contains(dataType))
-                {
-                    intent = new Intent(PixiboActivity.this, ApparelFlow.class);
-                    intent.putExtra("dataType",dataType);
-                    intent.putExtra("gender",gender);
-                    intent.putExtra("clientId",clientId);
-                    intent.putExtra("skuId",skuId);
-                    intent.putExtra("altId",altId);
-                    intent.putExtra("uID",uID);
-                    intent.putExtra("preferredLanguage",preferredLanguage);
-                    intent.putExtra("availableSizeList",availableSizeList);
-                    intent.putExtra("isNew",false);
-                    startActivityForResult(intent,111);
-                }
+        else if (Arrays.asList(footwear_array).contains(dataType))
+        {
+            intent = new Intent(PixiboActivity.this, FootwearFlow.class);
+            intent.putExtra("dataType",dataType);
+            intent.putExtra("gender",gender);
+            intent.putExtra("clientId",clientId);
+            intent.putExtra("brand",brand);
+            intent.putExtra("skuId",skuId);
+            intent.putExtra("altId",altId);
+            intent.putExtra("uID",uID);
+            intent.putExtra("preferredLanguage",preferredLanguage);
+            intent.putExtra("availableSizeList",availableSizeList);
+            startActivityForResult(intent,111);
+        }
+        else if (Arrays.asList(lingerie_array).contains(dataType))
+        {
+            intent = new Intent(PixiboActivity.this, BraFlow.class);
+            intent.putExtra("dataType",dataType);
+            intent.putExtra("gender",gender);
+            intent.putExtra("clientId",clientId);
+            intent.putExtra("brand",brand);
+            intent.putExtra("skuId",skuId);
+            intent.putExtra("altId",altId);
+            intent.putExtra("uID",uID);
+            intent.putExtra("preferredLanguage",preferredLanguage);
+            intent.putExtra("availableSizeList",availableSizeList);
+            startActivityForResult(intent,111);
+        }
 
-                else if (Arrays.asList(footwear_array).contains(dataType))
-                {
-                    intent = new Intent(PixiboActivity.this, FootwearFlow.class);
-                    intent.putExtra("dataType",dataType);
-                    intent.putExtra("gender",gender);
-                    intent.putExtra("clientId",clientId);
-                    intent.putExtra("brand",brand);
-                    intent.putExtra("skuId",skuId);
-                    intent.putExtra("altId",altId);
-                    intent.putExtra("uID",uID);
-                    intent.putExtra("preferredLanguage",preferredLanguage);
-                    intent.putExtra("availableSizeList",availableSizeList);
-                    startActivityForResult(intent,111);
-                }
-                else if (Arrays.asList(lingerie_array).contains(dataType))
-                {
-                    intent = new Intent(PixiboActivity.this, BraFlow.class);
-                    intent.putExtra("dataType",dataType);
-                    intent.putExtra("gender",gender);
-                    intent.putExtra("clientId",clientId);
-                    intent.putExtra("brand",brand);
-                    intent.putExtra("skuId",skuId);
-                    intent.putExtra("altId",altId);
-                    intent.putExtra("uID",uID);
-                    intent.putExtra("preferredLanguage",preferredLanguage);
-                    intent.putExtra("availableSizeList",availableSizeList);
-                    startActivityForResult(intent,111);
-                }
-
-
-
-            }
-        });
+//
+//        layout_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(Arrays.asList(apparel_array).contains(dataType))
+//                {
+//                    intent = new Intent(PixiboActivity.this, ApparelFlow.class);
+//                    intent.putExtra("dataType",dataType);
+//                    intent.putExtra("gender",gender);
+//                    intent.putExtra("clientId",clientId);
+//                    intent.putExtra("skuId",skuId);
+//                    intent.putExtra("altId",altId);
+//                    intent.putExtra("uID",uID);
+//                    intent.putExtra("preferredLanguage",preferredLanguage);
+//                    intent.putExtra("availableSizeList",availableSizeList);
+//                    intent.putExtra("isNew",false);
+//                    startActivityForResult(intent,111);
+//                }
+//
+//                else if (Arrays.asList(footwear_array).contains(dataType))
+//                {
+//                    intent = new Intent(PixiboActivity.this, FootwearFlow.class);
+//                    intent.putExtra("dataType",dataType);
+//                    intent.putExtra("gender",gender);
+//                    intent.putExtra("clientId",clientId);
+//                    intent.putExtra("brand",brand);
+//                    intent.putExtra("skuId",skuId);
+//                    intent.putExtra("altId",altId);
+//                    intent.putExtra("uID",uID);
+//                    intent.putExtra("preferredLanguage",preferredLanguage);
+//                    intent.putExtra("availableSizeList",availableSizeList);
+//                    startActivityForResult(intent,111);
+//                }
+//                else if (Arrays.asList(lingerie_array).contains(dataType))
+//                {
+//                    intent = new Intent(PixiboActivity.this, BraFlow.class);
+//                    intent.putExtra("dataType",dataType);
+//                    intent.putExtra("gender",gender);
+//                    intent.putExtra("clientId",clientId);
+//                    intent.putExtra("brand",brand);
+//                    intent.putExtra("skuId",skuId);
+//                    intent.putExtra("altId",altId);
+//                    intent.putExtra("uID",uID);
+//                    intent.putExtra("preferredLanguage",preferredLanguage);
+//                    intent.putExtra("availableSizeList",availableSizeList);
+//                    startActivityForResult(intent,111);
+//                }
+//
+//
+//
+//            }
+//        });
 
 
         validate_sku(clientId,skuId);
@@ -169,7 +216,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
     }
 
 
-    public void get_final_size(String clientID , String skuID,String altID, Context context)
+    public void get_final_size(String clientID , String skuID, String altID, TextView tv_find_my_size_set,LinearLayout layout_button_2, Context context)
     {
 
         mContext = context;
@@ -177,6 +224,8 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         skuId = skuID;
         altId = altID;
         uID = Utils.deviceID(mContext);
+        tv_find_my_size  = tv_find_my_size_set;
+        layout_button = layout_button_2;
         validate_sku(clientId,skuId);
     }
 
@@ -445,7 +494,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
                     else
                     {
-                        layout_button.setVisibility(View.VISIBLE);
+                        //layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
                         content = new SpannableString(getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
@@ -562,6 +611,13 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 result = data.getStringExtra("result");
 
                 setButtonText(result,recommended);
+
+
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("recommended",recommended);
+                returnIntent.putExtra("result",result);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
 
             }
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -808,17 +864,13 @@ public class PixiboActivity extends AppCompatActivity implements Result {
     public void setButtonText(String size,boolean isRecommended)
     {
 
-//        MainActivity mainActivity = new MainActivity();
-//
-//        mainActivity.updated_size(size,isRecommended);
-//
         String returnedText;
 
         SpannableString content;
 
         if(isRecommended){
 
-            returnedText = getResources().getString(R.string.your_size) +" "+size;
+            returnedText = mContext.getResources().getString(R.string.your_size) +" "+size;
             content = new SpannableString(returnedText);
 
         }

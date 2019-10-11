@@ -1,5 +1,6 @@
 package com.pixibo.zalora;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.pixibo.zalora.Apparel.ApparelFlow;
 import com.pixibo.zalora.Utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,43 +32,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-//        Log.e("get_final_size", );
-
         layout_button = findViewById(R.id.layout_button);
         tv_find_my_size = findViewById(R.id.tv_find_my_size);
 
         uID = Utils.deviceID(this);
 
 
-        pixiboActivity.get_final_size(clientId,skuId,altId,this);
+        pixiboActivity.get_final_size(clientId,skuId,altId,tv_find_my_size,layout_button,this);
+
+
+
+        layout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PixiboActivity.class);
+                startActivityForResult(intent,112);
+            }
+        });
     }
 
 
-    public void updated_size(String size,boolean isRecommended)
-    {
-
-        String returnedText;
-
-        SpannableString content;
-
-        if(isRecommended){
-
-            returnedText = /*getApplicationContext().getResources().getString(R.string.your_size) +" "+*/size;
-            content = new SpannableString(returnedText);
-
-        }
-        else{
-
-            returnedText = "CHECK YOUR FIT";
-//            returnedText = getApplicationContext().getResources().getString(R.string.check_your_fit);
-            content = new SpannableString(returnedText);
-        }
-
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-
-        tv_find_my_size.setText(content);
-
-        layout_button.setVisibility(View.VISIBLE);
-    }
 }
