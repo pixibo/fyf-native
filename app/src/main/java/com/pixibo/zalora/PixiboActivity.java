@@ -63,6 +63,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
     String dataType = "";
     String gender = "";
+    boolean isNew = false;
 
     private Intent intent;
 
@@ -76,6 +77,13 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
         intent = getIntent();
 
+        clientId = intent.getStringExtra("clientId");
+        skuId = intent.getStringExtra("skuId");
+        altId = intent.getStringExtra("altId");
+        uID = intent.getStringExtra("uID");
+        preferredLanguage = intent.getStringExtra("preferredLanguage");
+        availableSizeList = intent.getStringArrayExtra("availableSizeList");
+        isNew = intent.getBooleanExtra("isNew",false);
         mContext = this;
 
         uID = Utils.deviceID(mContext);
@@ -111,50 +119,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         layout_button = findViewById(R.id.layout_button);
         tv_find_my_size = findViewById(R.id.tv_find_my_size);
 
-
-        if(Arrays.asList(apparel_array).contains(dataType))
-        {
-            intent = new Intent(PixiboActivity.this, ApparelFlow.class);
-            intent.putExtra("dataType",dataType);
-            intent.putExtra("gender",gender);
-            intent.putExtra("clientId",clientId);
-            intent.putExtra("skuId",skuId);
-            intent.putExtra("altId",altId);
-            intent.putExtra("uID",uID);
-            intent.putExtra("preferredLanguage",preferredLanguage);
-            intent.putExtra("availableSizeList",availableSizeList);
-            intent.putExtra("isNew",false);
-            startActivityForResult(intent,111);
-        }
-
-        else if (Arrays.asList(footwear_array).contains(dataType))
-        {
-            intent = new Intent(PixiboActivity.this, FootwearFlow.class);
-            intent.putExtra("dataType",dataType);
-            intent.putExtra("gender",gender);
-            intent.putExtra("clientId",clientId);
-            intent.putExtra("brand",brand);
-            intent.putExtra("skuId",skuId);
-            intent.putExtra("altId",altId);
-            intent.putExtra("uID",uID);
-            intent.putExtra("preferredLanguage",preferredLanguage);
-            intent.putExtra("availableSizeList",availableSizeList);
-            startActivityForResult(intent,111);
-        }
-        else if (Arrays.asList(lingerie_array).contains(dataType))
-        {
-            intent = new Intent(PixiboActivity.this, BraFlow.class);
-            intent.putExtra("dataType",dataType);
-            intent.putExtra("gender",gender);
-            intent.putExtra("clientId",clientId);
-            intent.putExtra("brand",brand);
-            intent.putExtra("skuId",skuId);
-            intent.putExtra("altId",altId);
-            intent.putExtra("uID",uID);
-            intent.putExtra("preferredLanguage",preferredLanguage);
-            intent.putExtra("availableSizeList",availableSizeList);
-            startActivityForResult(intent,111);
-        }
+        validate_sku(clientId,skuId);
 
 //
 //        layout_button.setOnClickListener(new View.OnClickListener() {
@@ -210,8 +175,6 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 //            }
 //        });
 
-
-        validate_sku(clientId,skuId);
 
     }
 
@@ -460,6 +423,53 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                         gender = userObject.optString("gender");
 
                         brand = userObject.optString("brandName");
+
+                        if (isNew)
+                        {
+                            if(Arrays.asList(apparel_array).contains(dataType))
+                            {
+                                intent = new Intent(PixiboActivity.this, ApparelFlow.class);
+                                intent.putExtra("dataType",dataType);
+                                intent.putExtra("gender",gender);
+                                intent.putExtra("clientId",clientId);
+                                intent.putExtra("skuId",skuId);
+                                intent.putExtra("altId",altId);
+                                intent.putExtra("uID",uID);
+                                intent.putExtra("preferredLanguage",preferredLanguage);
+                                intent.putExtra("availableSizeList",availableSizeList);
+                                intent.putExtra("isNew",false);
+                                startActivityForResult(intent,111);
+                            }
+
+                            else if (Arrays.asList(footwear_array).contains(dataType))
+                            {
+                                intent = new Intent(PixiboActivity.this, FootwearFlow.class);
+                                intent.putExtra("dataType",dataType);
+                                intent.putExtra("gender",gender);
+                                intent.putExtra("clientId",clientId);
+                                intent.putExtra("brand",brand);
+                                intent.putExtra("skuId",skuId);
+                                intent.putExtra("altId",altId);
+                                intent.putExtra("uID",uID);
+                                intent.putExtra("preferredLanguage",preferredLanguage);
+                                intent.putExtra("availableSizeList",availableSizeList);
+                                startActivityForResult(intent,111);
+                            }
+                            else if (Arrays.asList(lingerie_array).contains(dataType))
+                            {
+                                intent = new Intent(PixiboActivity.this, BraFlow.class);
+                                intent.putExtra("dataType",dataType);
+                                intent.putExtra("gender",gender);
+                                intent.putExtra("clientId",clientId);
+                                intent.putExtra("brand",brand);
+                                intent.putExtra("skuId",skuId);
+                                intent.putExtra("altId",altId);
+                                intent.putExtra("uID",uID);
+                                intent.putExtra("preferredLanguage",preferredLanguage);
+                                intent.putExtra("availableSizeList",availableSizeList);
+                                startActivityForResult(intent,111);
+                            }
+                        }
 
                         getUserInfo();
                     }

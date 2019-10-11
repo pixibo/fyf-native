@@ -1,5 +1,6 @@
 package com.pixibo.zalora;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private String altId = "10214810760805751";
     private String uID = "";
     private String preferredLanguage = "en";
+    private String [] availableSizeList = {"S","M","L","XL","UK 16"};
 
     private LinearLayout layout_button;
     private TextView tv_find_my_size;
@@ -46,10 +48,62 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, PixiboActivity.class);
+                intent.putExtra("clientId",clientId);
+                intent.putExtra("skuId",skuId);
+                intent.putExtra("altId",altId);
+                intent.putExtra("uID",uID);
+                intent.putExtra("preferredLanguage",preferredLanguage);
+                intent.putExtra("availableSizeList",availableSizeList);
+                intent.putExtra("isNew",true);
                 startActivityForResult(intent,112);
             }
         });
     }
 
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 111) {
+
+            if(resultCode == Activity.RESULT_OK){
+
+                boolean recommended = data.getBooleanExtra("recommended",false);
+                String result = "";
+                result = data.getStringExtra("result");
+
+                setButtonText(result,recommended);
+            }
+
+        }
+    }
+
+
+    public void setButtonText(String size,boolean isRecommended)
+    {
+
+        String returnedText;
+
+        SpannableString content;
+
+        if(isRecommended){
+
+            returnedText = getResources().getString(R.string.your_size) +" "+size;
+            content = new SpannableString(returnedText);
+
+        }
+        else{
+
+            returnedText = getResources().getString(R.string.check_your_fit);
+            content = new SpannableString(returnedText);
+        }
+
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+
+        tv_find_my_size.setText(content);
+
+        layout_button.setVisibility(View.VISIBLE);
+    }
 
 }
