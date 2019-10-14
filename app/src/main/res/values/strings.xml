@@ -150,10 +150,10 @@
     <string name="footwear_what_size">What size is your </string>
     <string name="footwear_what_size_2"> shoes \?</string>
     <string name="footwear_width">WIDTH</string>
-    <string name="footwear_regular">REGULAR</string>
-    <string name="footwear_narrow">NARROW</string>
-    <string name="footwear_wide">WIDE</string>
-    <string name="footwear_extra_wide">EXTRA WIDE</string>
+    <string name="footwear_regular" translatable="false">REGULAR</string>
+    <string name="footwear_narrow" translatable="false">NARROW</string>
+    <string name="footwear_wide" translatable="false">WIDE</string>
+    <string name="footwear_extra_wide" translatable="false">EXTRA WIDE</string>
     <string name="footwear_result_continue">continue shopping</string>
     <string name="footwear_result_add_to_cart">ADD TO BAG</string>
 
@@ -205,7 +205,7 @@
     <string name="bar_cup_fit_slipping">slipping out</string>
     <string name="bar_cup_fit_slipping_desc">My breasts spill out of the cups</string>
     <string name="bar_cup_fit_gaps">Gaps or Wrinkles</string>
-    <string name="bar_cup_fit_gaps_desc">My breasts spill out of the cups</string>
+    <string name="bar_cup_fit_gaps_desc">There are gaps between my breasts and the cups</string>
     <string name="bar_gaps_at_top">Only at the top</string>
     <string name="bar_gaps_all_over">All over</string>
     <string name="bar_gaps_at_bottom">Only at the bottom</string>
@@ -343,7 +343,7 @@
     <string name="apparel_female_short">short</string>
     <string name="apparel_female_skirt">skirt</string>
     <string name="apparel_female_outerwear">outerwear</string>
-    <string name="apparel_female_coat">coat</string>
+    <string name="apparel_female_coat" translatable="false">coat</string>
 
     <string name="apparel_male_top">top</string>
     <string name="apparel_male_shirt">shirt</string>
@@ -351,8 +351,8 @@
     <string name="apparel_male_short">short</string>
     <string name="apparel_male_outerwear">outerwear</string>
 
-    <string name="apparel_shoes">shoes</string>
-    <string name="apparel_bra">bra</string>
+    <string name="apparel_shoes" translatable="false">shoes</string>
+    <string name="apparel_bra" translatable="false">bra</string>
 
 
     <string name="shoe_flipflop">Flip-flops &amp; Sandals</string>

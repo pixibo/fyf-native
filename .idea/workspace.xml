@@ -17,14 +17,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feabbe48-a71c-47ff-990d-0dec6aec2600" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-in/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-in/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml" afterDir="false" />
@@ -52,27 +44,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="345">
+              <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="164" column="32" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="android-dummy:///Users/shekhar/Documents/GitHub/fyf-native/app/Translations Editor">
-          <provider selected="true" editor-type-id="string-resource-editor" />
         </entry>
       </file>
     </leaf>
@@ -87,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tv_con</find>
       <find>tv_back_fit</find>
       <find>sizeType</find>
       <find>tv_brand_fav_continue</find>
@@ -117,6 +94,7 @@
       <find>BrandSuggestion</find>
       <find>BrandCategorySuggestion</find>
       <find>getSize</find>
+      <find>apparel_female_outerwear</find>
     </findStrings>
     <replaceStrings>
       <replace>category</replace>
@@ -759,13 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/LocalData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -1018,22 +989,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="164" column="32" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="32" />
+        <state relative-caret-position="-920">
+          <caret line="72" column="46" lean-forward="true" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="android-dummy:///Users/shekhar/Documents/GitHub/fyf-native/app/Translations Editor">
       <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="164" column="32" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
