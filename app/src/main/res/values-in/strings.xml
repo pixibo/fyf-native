@@ -49,7 +49,7 @@
     <string name="apparel_bra_profile">Ukuran Bra Anda</string>
     <string name="apparel_fit_fav_category">Ceritakan tentang favorit Anda</string>
     <string name="privacy_policy">Pixibo tidak akan membagikan atau mengungkapkan informasi pribadi Anda kepada siapa pun.</string>
-    <string name="privacy_powered_by">Kebijakan Privasi</string>
+    <string name="privacy_powered_by">Powered by</string>
     <string name="privacy_after_logo"> </string>
 
     <string name="your_size">UKURAN ANDA ANDALAH</string>
@@ -126,4 +126,30 @@
     <string name="shoe_running">Running Shoes</string>
     <string name="shoe_sneakers">Sneakers</string>
     <string name="shoe_wedges">Platforms &amp; Wedges</string>
+    <string name="bar_band_feel_digs_in">Ketat</string>
+    <string name="bar_band_feel_digs_in_desc">Pengikat terasa ketat dan sesak</string>
+    <string name="bar_band_feel_rides_up">Naik</string>
+    <string name="bar_band_feel_rides_up_desc">Bra ikut naik saat saya mengangkat tangan</string>
+    <string name="bar_band_feel_straight">Normal</string>
+    <string name="bar_band_feel_straight_desc">Pengikat terasa nyaman</string>
+    <string name="bra_band_feel">Apakah pengait bra terasa pas?</string>
+    <string name="bra_feel_digging">Apakah mengencangkan bra dengan pengait yang lebih longgar membantu?</string>
+    <string name="bra_feel_yes">Ya</string>
+    <string name="bra_feel_no">Tidak</string>
+    <string name="bra_isOld_bra">Apakah Anda memakai bra yang sama lebih dari 2 hari berturut-turut?</string>
+    <string name="bra_how_old">Berapa lama usia bra Anda?</string>
+    <string name="bra_underwire_bust">Apakah kawat terasa pas pada bagian samping payudara Anda?</string>
+    <string name="bra_underwire_bust_front">Apakah kawat depan dan bawah terasa pas?</string>
+    <string name="bra_type_wired">Kawat</string>
+    <string name="bra_type_unwired">Tanpa Kawat</string>
+    <string name="bra_type">Tipe Bra</string>
+    <string name="bra_tighter_hook">Apakah mengencangkan bra dengan pengait yang lebih kencang membantu?</string>
+    <string name="bra_strap_fit">Apakah tali bra terasa pas?</string>
+    <string name="bra_stap_gap">Apakah mengencangkan tali bra menghilangkan celah?</string>
+    <string name="bra_right_size">Dapatkan rekomendasi ukuran berdasarkan bra yang Anda kenakan</string>
+    <string name="bra_result_tell_more">Untuk memastikan, beri tahu kami lebih lanjut tentang bagaimana bra Anda terasa pas</string>
+    <string name="bra_result_taken_account">Kami telah memperhitungkan seberapa cocok bra Anda saat ini. Ubah</string>
+    <string name="bra_result_how_fit">Bagaimana seharusnya bra itu pas?</string>
+    <string name="bra_result_best_size">UKURAN INI PALING SESUAI UNTUK ANDA</string>
+    <string name="bra_result_accurate_fit">Untuk penilaian yang lebih akurat, jawablah pertanyaan bagaimana bra Anda terasa pas</string>
 </resources>

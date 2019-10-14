@@ -925,6 +925,15 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
                 layout_body_profile.setVisibility(View.VISIBLE);
+
+
+                layout_bra_profile.setVisibility(View.GONE);
+                layout_bust.setVisibility(View.GONE);
+                layout_brand.setVisibility(View.GONE);
+                layout_brand_search.setVisibility(View.GONE);
+                layout_fit_preference.setVisibility(View.GONE);
+                layout_brands.setVisibility(View.GONE);
+                layout_result.setVisibility(View.GONE);
                 layout_error.setVisibility(View.GONE);
                 progress(1);
             }
@@ -5727,17 +5736,28 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             case BrandSuggestion:
                 try
                 {
-                    String[] strArray = result.split(",") ;
 
-                    for (String s : strArray) {
+                    if (statusCode == 200)
+                    {
+                        String[] strArray = result.split(",") ;
 
-                        BrandModel brandModel = new BrandModel();
-                        brandModel.setName(s.replaceAll("[\"^\\[\\]]",""));
+                        for (String s : strArray) {
 
-                        brandModelArrayList.add(brandModel);
+                            BrandModel brandModel = new BrandModel();
+                            brandModel.setName(s.replaceAll("[\"^\\[\\]]",""));
+
+                            brandModelArrayList.add(brandModel);
+                        }
+
+                        brandAdapter.notifyDataSetChanged();
+                    }
+                    else if (statusCode == 500)
+
+                    {
+                        layout_loading.setVisibility(View.GONE);
+                        layout_error.setVisibility(View.VISIBLE);
                     }
 
-                    brandAdapter.notifyDataSetChanged();
                 }
                 catch (Exception e)
                 {
@@ -5875,11 +5895,11 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
                     }
-                    else
+                    else if (statusCode == 500)
+
                     {
                         layout_loading.setVisibility(View.GONE);
                         layout_error.setVisibility(View.VISIBLE);
-
                     }
 
 
@@ -6034,6 +6054,13 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
                     }
 
+                    else if (statusCode == 500)
+
+                    {
+                        layout_loading.setVisibility(View.GONE);
+                        layout_error.setVisibility(View.VISIBLE);
+                    }
+
                 }
                 catch (Exception e)
                 {
@@ -6123,58 +6150,70 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 try
                 {
 
-                    updateUserDetails();
-
-                    JSONObject object = new JSONObject(result);
-
-                    if (object.has("fys"))
+                    if (statusCode == 200)
                     {
-                        JSONArray fys = new JSONArray(object.getString("fys"));
+                        updateUserDetails();
 
-                        if (fys.length()>0)
+                        JSONObject object = new JSONObject(result);
+
+                        if (object.has("fys"))
                         {
-                            JSONObject fysObject = new JSONObject(String.valueOf(fys.get(0)));
+                            JSONArray fys = new JSONArray(object.getString("fys"));
 
-                            if (fysObject.getBoolean("recommended"))
+                            if (fys.length()>0)
                             {
+                                JSONObject fysObject = new JSONObject(String.valueOf(fys.get(0)));
 
-                                isRecommended = true ;
-                                size = fysObject.getString("size");
-
-                                if (fysObject.getString("size").contains("INT"))
+                                if (fysObject.getBoolean("recommended"))
                                 {
-                                    tv_header_text.setText(getResources().getString(R.string.header_text)+" "+
-                                            fysObject.getString("size").replace("INT",getResources().getString(R.string.international))+" "+getResources().getString(R.string.header_text_2));
+
+                                    isRecommended = true ;
+                                    size = fysObject.getString("size");
+
+                                    if (fysObject.getString("size").contains("INT"))
+                                    {
+                                        tv_header_text.setText(getResources().getString(R.string.header_text)+" "+
+                                                fysObject.getString("size").replace("INT",getResources().getString(R.string.international))+" "+getResources().getString(R.string.header_text_2));
+                                    }
+
+                                    else
+                                    {
+                                        tv_header_text.setText(getResources().getString(R.string.header_text)+" "+
+                                                fysObject.getString("size")+ " "+getResources().getString(R.string.header_text_2));
+                                    }
+
+
+
+                                    tv_header_text.setVisibility(View.VISIBLE);
+
+                                    layout_header.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
                                 }
 
                                 else
                                 {
-                                    tv_header_text.setText(getResources().getString(R.string.header_text)+" "+
-                                            fysObject.getString("size")+ " "+getResources().getString(R.string.header_text_2));
+
+                                    isRecommended = false  ;
+
+                                    size = fysObject.getString("size");
+
+                                    tv_header_text.setVisibility(View.GONE);
+
+                                    layout_header.setBackground(null);
                                 }
 
-
-
-                                tv_header_text.setVisibility(View.VISIBLE);
-
-                                layout_header.setBackgroundColor(getResources().getColor(R.color.color_button_selected_bg));
+                                //  Log.e("fysObject", String.valueOf(fysObject));
                             }
-
-                            else
-                            {
-
-                                isRecommended = false  ;
-
-                                size = fysObject.getString("size");
-
-                                tv_header_text.setVisibility(View.GONE);
-
-                                layout_header.setBackground(null);
-                            }
-
-                          //  Log.e("fysObject", String.valueOf(fysObject));
                         }
                     }
+
+                    else if (statusCode == 500)
+
+                    {
+                        layout_loading.setVisibility(View.GONE);
+                        layout_error.setVisibility(View.VISIBLE);
+                    }
+
+
                 }
                 catch (Exception e)
                 {

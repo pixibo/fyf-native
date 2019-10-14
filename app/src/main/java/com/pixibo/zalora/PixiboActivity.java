@@ -45,13 +45,12 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.validateSKU;
 public class PixiboActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
-    private String clientId = "sl8zvzsjelpg";
-    private String skuId = "BC421AADC2CE9DGS";
-    private String altId = "10214810760805751";
-//    private String altId = "";
+    private String clientId = "";
+    private String skuId = "";
+    private String altId = "";
     private String uID = "";
-    private String preferredLanguage = "en";
-    private String [] availableSizeList = {"S","M","L","XL","UK 16"};
+    private String preferredLanguage = "";
+    private String [] availableSizeList;
     private String brand = "";
     private String sizeUrl = null;
 
@@ -87,34 +86,6 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         mContext = this;
 
         uID = Utils.deviceID(mContext);
-
-        Locale locale;
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        android.content.res.Configuration conf = res.getConfiguration();
-        switch (preferredLanguage)
-        {
-            case "en":
-                locale = new Locale("en");
-                break;
-            case "in":
-                locale = new Locale("in");
-                break;
-            case "hk":
-                locale = new Locale("zh","HK");
-                break;
-            case "tw":
-                locale = new Locale("zh","TW");
-                break;
-            default:
-                locale = new Locale("en");
-                break;
-        }
-
-
-        conf.setLocale(locale); // API 17+ only.
-        res.updateConfiguration(conf, dm);
-
 
         layout_button = findViewById(R.id.layout_button);
         tv_find_my_size = findViewById(R.id.tv_find_my_size);
@@ -470,8 +441,12 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                                 startActivityForResult(intent,111);
                             }
                         }
+                        else
+                        {
+                            getUserInfo();
+                        }
 
-                        getUserInfo();
+
                     }
                     catch (Exception e)
                     {
@@ -506,7 +481,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     {
                         //layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
-                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                         tv_find_my_size.setText(content);
                     }
@@ -549,7 +524,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     {
                         layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
-                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                         tv_find_my_size.setText(content);
                     }
@@ -886,7 +861,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         }
         else{
 
-            returnedText = getResources().getString(R.string.check_your_fit);
+            returnedText = mContext.getResources().getString(R.string.check_your_fit);
             content = new SpannableString(returnedText);
         }
 
@@ -917,7 +892,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     {
                         layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
-                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                         tv_find_my_size.setText(content);
                     }
@@ -935,7 +910,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     {
                         layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
-                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                         tv_find_my_size.setText(content);
                     }
@@ -959,7 +934,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     {
                         layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
-                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                         tv_find_my_size.setText(content);
                     }
@@ -976,7 +951,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     {
                         layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
-                        content = new SpannableString(getResources().getString(R.string.find_my_size));
+                        content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                         tv_find_my_size.setText(content);
                     }
@@ -995,7 +970,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 {
                     layout_button.setVisibility(View.VISIBLE);
                     SpannableString content;
-                    content = new SpannableString(getResources().getString(R.string.find_my_size));
+                    content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                     tv_find_my_size.setText(content);
                 }
@@ -1005,7 +980,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         {
             layout_button.setVisibility(View.VISIBLE);
             SpannableString content;
-            content = new SpannableString(getResources().getString(R.string.find_my_size));
+            content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
             tv_find_my_size.setText(content);
             e.printStackTrace();

@@ -2,10 +2,12 @@ package com.pixibo.zalora;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -14,13 +16,16 @@ import android.widget.TextView;
 import com.pixibo.zalora.Apparel.ApparelFlow;
 import com.pixibo.zalora.Utils.Utils;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     PixiboActivity pixiboActivity = new PixiboActivity();
 
-    private String clientId = "sl8zvzsjelpg";
-    private String skuId = "BC421AADC2CE9DGS";
-    private String altId = "10214810760805751";
+    private String clientId = "qe3uhcp1kh11";
+    private String skuId = "UN337US0SU6QMY";
+    private String altId = "";
+//    private String altId = "10115632608494085";
     private String uID = "";
     private String preferredLanguage = "en";
     private String [] availableSizeList = {"S","M","L","XL","UK 16"};
@@ -43,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         pixiboActivity.get_final_size(clientId,skuId,altId,tv_find_my_size,layout_button,this);
 
 
-
         layout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,8 +62,35 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,112);
             }
         });
-    }
 
+
+        Locale locale;
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        switch (preferredLanguage)
+        {
+            case "en":
+                locale = new Locale("en");
+                break;
+            case "in":
+                locale = new Locale("in");
+                break;
+            case "hk":
+                locale = new Locale("zh","HK");
+                break;
+            case "tw":
+                locale = new Locale("zh","TW");
+                break;
+            default:
+                locale = new Locale("en");
+                break;
+        }
+
+
+        conf.setLocale(locale); // API 17+ only.
+        res.updateConfiguration(conf, dm);
+    }
 
 
     @Override
