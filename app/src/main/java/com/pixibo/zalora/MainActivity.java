@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
     PixiboActivity pixiboActivity = new PixiboActivity();
 
-    private String clientId = "qe3uhcp1kh11";
-    private String skuId = "UN337US0SU6QMY";
-    private String altId = "";
-//    private String altId = "10115632608494085";
+    private String clientId = "sl8zvzsjelpg";
+    private String skuId = "BC421AADC2CE9DGS";
+//    private String altId = "";
+    private String altId = "10115632608494085";
     private String uID = "";
     private String preferredLanguage = "en";
     private String [] availableSizeList = {"S","M","L","XL","UK 16"};
@@ -44,24 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         uID = Utils.deviceID(this);
 
-
-        pixiboActivity.get_final_size(clientId,skuId,altId,tv_find_my_size,layout_button,this);
-
-
-        layout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PixiboActivity.class);
-                intent.putExtra("clientId",clientId);
-                intent.putExtra("skuId",skuId);
-                intent.putExtra("altId",altId);
-                intent.putExtra("uID",uID);
-                intent.putExtra("preferredLanguage",preferredLanguage);
-                intent.putExtra("availableSizeList",availableSizeList);
-                intent.putExtra("isNew",true);
-                startActivityForResult(intent,112);
-            }
-        });
 
 
         Locale locale;
@@ -87,9 +69,28 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-
         conf.setLocale(locale); // API 17+ only.
         res.updateConfiguration(conf, dm);
+
+
+        pixiboActivity.get_final_size(clientId,skuId,altId,tv_find_my_size,layout_button,this);
+
+
+        layout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PixiboActivity.class);
+                intent.putExtra("clientId",clientId);
+                intent.putExtra("skuId",skuId);
+                intent.putExtra("altId",altId);
+                intent.putExtra("uID",uID);
+                intent.putExtra("preferredLanguage",preferredLanguage);
+                intent.putExtra("availableSizeList",availableSizeList);
+                intent.putExtra("isNew",true);
+                startActivityForResult(intent,112);
+            }
+        });
+
     }
 
 
@@ -105,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 result = data.getStringExtra("result");
 
                 setButtonText(result,recommended);
+
+                if (data.hasExtra("addToBag"))
+                {
+                    //TODO Implement logic for Add to Bag
+                }
             }
 
         }

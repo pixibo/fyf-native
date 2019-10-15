@@ -981,6 +981,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",isRecommended);
                 returnIntent.putExtra("result",size);
+                returnIntent.putExtra("addToBag",true);
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }

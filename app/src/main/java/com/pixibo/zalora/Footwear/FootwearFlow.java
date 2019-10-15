@@ -1064,6 +1064,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",isRecommended);
                 returnIntent.putExtra("result",size);
+                returnIntent.putExtra("addToBag",true);
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
 

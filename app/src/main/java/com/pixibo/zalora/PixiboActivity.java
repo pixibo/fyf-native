@@ -42,7 +42,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 import static com.pixibo.zalora.Utils.Utils.TYPE.validateSKU;
 
-public class PixiboActivity extends AppCompatActivity implements Result {
+public class PixiboActivity extends AppCompatActivity implements Result, View.OnClickListener {
 
     private LinearLayout layout_button;
     private String clientId = "";
@@ -87,67 +87,17 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
         uID = Utils.deviceID(mContext);
 
+
+
+
         layout_button = findViewById(R.id.layout_button);
         tv_find_my_size = findViewById(R.id.tv_find_my_size);
 
         validate_sku(clientId,skuId);
 
-//
-//        layout_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if(Arrays.asList(apparel_array).contains(dataType))
-//                {
-//                    intent = new Intent(PixiboActivity.this, ApparelFlow.class);
-//                    intent.putExtra("dataType",dataType);
-//                    intent.putExtra("gender",gender);
-//                    intent.putExtra("clientId",clientId);
-//                    intent.putExtra("skuId",skuId);
-//                    intent.putExtra("altId",altId);
-//                    intent.putExtra("uID",uID);
-//                    intent.putExtra("preferredLanguage",preferredLanguage);
-//                    intent.putExtra("availableSizeList",availableSizeList);
-//                    intent.putExtra("isNew",false);
-//                    startActivityForResult(intent,111);
-//                }
-//
-//                else if (Arrays.asList(footwear_array).contains(dataType))
-//                {
-//                    intent = new Intent(PixiboActivity.this, FootwearFlow.class);
-//                    intent.putExtra("dataType",dataType);
-//                    intent.putExtra("gender",gender);
-//                    intent.putExtra("clientId",clientId);
-//                    intent.putExtra("brand",brand);
-//                    intent.putExtra("skuId",skuId);
-//                    intent.putExtra("altId",altId);
-//                    intent.putExtra("uID",uID);
-//                    intent.putExtra("preferredLanguage",preferredLanguage);
-//                    intent.putExtra("availableSizeList",availableSizeList);
-//                    startActivityForResult(intent,111);
-//                }
-//                else if (Arrays.asList(lingerie_array).contains(dataType))
-//                {
-//                    intent = new Intent(PixiboActivity.this, BraFlow.class);
-//                    intent.putExtra("dataType",dataType);
-//                    intent.putExtra("gender",gender);
-//                    intent.putExtra("clientId",clientId);
-//                    intent.putExtra("brand",brand);
-//                    intent.putExtra("skuId",skuId);
-//                    intent.putExtra("altId",altId);
-//                    intent.putExtra("uID",uID);
-//                    intent.putExtra("preferredLanguage",preferredLanguage);
-//                    intent.putExtra("availableSizeList",availableSizeList);
-//                    startActivityForResult(intent,111);
-//                }
-//
-//
-//
-//            }
-//        });
-
-
     }
+
+
 
 
     public void get_final_size(String clientID , String skuID, String altID, TextView tv_find_my_size_set,LinearLayout layout_button_2, Context context)
@@ -161,8 +111,60 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         tv_find_my_size  = tv_find_my_size_set;
         layout_button = layout_button_2;
         validate_sku(clientId,skuId);
-    }
 
+
+/*        layout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Arrays.asList(apparel_array).contains(dataType))
+                {
+                    intent = new Intent(mContext, ApparelFlow.class);
+                    intent.putExtra("dataType",dataType);
+                    intent.putExtra("gender",gender);
+                    intent.putExtra("clientId",clientId);
+                    intent.putExtra("skuId",skuId);
+                    intent.putExtra("altId",altId);
+                    intent.putExtra("uID",uID);
+                    intent.putExtra("preferredLanguage",preferredLanguage);
+                    intent.putExtra("availableSizeList",availableSizeList);
+                    intent.putExtra("isNew",false);
+                    startActivityForResult(intent,111);
+                }
+
+                else if (Arrays.asList(footwear_array).contains(dataType))
+                {
+                    intent = new Intent(mContext, FootwearFlow.class);
+                    intent.putExtra("dataType",dataType);
+                    intent.putExtra("gender",gender);
+                    intent.putExtra("clientId",clientId);
+                    intent.putExtra("brand",brand);
+                    intent.putExtra("skuId",skuId);
+                    intent.putExtra("altId",altId);
+                    intent.putExtra("uID",uID);
+                    intent.putExtra("preferredLanguage",preferredLanguage);
+                    intent.putExtra("availableSizeList",availableSizeList);
+                    startActivityForResult(intent,111);
+                }
+                else if (Arrays.asList(lingerie_array).contains(dataType))
+                {
+                    intent = new Intent(mContext, BraFlow.class);
+                    intent.putExtra("dataType",dataType);
+                    intent.putExtra("gender",gender);
+                    intent.putExtra("clientId",clientId);
+                    intent.putExtra("brand",brand);
+                    intent.putExtra("skuId",skuId);
+                    intent.putExtra("altId",altId);
+                    intent.putExtra("uID",uID);
+                    intent.putExtra("preferredLanguage",preferredLanguage);
+                    intent.putExtra("availableSizeList",availableSizeList);
+                    mContext.startActivityForResult(intent,111);
+                    mContext.startActivity(intent);
+                }
+            }
+        });*/
+
+
+    }
 
     private void validate_sku(String clientId , String skuId) {
 
@@ -183,12 +185,12 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 }
 
             } else {
-                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,mContext.getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,mContext.getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -215,12 +217,12 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 }
 
             } else {
-                Utils.showToast(mContext,getResources().getString(R.string.no_internet));
+                Utils.showToast(mContext,mContext.getResources().getString(R.string.no_internet));
             }
 
         } catch (Exception e) {
             //Utils.hideLoading();
-            Utils.showToast(mContext,getResources().getString(R.string.something_wrong));
+            Utils.showToast(mContext,mContext.getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
         }
@@ -234,7 +236,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         try {
 
             if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
-                GET get = new GET(this, url , SizeFromApi, this);
+                GET get = new GET(mContext, url , SizeFromApi, this);
                 // Utils.showLoading(SettingActivity.mContext, false);
                 get.execute();
             } else {
@@ -256,7 +258,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         try {
 
             if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
-                GET get = new GET(this, "https://discoverysvc.pixibo.com/merge/users/"+UID+"/"+uID , MergeProfile, this);
+                GET get = new GET(mContext, "https://discoverysvc.pixibo.com/merge/users/"+UID+"/"+uID , MergeProfile, this);
                 // Utils.showLoading(SettingActivity.mContext, false);
                 get.execute();
             } else {
@@ -278,7 +280,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         try {
 
             if (NetworkUtils.getInstance(mContext).isConnectedToInternet()) {
-                GET get = new GET(this, "https://discoverysvc.pixibo.com/reset/"+clientId+"/"+uID , ResetProfile, this);
+                GET get = new GET(mContext, "https://discoverysvc.pixibo.com/reset/"+clientId+"/"+uID , ResetProfile, this);
                 // Utils.showLoading(SettingActivity.mContext, false);
                 get.execute();
             } else {
@@ -309,7 +311,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     body.put("uid",uID);
                     body.put("gender",gender);
 
-                    POST post = new POST(this, "https://discoverysvc.pixibo.com/uid" , body,UpdateProfile, this);
+                    POST post = new POST(mContext, "https://discoverysvc.pixibo.com/uid" , body,UpdateProfile, this);
                     post.execute();
                 }
                 else
@@ -318,7 +320,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     body.put("gender",gender);
                     body.put("altId",altId);
 
-                    POST post = new POST(this, "https://discoverysvc.pixibo.com/uid" , body,UpdateProfile, this);
+                    POST post = new POST(mContext, "https://discoverysvc.pixibo.com/uid" , body,UpdateProfile, this);
                     post.execute();
                 }
 
@@ -428,17 +430,17 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                             }
                             else if (Arrays.asList(lingerie_array).contains(dataType))
                             {
-                                intent = new Intent(PixiboActivity.this, BraFlow.class);
-                                intent.putExtra("dataType",dataType);
-                                intent.putExtra("gender",gender);
-                                intent.putExtra("clientId",clientId);
-                                intent.putExtra("brand",brand);
-                                intent.putExtra("skuId",skuId);
-                                intent.putExtra("altId",altId);
-                                intent.putExtra("uID",uID);
-                                intent.putExtra("preferredLanguage",preferredLanguage);
-                                intent.putExtra("availableSizeList",availableSizeList);
-                                startActivityForResult(intent,111);
+//                                intent = new Intent(PixiboActivity.this, BraFlow.class);
+//                                intent.putExtra("dataType",dataType);
+//                                intent.putExtra("gender",gender);
+//                                intent.putExtra("clientId",clientId);
+//                                intent.putExtra("brand",brand);
+//                                intent.putExtra("skuId",skuId);
+//                                intent.putExtra("altId",altId);
+//                                intent.putExtra("uID",uID);
+//                                intent.putExtra("preferredLanguage",preferredLanguage);
+//                                intent.putExtra("availableSizeList",availableSizeList);
+//                                startActivityForResult(intent,111);
                             }
                         }
                         else
@@ -598,9 +600,16 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 setButtonText(result,recommended);
 
 
+
+
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",recommended);
                 returnIntent.putExtra("result",result);
+                returnIntent.putExtra("result",result);
+                if (data.hasExtra("addToBag"))
+                {
+                    returnIntent.putExtra("addToBag",true);
+                }
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
 
@@ -974,6 +983,13 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                     tv_find_my_size.setText(content);
                 }
+
+                layout_button.setVisibility(View.INVISIBLE);
+
+                SpannableString content;
+                content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                tv_find_my_size.setText(content);
             }
         }
         catch (Exception e)
@@ -988,4 +1004,11 @@ public class PixiboActivity extends AppCompatActivity implements Result {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+
+        }
+    }
 }
