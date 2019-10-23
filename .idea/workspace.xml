@@ -27,9 +27,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-in/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-in/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,24 +56,14 @@
     <favorites_list name="fyf-native" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="986" column="58" selection-start-line="986" selection-start-column="58" selection-end-line="986" selection-end-column="58" />
+            <state relative-caret-position="242">
+              <caret line="3355" column="47" lean-forward="true" selection-start-line="3355" selection-start-column="47" selection-end-line="3355" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#37360#37416#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,36 +81,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tv_brand_band_1</find>
-      <find>cart</find>
-      <find>result</find>
-      <find>layout_button</find>
-      <find>onac</find>
-      <find>privacy_powered_by</find>
-      <find>pow</find>
-      <find>Powered by Pixibo</find>
-      <find>what size i</find>
-      <find>tv_size_fav_category</find>
-      <find>apparel_brand_fav_size</find>
-      <find>getResources()</find>
-      <find>loader_text</find>
-      <find>try_</find>
-      <find>error</find>
-      <find>layout_error</find>
-      <find>layout_try_again</find>
-      <find>layout_brand</find>
-      <find>layout_brand.setv</find>
-      <find>layout_loading</find>
+      <find>layout_cup_8</find>
+      <find>cup_8</find>
+      <find>layout_straight</find>
+      <find>getsi</find>
+      <find>back</find>
+      <find>tv_back</find>
+      <find>tv_back_band</find>
+      <find>getFinalSize</find>
+      <find>layout_accurate_fit</find>
+      <find>update</find>
       <find>GetSize</find>
-      <find>SizeFromApi</find>
-      <find>BrandSuggestion</find>
-      <find>BrandCategorySuggestion</find>
-      <find>getSize</find>
-      <find>apparel_female_outerwear</find>
-      <find>onclick</find>
-      <find>add_to_ca</find>
-      <find>add_to</find>
-      <find>tv_add_cart</find>
+      <find>start</find>
+      <find>isBrandSelected</find>
+      <find>underwire</find>
+      <find>isEditFlow</find>
+      <find>layout_bra_feel_button</find>
+      <find>band_fe</find>
+      <find>edit</find>
+      <find>tv_bra_tight_hook_no</find>
+      <find>layout_isOld_button</find>
+      <find>bra_tight_hook_button</find>
+      <find>layout_bra_looser_hook_button</find>
+      <find>tv_bra_looser_hook_yes</find>
+      <find>tv_isOld_no</find>
+      <find>setBandFeel</find>
+      <find>back_band</find>
+      <find>close</find>
+      <find>onbac</find>
+      <find>result</find>
+      <find>getsize</find>
     </findStrings>
     <replaceStrings>
       <replace>category</replace>
@@ -173,24 +167,26 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_selected.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_apparel_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-in/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_footwear_flow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="47" />
+    <option name="y" value="43" />
+    <option name="width" value="1260" />
+    <option name="height" value="686" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -200,85 +196,83 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
+      <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="drawable" type="1f31426a:PackageElementNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="drawable-hdpi" type="1f31426a:PackageElementNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="drawable-mdpi" type="1f31426a:PackageElementNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="drawable-xhdpi" type="1f31426a:PackageElementNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="drawable-xxhdpi" type="1f31426a:PackageElementNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-hdpi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="drawable-xxxhdpi" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-mdpi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-xhdpi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-xxhdpi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Apparel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Bra" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Footwear" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-xxxhdpi" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -394,83 +388,87 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
+      <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="zalora" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Bra" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable-hdpi" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable-mdpi" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable-xhdpi" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable" type="1f31426a:PackageElementNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable-xxhdpi" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-hdpi" type="1f31426a:PackageElementNode" />
             </path>
             <path>
-              <item name="fyf-native" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fyf-native" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable-xxxhdpi" type="462c0819:PsiDirectoryNode" />
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-mdpi" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-xhdpi" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-xxhdpi" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fyf-native" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="drawable-xxxhdpi" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -480,7 +478,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_API_27" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-10-14T12:56:40.604Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-10-23T10:59:44.047Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="Pixel_API_27" />
@@ -604,11 +602,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.14806867" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49791667" visible="true" weight="0.17453505" />
       <window_info id="Structure" order="2" sideWeight="0.50208336" side_tool="true" weight="0.22317597" />
       <window_info id="Favorites" order="3" sideWeight="0.5006196" side_tool="true" weight="0.23247497" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -617,13 +615,13 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49928468" weight="0.32713756" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49642345" weight="0.5006196" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49642345" weight="0.51672864" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32961586" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32928064" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5035765" side_tool="true" weight="0.2825279" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32928064" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.2180917" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.1771995" />
       <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.32961586" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32961586" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -631,7 +629,7 @@
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.28397712" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.3796592" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="StringPreview" order="7" />
       <window_info anchor="right" id="Assistant" order="8" weight="0.32904148" />
@@ -758,17 +756,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_wedges_female.xml" />
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/view/View.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="1779" column="16" selection-start-line="1779" selection-start-column="16" selection-end-line="1779" selection-end-column="16" />
-          <folding>
-            <element signature="e#52866#52867#0" expanded="true" />
-            <element signature="e#52917#52918#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_brand_suggession.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -827,13 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_unselected.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="8" lean-forward="true" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_result_tell_more.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -865,9 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_selected.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/WebResources/GET.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -882,14 +859,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30735">
-          <caret line="2049" column="58" selection-start-line="2049" selection-start-column="33" selection-end-line="2049" selection-end-column="58" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pixibo.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -898,32 +867,10 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-in/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="339" column="81" selection-start-line="339" selection-start-column="81" selection-end-line="339" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -950,49 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="android-dummy:///Users/shekhar/Documents/GitHub/fyf-native/app/Translations Editor">
-      <provider selected="true" editor-type-id="string-resource-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="164" column="32" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="1022" column="59" lean-forward="true" selection-start-line="1022" selection-start-column="59" selection-end-line="1022" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#72734#75563#0" expanded="true" />
-            <element signature="e#75562#75563#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="983" column="37" selection-start-line="983" selection-start-column="37" selection-end-line="983" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#43308#43687#0" expanded="true" />
-            <element signature="e#43686#43687#0" expanded="true" />
-            <element signature="e#109293#109355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Footwear/FootwearFlow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
@@ -1003,21 +907,111 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_hanger.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh-rHK/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_selected.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_unselected.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="8" lean-forward="true" selection-end-line="7" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_edit_disabled.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="android-dummy:///Users/shekhar/Documents/GitHub/fyf-native/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/PixiboActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="986" column="58" selection-start-line="986" selection-start-column="58" selection-end-line="986" selection-end-column="58" />
+        <state relative-caret-position="709">
+          <caret line="876" selection-start-line="876" selection-end-line="876" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#37360#37416#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/view/View.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="251" column="34" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bra_flow.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="2683" column="52" selection-start-line="2683" selection-start-column="41" selection-end-line="2683" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="185" column="18" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        <state relative-caret-position="60">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Apparel/ApparelFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="6803" selection-start-line="6803" selection-end-line="6814" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pixibo/zalora/Bra/BraFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="3355" column="47" lean-forward="true" selection-start-line="3355" selection-start-column="47" selection-end-line="3355" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

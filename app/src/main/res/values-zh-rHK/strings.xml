@@ -186,4 +186,10 @@
     <string name="bra_result_tell_more_text">在扣上新胸圍的最後一格時，新胸圍應該要合身；肩帶亦不應過緊或過鬆。試穿胸圍時，身體需向前傾，然後用手把胸部撥到罩杯中央。如果穿上後沒有擠出贅肉或出現空隙，即代表新胸圍合身。</string>
     <string name="bra_not_sure">不肯定</string>
     <string name="bar_edit">編輯</string>
+    <string name="bar_underwire_front_dig">鋼圈陷進胸部</string>
+    <string name="bar_underwire_front_liftup">鋼圈遠離胸部</string>
+    <string name="bar_underwire_front_sit">完美舒適地待在乳房底部</string>
+    <string name="bar_underwire_side_dig_chest">鋼圈陷進胸部</string>
+    <string name="bar_underwire_side_dig">鋼圈遠離腋下</string>
+    <string name="bar_underwire_side_sit">完美舒適地待在乳房兩側</string>
 </resources>

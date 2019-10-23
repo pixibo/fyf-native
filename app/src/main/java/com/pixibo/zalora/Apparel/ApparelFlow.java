@@ -5339,37 +5339,6 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
     }
 
 
-
-    private void validate_user(String clientId , String skuId) {
-
-
-        try {
-
-            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
-
-                if (altId.equals(""))
-                {
-                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+uID , ValidateUserUid, this);
-                    get.execute();
-                }
-                else
-                {
-                    GET get = new GET(this, URI.validate +clientId+"/"+skuId+"?uid="+altId , ValidateUserUid, this);
-                    get.execute();
-                }
-
-            } else {
-                Utils.showToast(this,getResources().getString(R.string.no_internet));
-            }
-
-        } catch (Exception e) {
-            //Utils.hideLoading();
-            Utils.showToast(this,getResources().getString(R.string.something_wrong));
-            e.printStackTrace();
-            Log.e("Exception",e.getMessage());
-        }
-    }
-
     private void getData() {
 
 

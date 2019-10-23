@@ -14,10 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/layout_header"
@@ -74,6 +70,7 @@
 
     <RelativeLayout
         android:id="@+id/layout_brand"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_header"
@@ -1076,6 +1073,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:id="@+id/tv_type_wired"
                         android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
@@ -1098,6 +1096,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:id="@+id/tv_type_unwired"
                         android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
@@ -1946,6 +1945,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:id="@+id/tv_type_wired_noBrand"
                         android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
@@ -1968,6 +1968,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="12sp"
+                        android:textAllCaps="true"
                         android:id="@+id/tv_type_unwired_noBrand"
                         android:textColor="@color/grey_3"
                         android:fontFamily="@font/apercu_regular"
@@ -2316,7 +2317,7 @@
                     android:layout_marginBottom="10dp"
                     android:visibility="gone"
                     android:padding="20dp"
-                    android:background="@color/white">
+                    android:background="@drawable/bg_edit_disabled">
 
 
                     <TextView
@@ -2630,17 +2631,7 @@
             </LinearLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_bra_sizes"
-                android:layout_marginTop="60dp"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/tv_bra_sizes_text"
-                android:textAllCaps="true"
-                android:fontFamily="@font/apercu_regular"
-                android:textColor="@color/color_text"
-                android:textSize="12sp" />
+
 
 
 
@@ -2648,7 +2639,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_bra_sizes_text"
+                android:layout_below="@+id/layout_bra_sizes"
                 android:paddingTop="30dp"
                 android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
@@ -2661,6 +2652,19 @@
                     android:layout_marginTop="10dp"
                     android:layout_alignParentBottom="true"
                     android:drawableStart="@drawable/ic_back"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/tv_back_band_feel"
+                    android:layout_marginBottom="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/tv_bra_sizes_text"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textColor="@color/color_text"
+                    android:textSize="12sp" />
 
 
                 <LinearLayout
@@ -2930,27 +2934,11 @@
 
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_bra_old_options"
-                android:layout_marginTop="60dp"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/tv_old_bra_text"
-                android:textAllCaps="true"
-                android:fontFamily="@font/apercu_regular"
-                android:textColor="@color/color_text"
-                android:textSize="12sp" />
-
-
-
-
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_old_bra_text"
+                android:layout_below="@+id/layout_bra_old_options"
                 android:paddingTop="30dp"
                 android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
@@ -2963,6 +2951,19 @@
                     android:layout_marginTop="10dp"
                     android:layout_alignParentBottom="true"
                     android:drawableStart="@drawable/ic_back"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/tv_back_old_bra"
+                    android:layout_marginBottom="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/tv_old_bra_text"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textColor="@color/color_text"
+                    android:textSize="12sp" />
 
 
                 <LinearLayout
@@ -3347,32 +3348,28 @@
             </LinearLayout>
 
 
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_gap_options"
-                android:layout_marginTop="60dp"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/tv_bra_style_text"
-                android:textAllCaps="true"
-                android:fontFamily="@font/apercu_regular"
-                android:textColor="@color/color_text"
-                android:textSize="12sp" />
-
-
-
-
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_bra_style_text"
+                android:layout_below="@+id/layout_gap_options"
                 android:paddingTop="30dp"
                 android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/tv_back_gap"
+                    android:layout_marginBottom="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/tv_bra_style_text"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/apercu_regular"
+                    android:textColor="@color/color_text"
+                    android:textSize="12sp" />
 
 
                 <TextView
@@ -3952,7 +3949,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="47dp"
                 android:orientation="vertical"
                 android:id="@+id/layout_underwire_front_options"
                 android:layout_below="@+id/tv_underwire_front">
@@ -3976,7 +3973,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_lift_away"
-                        android:text="They are lifting away from my chest"
+                        android:text="@string/bar_underwire_front_liftup"
+                        android:layout_marginStart="30dp"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_lift_away"
@@ -3993,7 +3991,7 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/bg_dropdown"
                     android:id="@+id/layout_sit_comfortable"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="90dp">
 
                     <ImageView
@@ -4007,7 +4005,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_sit_comfortable"
-                        android:text="They sit comfortably under the breasts"
+                        android:layout_marginStart="30dp"
+                        android:text="@string/bar_underwire_front_sit"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_sit_comfortable"
@@ -4023,7 +4022,7 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/bg_dropdown"
                     android:id="@+id/layout_digging_into_chest"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="90dp">
 
                     <ImageView
@@ -4036,8 +4035,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
                         android:layout_toEndOf="@+id/ic_digging_into_chest"
-                        android:text="They are digging into my chest"
+                        android:text="@string/bar_underwire_front_dig"
                         android:textSize="14sp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_digging_into_chest"
@@ -4136,9 +4136,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_digging_arms"
-                        android:text="They are digging up my arms"
+                        android:text="@string/bar_underwire_side_dig"
                         android:textSize="14sp"
                         android:textAllCaps="true"
+                        android:layout_marginStart="30dp"
                         android:id="@+id/tv_digging_arms"
                         android:fontFamily="@font/apercu_regular"
                         android:textColor="@color/black"
@@ -4167,8 +4168,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_around_bust"
-                        android:text="They sit nicely around my bust"
+                        android:text="@string/bar_underwire_side_sit"
                         android:textSize="14sp"
+                        android:layout_marginStart="30dp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_around_bust"
                         android:fontFamily="@font/apercu_regular"
@@ -4197,8 +4199,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/ic_digging_chest"
-                        android:text="They are digging into my chest"
+                        android:text="@string/bar_underwire_side_dig_chest"
                         android:textSize="14sp"
+                        android:layout_marginStart="30dp"
                         android:textAllCaps="true"
                         android:id="@+id/tv_digging_chest"
                         android:fontFamily="@font/apercu_regular"
@@ -4265,6 +4268,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textSize="12sp"
+                android:visibility="invisible"
                 android:id="@+id/loader_text"
                 android:textAllCaps="true"
                 android:fontFamily="@font/apercu_regular"
@@ -4332,13 +4336,7 @@
                 </RelativeLayout>
 
 
-
             </LinearLayout>
-
-
-
-
-
 
 
         </RelativeLayout>

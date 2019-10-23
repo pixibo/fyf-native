@@ -48,6 +48,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.GetSize;
 import static com.pixibo.zalora.Utils.Utils.TYPE.NewBrand;
 import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateData;
+import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 
 public class BraFlow extends AppCompatActivity implements Result, View.OnClickListener {
 
@@ -67,7 +68,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private String region_noBrand = "";
     private String cup = "";
     private String cup_noBrand = "";
-    private String band ;
+    private String band = "" ;
     private String band_noBrand = "";
     private String isWired = "";
     private String isWired_noBrand = "";
@@ -94,6 +95,11 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
     private boolean isRecommended = false ;
     private boolean brandNotListed = false ;
+
+    private boolean isBrandSelected = false;
+    private boolean isEditFlow = false;
+    private boolean tellMore = false;
+    private boolean moreAccurate = false;
 
 
     Typeface bold_text ;
@@ -142,7 +148,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private RelativeLayout layout_cup_back_noBrand,layout_cup_next_noBrand,layout_cup_next_2_noBrand,layout_cup_back_2_noBrand;
     private RelativeLayout layout_band_next_1_noBrand,layout_band_back_1_noBrand;
 
-    private TextView tv_type_size,tb_out_of_stock,tv_not_recommended,tv_add_cart,tv_size_result,tv_type_size_noBrand;
+    private TextView tv_type_size,tb_out_of_stock,tv_not_recommended,tv_add_cart,tv_size_result,tv_type_size_noBrand,loader_text;
 
     private LinearLayout layout_size_selection,layout_start_over,layout_cup_row1,layout_cup_row2,layout_cup_row3,layout_band_row1,layout_band_row2;
 
@@ -158,7 +164,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private TextView tv_digging_in_description,tv_straight_description,tv_riding_up_description;
     private TextView tv_bra_sizes_text, tv_isOld_no, tv_isOld_yes,tv_bra_style_text,tv_gap_no,tv_gap_yes, tv_bra_looser_hook_no, tv_bra_looser_hook_yes,tv_bra_tight_hook_no,tv_bra_tight_hook_yes,tv_old_bra_text, tv_old_bra_page_no, tv_old_bra_page_yes,tv_style_options_text;
     private ImageView ic_digging_in,ic_straight,ic_riding_up;
-    private LinearLayout layout_bra_feel_button, layout_bra_isOld_button,layout_bra_tight_hook_button,layout_gap_button,layout_old_bra_button;
+    private LinearLayout layout_bra_loose_hook_button, layout_bra_isOld_button,layout_bra_tight_hook_button,layout_gap_button,layout_old_bra_button;
 
 
     private RelativeLayout layout_just_right,layout_slipping,layout_gap;
@@ -192,10 +198,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private TextView tv_bought_recently,tv_6months,tv_12months,tv_1year;
 
     private RelativeLayout layout_accurate_fit, layout_edit,layout_tell_more;
-
-    private boolean isBrandSelected = false;
-    private boolean isEditFlow = false;
-    private boolean tellMore = false;
 
     private String [] availableSizeList ;
 
@@ -274,6 +276,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_description = findViewById(R.id.tv_description);
         tv_type_size_noBrand = findViewById(R.id.tv_type_size_noBrand);
         layout_sizeType_selection = findViewById(R.id.layout_sizeType_selection);
+        loader_text = findViewById(R.id.loader_text);
 
         layout_close = findViewById(R.id.layout_close);
         layout_privacy = findViewById(R.id.layout_privacy);
@@ -479,8 +482,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_12months = findViewById(R.id.tv_12months);
         tv_1year = findViewById(R.id.tv_1year);
 
-        layout_bra_feel_button = findViewById(R.id.layout_isOld_button);
-        layout_bra_isOld_button = findViewById(R.id.layout_bra_looser_hook_button);
+        layout_bra_isOld_button = findViewById(R.id.layout_isOld_button);
+        layout_bra_loose_hook_button = findViewById(R.id.layout_bra_looser_hook_button);
         layout_bra_tight_hook_button = findViewById(R.id.layout_bra_tight_hook_button);
         layout_gap_button = findViewById(R.id.layout_gap_button);
         layout_old_bra_button = findViewById(R.id.layout_old_bra_page_button);
@@ -939,8 +942,34 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_band_feel.setVisibility(View.VISIBLE);
                 layout_result.setVisibility(View.GONE);
 
+
+                if (bandFit.equals("1"))
+                {
+                    tv_bra_sizes_text.setText(getResources().getString(R.string.bra_feel_digging));
+
+                    layout_bra_loose_hook_button.setVisibility(View.VISIBLE);
+                    layout_bra_isOld_button.setVisibility(View.GONE);
+                    layout_bra_tight_hook_button.setVisibility(View.GONE);
+                }
+                else if (bandFit.equals("2"))
+                {
+                    tv_bra_sizes_text.setText("");
+
+                    layout_bra_loose_hook_button.setVisibility(View.GONE);
+                    layout_bra_isOld_button.setVisibility(View.GONE);
+                    layout_bra_tight_hook_button.setVisibility(View.GONE);
+                }
+                else if (bandFit.equals("3"))
+                {
+                    tv_bra_sizes_text.setText(getResources().getString(R.string.bra_isOld_bra));
+
+                    layout_bra_loose_hook_button.setVisibility(View.GONE);
+                    layout_bra_isOld_button.setVisibility(View.VISIBLE);
+                    layout_bra_tight_hook_button.setVisibility(View.GONE);
+                }
+
                 isEditFlow = true;
-                tellMore = true;
+               // tellMore = true;
 
                 bandFit = "0";
                 cupFit = "0";
@@ -958,6 +987,97 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
             }
         });
+
+
+        layout_accurate_fit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //moreAccurate = true;
+
+                layout_result.setVisibility(View.GONE);
+
+                if (!bandFit.equals("0"))
+                {
+                    setBandFeel(bandFit);
+
+                    if (bandFit.equals("3")  && braAge.equals("0"))
+                    {
+                        layout_bra_old.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        setBraAge(braAge);
+
+                        if (!cupFit.equals("0"))
+                        {
+                            setCupFit(cupFit);
+
+                            if(cupFit.equals("3") && gaps.equals("0"))
+                            {
+                                layout_gaps.setVisibility(View.VISIBLE);
+                            }
+                            else
+                            {
+                                setGaps(gaps);
+
+                                if (gaps.equals("3") && braStyle.equals("0"))
+                                {
+                                    layout_bra_style.setVisibility(View.VISIBLE);
+                                }
+                                else
+                                {
+                                    setBraStyle(braStyle);
+
+                                    if (!strapsFit.equals("0"))
+                                    {
+                                        setStraps(strapsFit);
+
+                                        if (wired || wired_noBrand)
+                                        {
+                                            if (!frontWireFit.equals("0"))
+                                            {
+                                                setFrontWire(frontWireFit);
+
+                                                if (sideWireFit.equals("0"))
+                                                {
+                                                    layout_underwire_side.setVisibility(View.VISIBLE);
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                layout_underwire_front.setVisibility(View.VISIBLE);
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        layout_strap_fit.setVisibility(View.VISIBLE);
+                                    }
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            layout_cup_fit.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    layout_band_feel.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
+
+
 
 
 
@@ -1003,6 +1123,17 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             }
         });
 
+        layout_result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (layout_fit_how.getVisibility() == View.VISIBLE)
+                {
+                    layout_fit_how.setVisibility(View.GONE);
+                }
+            }
+        });
+
 
         tv_brand_not_listed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1011,8 +1142,11 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_bra_profile_noBrand.setVisibility(View.VISIBLE);
                 layout_sizeType_selection.setVisibility(View.GONE);
 
-
                 brandNotListed = true;
+
+
+                clearBraType();
+
 
                 if (region_noBrand.equals(""))
                 {
@@ -1233,6 +1367,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         });
 
 
+
+
         layout_start_over.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1261,8 +1397,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 if (isBrandSelected)
                 {
+                    brandNotListed = false;
                     layout_brand.setVisibility(View.GONE);
-                    layout_bra_profile.setVisibility(View.VISIBLE);
 
                     //clearAllBrandSize();
                     Log.e("Brand",brand);
@@ -1291,8 +1427,11 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 if (!band.equals("") && !cup.equals("") && !isWired.equals(""))
                 {
 
+                    updateUserDetails();
+
                     if (altId.equals(""))
                     {
+
                         getFinalSize(uID,brand,band,cup,region,wired);
                     }
                     else
@@ -1355,6 +1494,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     layout_brand.setVisibility(View.GONE);
                     layout_bra_profile_noBrand.setVisibility(View.GONE);
                     layout_band_feel.setVisibility(View.VISIBLE);
+
+                    updateUserDetails();
+
                 }
                 else
                 {
@@ -1414,7 +1556,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_back_band_feel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isEditFlow)
+
+                if (isEditFlow || moreAccurate)
                 {
                     layout_band_feel.setVisibility(View.GONE);
                     layout_result.setVisibility(View.VISIBLE);
@@ -1424,8 +1567,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     layout_band_feel.setVisibility(View.GONE);
                     layout_bra_profile_noBrand.setVisibility(View.VISIBLE);
                 }
-
-
             }
         });
 
@@ -1513,6 +1654,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 tightStrap = true ;
                 Log.e("tightStrap", String.valueOf(tightStrap));
 
+                updateUserDetails();
+
             }
         });
 
@@ -1526,37 +1669,44 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 tightStrap = false ;
                 Log.e("tightStrap", String.valueOf(tightStrap));
+
+                updateUserDetails();
             }
         });
 
         tv_isOld_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 layout_band_feel.setVisibility(View.GONE);
-                layout_cup_fit.setVisibility(View.VISIBLE);
+                layout_bra_old.setVisibility(View.VISIBLE);
 
                 tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
 
                 sameBra = true;
+                bandFit="3";
                 Log.e("isOldBra", String.valueOf(sameBra));
+                Log.e("bandFit", String.valueOf(bandFit));
             }
         });
 
         tv_isOld_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                layout_band_feel.setVisibility(View.GONE);
-//                layout_cup_fit.setVisibility(View.VISIBLE);
 
-                tv_bra_sizes_text.setText(getResources().getString(R.string.bra_feel_digging));
+                tv_bra_sizes_text.setText(getResources().getString(R.string.bra_tighter_hook));
+
                 layout_bra_tight_hook_button.setVisibility(View.VISIBLE);
 
                 tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
                 tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
 
                 sameBra = false;
+                bandFit="3";
+
                 Log.e("isOldBra", String.valueOf(sameBra));
+                Log.e("bandFit", String.valueOf(bandFit));
             }
         });
 
@@ -1566,14 +1716,18 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             public void onClick(View view) {
 
                 layout_band_feel.setVisibility(View.GONE);
-                layout_bra_old.setVisibility(View.VISIBLE);
+                layout_cup_fit.setVisibility(View.VISIBLE);
+
+                updateUserDetails();
 
                 tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
 
                 looseHook = true;
                 bandFit="1";
+
                 Log.e("looseHook", String.valueOf(looseHook));
+                Log.e("bandFit", String.valueOf(bandFit));
             }
         });
 
@@ -1582,16 +1736,18 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             public void onClick(View view) {
 
                 layout_bra_isOld_button.setVisibility(View.GONE);
-                layout_bra_tight_hook_button.setVisibility(View.VISIBLE);
+                layout_cup_fit.setVisibility(View.VISIBLE);
 
-                tv_bra_sizes_text.setText(getResources().getString(R.string.bra_tighter_hook));
+                updateUserDetails();
 
                 tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
                 tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
 
                 bandFit="1";
                 looseHook = false;
+
                 Log.e("looseHook", String.valueOf(looseHook));
+                Log.e("bandFit", String.valueOf(bandFit));
             }
         });
 
@@ -1603,6 +1759,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_band_feel.setVisibility(View.GONE);
                 layout_cup_fit.setVisibility(View.VISIBLE);
 
+                updateUserDetails();
+
                 tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
 
@@ -1610,6 +1768,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 sameBra = false;
                 bandFit="3";
                 Log.e("tightHook", String.valueOf(tightHook));
+                Log.e("bandFit", String.valueOf(bandFit));
+
             }
         });
 
@@ -1619,6 +1779,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_band_feel.setVisibility(View.GONE);
                 layout_cup_fit.setVisibility(View.VISIBLE);
 
+                updateUserDetails();
+
                 tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
                 tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
 
@@ -1626,6 +1788,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 sameBra = false;
                 bandFit="3";
                 Log.e("tightHook", String.valueOf(tightHook));
+                Log.e("bandFit", String.valueOf(bandFit));
+
             }
         });
 
@@ -1635,11 +1799,16 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_bra_old.setVisibility(View.GONE);
                 layout_cup_fit.setVisibility(View.VISIBLE);
 
+                updateUserDetails();
+
                 tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_old_bra_page_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
 
+                bandFit="3";
                 tightHook = true;
                 Log.e("tightHook", String.valueOf(tightHook));
+                Log.e("bandFit", String.valueOf(bandFit));
+
             }
         });
 
@@ -1649,11 +1818,16 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_bra_old.setVisibility(View.GONE);
                 layout_cup_fit.setVisibility(View.VISIBLE);
 
+                updateUserDetails();
+
                 tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
                 tv_old_bra_page_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
 
+                bandFit="3";
                 tightHook = false;
                 Log.e("tightHook", String.valueOf(tightHook));
+                Log.e("bandFit", String.valueOf(bandFit));
+
             }
         });
 
@@ -1662,7 +1836,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             @Override
             public void onClick(View view) {
 
-                clearBraSize();
+                clearBandFit();
 
                 bandFit = "1";
                 layout_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
@@ -1673,7 +1847,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 tv_bra_sizes_text.setText(getResources().getString(R.string.bra_feel_digging));
 
                 layout_bra_isOld_button.setVisibility(View.GONE);
-                layout_bra_feel_button.setVisibility(View.VISIBLE);
+                layout_bra_loose_hook_button.setVisibility(View.VISIBLE);
                 layout_bra_tight_hook_button.setVisibility(View.GONE);
 
                 Log.e("bandFit",bandFit);
@@ -1685,7 +1859,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             @Override
             public void onClick(View view) {
 
-                clearBraSize();
+                clearBandFit();
 
                 bandFit = "2";
                 layout_straight.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
@@ -1695,12 +1869,14 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 tv_bra_sizes_text.setText("");
 
-                layout_bra_feel_button.setVisibility(View.GONE);
+                layout_bra_loose_hook_button.setVisibility(View.GONE);
                 layout_bra_isOld_button.setVisibility(View.GONE);
                 layout_bra_tight_hook_button.setVisibility(View.GONE);
 
                 layout_cup_fit.setVisibility(View.VISIBLE);
                 layout_band_feel.setVisibility(View.GONE);
+
+                updateUserDetails();
 
                 Log.e("bandFit",bandFit);
 
@@ -1712,7 +1888,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             @Override
             public void onClick(View view) {
 
-                clearBraSize();
+                clearBandFit();
 
                 bandFit = "3";
                 layout_riding_up.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
@@ -1722,11 +1898,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 tv_bra_sizes_text.setText(getResources().getString(R.string.bra_isOld_bra));
 
-                layout_bra_feel_button.setVisibility(View.GONE);
+                layout_bra_loose_hook_button.setVisibility(View.GONE);
                 layout_bra_isOld_button.setVisibility(View.VISIBLE);
                 layout_bra_tight_hook_button.setVisibility(View.GONE);
 
                 Log.e("bandFit",bandFit);
+
             }
         });
 
@@ -1746,6 +1923,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_cup_fit.setVisibility(View.GONE);
                 layout_strap_fit.setVisibility(View.VISIBLE);
+
+                updateUserDetails();
+
                 Log.e("cupFit",cupFit);
 
             }
@@ -1765,6 +1945,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_cup_fit.setVisibility(View.GONE);
                 layout_strap_fit.setVisibility(View.VISIBLE);
+
+                updateUserDetails();
+
                 Log.e("cupFit",cupFit);
             }
         });
@@ -1783,6 +1966,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_cup_fit.setVisibility(View.GONE);
                 layout_gaps.setVisibility(View.VISIBLE);
+
+                updateUserDetails();
+
                 Log.e("cupFit",cupFit);
 
             }
@@ -1803,20 +1989,26 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_strap_fit.setVisibility(View.GONE);
 
+                updateUserDetails();
+
                 if (wired_noBrand || wired)
                 {
                     layout_underwire_front.setVisibility(View.VISIBLE);
                 }
                 else
                 {
+                    moreAccurate =false ;
+
                     if (altId.equals(""))
                     {
                         if (tellMore)
                         {
+                            updateUserDetails();
                             getFinalSize(uID,brand,band,cup,region,wired);
                         }
                         else
                         {
+                            updateUserDetails();
                             getFinalSize(uID,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
                         }
                     }
@@ -1824,10 +2016,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     {
                         if (tellMore)
                         {
+                            updateUserDetails();
                             getFinalSize(altId,brand,band,cup,region,wired);
                         }
                         else
                         {
+                            updateUserDetails();
                             getFinalSize(altId,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
                         }
                     }
@@ -1846,6 +2040,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 clearStrapFit();
 
                 strapsFit="2";
+
+                updateUserDetails();
+
                 layout_strap_fit_fine.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
                 tv_strap_fit_fine.setTextColor(getResources().getColor(R.color.color_text));
                 tv_strap_fit_fine_description.setTextColor(getResources().getColor(R.color.color_text));
@@ -1859,14 +2056,18 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 }
                 else
                 {
+                    moreAccurate =false ;
+
                     if (altId.equals(""))
                     {
                         if (tellMore)
                         {
+                            updateUserDetails();
                             getFinalSize(uID,brand,band,cup,region,wired);
                         }
                         else
                         {
+                            updateUserDetails();
                             getFinalSize(uID,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
                         }
                     }
@@ -1874,10 +2075,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     {
                         if (tellMore)
                         {
+                            updateUserDetails();
                             getFinalSize(altId,brand,band,cup,region,wired);
                         }
                         else
                         {
+                            updateUserDetails();
                             getFinalSize(altId,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
                         }
                     }
@@ -1893,6 +2096,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 clearStrapFit();
                 strapsFit="3";
+
+                updateUserDetails();
+
                 layout_strap_not_up.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
                 tv_strap_not_up.setTextColor(getResources().getColor(R.color.color_text));
                 tv_strap_not_up_description.setTextColor(getResources().getColor(R.color.color_text));
@@ -1907,14 +2113,18 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 }
                 else
                 {
+                    moreAccurate = false ;
+
                     if (altId.equals(""))
                     {
                         if (tellMore)
                         {
+                            updateUserDetails();
                             getFinalSize(uID,brand,band,cup,region,wired);
                         }
                         else
                         {
+                            updateUserDetails();
                             getFinalSize(uID,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
                         }
                     }
@@ -1922,10 +2132,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     {
                         if (tellMore)
                         {
+                            updateUserDetails();
                             getFinalSize(altId,brand,band,cup,region,wired);
                         }
                         else
                         {
+                            updateUserDetails();
                             getFinalSize(altId,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
                         }
                     }
@@ -1951,6 +2163,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_underwire_side.setVisibility(View.VISIBLE);
                 layout_underwire_front.setVisibility(View.GONE);
+
+                updateUserDetails();
+
                 Log.e("frontWireFit",frontWireFit);
 
             }
@@ -1969,6 +2184,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_underwire_side.setVisibility(View.VISIBLE);
                 layout_underwire_front.setVisibility(View.GONE);
+
+                updateUserDetails();
+
                 Log.e("frontWireFit",frontWireFit);
 
             }
@@ -1987,6 +2205,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_underwire_side.setVisibility(View.VISIBLE);
                 layout_underwire_front.setVisibility(View.GONE);
+
+                updateUserDetails();
+
                 Log.e("frontWireFit",frontWireFit);
 
 
@@ -2008,7 +2229,13 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_underwire_side.setVisibility(View.VISIBLE);
                 layout_underwire_front.setVisibility(View.GONE);
+
+                updateUserDetails();
+
                 Log.e("sideWireFit",sideWireFit);
+
+
+                moreAccurate =false ;
 
                 if (altId.equals(""))
                 {
@@ -2050,7 +2277,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_underwire_side.setVisibility(View.VISIBLE);
                 layout_underwire_front.setVisibility(View.GONE);
+
+                updateUserDetails();
+
                 Log.e("sideWireFit",sideWireFit);
+
+                moreAccurate =false ;
 
                 if (altId.equals(""))
                 {
@@ -2092,7 +2324,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_underwire_side.setVisibility(View.VISIBLE);
                 layout_underwire_front.setVisibility(View.GONE);
+
+                updateUserDetails();
+
                 Log.e("sideWireFit",sideWireFit);
+
+                moreAccurate =false ;
 
                 if (altId.equals(""))
                 {
@@ -2163,6 +2400,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_gaps.setVisibility(View.GONE);
                 layout_strap_fit.setVisibility(View.VISIBLE);
 
+                updateUserDetails();
+
+
                 Log.e("gaps",gaps);
 
             }
@@ -2184,6 +2424,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_gaps.setVisibility(View.GONE);
                 layout_bra_style.setVisibility(View.VISIBLE);
+
+                updateUserDetails();
+
 
                 Log.e("gaps",gaps);
 
@@ -2210,6 +2453,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_strap_fit.setVisibility(View.VISIBLE);
                 layout_bra_style.setVisibility(View.GONE);
 
+                updateUserDetails();
+
+
                 Log.e("braStyle",braStyle);
 
 
@@ -2232,6 +2478,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_strap_fit.setVisibility(View.VISIBLE);
                 layout_bra_style.setVisibility(View.GONE);
 
+                updateUserDetails();
+
+
                 Log.e("braStyle",braStyle);
 
             }
@@ -2251,6 +2500,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 layout_strap_fit.setVisibility(View.VISIBLE);
                 layout_bra_style.setVisibility(View.GONE);
+
+                updateUserDetails();
+
 
                 Log.e("braStyle",braStyle);
 
@@ -2272,6 +2524,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_strap_fit.setVisibility(View.VISIBLE);
                 layout_bra_style.setVisibility(View.GONE);
 
+                updateUserDetails();
+
+
                 Log.e("braStyle",braStyle);
 
             }
@@ -2288,6 +2543,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_strap_fit.setVisibility(View.VISIBLE);
                 layout_bra_style.setVisibility(View.GONE);
 
+                updateUserDetails();
+
+
                 Log.e("braStyle",braStyle);
             }
         });
@@ -2299,9 +2557,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 clearOldBra();
                 layout_bought_recently.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
                 tv_bought_recently.setTextColor(getResources().getColor(R.color.color_text));
-
-//                layout_bra_old.setVisibility(View.GONE);
-//                layout_cup_fit.setVisibility(View.VISIBLE);
 
                 tv_old_bra_text.setText(getResources().getString(R.string.bra_tighter_hook));
                 layout_old_bra_button.setVisibility(View.VISIBLE);
@@ -2318,9 +2573,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 clearOldBra();
                 layout_6months.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
                 tv_6months.setTextColor(getResources().getColor(R.color.color_text));
-
-//                layout_bra_old.setVisibility(View.GONE);
-//                layout_cup_fit.setVisibility(View.VISIBLE);
 
                 tv_old_bra_text.setText(getResources().getString(R.string.bra_tighter_hook));
                 layout_old_bra_button.setVisibility(View.VISIBLE);
@@ -2342,6 +2594,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_bra_old.setVisibility(View.GONE);
                 layout_cup_fit.setVisibility(View.VISIBLE);
 
+                updateUserDetails();
+
+
                 braAge = "3";
                 Log.e("braAge",braAge);
 
@@ -2358,6 +2613,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_bra_old.setVisibility(View.GONE);
                 layout_cup_fit.setVisibility(View.VISIBLE);
 
+                updateUserDetails();
+
+
                 braAge = "4";
                 Log.e("braAge",braAge);
 
@@ -2371,8 +2629,10 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_brand_4.setOnClickListener(this);
         tv_brand_5.setOnClickListener(this);
 
+        getData();
         get_brands(gender,category);
         setDefaultBrands();
+
 
     }
 
@@ -2420,6 +2680,16 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
         try {
 
+            if (tellMore)
+            {
+                moreAccurate = true;
+
+                layout_edit.setVisibility(View.GONE);
+                layout_accurate_fit.setVisibility(View.VISIBLE);
+                layout_tell_more.setVisibility(View.GONE);
+
+            }
+
             JSONObject object = new JSONObject();
             JSONObject femaleObject = new JSONObject();
             JSONObject whois = new JSONObject();
@@ -2436,16 +2706,58 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             if (gender.equals("female"))
             {
                 referenceBrands.put("category",category);
-                referenceBrands.put("brand",brand);
-                referenceBrands.put("cup",cup);
 
-                braOptions.put("wired",wired);
-                braOptions.put("bandFit",bandFit);
-                braOptions.put("cupFit",cupFit);
-                braOptions.put("strapsFit",strapsFit);
-                braOptions.put("band",band);
-                braOptions.put("cup",cup);
-                braOptions.put("region",region);
+                if (brandNotListed)
+                {
+                    braOptions.put("wired",String.valueOf(wired_noBrand));
+                    braOptions.put("region",region_noBrand);
+                    braOptions.put("band",Integer.parseInt(band_noBrand));
+                    braOptions.put("cup",cup_noBrand);
+                    braOptions.put("bandFit",bandFit);
+                    braOptions.put("cupFit",cupFit);
+                    braOptions.put("strapsFit",strapsFit);
+                    braOptions.put("braAge",braAge);
+                    braOptions.put("sameBra",String.valueOf(sameBra));
+                    braOptions.put("tightHook",String.valueOf(tightHook));
+                    braOptions.put("looseHook",String.valueOf(looseHook));
+                    braOptions.put("tightStrap",String.valueOf(tightStrap));
+                    braOptions.put("braStyle",braStyle);
+                    braOptions.put("frontWireFit",frontWireFit);
+                    braOptions.put("sideWireFit",sideWireFit);
+                    braOptions.put("gaps",gaps);
+                }
+
+                else if(tellMore)
+                {
+                    referenceBrands.put("brand",brand);
+                    referenceBrands.put("band",Integer.parseInt(band));
+                    referenceBrands.put("cup",cup);
+                    referenceBrands.put("region",region);
+                    referenceBrands.put("wired",wired);
+
+                    braOptions.put("bandFit",bandFit);
+                    braOptions.put("cupFit",cupFit);
+                    braOptions.put("strapsFit",strapsFit);
+                    braOptions.put("braAge",braAge);
+                    braOptions.put("sameBra",String.valueOf(sameBra));
+                    braOptions.put("tightHook",String.valueOf(tightHook));
+                    braOptions.put("looseHook",String.valueOf(looseHook));
+                    braOptions.put("tightStrap",String.valueOf(tightStrap));
+                    braOptions.put("braStyle",braStyle);
+                    braOptions.put("frontWireFit",frontWireFit);
+                    braOptions.put("sideWireFit",sideWireFit);
+                    braOptions.put("gaps",gaps);
+                }
+                else
+                {
+                    referenceBrands.put("brand",brand);
+                    referenceBrands.put("band",Integer.parseInt(band));
+                    referenceBrands.put("cup",cup);
+                    referenceBrands.put("region",region);
+                    referenceBrands.put("wired",wired);
+                }
+
+
 
                 referenceBrandsArray.put(0,referenceBrands);
                 femaleObject.put("referenceBrands",referenceBrandsArray);
@@ -2530,6 +2842,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
     private void get_brand_sizes(String gender ,String category,String brand) {
 
+        layout_loading.setVisibility(View.VISIBLE);
+        loader_text.setVisibility(View.INVISIBLE);
 
         try {
 
@@ -2554,6 +2868,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private void getFinalSize(String uID, String brand, String band , String cup , String region , boolean wiredBra) {
 
         layout_loading.setVisibility(View.VISIBLE);
+        loader_text.setVisibility(View.VISIBLE);
         layout_underwire_side.setVisibility(View.GONE);
         layout_bra_profile.setVisibility(View.GONE);
 
@@ -2566,12 +2881,49 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     GET get = new GET(this, "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&band="+band+"&cup="+cup+"&region="+region+"&wiredBra="+wiredBra, GetSize, this);
                     get.execute();
                 }
+                else if (tellMore)
+                {
+                    GET get = new GET(this, "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand+"&band="+band+"&cup="+cup+"&region="+region+"&wiredBra="+wiredBra+"&bandPref="+bandFit+"&sameBra="+sameBra+"&looseHook="+looseHook+"&tightHook="+tightHook+"&cupPref="+cupFit+"&wiresFront="+frontWireFit+"&wiresSide="+sideWireFit+"&straps="+strapsFit+"&gaps="+gaps+"&tightStraps="+tightStrap+"&braStyle="+braStyle+"&braAge="+braAge , GetSize, this);
+                    get.execute();
+                }
                 else
                 {
                     GET get = new GET(this, "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&band="+band+"&cup="+cup+"&region="+region+"&wiredBra="+wiredBra+"&bandPref="+bandFit+"&sameBra="+sameBra+"&looseHook="+looseHook+"&tightHook="+tightHook+"&cupPref="+cupFit+"&wiresFront="+frontWireFit+"&wiresSide="+sideWireFit+"&straps="+strapsFit+"&gaps="+gaps+"&tightStraps="+tightStrap+"&braStyle="+braStyle+"&braAge="+braAge , GetSize, this);
                     get.execute();
                 }
 
+
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
+
+
+    private void getData() {
+
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+
+                if (altId.equals(""))
+                {
+                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+uID , ValidateUserUid, this);
+                    get.execute();
+                }
+                else
+                {
+                    GET get = new GET(this, "https://discoverysvc.pixibo.com/uid/"+altId , ValidateUserUid, this);
+                    get.execute();
+                }
 
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
@@ -2628,6 +2980,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 try
                 {
+                    layout_loading.setVisibility(View.GONE);
+                    layout_bra_profile.setVisibility(View.VISIBLE);
 
                     JSONObject object = new JSONObject(result);
 
@@ -2739,24 +3093,14 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                                // updateUserDetails();
 
-                               // progress(6);
+//                                progress(6);
 
                             }
-                        }, 1200);
+                        }, 1000);
                     }
 
 
                     JSONObject jsonObject = new JSONObject(result);
-
-
-//                            if (availableSizeList.toString().toLowerCase().contains(jsonObject.getString("cup").toLowerCase()))
-//                            {
-//                                tb_out_of_stock.setVisibility(View.VISIBLE);
-//                            }
-//                            else
-//                            {
-//                                tb_out_of_stock.setVisibility(View.GONE);
-//                            }
 
 
                             if (jsonObject.getBoolean("recommended"))
@@ -2787,19 +3131,30 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                             if (brandNotListed)
                             {
                                 layout_edit.setVisibility(View.VISIBLE);
-//                                layout_accurate_fit.setVisibility(View.GONE);
+                                layout_accurate_fit.setVisibility(View.GONE);
                                 layout_tell_more.setVisibility(View.GONE);
                             }
                             else if (tellMore)
                             {
-                                layout_edit.setVisibility(View.VISIBLE);
-//                                layout_accurate_fit.setVisibility(View.GONE);
-                                layout_tell_more.setVisibility(View.GONE);
+
+                                if (moreAccurate && strapsFit.equals("0") || frontWireFit.equals("0"))
+                                {
+                                    layout_edit.setVisibility(View.GONE);
+                                    layout_accurate_fit.setVisibility(View.VISIBLE);
+                                    layout_tell_more.setVisibility(View.GONE);
+                                }
+                                else
+                                {
+                                    layout_edit.setVisibility(View.VISIBLE);
+                                    layout_accurate_fit.setVisibility(View.GONE);
+                                    layout_tell_more.setVisibility(View.GONE);
+                                }
+
                             }
                             else
                             {
                                 layout_edit.setVisibility(View.GONE);
-//                                layout_accurate_fit.setVisibility(View.GONE);
+                                layout_accurate_fit.setVisibility(View.GONE);
                                 layout_tell_more.setVisibility(View.VISIBLE);
                             }
 
@@ -2807,6 +3162,250 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
 
 
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                break;
+
+            case ValidateUserUid:
+                try
+                {
+                    if(statusCode ==200)
+                    {
+                        JSONObject userInfoObject = new JSONObject(result);
+
+                        if (!userInfoObject.optString("uid").equals(null))
+                        {
+                            uID = userInfoObject.optString("uid");
+                        }
+
+                        if (userInfoObject.has("whois"))
+                        {
+
+                            if (userInfoObject.optString("whois").contains("female") && gender.equals("female") &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}"))
+                            {
+                                JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
+
+                                JSONObject femaleObject = new JSONObject(whoisObject.optString("female"));
+
+                                    String brand_rb = "";
+                                    String cup_rb = "";
+                                    String wired_rb = "";
+                                    String region_rb = "";
+                                    String band_rb = "";
+
+                                    JSONArray femaleReferenceBrandsArray = new JSONArray(femaleObject.optString("referenceBrands"));
+
+                                    if(femaleReferenceBrandsArray.length() > 0){
+                                        JSONObject braOptions = null;
+                                        for (int i = 0; i<femaleReferenceBrandsArray.length(); i++){
+                                            JSONObject referenceObject = femaleReferenceBrandsArray.getJSONObject(i);
+
+                                            brand_rb = referenceObject.optString("brand");
+                                            band_rb = referenceObject.optString("band");
+                                            cup_rb = referenceObject.optString("cup");
+                                            region_rb = referenceObject.optString("region");
+                                            wired_rb = referenceObject.optString("wired");
+
+                                            brand = brand_rb;
+                                            band = band_rb;
+                                            cup = cup_rb;
+                                            region = region_rb;
+                                            wired = Boolean.parseBoolean(wired_rb);
+
+                                            Log.e("brand_rb",brand);
+                                            Log.e("band_rb",band);
+                                            Log.e("cup_rb",cup);
+                                            Log.e("region_rb",region);
+                                            Log.e("wired_rb", String.valueOf(wired));
+
+
+
+                                            if (femaleObject.has("braOptions"))
+                                            {
+                                                braOptions = new JSONObject(femaleObject.optString("braOptions"));
+
+                                                    if (referenceObject.has("wired"))
+                                                    {
+
+                                                        bandFit = braOptions.optString("bandFit");
+                                                        cupFit = braOptions.optString("cupFit");
+                                                        strapsFit = braOptions.optString("strapsFit");
+                                                        braAge = braOptions.optString("braAge");
+                                                        sameBra = Boolean.parseBoolean(braOptions.optString("sameBra"));
+                                                        tightHook = Boolean.parseBoolean(braOptions.optString("tightHook"));
+                                                        looseHook = Boolean.parseBoolean(braOptions.optString("looseHook"));
+                                                        braStyle = braOptions.optString("braStyle");
+                                                        frontWireFit = braOptions.optString("frontWireFit");
+                                                        sideWireFit = braOptions.optString("sideWireFit");
+                                                        gaps = braOptions.optString("gaps");
+                                                        tightStrap = Boolean.parseBoolean(braOptions.optString("tightStrap"));
+                                                    }
+
+                                                    else
+                                                    {
+                                                        wired = Boolean.parseBoolean(braOptions.optString("wired"));
+                                                        cup = braOptions.optString("cup");
+                                                        bandFit = braOptions.optString("bandFit");
+                                                        cupFit = braOptions.optString("cupFit");
+                                                        strapsFit = braOptions.optString("strapsFit");
+                                                        band = braOptions.optString("strapsFit");
+                                                        region = braOptions.optString("region");
+                                                        braAge = braOptions.optString("braAge");
+                                                        sameBra = Boolean.parseBoolean(braOptions.optString("sameBra"));
+                                                        tightHook = Boolean.parseBoolean(braOptions.optString("tightHook"));
+                                                        looseHook = Boolean.parseBoolean(braOptions.optString("looseHook"));
+                                                        braStyle = braOptions.optString("braStyle");
+                                                        frontWireFit = braOptions.optString("frontWireFit");
+                                                        sideWireFit = braOptions.optString("sideWireFit");
+                                                        gaps = braOptions.optString("gaps");
+                                                        tightStrap = Boolean.parseBoolean(braOptions.optString("tightStrap"));
+                                                    }
+
+
+
+                                            }
+                                        }
+
+
+                                    }
+
+
+                                    Log.e("strapsFit",strapsFit);
+                                    Log.e("band",band);
+                                    Log.e("region",region);
+                                    Log.e("braAge",braAge);
+                                    Log.e("sameBra", String.valueOf(sameBra));
+                                    Log.e("tightHook", String.valueOf(tightHook));
+                                    Log.e("looseHook", String.valueOf(looseHook));
+                                    Log.e("braStyle",braStyle);
+                                    Log.e("frontWireFit",frontWireFit);
+                                    Log.e("sideWireFit",sideWireFit);
+                                    Log.e("gaps",gaps);
+                                    Log.e("tightStrap", String.valueOf(tightStrap));
+
+
+                                layout_brand.setVisibility(View.GONE);
+
+
+                                if (!wired_rb.equals("") && !band_rb.equals("") && !femaleObject.has("braOptions"))
+                                {
+
+                                    if (altId.equals(""))
+                                    {
+                                        getFinalSize(uID,brand,band,cup,region, wired);
+                                    }
+                                    else
+                                    {
+                                        getFinalSize(altId,brand,band,cup,region, wired);
+                                    }
+                                }
+                                else if (!bandFit.equals("0"))
+                                {
+                                    tellMore = true;
+                                    moreAccurate = true;
+
+                                    setBandFeel(bandFit);
+
+                                    if (bandFit.equals("3")  && braAge.equals("0"))
+                                    {
+                                        layout_bra_old.setVisibility(View.VISIBLE);
+                                    }
+                                    else
+                                    {
+                                        setBraAge(braAge);
+
+                                        if (!cupFit.equals("0"))
+                                        {
+                                            setCupFit(cupFit);
+
+                                            if(cupFit.equals("3") && gaps.equals("0"))
+                                            {
+                                                layout_gaps.setVisibility(View.VISIBLE);
+                                            }
+                                            else
+                                            {
+                                                setGaps(gaps);
+
+                                                if (gaps.equals("3") && braStyle.equals("0"))
+                                                {
+                                                    layout_bra_style.setVisibility(View.VISIBLE);
+                                                }
+                                                else
+                                                {
+                                                    setBraStyle(braStyle);
+
+                                                    if (!strapsFit.equals("0"))
+                                                    {
+                                                        setStraps(strapsFit);
+
+                                                        if (wired || wired_noBrand)
+                                                        {
+                                                            if (!frontWireFit.equals("0"))
+                                                            {
+                                                                setFrontWire(frontWireFit);
+
+                                                                if (sideWireFit.equals("0"))
+                                                                {
+                                                                    layout_underwire_side.setVisibility(View.VISIBLE);
+                                                                }
+                                                                else
+                                                                {
+                                                                    setSideWire(sideWireFit);
+
+                                                                    if (altId.equals(""))
+                                                                    {
+                                                                        getFinalSize(uID,brand,band,cup,region,wired);
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        getFinalSize(altId,brand,band,cup,region,wired);
+                                                                    }
+                                                                }
+
+                                                            }
+                                                            else
+                                                            {
+                                                                layout_underwire_front.setVisibility(View.VISIBLE);
+                                                            }
+
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        layout_strap_fit.setVisibility(View.VISIBLE);
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            layout_cup_fit.setVisibility(View.VISIBLE);
+                                        }
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    layout_brand.setVisibility(View.VISIBLE);
+                                }
+
+                            }
+                            else
+                            {
+                                layout_brand.setVisibility(View.VISIBLE);
+                            }
+                        }
+
+                    }
+                    else if (statusCode == 500)
+                    {
+
+                    }
                 }
                 catch (Exception e)
                 {
@@ -4793,7 +5392,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_cup_7.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_8.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
-        layout_cup_8.setVisibility(View.INVISIBLE);
         tv_cup_8.setTextColor(getResources().getColor(R.color.color_text_grey));
 
         layout_cup_9.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
@@ -4896,7 +5494,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
     }
 
-    public void clearBraSize()
+    public void clearBandFit()
     {
         layout_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
         tv_digging_in.setTextColor(getResources().getColor(R.color.grey_4));
@@ -5068,11 +5666,20 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_brand_5.setTextColor(getResources().getColor(R.color.color_text_grey));
     }
 
+
+    public void clearBraType()
+    {
+        layout_type_wired_noBrand.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        tv_type_wired_noBrand.setTextColor(getResources().getColor(R.color.grey_3));
+
+
+        layout_type_unwired_noBrand.setBackground(getResources().getDrawable(R.drawable.bg_button_unselected));
+        tv_type_unwired_noBrand.setTextColor(getResources().getColor(R.color.grey_3));
+    }
+
     public void resetData()
     {
         et_what_brand.setText(null);
-
-        isBrandSelected = false ;
 
         brand = "";
         cup = "";
@@ -5108,6 +5715,13 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         sideWireFit = "0";
         frontWireFit = "0";
 
+        isEditFlow = false;
+        isRecommended = false ;
+        brandNotListed = false ;
+        isBrandSelected = false;
+        tellMore = false;
+        moreAccurate = false;
+
         tv_type_unwired.setTextColor(getResources().getColor(R.color.grey_3));
         layout_type_unwired.setBackground(getResources().getDrawable(R.drawable.bg_dropdown));
 
@@ -5119,12 +5733,396 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         clearAllCup();
         clearAllBandNoBrand();
         clearAllBands();
-        clearBraSize();
+        clearBandFit();
         clearGap();
         clearCupFit();
         clearStrapFit();
         clearUnderwireFront();
         clearUnderwireSide();
+        clearBraType();
 
+        tv_bra_sizes_text.setText("");
+        layout_bra_loose_hook_button.setVisibility(View.GONE);
+        layout_bra_isOld_button.setVisibility(View.GONE);
+        layout_bra_tight_hook_button.setVisibility(View.GONE);
+
+        tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+        tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+
+        tv_bra_looser_hook_no.setTextColor(getResources().getColor(R.color.white));
+        tv_bra_looser_hook_yes.setTextColor(getResources().getColor(R.color.white));
+
+        tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+        tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+
+        tv_bra_tight_hook_no.setTextColor(getResources().getColor(R.color.white));
+        tv_bra_tight_hook_yes.setTextColor(getResources().getColor(R.color.white));
+
+        tv_old_bra_page_no.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+        tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+
+        tv_old_bra_page_no.setTextColor(getResources().getColor(R.color.white));
+        tv_old_bra_page_yes.setTextColor(getResources().getColor(R.color.white));
+
+    }
+
+
+    public void setBandFeel(String band_feel)
+    {
+
+        Log.e("band_feel", band_feel);
+
+        clearBandFit();
+
+        switch (band_feel)
+        {
+            case "1":
+
+                layout_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_digging_in.setTextColor(getResources().getColor(R.color.color_text));
+                tv_digging_in_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_digging_in.setImageResource(R.drawable.ic_bra_digging_in_selected);
+
+                tv_bra_sizes_text.setText(getResources().getString(R.string.bra_feel_digging));
+
+                layout_bra_isOld_button.setVisibility(View.GONE);
+                layout_bra_loose_hook_button.setVisibility(View.VISIBLE);
+                layout_bra_tight_hook_button.setVisibility(View.GONE);
+
+                break;
+
+            case "2":
+
+                layout_straight.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_straight.setTextColor(getResources().getColor(R.color.color_text));
+                tv_straight_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_straight.setImageResource(R.drawable.ic_bra_straight_selected);
+
+                tv_bra_sizes_text.setText("");
+
+                layout_bra_loose_hook_button.setVisibility(View.GONE);
+                layout_bra_isOld_button.setVisibility(View.GONE);
+                layout_bra_tight_hook_button.setVisibility(View.GONE);
+
+                break;
+
+            case "3":
+
+                layout_riding_up.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_riding_up.setTextColor(getResources().getColor(R.color.color_text));
+                tv_riding_up_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_riding_up.setImageResource(R.drawable.ic_bra_riding_up_selected);
+
+                tv_bra_sizes_text.setText(getResources().getString(R.string.bra_isOld_bra));
+
+                layout_bra_loose_hook_button.setVisibility(View.GONE);
+                layout_bra_isOld_button.setVisibility(View.VISIBLE);
+                layout_bra_tight_hook_button.setVisibility(View.GONE);
+
+                break;
+        }
+    }
+
+
+    public void setBraAge(String bra_age)
+    {
+        Log.e("bra_age", bra_age);
+
+        clearOldBra();
+
+        switch (bra_age)
+        {
+            case "1":
+
+                layout_bought_recently.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_bought_recently.setTextColor(getResources().getColor(R.color.color_text));
+
+                tv_old_bra_text.setText(getResources().getString(R.string.bra_tighter_hook));
+                layout_old_bra_button.setVisibility(View.VISIBLE);
+
+                break;
+
+            case "2":
+
+                layout_6months.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_6months.setTextColor(getResources().getColor(R.color.color_text));
+
+                tv_old_bra_text.setText(getResources().getString(R.string.bra_tighter_hook));
+                layout_old_bra_button.setVisibility(View.VISIBLE);
+
+                break;
+
+            case "3":
+
+                layout_12months.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_12months.setTextColor(getResources().getColor(R.color.color_text));
+
+                layout_bra_old.setVisibility(View.GONE);
+                layout_cup_fit.setVisibility(View.VISIBLE);
+
+                break;
+
+            case "4":
+
+                layout_1year.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_1year.setTextColor(getResources().getColor(R.color.color_text));
+
+                layout_bra_old.setVisibility(View.GONE);
+                layout_cup_fit.setVisibility(View.VISIBLE);
+
+                 break;
+        }
+    }
+
+
+    public void setCupFit(String cup_fit)
+    {
+        Log.e("cup_fit", cup_fit);
+
+        clearCupFit();
+
+        switch (cup_fit)
+        {
+            case "1":
+                layout_just_right.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_just_right.setTextColor(getResources().getColor(R.color.color_text));
+                tv_just_right_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_just_right.setImageResource(R.drawable.ic_cup_right_selected);
+
+                break;
+
+            case "2":
+                layout_slipping.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_slipping.setTextColor(getResources().getColor(R.color.color_text));
+                tv_slipping_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_slipping.setImageResource(R.drawable.ic_cup_slipping_selected);
+
+                break;
+
+            case "3":
+                layout_gap.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_gap.setTextColor(getResources().getColor(R.color.color_text));
+                tv_gap_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_gap.setImageResource(R.drawable.ic_gaps_selected);
+                break;
+        }
+    }
+
+
+    public void setGaps(String gaps_value)
+    {
+
+        Log.e("gaps_value", gaps_value);
+
+        clearGap();
+
+        switch (gaps_value)
+        {
+            case "1":
+
+                layout_at_top.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_at_top.setTextColor(getResources().getColor(R.color.color_text));
+                ic_at_top.setImageResource(R.drawable.ic_gap_at_top_selected);
+
+                tv_bra_style_text.setText(getResources().getString(R.string.bra_stap_gap));
+                layout_gap_button.setVisibility(View.VISIBLE);
+
+                break;
+
+            case "2":
+
+                layout_all_over.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_all_over.setTextColor(getResources().getColor(R.color.color_text));
+                ic_all_over.setImageResource(R.drawable.ic_gap_all_over_selected);
+
+                tv_bra_style_text.setText("");
+                layout_gap_button.setVisibility(View.GONE);
+
+                break;
+
+            case "3":
+
+                layout_at_bottom.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_at_bottom.setTextColor(getResources().getColor(R.color.color_text));
+                ic_at_bottom.setImageResource(R.drawable.ic_gap_at_bottom_selected);
+
+                tv_bra_style_text.setText("");
+                layout_gap_button.setVisibility(View.GONE);
+
+                break;
+        }
+    }
+
+
+
+    public void setBraStyle(String braStyle_value)
+    {
+
+        Log.e("gaps_value", braStyle_value);
+
+        clearStyle();
+
+        switch (braStyle_value)
+        {
+            case "1":
+
+                layout_full_coverage.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_full_coverage.setTextColor(getResources().getColor(R.color.color_text));
+                tv_full_coverage_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_full_coverage.setImageResource(R.drawable.ic_bra_style_full_coverage_selected);
+
+                break;
+
+            case "2":
+
+                layout_half_cup.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_half_cup.setTextColor(getResources().getColor(R.color.color_text));
+                tv_half_cup_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_half_cup.setImageResource(R.drawable.ic_bra_style_half_cup_selected);
+
+                break;
+
+            case "3":
+
+                layout_pushup.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_pushup.setTextColor(getResources().getColor(R.color.color_text));
+                tv_pushup_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_pushup.setImageResource(R.drawable.ic_bra_style_pushup_selected);
+
+                break;
+
+            case "4":
+
+                layout_strapless.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_strapless.setTextColor(getResources().getColor(R.color.color_text));
+                tv_strapless_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_strapless.setImageResource(R.drawable.ic_bra_style_strapless_selected);
+
+                break;
+        }
+    }
+
+
+    public void setStraps(String straps_value)
+    {
+
+        Log.e("straps_value", straps_value);
+
+        clearStrapFit();
+
+        switch (straps_value)
+        {
+            case "1":
+
+                layout_strap_digging_in.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_strap_digging_in.setTextColor(getResources().getColor(R.color.color_text));
+                tv_strap_digging_in_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_strap_digging_in.setImageResource(R.drawable.ic_strap_digging_in_selected);
+
+                break;
+
+            case "2":
+
+                layout_strap_fit_fine.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_strap_fit_fine.setTextColor(getResources().getColor(R.color.color_text));
+                tv_strap_fit_fine_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_strap_fit_fine.setImageResource(R.drawable.ic_strap_fit_fine_selected);
+
+                break;
+
+            case "3":
+
+                layout_strap_not_up.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_strap_not_up.setTextColor(getResources().getColor(R.color.color_text));
+                tv_strap_not_up_description.setTextColor(getResources().getColor(R.color.color_text));
+                ic_strap_not_up.setImageResource(R.drawable.ic_strap_not_staying_selected);
+
+                break;
+        }
+    }
+
+
+    public void setFrontWire(String wire_front_value)
+    {
+
+        Log.e("wire_front_value", wire_front_value);
+
+        clearUnderwireFront();
+
+        switch (wire_front_value)
+        {
+            case "1":
+
+                layout_lift_away.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_lift_away.setTextColor(getResources().getColor(R.color.color_text));
+                ic_lift_away.setImageResource(R.drawable.ic_underwire_front_lift_away_selected);
+
+                break;
+
+            case "2":
+
+                layout_sit_comfortable.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_sit_comfortable.setTextColor(getResources().getColor(R.color.color_text));
+                ic_sit_comfortable.setImageResource(R.drawable.ic_underwire_front_sit_comfortable_selected);
+
+                break;
+
+            case "3":
+
+                layout_digging_into_chest.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_digging_into_chest.setTextColor(getResources().getColor(R.color.color_text));
+                ic_digging_into_chest.setImageResource(R.drawable.ic_underwire_front_digging_into_chest_selcted);
+
+                break;
+        }
+    }
+
+
+    public void setSideWire(String wire_side_value)
+    {
+
+        Log.e("wire_side_value", wire_side_value);
+
+        clearUnderwireSide();
+
+        switch (wire_side_value)
+        {
+            case "1":
+
+                layout_digging_arms.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_digging_arms.setTextColor(getResources().getColor(R.color.color_text));
+                ic_digging_arms.setImageResource(R.drawable.ic_underwire_side_digging_arms_selected);
+
+                break;
+
+            case "2":
+
+                layout_around_bust.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_around_bust.setTextColor(getResources().getColor(R.color.color_text));
+                ic_around_bust.setImageResource(R.drawable.ic_underwire_side_sit_nicely_selected);
+
+                break;
+
+            case "3":
+
+                layout_digging_chest.setBackground(getResources().getDrawable(R.drawable.bg_button_selected));
+                tv_digging_chest.setTextColor(getResources().getColor(R.color.color_text));
+                ic_digging_chest.setImageResource(R.drawable.ic_underwire_side_digging_in_selected);
+
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("recommended",isRecommended);
+        returnIntent.putExtra("result",size);
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
+
+        super.onBackPressed();
     }
 }

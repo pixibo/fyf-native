@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
     PixiboActivity pixiboActivity = new PixiboActivity();
 
-    private String clientId = "sl8zvzsjelpg";
-    private String skuId = "BC421AADC2CE9DGS";
-//    private String altId = "";
-    private String altId = "10115632608494085";
+    private String clientId = "qe3uhcp1kh11";
+    private String skuId = "UN337US0SU6QMY";
+    private String altId = "";
+//    private String altId = "10115632608494085";
     private String uID = "";
     private String preferredLanguage = "en";
     private String [] availableSizeList = {"S","M","L","XL","UK 16"};
@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         tv_find_my_size = findViewById(R.id.tv_find_my_size);
 
         uID = Utils.deviceID(this);
-
-
 
         Locale locale;
         Resources res = getResources();
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        conf.setLocale(locale); // API 17+ only.
+        conf.setLocale(locale);
         res.updateConfiguration(conf, dm);
 
 

@@ -187,4 +187,10 @@
     <string name="bra_result_tell_more_text">Tali pada bra baru harus pas pada kait paling ujung. Tali bra harus dalam posisi sempurna tanpa terasa kendur atau terlalu kencang. Bersandarlah ke depan dan dorong payudara Anda dengan lembut untuk mengisi cup bra Anda. Jika tidak ada celah atau tonjolan, maka ukuran bra Anda sudah tepat.</string>
     <string name="bra_not_sure">Tidak tahu</string>
     <string name="bar_edit">Ubah</string>
+    <string name="bar_underwire_front_dig">Terlalu menekan area dada</string>
+    <string name="bar_underwire_front_liftup">Terlalu besar</string>
+    <string name="bar_underwire_front_sit">Pas</string>
+    <string name="bar_underwire_side_dig_chest">Menekan di area dada</string>
+    <string name="bar_underwire_side_dig">Menekan tangan saya</string>
+    <string name="bar_underwire_side_sit">Terasa nyaman di area payudara</string>
 </resources>

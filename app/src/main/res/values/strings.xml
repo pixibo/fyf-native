@@ -223,6 +223,12 @@
     <string name="bar_strap_fit_fine_desc">The straps are comfortable and I can fit two fingers underneath</string>
     <string name="bar_strap_fit_not_stay_up">They do not stay up</string>
     <string name="bar_strap_fit_not_stay_up_desc">Even after tightening the straps, they do not stay up</string>
+    <string name="bar_underwire_front_liftup">They lift away from my chest</string>
+    <string name="bar_underwire_front_sit">They sit comfortably under the breasts</string>
+    <string name="bar_underwire_front_dig">They dig into my chest</string>
+    <string name="bar_underwire_side_dig">They dig up my arms</string>
+    <string name="bar_underwire_side_sit">They sit nicely around my brests</string>
+    <string name="bar_underwire_side_dig_chest">They dig into my chest</string>
 
 
     <string name="bra_brand_cotton_on_body" translatable="false">Cotton On Body</string>

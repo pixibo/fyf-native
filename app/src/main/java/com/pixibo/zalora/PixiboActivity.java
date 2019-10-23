@@ -42,7 +42,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 import static com.pixibo.zalora.Utils.Utils.TYPE.validateSKU;
 
-public class PixiboActivity extends AppCompatActivity implements Result, View.OnClickListener {
+public class PixiboActivity extends AppCompatActivity implements Result {
 
     private LinearLayout layout_button;
     private String clientId = "";
@@ -111,57 +111,6 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
         tv_find_my_size  = tv_find_my_size_set;
         layout_button = layout_button_2;
         validate_sku(clientId,skuId);
-
-
-/*        layout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Arrays.asList(apparel_array).contains(dataType))
-                {
-                    intent = new Intent(mContext, ApparelFlow.class);
-                    intent.putExtra("dataType",dataType);
-                    intent.putExtra("gender",gender);
-                    intent.putExtra("clientId",clientId);
-                    intent.putExtra("skuId",skuId);
-                    intent.putExtra("altId",altId);
-                    intent.putExtra("uID",uID);
-                    intent.putExtra("preferredLanguage",preferredLanguage);
-                    intent.putExtra("availableSizeList",availableSizeList);
-                    intent.putExtra("isNew",false);
-                    startActivityForResult(intent,111);
-                }
-
-                else if (Arrays.asList(footwear_array).contains(dataType))
-                {
-                    intent = new Intent(mContext, FootwearFlow.class);
-                    intent.putExtra("dataType",dataType);
-                    intent.putExtra("gender",gender);
-                    intent.putExtra("clientId",clientId);
-                    intent.putExtra("brand",brand);
-                    intent.putExtra("skuId",skuId);
-                    intent.putExtra("altId",altId);
-                    intent.putExtra("uID",uID);
-                    intent.putExtra("preferredLanguage",preferredLanguage);
-                    intent.putExtra("availableSizeList",availableSizeList);
-                    startActivityForResult(intent,111);
-                }
-                else if (Arrays.asList(lingerie_array).contains(dataType))
-                {
-                    intent = new Intent(mContext, BraFlow.class);
-                    intent.putExtra("dataType",dataType);
-                    intent.putExtra("gender",gender);
-                    intent.putExtra("clientId",clientId);
-                    intent.putExtra("brand",brand);
-                    intent.putExtra("skuId",skuId);
-                    intent.putExtra("altId",altId);
-                    intent.putExtra("uID",uID);
-                    intent.putExtra("preferredLanguage",preferredLanguage);
-                    intent.putExtra("availableSizeList",availableSizeList);
-                    mContext.startActivityForResult(intent,111);
-                    mContext.startActivity(intent);
-                }
-            }
-        });*/
 
 
     }
@@ -430,17 +379,17 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
                             }
                             else if (Arrays.asList(lingerie_array).contains(dataType))
                             {
-//                                intent = new Intent(PixiboActivity.this, BraFlow.class);
-//                                intent.putExtra("dataType",dataType);
-//                                intent.putExtra("gender",gender);
-//                                intent.putExtra("clientId",clientId);
-//                                intent.putExtra("brand",brand);
-//                                intent.putExtra("skuId",skuId);
-//                                intent.putExtra("altId",altId);
-//                                intent.putExtra("uID",uID);
-//                                intent.putExtra("preferredLanguage",preferredLanguage);
-//                                intent.putExtra("availableSizeList",availableSizeList);
-//                                startActivityForResult(intent,111);
+                                intent = new Intent(PixiboActivity.this, BraFlow.class);
+                                intent.putExtra("dataType",dataType);
+                                intent.putExtra("gender",gender);
+                                intent.putExtra("clientId",clientId);
+                                intent.putExtra("brand",brand);
+                                intent.putExtra("skuId",skuId);
+                                intent.putExtra("altId",altId);
+                                intent.putExtra("uID",uID);
+                                intent.putExtra("preferredLanguage",preferredLanguage);
+                                intent.putExtra("availableSizeList",availableSizeList);
+                                startActivityForResult(intent,111);
                             }
                         }
                         else
@@ -481,7 +430,6 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
 
                     else
                     {
-                        //layout_button.setVisibility(View.VISIBLE);
                         SpannableString content;
                         content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
                         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
@@ -502,22 +450,30 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
                     if (statusCode == 200)
                     {
                         JSONObject sizeObject = new JSONObject(result);
+
                         if(sizeObject.has("fys")){
+
                             JSONArray fysArray = new JSONArray(sizeObject.optString("fys"));
-                            if(fysArray.length() > 0){
+
+
+                            if(fysArray.length() > 0)
+                            {
                                 JSONObject fysObject = fysArray.getJSONObject(0);
                                 boolean recommended =fysObject.optBoolean("recommended");
 
-                                if(recommended){
-                                   // Log.e("size",fysObject.optString("size"));
+                                if(recommended)
+                                {
                                     setButtonText(fysObject.optString("size"),recommended);
                                 }
-                                else{
-                                  //  Log.e("size","not_recommended");
+                                else
+                                {
                                     setButtonText("abc",recommended);
                                 }
 
-
+                            }
+                            else if (sizeObject.getString("type").equals("Bra"))
+                            {
+                                setButtonText(sizeObject.optString("region") +" "+sizeObject.optString("cup"),sizeObject.getBoolean("recommended"));
                             }
                         }
 
@@ -598,9 +554,6 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
                 result = data.getStringExtra("result");
 
                 setButtonText(result,recommended);
-
-
-
 
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",recommended);
@@ -853,6 +806,126 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
         return url;
     }
 
+    public String getBraUrl(JSONObject userInfoObject, String[] bra_array, String clientId, String skuId, String uID) throws JSONException {
+        JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
+        String url = null;
+
+        Log.e("female",new JSONObject(userInfoObject.optString("whois")).optString("female"));
+
+
+        if(whoisObject.has("female")  &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}"))
+        {
+
+            JSONObject femaleObject = new JSONObject(whoisObject.optString("female"));
+
+            String brand_rb = "";
+            String cup_rb = "";
+            String wired_rb = "";
+            String region_rb = "";
+            String band_rb = "";
+
+            String cup = "";
+            String wired = "";
+            String region = "";
+
+            String band = "";
+
+            String bandFit = "0";
+            String cupFit = "0";
+            String strapsFit = "0";
+
+            String braAge = "0";
+            String braStyle = "0";
+            String gaps = "0";
+
+            String sideWireFit = "0";
+            String frontWireFit = "0";
+
+            String sameBra = "false";
+            String tightHook = "false";
+            String looseHook = "false";
+            String tightStrap = "false";
+
+                JSONArray femaleReferenceBrandsArray = new JSONArray(femaleObject.optString("referenceBrands"));
+
+                if(femaleReferenceBrandsArray.length() > 0){
+                    JSONObject braOptions = null;
+                    for (int i = 0; i<femaleReferenceBrandsArray.length(); i++){
+                        JSONObject referenceObject = femaleReferenceBrandsArray.getJSONObject(i);
+
+                        brand_rb = referenceObject.optString("brand");
+                        band_rb = referenceObject.optString("band");
+                        cup_rb = referenceObject.optString("cup");
+                        region_rb = referenceObject.optString("region");
+                        wired_rb = referenceObject.optString("wired");
+
+                        if (femaleObject.has("braOptions"))
+                        {
+                            braOptions = new JSONObject(femaleObject.optString("braOptions"));
+                        }
+
+                        Log.e("brand_rb",brand_rb);
+                        Log.e("band_rb",band_rb);
+                        Log.e("cup_rb",cup_rb);
+                        Log.e("region_rb",region_rb);
+                        Log.e("wired_rb",wired_rb);
+
+                    }
+
+                    if(braOptions != null){
+
+
+                        wired = braOptions.optString("wired");
+                        cup = braOptions.optString("cup");
+                        bandFit = braOptions.optString("bandFit");
+                        cupFit = braOptions.optString("cupFit");
+                        strapsFit = braOptions.optString("strapsFit");
+                        band = braOptions.optString("band");
+                        region = braOptions.optString("region");
+                        braAge = braOptions.optString("braAge");
+                        sameBra = braOptions.optString("sameBra");
+                        tightHook = braOptions.optString("tightHook");
+                        looseHook = braOptions.optString("looseHook");
+                        braStyle = braOptions.optString("braStyle");
+                        frontWireFit = braOptions.optString("frontWireFit");
+                        sideWireFit = braOptions.optString("sideWireFit");
+                        gaps = braOptions.optString("gaps");
+                        tightStrap = braOptions.optString("tightStrap");
+
+                    }
+                }
+
+
+                Log.e("strapsFit",strapsFit);
+                Log.e("band",band);
+                Log.e("region",region);
+                Log.e("braAge",braAge);
+                Log.e("sameBra",sameBra);
+                Log.e("tightHook",tightHook);
+                Log.e("looseHook",looseHook);
+                Log.e("braStyle",braStyle);
+                Log.e("frontWireFit",frontWireFit);
+                Log.e("sideWireFit",sideWireFit);
+                Log.e("gaps",gaps);
+                Log.e("tightStrap",tightStrap);
+
+            if(brand_rb.equals("") && !bandFit.equals("") && !strapsFit.equals("") && !cupFit.equals(""))
+            {
+                url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&band="+band+"&cup="+cup+"&region="+region+"&wiredBra="+wired+"&bandPref="+bandFit+"&sameBra="+sameBra+"&looseHook="+looseHook+"&tightHook="+tightHook+"&cupPref="+cupFit+"&wiresFront="+frontWireFit+"&wiresSide="+sideWireFit+"&straps="+strapsFit+"&gaps="+gaps+"&tightStraps="+tightStrap+"&braStyle="+braStyle+"&braAge="+braAge;
+            }
+            else if(!brand_rb.equals("") && !region_rb.equals("") && !bandFit.equals("") && !strapsFit.equals("") && !cupFit.equals(""))
+            {
+                url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand_rb+"&band="+band_rb+"&cup="+cup_rb+"&region="+region_rb+"&wiredBra="+wired_rb+"&bandPref="+bandFit+"&sameBra="+sameBra+"&looseHook="+looseHook+"&tightHook="+tightHook+"&cupPref="+cupFit+"&wiresFront="+frontWireFit+"&wiresSide="+sideWireFit+"&straps="+strapsFit+"&gaps="+gaps+"&tightStraps="+tightStrap+"&braStyle="+braStyle+"&braAge="+braAge;
+            }
+            else
+            {
+                url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand_rb+"&band="+band_rb+"&cup="+cup_rb+"&region="+region_rb+"&wiredBra="+wired_rb;
+            }
+
+        }
+        return url;
+    }
+
 
 
     public void setButtonText(String size,boolean isRecommended)
@@ -969,7 +1042,7 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
 
             else if (Arrays.asList(lingerie_array).contains(dataType))
             {
-                sizeUrl = null;
+                sizeUrl = getBraUrl(userInfoObject,lingerie_array, clientId, skuId, uID);
 
                 if(sizeUrl != null){
 
@@ -984,12 +1057,6 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
                     tv_find_my_size.setText(content);
                 }
 
-                layout_button.setVisibility(View.INVISIBLE);
-
-                SpannableString content;
-                content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
-                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                tv_find_my_size.setText(content);
             }
         }
         catch (Exception e)
@@ -1004,11 +1071,4 @@ public class PixiboActivity extends AppCompatActivity implements Result, View.On
     }
 
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId())
-        {
-
-        }
-    }
 }
