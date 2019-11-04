@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private String altId = "";
 //    private String altId = "10115632608494085";
     private String uID = "";
-    private String preferredLanguage = "tw";
+    private String preferredLanguage = "en";
     private String [] availableSizeList = {"S","M","L","XL","UK 16"};
 
     private LinearLayout layout_button;

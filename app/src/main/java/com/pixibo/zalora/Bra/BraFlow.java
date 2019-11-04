@@ -1742,6 +1742,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
 
+                tv_gap_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+                tv_gap_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
                 sameBra = true;
                 bandFit="3";
                 Log.e("isOldBra", String.valueOf(sameBra));
@@ -1759,6 +1762,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
                 tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
 
                 sameBra = false;
                 bandFit="3";
@@ -1781,6 +1785,14 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
 
+
+                tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
+                tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
+                tv_gap_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+                tv_gap_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
                 looseHook = true;
                 bandFit="1";
 
@@ -1794,6 +1806,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             public void onClick(View view) {
 
                 layout_bra_isOld_button.setVisibility(View.GONE);
+                layout_band_feel.setVisibility(View.GONE);
                 layout_cup_fit.setVisibility(View.VISIBLE);
                 progress(5);
                 updateUserDetails();
@@ -1821,6 +1834,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
 
                 tightHook = true;
                 sameBra = false;
@@ -1861,6 +1875,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
                 tv_old_bra_page_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
 
                 bandFit="3";
                 tightHook = true;
@@ -3203,8 +3218,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                         }
                         else if (tellMore)
                         {
-
-                            if (strapsFit.equals("0"))
+                            if (wired && sideWireFit.equals("0")  || !wired && strapsFit.equals("0"))
                             {
                                 layout_edit.setVisibility(View.GONE);
                                 layout_accurate_fit.setVisibility(View.VISIBLE);
@@ -3216,7 +3230,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                                 layout_accurate_fit.setVisibility(View.GONE);
                                 layout_tell_more.setVisibility(View.GONE);
                             }
-
                         }
                         else
                         {
@@ -3225,10 +3238,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                             layout_accurate_fit.setVisibility(View.GONE);
                             layout_tell_more.setVisibility(View.VISIBLE);
                         }
-
-
-
-
                     }
 
                     else if (statusCode == 500)
@@ -3238,13 +3247,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                         layout_brand.setVisibility(View.VISIBLE);
                         progress(1);
                     }
-
-
-
-
-
-
-
 
                 }
                 catch (Exception e)
@@ -3330,11 +3332,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                                                     {
                                                         wired = Boolean.parseBoolean(braOptions.optString("wired"));
                                                         cup = braOptions.optString("cup");
+                                                        region = braOptions.optString("region");
+
                                                         bandFit = braOptions.optString("bandFit");
                                                         cupFit = braOptions.optString("cupFit");
                                                         strapsFit = braOptions.optString("strapsFit");
                                                         band = braOptions.optString("band");
-                                                        region = braOptions.optString("region");
                                                         braAge = braOptions.optString("braAge");
                                                         sameBra = Boolean.parseBoolean(braOptions.optString("sameBra"));
                                                         tightHook = Boolean.parseBoolean(braOptions.optString("tightHook"));
@@ -3349,6 +3352,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
 
 
+                                                Log.e("bandFit",bandFit);
                                                 Log.e("strapsFit",strapsFit);
                                                 Log.e("band",band);
                                                 Log.e("region",region);
@@ -3367,33 +3371,30 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                                         }
 
-
-
-
-
                                         layout_brand.setVisibility(View.GONE);
 
-
-//                                        if (brand.equals(""))
-//                                        {
-//                                            brandNotListed = true;
-//                                        }
-//                                        else if (strapsFit.equals("0"))
-//                                        {
-//                                            tellMore = true;
-//
-//                                            brandNotListed = false;
-//                                        }
-//                                        else
-//                                        {
-//                                            brandNotListed = false;
-//                                            moreAccurate = true;
-//                                        }
 
                                         if (!wired_rb.equals("") && !band_rb.equals("") && !femaleObject.has("braOptions"))
                                         {
 
+                                            Log.e("Result","Brand Flow without extra data");
 
+                                            if (altId.equals(""))
+                                            {
+                                                getFinalSize(uID,brand,band,cup,region, wired);
+                                            }
+                                            else
+                                            {
+                                                getFinalSize(altId,brand,band,cup,region, wired);
+                                            }
+                                        }
+
+                                        else if (!wired_rb.equals("") && !band_rb.equals("") && !cup_rb.equals(""))
+                                        {
+
+                                            Log.e("Result","Brand Flow with extra data");
+                                            brandNotListed = false;
+                                            tellMore = true;
 
                                             if (altId.equals(""))
                                             {
@@ -3406,6 +3407,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                                         }
                                         else if (!bandFit.equals("0"))
                                         {
+
+                                            Log.e("Flow resume","Resume");
 
                                             tellMore = true;
 
@@ -3460,6 +3463,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                                                                 if (wired)
                                                                 {
+
+
                                                                     if (!frontWireFit.equals("0"))
                                                                     {
                                                                         setFrontWire(frontWireFit);
@@ -3476,6 +3481,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                                                                             setSideWire(sideWireFit);
 
                                                                             layout_underwire_side.setVisibility(View.GONE);
+
+                                                                            Log.e("Flow resume result","Unwired");
 
                                                                             if (altId.equals(""))
                                                                             {
@@ -3497,6 +3504,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                                                                 }
                                                                 else
                                                                 {
+
+                                                                    Log.e("Flow resume result","Unwired");
+
                                                                     if (altId.equals(""))
                                                                     {
                                                                         getFinalSize(uID,brand,band,cup,region,wired);
@@ -5887,8 +5897,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         layout_bra_isOld_button.setVisibility(View.GONE);
         layout_bra_tight_hook_button.setVisibility(View.GONE);
 
-        tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
-        tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.color.color_background_button_disabled));
+        tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+        tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
 
         tv_bra_looser_hook_no.setTextColor(getResources().getColor(R.color.white));
         tv_bra_looser_hook_yes.setTextColor(getResources().getColor(R.color.white));
@@ -5904,6 +5914,18 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
         tv_old_bra_page_no.setTextColor(getResources().getColor(R.color.white));
         tv_old_bra_page_yes.setTextColor(getResources().getColor(R.color.white));
+
+        tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+        tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
+        tv_isOld_yes.setTextColor(getResources().getColor(R.color.white));
+        tv_isOld_no.setTextColor(getResources().getColor(R.color.white));
+
+        tv_gap_no.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+        tv_gap_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_disable));
+
+        tv_gap_no.setTextColor(getResources().getColor(R.color.white));
+        tv_gap_yes.setTextColor(getResources().getColor(R.color.white));
 
     }
 

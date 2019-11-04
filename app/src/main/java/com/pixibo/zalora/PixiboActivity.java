@@ -379,17 +379,17 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                             }
                             else if (Arrays.asList(lingerie_array).contains(dataType))
                             {
-                                intent = new Intent(PixiboActivity.this, BraFlow.class);
-                                intent.putExtra("dataType",dataType);
-                                intent.putExtra("gender",gender);
-                                intent.putExtra("clientId",clientId);
-                                intent.putExtra("brand",brand);
-                                intent.putExtra("skuId",skuId);
-                                intent.putExtra("altId",altId);
-                                intent.putExtra("uID",uID);
-                                intent.putExtra("preferredLanguage",preferredLanguage);
-                                intent.putExtra("availableSizeList",availableSizeList);
-                                startActivityForResult(intent,111);
+//                                intent = new Intent(PixiboActivity.this, BraFlow.class);
+//                                intent.putExtra("dataType",dataType);
+//                                intent.putExtra("gender",gender);
+//                                intent.putExtra("clientId",clientId);
+//                                intent.putExtra("brand",brand);
+//                                intent.putExtra("skuId",skuId);
+//                                intent.putExtra("altId",altId);
+//                                intent.putExtra("uID",uID);
+//                                intent.putExtra("preferredLanguage",preferredLanguage);
+//                                intent.putExtra("availableSizeList",availableSizeList);
+//                                startActivityForResult(intent,111);
                             }
                         }
                         else
@@ -473,7 +473,14 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                             }
                             else if (sizeObject.getString("type").equals("Bra"))
                             {
-                                setButtonText(sizeObject.optString("region") +" "+sizeObject.optString("cup"),sizeObject.getBoolean("recommended"));
+
+                                layout_button.setVisibility(View.VISIBLE);
+                                SpannableString content;
+                                content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
+                                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                                tv_find_my_size.setText(content);
+
+                                //setButtonText(sizeObject.optString("region") +" "+sizeObject.optString("cup"),sizeObject.getBoolean("recommended"));
                             }
                         }
 
@@ -1042,20 +1049,26 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
             else if (Arrays.asList(lingerie_array).contains(dataType))
             {
-                sizeUrl = getBraUrl(userInfoObject,lingerie_array, clientId, skuId, uID);
+//                sizeUrl = getBraUrl(userInfoObject,lingerie_array, clientId, skuId, uID);
+////
+////                if(sizeUrl != null){
+////
+////                    getSize(sizeUrl);
+////                }
+////                else
+////                {
+////                    layout_button.setVisibility(View.VISIBLE);
+////                    SpannableString content;
+////                    content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
+////                    content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+////                    tv_find_my_size.setText(content);
+////                }
 
-                if(sizeUrl != null){
-
-                    getSize(sizeUrl);
-                }
-                else
-                {
-                    layout_button.setVisibility(View.VISIBLE);
-                    SpannableString content;
-                    content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
-                    content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                    tv_find_my_size.setText(content);
-                }
+                layout_button.setVisibility(View.VISIBLE);
+                SpannableString content;
+                content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                tv_find_my_size.setText(content);
 
             }
         }
