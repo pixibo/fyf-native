@@ -379,17 +379,17 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                             }
                             else if (Arrays.asList(lingerie_array).contains(dataType))
                             {
-//                                intent = new Intent(PixiboActivity.this, BraFlow.class);
-//                                intent.putExtra("dataType",dataType);
-//                                intent.putExtra("gender",gender);
-//                                intent.putExtra("clientId",clientId);
-//                                intent.putExtra("brand",brand);
-//                                intent.putExtra("skuId",skuId);
-//                                intent.putExtra("altId",altId);
-//                                intent.putExtra("uID",uID);
-//                                intent.putExtra("preferredLanguage",preferredLanguage);
-//                                intent.putExtra("availableSizeList",availableSizeList);
-//                                startActivityForResult(intent,111);
+                                intent = new Intent(PixiboActivity.this, BraFlow.class);
+                                intent.putExtra("dataType",dataType);
+                                intent.putExtra("gender",gender);
+                                intent.putExtra("clientId",clientId);
+                                intent.putExtra("brand",brand);
+                                intent.putExtra("skuId",skuId);
+                                intent.putExtra("altId",altId);
+                                intent.putExtra("uID",uID);
+                                intent.putExtra("preferredLanguage",preferredLanguage);
+                                intent.putExtra("availableSizeList",availableSizeList);
+                                startActivityForResult(intent,111);
                             }
                         }
                         else
@@ -473,14 +473,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                             }
                             else if (sizeObject.getString("type").equals("Bra"))
                             {
-
-                                layout_button.setVisibility(View.VISIBLE);
-                                SpannableString content;
-                                content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
-                                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                                tv_find_my_size.setText(content);
-
-                                //setButtonText(sizeObject.optString("region") +" "+sizeObject.optString("cup"),sizeObject.getBoolean("recommended"));
+                                setButtonText(sizeObject.optString("region") +" "+sizeObject.optString("cup"),sizeObject.getBoolean("recommended"));
                             }
                         }
 
@@ -524,6 +517,10 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                         altId = object.optString("altId");
 
 
+                        Log.e("uID",uID);
+                        Log.e("altId",altId);
+
+
                     }
                 }
                 catch (Exception e)
@@ -565,7 +562,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",recommended);
                 returnIntent.putExtra("result",result);
-                returnIntent.putExtra("result",result);
+
                 if (data.hasExtra("addToBag"))
                 {
                     returnIntent.putExtra("addToBag",true);
@@ -814,6 +811,7 @@ public class PixiboActivity extends AppCompatActivity implements Result {
     }
 
     public String getBraUrl(JSONObject userInfoObject, String[] bra_array, String clientId, String skuId, String uID) throws JSONException {
+
         JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
         String url = null;
 
@@ -871,13 +869,9 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                             braOptions = new JSONObject(femaleObject.optString("braOptions"));
                         }
 
-                        Log.e("brand_rb",brand_rb);
-                        Log.e("band_rb",band_rb);
-                        Log.e("cup_rb",cup_rb);
-                        Log.e("region_rb",region_rb);
-                        Log.e("wired_rb",wired_rb);
-
+                        break;
                     }
+
 
                     if(braOptions != null){
 
@@ -900,7 +894,14 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                         tightStrap = braOptions.optString("tightStrap");
 
                     }
+
                 }
+
+                Log.e("brand_rb",brand_rb);
+                Log.e("band_rb",band_rb);
+                Log.e("cup_rb",cup_rb);
+                Log.e("region_rb",region_rb);
+                Log.e("wired_rb",wired_rb);
 
 
                 Log.e("strapsFit",strapsFit);
@@ -916,16 +917,19 @@ public class PixiboActivity extends AppCompatActivity implements Result {
                 Log.e("gaps",gaps);
                 Log.e("tightStrap",tightStrap);
 
-            if(brand_rb.equals("") && !bandFit.equals("") && !strapsFit.equals("") && !cupFit.equals(""))
+            if(brand_rb.equals("") && !bandFit.equals("0") && !strapsFit.equals("0") && !cupFit.equals("0"))
             {
+                Log.e("Case","1");
                 url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&band="+band+"&cup="+cup+"&region="+region+"&wiredBra="+wired+"&bandPref="+bandFit+"&sameBra="+sameBra+"&looseHook="+looseHook+"&tightHook="+tightHook+"&cupPref="+cupFit+"&wiresFront="+frontWireFit+"&wiresSide="+sideWireFit+"&straps="+strapsFit+"&gaps="+gaps+"&tightStraps="+tightStrap+"&braStyle="+braStyle+"&braAge="+braAge;
             }
-            else if(!brand_rb.equals("") && !region_rb.equals("") && !bandFit.equals("") && !strapsFit.equals("") && !cupFit.equals(""))
+            else if(!brand_rb.equals("") && !region_rb.equals("") && !bandFit.equals("0") && !strapsFit.equals("0") && !cupFit.equals("0"))
             {
+                Log.e("Case","2");
                 url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand_rb+"&band="+band_rb+"&cup="+cup_rb+"&region="+region_rb+"&wiredBra="+wired_rb+"&bandPref="+bandFit+"&sameBra="+sameBra+"&looseHook="+looseHook+"&tightHook="+tightHook+"&cupPref="+cupFit+"&wiresFront="+frontWireFit+"&wiresSide="+sideWireFit+"&straps="+strapsFit+"&gaps="+gaps+"&tightStraps="+tightStrap+"&braStyle="+braStyle+"&braAge="+braAge;
             }
             else
             {
+                Log.e("Case","3");
                 url = "https://sizeguidev2.pixibo.com/asset/"+clientId+"/"+skuId+"?uid="+uID+"&brand="+brand_rb+"&band="+band_rb+"&cup="+cup_rb+"&region="+region_rb+"&wiredBra="+wired_rb;
             }
 
@@ -1049,26 +1053,20 @@ public class PixiboActivity extends AppCompatActivity implements Result {
 
             else if (Arrays.asList(lingerie_array).contains(dataType))
             {
-//                sizeUrl = getBraUrl(userInfoObject,lingerie_array, clientId, skuId, uID);
-////
-////                if(sizeUrl != null){
-////
-////                    getSize(sizeUrl);
-////                }
-////                else
-////                {
-////                    layout_button.setVisibility(View.VISIBLE);
-////                    SpannableString content;
-////                    content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
-////                    content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-////                    tv_find_my_size.setText(content);
-////                }
+                sizeUrl = getBraUrl(userInfoObject,lingerie_array, clientId, skuId, uID);
 
-                layout_button.setVisibility(View.VISIBLE);
-                SpannableString content;
-                content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
-                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                tv_find_my_size.setText(content);
+                if(sizeUrl != null){
+
+                    getSize(sizeUrl);
+                }
+                else
+                {
+                    layout_button.setVisibility(View.VISIBLE);
+                    SpannableString content;
+                    content = new SpannableString(mContext.getResources().getString(R.string.find_my_size));
+                    content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                    tv_find_my_size.setText(content);
+                }
 
             }
         }

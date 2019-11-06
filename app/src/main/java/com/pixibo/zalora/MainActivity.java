@@ -100,7 +100,9 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK){
 
                 boolean recommended = data.getBooleanExtra("recommended",false);
-                String result = "";
+
+                String result = null;
+
                 result = data.getStringExtra("result");
 
                 setButtonText(result,recommended);
@@ -122,15 +124,25 @@ public class MainActivity extends AppCompatActivity {
 
         SpannableString content;
 
+
+        Log.e("size",size);
+        Log.e("isRecommended", String.valueOf(isRecommended));
+
         if(isRecommended){
 
             returnedText = getResources().getString(R.string.your_size) +" "+size;
             content = new SpannableString(returnedText);
 
         }
-        else{
+        else if (!size.equals("") && !isRecommended)
+        {
 
             returnedText = getResources().getString(R.string.check_your_fit);
+            content = new SpannableString(returnedText);
+        }
+        else
+        {
+            returnedText = getResources().getString(R.string.find_my_size);
             content = new SpannableString(returnedText);
         }
 
