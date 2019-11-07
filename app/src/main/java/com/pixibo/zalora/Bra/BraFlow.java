@@ -48,6 +48,7 @@ import java.util.List;
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSizes;
 import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.GetSize;
+import static com.pixibo.zalora.Utils.Utils.TYPE.MergeProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.NewBrand;
 import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateData;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
@@ -2711,6 +2712,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_brand_4.setOnClickListener(this);
         tv_brand_5.setOnClickListener(this);
 
+
         getData();
         get_brands(gender,category);
         setDefaultBrands();
@@ -2754,7 +2756,6 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         layout_brand_search.setVisibility(View.VISIBLE);
 
     }
-
 
 
 
@@ -3029,6 +3030,28 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     }
 
 
+    private void mergeProfile(String UID) {
+
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+                GET get = new GET(this, "https://discoverysvc.pixibo.com/merge/users/"+UID+"/"+uID , MergeProfile, this);
+                // Utils.showLoading(SettingActivity.mContext, false);
+                get.execute();
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
+
 
 
     @Override
@@ -3274,473 +3297,19 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             case ValidateUserUid:
                 try
                 {
-                    if(statusCode ==200)
+
+                    if (statusCode == 200)
                     {
-                        JSONObject userInfoObject = new JSONObject(result);
+                        JSONObject userObject = new JSONObject(result);
 
-                        if (userInfoObject.has("whois"))
+                        if (!userObject.optString("uid").equals(uID))
                         {
-                            Log.e("userInfoObject", String.valueOf(userInfoObject));
-
-                            uID = userInfoObject.optString("uid");
-
-                            if (userInfoObject.optString("whois").contains("female") && gender.equals("female") &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}"))
-                            {
-                                JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
-
-                                String[] lingerie_array = new String[]{"Bra"};
-
-                                JSONObject femaleObject = new JSONObject(whoisObject.optString("female"));
-
-                                    String brand_rb = "";
-                                    String cup_rb = "";
-                                    String wired_rb = "";
-                                    String region_rb = "";
-                                    String band_rb = "";
-
-                                    JSONArray femaleReferenceBrandsArray = new JSONArray(femaleObject.optString("referenceBrands"));
-
-                                    if(femaleReferenceBrandsArray.length() > 0){
-                                        JSONObject braOptions = null;
-                                        JSONObject femaleReferenceBrandsObject = null;
-                                        for (int i = 0; i<femaleReferenceBrandsArray.length(); i++){
-
-                                            JSONObject referenceObject = femaleReferenceBrandsArray.getJSONObject(i);
-
-                                            String category = referenceObject.optString("category");
-
-                                            if(Arrays.asList(lingerie_array).contains(category))
-                                            {
-                                                femaleReferenceBrandsObject = referenceObject;
-                                            }
-
-                                            if(femaleReferenceBrandsObject != null){
-
-                                                brand_rb = femaleReferenceBrandsObject.optString("brand");
-                                                band_rb = femaleReferenceBrandsObject.optString("band");
-                                                cup_rb = femaleReferenceBrandsObject.optString("cup");
-                                                region_rb = femaleReferenceBrandsObject.optString("region");
-                                                wired_rb = femaleReferenceBrandsObject.optString("wired");
-
-                                            }
-
-
-                                            brand = brand_rb;
-                                            band = band_rb;
-                                            cup = cup_rb;
-                                            region = region_rb;
-                                            wired = Boolean.parseBoolean(wired_rb);
-
-                                            Log.e("brand_rb",brand);
-                                            Log.e("band_rb",band);
-                                            Log.e("cup_rb",cup);
-                                            Log.e("region_rb",region);
-                                            Log.e("wired_rb", String.valueOf(wired));
-
-
-                                            if (femaleObject.has("braOptions"))
-                                            {
-                                                braOptions = new JSONObject(femaleObject.optString("braOptions"));
-
-                                                    if (referenceObject.has("wired"))
-                                                    {
-
-                                                        bandFit = braOptions.optString("bandFit");
-                                                        cupFit = braOptions.optString("cupFit");
-                                                        strapsFit = braOptions.optString("strapsFit");
-                                                        braAge = braOptions.optString("braAge");
-                                                        sameBra = Boolean.parseBoolean(braOptions.optString("sameBra"));
-                                                        tightHook = Boolean.parseBoolean(braOptions.optString("tightHook"));
-                                                        looseHook = Boolean.parseBoolean(braOptions.optString("looseHook"));
-                                                        braStyle = braOptions.optString("braStyle");
-                                                        frontWireFit = braOptions.optString("frontWireFit");
-                                                        sideWireFit = braOptions.optString("sideWireFit");
-                                                        gaps = braOptions.optString("gaps");
-                                                        tightStrap = Boolean.parseBoolean(braOptions.optString("tightStrap"));
-                                                    }
-                                                    else
-                                                    {
-                                                        wired = Boolean.parseBoolean(braOptions.optString("wired"));
-                                                        cup = braOptions.optString("cup");
-                                                        region = braOptions.optString("region");
-
-                                                        bandFit = braOptions.optString("bandFit");
-                                                        cupFit = braOptions.optString("cupFit");
-                                                        strapsFit = braOptions.optString("strapsFit");
-                                                        band = braOptions.optString("band");
-                                                        braAge = braOptions.optString("braAge");
-                                                        sameBra = Boolean.parseBoolean(braOptions.optString("sameBra"));
-                                                        tightHook = Boolean.parseBoolean(braOptions.optString("tightHook"));
-                                                        looseHook = Boolean.parseBoolean(braOptions.optString("looseHook"));
-                                                        braStyle = braOptions.optString("braStyle");
-                                                        frontWireFit = braOptions.optString("frontWireFit");
-                                                        sideWireFit = braOptions.optString("sideWireFit");
-                                                        gaps = braOptions.optString("gaps");
-                                                        tightStrap = Boolean.parseBoolean(braOptions.optString("tightStrap"));
-                                                    }
-
-                                                Log.e("bandFit",bandFit);
-                                                Log.e("strapsFit",strapsFit);
-                                                Log.e("band",band);
-                                                Log.e("region",region);
-                                                Log.e("braAge",braAge);
-                                                Log.e("sameBra", String.valueOf(sameBra));
-                                                Log.e("tightHook", String.valueOf(tightHook));
-                                                Log.e("looseHook", String.valueOf(looseHook));
-                                                Log.e("braStyle",braStyle);
-                                                Log.e("frontWireFit",frontWireFit);
-                                                Log.e("sideWireFit",sideWireFit);
-                                                Log.e("gaps",gaps);
-                                                Log.e("tightStrap", String.valueOf(tightStrap));
-
-
-                                            }
-
-                                        }
-
-                                        layout_brand.setVisibility(View.GONE);
-
-
-                                        if (!wired_rb.equals("") && !band_rb.equals("") && !femaleObject.has("braOptions"))
-                                        {
-
-                                            Log.e("Result","Brand Flow without extra data");
-
-                                            if (altId.equals(""))
-                                            {
-                                                getFinalSize(uID,brand,band,cup,region, wired);
-                                            }
-                                            else
-                                            {
-                                                getFinalSize(altId,brand,band,cup,region, wired);
-                                            }
-                                        }
-
-                                        else if (!wired_rb.equals("") && !band_rb.equals("") && !cup_rb.equals(""))
-                                        {
-
-                                            Log.e("Result","Brand Flow with extra data");
-
-                                            brandNotListed = false;
-                                            tellMore = true;
-
-                                            setBandFeel(bandFit);
-                                            setBraAge(braAge);
-                                            setCupFit(cupFit);
-                                            setGaps(gaps);
-                                            setBraStyle(braStyle);
-                                            setStraps(strapsFit);
-                                            setFrontWire(frontWireFit);
-                                            setSideWire(sideWireFit);
-
-
-                                            if (bandFit.equals("1"))
-                                            {
-                                                if (looseHook)
-                                                {
-                                                    tv_bra_looser_hook_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                                else
-                                                {
-                                                    tv_bra_looser_hook_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                            }
-
-
-                                            if (bandFit.equals("3"))
-                                            {
-                                                if (sameBra)
-                                                {
-                                                    tv_isOld_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                                else if (tightHook)
-                                                {
-                                                    tv_isOld_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-
-                                                    tv_bra_tight_hook_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-
-                                                    tv_bra_sizes_text.setText(getResources().getString(R.string.bra_tighter_hook));
-
-                                                    layout_bra_tight_hook_button.setVisibility(View.VISIBLE);
-                                                    layout_bra_loose_hook_button.setVisibility(View.GONE);
-                                                    layout_bra_isOld_button.setVisibility(View.GONE);
-                                                }
-                                                else
-                                                {
-                                                    tv_bra_tight_hook_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                            }
-
-
-                                            if (braAge.equals("1") || braAge.equals("2"))
-                                            {
-                                                if (tightHook)
-                                                {
-                                                    tv_old_bra_page_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                                else
-                                                {
-                                                    tv_old_bra_page_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_old_bra_page_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                            }
-
-
-
-
-                                            if (gaps.equals("1"))
-                                            {
-                                                Log.e("gaps",gaps);
-                                                Log.e("tightStrap", String.valueOf(tightStrap));
-
-                                                if (tightStrap)
-                                                {
-                                                    Log.e("INside tightStrap", String.valueOf(tightStrap));
-                                                    tv_gap_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_gap_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                                else
-                                                {
-                                                    Log.e("INside tightStrap", String.valueOf(tightStrap));
-                                                    tv_gap_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_gap_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                            }
-
-
-                                            if (altId.equals(""))
-                                            {
-                                                getFinalSize(uID,brand,band,cup,region, wired);
-                                            }
-                                            else
-                                            {
-                                                getFinalSize(altId,brand,band,cup,region, wired);
-                                            }
-                                        }
-                                        else if (!bandFit.equals("0") && !bandFit.equals(""))
-                                        {
-
-                                            Log.e("Flow resume","Resume");
-
-                                            tellMore = true;
-
-                                            setBandFeel(bandFit);
-
-                                            layout_band_feel.setVisibility(View.GONE);
-
-
-                                            if (bandFit.equals("1"))
-                                            {
-                                                if (looseHook)
-                                                {
-                                                    tv_bra_looser_hook_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                                else
-                                                {
-                                                    tv_bra_looser_hook_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                            }
-
-
-                                            if (bandFit.equals("3"))
-                                            {
-                                                if (sameBra)
-                                                {
-                                                    tv_isOld_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                                else if (tightHook)
-                                                {
-                                                    tv_isOld_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-
-                                                    tv_bra_tight_hook_yes.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-
-                                                    tv_bra_sizes_text.setText(getResources().getString(R.string.bra_tighter_hook));
-
-                                                    layout_bra_tight_hook_button.setVisibility(View.VISIBLE);
-                                                    layout_bra_loose_hook_button.setVisibility(View.GONE);
-                                                    layout_bra_isOld_button.setVisibility(View.GONE);
-                                                }
-                                                else
-                                                {
-                                                    tv_bra_tight_hook_no.setTextColor(getResources().getColor(R.color.white));
-                                                    tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                }
-                                            }
-
-
-                                            if (bandFit.equals("3")  && braAge.equals("0") && sameBra)
-                                            {
-                                                layout_bra_old.setVisibility(View.VISIBLE);
-                                                progress(4);
-                                            }
-                                            else
-                                            {
-                                                setBraAge(braAge);
-
-                                                if (braAge.equals("1") || braAge.equals("2"))
-                                                {
-                                                    if (tightHook)
-                                                    {
-                                                        tv_old_bra_page_yes.setTextColor(getResources().getColor(R.color.white));
-                                                        tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                    }
-                                                    else
-                                                    {
-                                                        tv_old_bra_page_no.setTextColor(getResources().getColor(R.color.white));
-                                                        tv_old_bra_page_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                    }
-                                                }
-
-                                                layout_bra_old.setVisibility(View.GONE);
-
-                                                if (!cupFit.equals("0"))
-                                                {
-                                                    setCupFit(cupFit);
-
-                                                    layout_cup_fit.setVisibility(View.GONE);
-
-                                                    if(cupFit.equals("3") && gaps.equals("0"))
-                                                    {
-                                                        layout_gaps.setVisibility(View.VISIBLE);
-
-                                                        progress(6);
-                                                    }
-                                                    else
-                                                    {
-                                                        setGaps(gaps);
-
-                                                        if (gaps.equals("1"))
-                                                        {
-                                                            if (tightStrap)
-                                                            {
-                                                                tv_gap_yes.setTextColor(getResources().getColor(R.color.white));
-                                                                tv_gap_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                            }
-                                                            else
-                                                            {
-                                                                tv_gap_no.setTextColor(getResources().getColor(R.color.white));
-                                                                tv_gap_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
-                                                            }
-                                                        }
-
-                                                        layout_gaps.setVisibility(View.GONE);
-
-                                                        if (gaps.equals("3") && braStyle.equals("0"))
-                                                        {
-                                                            layout_bra_style.setVisibility(View.VISIBLE);
-                                                            progress(7);
-                                                        }
-                                                        else
-                                                        {
-                                                            setBraStyle(braStyle);
-
-                                                            layout_bra_style.setVisibility(View.GONE);
-
-                                                            if (!strapsFit.equals("0"))
-                                                            {
-                                                                setStraps(strapsFit);
-
-                                                                layout_strap_fit.setVisibility(View.GONE);
-
-                                                                if (wired)
-                                                                {
-
-
-                                                                    if (!frontWireFit.equals("0"))
-                                                                    {
-                                                                        setFrontWire(frontWireFit);
-
-                                                                        layout_underwire_front.setVisibility(View.GONE);
-
-                                                                        if (sideWireFit.equals("0"))
-                                                                        {
-                                                                            layout_underwire_side.setVisibility(View.VISIBLE);
-                                                                            progress(10);
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            setSideWire(sideWireFit);
-
-                                                                            layout_underwire_side.setVisibility(View.GONE);
-
-                                                                            Log.e("Flow resume result","Unwired");
-
-                                                                            if (altId.equals(""))
-                                                                            {
-                                                                                getFinalSize(uID,brand,band,cup,region,wired);
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                getFinalSize(altId,brand,band,cup,region,wired);
-                                                                            }
-                                                                        }
-
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        layout_underwire_front.setVisibility(View.VISIBLE);
-                                                                        progress(9);
-                                                                    }
-
-                                                                }
-                                                                else
-                                                                {
-
-                                                                    Log.e("Flow resume result","Unwired");
-
-                                                                    if (altId.equals(""))
-                                                                    {
-                                                                        getFinalSize(uID,brand,band,cup,region,wired);
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        getFinalSize(altId,brand,band,cup,region,wired);
-                                                                    }
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                layout_strap_fit.setVisibility(View.VISIBLE);
-                                                                progress(8);
-                                                            }
-                                                        }
-
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    layout_cup_fit.setVisibility(View.VISIBLE);
-                                                    progress(5);
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            layout_brand.setVisibility(View.VISIBLE);
-                                            progress(1);
-                                        }
-
-                                    }
-                            }
-                            else
-                            {
-                                layout_brand.setVisibility(View.VISIBLE);
-                                progress(1);
-                            }
+                            mergeProfile(userObject.optString("uid"));
                         }
-
+                        else
+                        {
+                            setData(result);
+                        }
                     }
                     else if (statusCode == 500)
                     {
@@ -3752,6 +3321,525 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 {
                     e.printStackTrace();
                 }
+                break;
+
+            case MergeProfile:
+                try
+                {
+                    if (statusCode == 200)
+                    {
+                        JSONObject object = new JSONObject(result);
+
+
+                        String [] ids = {object.optString("uid"),uID};
+
+                        for (String id : ids) {
+
+                            if (!id.equals(object.optString("uid"))) {
+                               // resetClientProfile(clientId,id);
+                            }
+                        }
+
+                        setData(result);
+
+                        uID = object.optString("uid");
+                        altId = object.optString("altId");
+
+
+                        Log.e("uID",uID);
+                        Log.e("altId",altId);
+
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+
+
+
+
+    public void setData(String result)
+    {
+        try
+        {
+                JSONObject userInfoObject = new JSONObject(result);
+
+                if (userInfoObject.has("whois"))
+                {
+                    Log.e("userInfoObject", String.valueOf(userInfoObject));
+
+                    uID = userInfoObject.optString("uid");
+
+                    if (userInfoObject.optString("whois").contains("female") && gender.equals("female") &&!new JSONObject(userInfoObject.optString("whois")).optString("female").equals(null) && !new JSONObject(userInfoObject.optString("whois")).optString("female").equals("{}"))
+                    {
+                        JSONObject whoisObject = new JSONObject(userInfoObject.optString("whois"));
+
+                        String[] lingerie_array = new String[]{"Bra"};
+
+                        JSONObject femaleObject = new JSONObject(whoisObject.optString("female"));
+
+                        String brand_rb = "";
+                        String cup_rb = "";
+                        String wired_rb = "";
+                        String region_rb = "";
+                        String band_rb = "";
+
+                        JSONArray femaleReferenceBrandsArray = new JSONArray(femaleObject.optString("referenceBrands"));
+
+                        if(femaleReferenceBrandsArray.length() > 0){
+                            JSONObject braOptions = null;
+                            JSONObject femaleReferenceBrandsObject = null;
+
+                            for (int i = 0; i<femaleReferenceBrandsArray.length(); i++)
+                            {
+
+                                JSONObject referenceObject = femaleReferenceBrandsArray.getJSONObject(i);
+
+                                String category = referenceObject.optString("category");
+
+                                if(Arrays.asList(lingerie_array).contains(category))
+                                {
+                                    femaleReferenceBrandsObject = referenceObject;
+
+                                    Log.e("femaleBrandsObject", String.valueOf(femaleReferenceBrandsObject));
+
+                                        brand_rb = femaleReferenceBrandsObject.optString("brand");
+                                        band_rb = femaleReferenceBrandsObject.optString("band");
+                                        cup_rb = femaleReferenceBrandsObject.optString("cup");
+                                        region_rb = femaleReferenceBrandsObject.optString("region");
+                                        wired_rb = femaleReferenceBrandsObject.optString("wired");
+
+                                }
+
+
+
+
+                                brand = brand_rb;
+                                band = band_rb;
+                                cup = cup_rb;
+                                region = region_rb;
+                                wired = Boolean.parseBoolean(wired_rb);
+
+                                Log.e("brand_rb",brand);
+                                Log.e("band_rb",band);
+                                Log.e("cup_rb",cup);
+                                Log.e("region_rb",region);
+                                Log.e("wired_rb", String.valueOf(wired));
+
+
+                                if (femaleObject.has("braOptions"))
+                                {
+                                    braOptions = new JSONObject(femaleObject.optString("braOptions"));
+
+                                    if (referenceObject.has("wired"))
+                                    {
+
+                                        bandFit = braOptions.optString("bandFit");
+                                        cupFit = braOptions.optString("cupFit");
+                                        strapsFit = braOptions.optString("strapsFit");
+                                        braAge = braOptions.optString("braAge");
+                                        sameBra = Boolean.parseBoolean(braOptions.optString("sameBra"));
+                                        tightHook = Boolean.parseBoolean(braOptions.optString("tightHook"));
+                                        looseHook = Boolean.parseBoolean(braOptions.optString("looseHook"));
+                                        braStyle = braOptions.optString("braStyle");
+                                        frontWireFit = braOptions.optString("frontWireFit");
+                                        sideWireFit = braOptions.optString("sideWireFit");
+                                        gaps = braOptions.optString("gaps");
+                                        tightStrap = Boolean.parseBoolean(braOptions.optString("tightStrap"));
+                                    }
+                                    else
+                                    {
+                                        wired = Boolean.parseBoolean(braOptions.optString("wired"));
+                                        cup = braOptions.optString("cup");
+                                        region = braOptions.optString("region");
+
+                                        bandFit = braOptions.optString("bandFit");
+                                        cupFit = braOptions.optString("cupFit");
+                                        strapsFit = braOptions.optString("strapsFit");
+                                        band = braOptions.optString("band");
+                                        braAge = braOptions.optString("braAge");
+                                        sameBra = Boolean.parseBoolean(braOptions.optString("sameBra"));
+                                        tightHook = Boolean.parseBoolean(braOptions.optString("tightHook"));
+                                        looseHook = Boolean.parseBoolean(braOptions.optString("looseHook"));
+                                        braStyle = braOptions.optString("braStyle");
+                                        frontWireFit = braOptions.optString("frontWireFit");
+                                        sideWireFit = braOptions.optString("sideWireFit");
+                                        gaps = braOptions.optString("gaps");
+                                        tightStrap = Boolean.parseBoolean(braOptions.optString("tightStrap"));
+                                    }
+
+                                    Log.e("bandFit",bandFit);
+                                    Log.e("strapsFit",strapsFit);
+                                    Log.e("band",band);
+                                    Log.e("region",region);
+                                    Log.e("braAge",braAge);
+                                    Log.e("sameBra", String.valueOf(sameBra));
+                                    Log.e("tightHook", String.valueOf(tightHook));
+                                    Log.e("looseHook", String.valueOf(looseHook));
+                                    Log.e("braStyle",braStyle);
+                                    Log.e("frontWireFit",frontWireFit);
+                                    Log.e("sideWireFit",sideWireFit);
+                                    Log.e("gaps",gaps);
+                                    Log.e("tightStrap", String.valueOf(tightStrap));
+
+
+                                }
+
+                                break;
+                            }
+
+                            layout_brand.setVisibility(View.GONE);
+
+
+                            if (!wired_rb.equals("") && !band_rb.equals("") && !femaleObject.has("braOptions"))
+                            {
+
+                                Log.e("Result","Brand Flow without extra data");
+
+                                if (altId.equals(""))
+                                {
+                                    getFinalSize(uID,brand,band,cup,region, wired);
+                                }
+                                else
+                                {
+                                    getFinalSize(altId,brand,band,cup,region, wired);
+                                }
+                            }
+
+                            else if (!wired_rb.equals("") && !band_rb.equals("") && !cup_rb.equals(""))
+                            {
+
+                                Log.e("Result","Brand Flow with extra data");
+
+                                brandNotListed = false;
+                                tellMore = true;
+
+                                setBandFeel(bandFit);
+                                setBraAge(braAge);
+                                setCupFit(cupFit);
+                                setGaps(gaps);
+                                setBraStyle(braStyle);
+                                setStraps(strapsFit);
+                                setFrontWire(frontWireFit);
+                                setSideWire(sideWireFit);
+
+
+                                if (bandFit.equals("1"))
+                                {
+                                    if (looseHook)
+                                    {
+                                        tv_bra_looser_hook_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                    else
+                                    {
+                                        tv_bra_looser_hook_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                }
+
+
+                                if (bandFit.equals("3"))
+                                {
+                                    if (sameBra)
+                                    {
+                                        tv_isOld_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                    else if (tightHook)
+                                    {
+                                        tv_isOld_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
+                                        tv_bra_tight_hook_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
+                                        tv_bra_sizes_text.setText(getResources().getString(R.string.bra_tighter_hook));
+
+                                        layout_bra_tight_hook_button.setVisibility(View.VISIBLE);
+                                        layout_bra_loose_hook_button.setVisibility(View.GONE);
+                                        layout_bra_isOld_button.setVisibility(View.GONE);
+                                    }
+                                    else
+                                    {
+                                        tv_bra_tight_hook_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                }
+
+
+                                if (braAge.equals("1") || braAge.equals("2"))
+                                {
+                                    if (tightHook)
+                                    {
+                                        tv_old_bra_page_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                    else
+                                    {
+                                        tv_old_bra_page_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_old_bra_page_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                }
+
+
+
+
+                                if (gaps.equals("1"))
+                                {
+                                    Log.e("gaps",gaps);
+                                    Log.e("tightStrap", String.valueOf(tightStrap));
+
+                                    if (tightStrap)
+                                    {
+                                        Log.e("INside tightStrap", String.valueOf(tightStrap));
+                                        tv_gap_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_gap_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                    else
+                                    {
+                                        Log.e("INside tightStrap", String.valueOf(tightStrap));
+                                        tv_gap_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_gap_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                }
+
+
+                                if (altId.equals(""))
+                                {
+                                    getFinalSize(uID,brand,band,cup,region, wired);
+                                }
+                                else
+                                {
+                                    getFinalSize(altId,brand,band,cup,region, wired);
+                                }
+                            }
+                            else if (!bandFit.equals("0") && !bandFit.equals(""))
+                            {
+
+                                Log.e("Flow resume","Resume");
+
+                                tellMore = true;
+
+                                setBandFeel(bandFit);
+
+                                layout_band_feel.setVisibility(View.GONE);
+
+
+                                if (bandFit.equals("1"))
+                                {
+                                    if (looseHook)
+                                    {
+                                        tv_bra_looser_hook_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_looser_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                    else
+                                    {
+                                        tv_bra_looser_hook_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_looser_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                }
+
+
+                                if (bandFit.equals("3"))
+                                {
+                                    if (sameBra)
+                                    {
+                                        tv_isOld_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_isOld_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                    else if (tightHook)
+                                    {
+                                        tv_isOld_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_isOld_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
+                                        tv_bra_tight_hook_yes.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_tight_hook_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+
+                                        tv_bra_sizes_text.setText(getResources().getString(R.string.bra_tighter_hook));
+
+                                        layout_bra_tight_hook_button.setVisibility(View.VISIBLE);
+                                        layout_bra_loose_hook_button.setVisibility(View.GONE);
+                                        layout_bra_isOld_button.setVisibility(View.GONE);
+                                    }
+                                    else
+                                    {
+                                        tv_bra_tight_hook_no.setTextColor(getResources().getColor(R.color.white));
+                                        tv_bra_tight_hook_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                    }
+                                }
+
+
+                                if (bandFit.equals("3")  && braAge.equals("0") && sameBra)
+                                {
+                                    layout_bra_old.setVisibility(View.VISIBLE);
+                                    progress(4);
+                                }
+                                else
+                                {
+                                    setBraAge(braAge);
+
+                                    if (braAge.equals("1") || braAge.equals("2"))
+                                    {
+                                        if (tightHook)
+                                        {
+                                            tv_old_bra_page_yes.setTextColor(getResources().getColor(R.color.white));
+                                            tv_old_bra_page_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                        }
+                                        else
+                                        {
+                                            tv_old_bra_page_no.setTextColor(getResources().getColor(R.color.white));
+                                            tv_old_bra_page_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                        }
+                                    }
+
+                                    layout_bra_old.setVisibility(View.GONE);
+
+                                    if (!cupFit.equals("0"))
+                                    {
+                                        setCupFit(cupFit);
+
+                                        layout_cup_fit.setVisibility(View.GONE);
+
+                                        if(cupFit.equals("3") && gaps.equals("0"))
+                                        {
+                                            layout_gaps.setVisibility(View.VISIBLE);
+
+                                            progress(6);
+                                        }
+                                        else
+                                        {
+                                            setGaps(gaps);
+
+                                            if (gaps.equals("1"))
+                                            {
+                                                if (tightStrap)
+                                                {
+                                                    tv_gap_yes.setTextColor(getResources().getColor(R.color.white));
+                                                    tv_gap_yes.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                                }
+                                                else
+                                                {
+                                                    tv_gap_no.setTextColor(getResources().getColor(R.color.white));
+                                                    tv_gap_no.setBackground(getResources().getDrawable(R.drawable.bg_button_enable));
+                                                }
+                                            }
+
+                                            layout_gaps.setVisibility(View.GONE);
+
+                                            if (gaps.equals("3") && braStyle.equals("0"))
+                                            {
+                                                layout_bra_style.setVisibility(View.VISIBLE);
+                                                progress(7);
+                                            }
+                                            else
+                                            {
+                                                setBraStyle(braStyle);
+
+                                                layout_bra_style.setVisibility(View.GONE);
+
+                                                if (!strapsFit.equals("0"))
+                                                {
+                                                    setStraps(strapsFit);
+
+                                                    layout_strap_fit.setVisibility(View.GONE);
+
+                                                    if (wired)
+                                                    {
+
+
+                                                        if (!frontWireFit.equals("0"))
+                                                        {
+                                                            setFrontWire(frontWireFit);
+
+                                                            layout_underwire_front.setVisibility(View.GONE);
+
+                                                            if (sideWireFit.equals("0"))
+                                                            {
+                                                                layout_underwire_side.setVisibility(View.VISIBLE);
+                                                                progress(10);
+                                                            }
+                                                            else
+                                                            {
+                                                                setSideWire(sideWireFit);
+
+                                                                layout_underwire_side.setVisibility(View.GONE);
+
+                                                                Log.e("Flow resume result","Unwired");
+
+                                                                if (altId.equals(""))
+                                                                {
+                                                                    getFinalSize(uID,brand,band,cup,region,wired);
+                                                                }
+                                                                else
+                                                                {
+                                                                    getFinalSize(altId,brand,band,cup,region,wired);
+                                                                }
+                                                            }
+
+                                                        }
+                                                        else
+                                                        {
+                                                            layout_underwire_front.setVisibility(View.VISIBLE);
+                                                            progress(9);
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+
+                                                        Log.e("Flow resume result","Unwired");
+
+                                                        if (altId.equals(""))
+                                                        {
+                                                            getFinalSize(uID,brand,band,cup,region,wired);
+                                                        }
+                                                        else
+                                                        {
+                                                            getFinalSize(altId,brand,band,cup,region,wired);
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    layout_strap_fit.setVisibility(View.VISIBLE);
+                                                    progress(8);
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        layout_cup_fit.setVisibility(View.VISIBLE);
+                                        progress(5);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                layout_brand.setVisibility(View.VISIBLE);
+                                progress(1);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        layout_brand.setVisibility(View.VISIBLE);
+                        progress(1);
+                    }
+                }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 
