@@ -2680,8 +2680,15 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         recycler_brand_suggestion.setLayoutManager(mLayoutManager);
         recycler_brand_suggestion.setAdapter(brandAdapter);
 
+        if (preferredLanguage.equals("in"))
+        {
+            tv_fav_category.setText(getResources().getString(R.string.apparel_fit_fav_category)+" "+ Utils.convertApparelType(category,gender, ApparelFlow.this) +" favorit Anda");
+        }
+        else
+        {
+            tv_fav_category.setText(getResources().getString(R.string.apparel_fit_fav_category)+" "+ Utils.convertApparelType(category,gender, ApparelFlow.this));
+        }
 
-        tv_fav_category.setText(getResources().getString(R.string.apparel_fit_fav_category)+" "+ Utils.convertApparelType(category,gender, ApparelFlow.this));
 
         //validate_user(clientId,skuId);
 
@@ -5326,6 +5333,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
             if (temp.size() == 0)
             {
+                tv_brand_error.setText(getResources().getString(R.string.brand_not_in_list));
                 layout_add.setVisibility(View.VISIBLE);
                 tv_brand_error.setVisibility(View.VISIBLE);
                 layout_brands.setVisibility(View.INVISIBLE);
@@ -5358,6 +5366,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 }
 
             } else {
+
+                layout_error.setVisibility(View.VISIBLE);
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
             }
 
@@ -5385,6 +5395,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
         } catch (Exception e) {
             //Utils.hideLoading();
+            layout_error.setVisibility(View.VISIBLE);
             Utils.showToast(this,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
@@ -5421,7 +5432,9 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
     private void trackEvent(String clientID ,String SKUID,String eventType,String page,String event,String uid ) {
 
-
+        Log.e("Event Track: eventType",eventType);
+        Log.e("Event Track: page",page);
+        Log.e("Event Track: event",event);
 
         try {
 

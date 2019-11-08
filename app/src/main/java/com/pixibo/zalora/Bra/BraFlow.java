@@ -50,6 +50,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.BrandSuggestion;
 import static com.pixibo.zalora.Utils.Utils.TYPE.GetSize;
 import static com.pixibo.zalora.Utils.Utils.TYPE.MergeProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.NewBrand;
+import static com.pixibo.zalora.Utils.Utils.TYPE.Track;
 import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateData;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 
@@ -994,6 +995,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     layout_bra_tight_hook_button.setVisibility(View.GONE);
                 }
 
+
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_fit_edit",uID);
+
                 isEditFlow = true;
                // tellMore = true;
 
@@ -1149,6 +1153,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         tv_add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_addToCart",uID);
+
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("recommended",isRecommended);
                 returnIntent.putExtra("result",size);
@@ -1197,6 +1204,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 brandNotListed = true;
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_refBrand_skip",uID);
 
                 clearBraType();
 
@@ -1439,6 +1447,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_brand.setVisibility(View.VISIBLE);
                 layout_result.setVisibility(View.GONE);
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_startOver",uID);
+
             }
         });
 
@@ -1455,6 +1465,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     //clearAllBrandSize();
                     Log.e("Brand",brand);
                     get_brand_sizes(gender,category,brand);
+
+
+                    trackEvent(clientId,skuId,"click","pdp","fyf_bra_refBrand_continue",uID);
 
                 }
 
@@ -1478,6 +1491,13 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 if (!band.equals("") && !cup.equals("") && !isWired.equals(""))
                 {
+
+                    trackEvent(clientId,skuId,"click","pdp","fyf_bra_size_continue",uID);
+
+                    if (wired)
+                    {
+                        trackEvent(clientId,skuId,"click","pdp","fyf_bra_size_wired",uID);
+                    }
 
                     updateUserDetails();
 
@@ -1537,6 +1557,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 {
                     //TODO Update data to server
 
+                    trackEvent(clientId,skuId,"click","pdp","fyf_bra_size_continue",uID);
+
+                    if (wired_noBrand)
+                    {
+                        trackEvent(clientId,skuId,"click","pdp","fyf_bra_size_wired",uID);
+                    }
 
                     Log.e("region_noBrand",region_noBrand);
                     Log.e("band_noBrand",band_noBrand);
@@ -1929,6 +1955,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_bra_loose_hook_button.setVisibility(View.VISIBLE);
                 layout_bra_tight_hook_button.setVisibility(View.GONE);
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_bandfit_continue",uID);
+
                 Log.e("bandFit",bandFit);
 
             }
@@ -1957,6 +1985,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 progress(5);
                 updateUserDetails();
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_bandfit_continue",uID);
+
                 Log.e("bandFit",bandFit);
 
 
@@ -1980,6 +2010,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 layout_bra_loose_hook_button.setVisibility(View.GONE);
                 layout_bra_isOld_button.setVisibility(View.VISIBLE);
                 layout_bra_tight_hook_button.setVisibility(View.GONE);
+
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_bandfit_continue",uID);
 
                 Log.e("bandFit",bandFit);
 
@@ -2006,6 +2038,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 progress(8);
                 Log.e("cupFit",cupFit);
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_cupfit_continue",uID);
+
             }
         });
 
@@ -2027,6 +2061,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 updateUserDetails();
 
                 Log.e("cupFit",cupFit);
+
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_cupfit_continue",uID);
             }
         });
 
@@ -2050,6 +2086,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 updateUserDetails();
 
                 Log.e("cupFit",cupFit);
+
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_cupfit_continue",uID);
 
             }
         });
@@ -2111,6 +2149,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 Log.e("strapsFit",strapsFit);
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_strapfit_continue",uID);
+
             }
         });
 
@@ -2168,6 +2208,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     }
                 }
                 Log.e("strapsFit",strapsFit);
+
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_strapfit_continue",uID);
 
             }
         });
@@ -2227,6 +2269,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 }
                 Log.e("strapsFit",strapsFit);
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_strapfit_continue",uID);
+
             }
         });
 
@@ -2250,6 +2294,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 updateUserDetails();
 
                 Log.e("frontWireFit",frontWireFit);
+
+
 
             }
         });
@@ -2343,6 +2389,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     }
                 }
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_underwirefit_continue",uID);
+
 
             }
         });
@@ -2390,6 +2438,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                     }
                 }
 
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_underwirefit_continue",uID);
+
 
             }
         });
@@ -2436,6 +2486,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                         getFinalSize(altId,brand,band_noBrand,cup_noBrand,region_noBrand,wired_noBrand);
                     }
                 }
+
+                trackEvent(clientId,skuId,"click","pdp","fyf_bra_underwirefit_continue",uID);
 
             }
         });
@@ -2744,6 +2796,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
             if (temp.size() == 0)
             {
+                tv_brand_error.setText(getResources().getString(R.string.brand_not_in_list));
                 layout_add.setVisibility(View.VISIBLE);
                 tv_brand_error.setVisibility(View.VISIBLE);
                 layout_brands.setVisibility(View.INVISIBLE);
@@ -3038,6 +3091,32 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
             if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
                 GET get = new GET(this, "https://discoverysvc.pixibo.com/merge/users/"+UID+"/"+uID , MergeProfile, this);
                 // Utils.showLoading(SettingActivity.mContext, false);
+                get.execute();
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
+
+
+
+    private void trackEvent(String clientID ,String SKUID,String eventType,String page,String event,String uid ) {
+
+        Log.e("Event Track: eventType",eventType);
+        Log.e("Event Track: page",page);
+        Log.e("Event Track: event",event);
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+                GET get = new GET(this, "https://sizeguidev2.pixibo.com/event/"+clientID+"/"+SKUID+"?eventType="+eventType+"&page="+page+"&event="+event+"&uid="+uid+"&source=app" , Track, this);
+                // Utils.showLoading(SettingActivity.this, false);
                 get.execute();
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));

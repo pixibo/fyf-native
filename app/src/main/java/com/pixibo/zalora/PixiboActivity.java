@@ -38,6 +38,7 @@ import static com.pixibo.zalora.Utils.Utils.TYPE.ConversionTracking;
 import static com.pixibo.zalora.Utils.Utils.TYPE.MergeProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ResetProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.SizeFromApi;
+import static com.pixibo.zalora.Utils.Utils.TYPE.Track;
 import static com.pixibo.zalora.Utils.Utils.TYPE.UpdateProfile;
 import static com.pixibo.zalora.Utils.Utils.TYPE.ValidateUserUid;
 import static com.pixibo.zalora.Utils.Utils.TYPE.validateSKU;
@@ -111,6 +112,16 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         tv_find_my_size  = tv_find_my_size_set;
         layout_button = layout_button_2;
         validate_sku(clientId,skuId);
+
+
+
+        layout_button_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                trackEvent(clientId,skuId,"click","pdp","widgetopen",uID);
+            }
+        });
+
 
 
     }
@@ -323,6 +334,30 @@ public class PixiboActivity extends AppCompatActivity implements Result {
         }
     }
 
+
+    private void trackEvent(String clientID ,String SKUID,String eventType,String page,String event,String uid ) {
+
+        Log.e("Event Track: eventType",eventType);
+        Log.e("Event Track: page",page);
+        Log.e("Event Track: event",event);
+
+        try {
+
+            if (NetworkUtils.getInstance(this).isConnectedToInternet()) {
+                GET get = new GET(this, "https://sizeguidev2.pixibo.com/event/"+clientID+"/"+SKUID+"?eventType="+eventType+"&page="+page+"&event="+event+"&uid="+uid+"&source=app" , Track, this);
+                // Utils.showLoading(SettingActivity.this, false);
+                get.execute();
+            } else {
+                Utils.showToast(this,getResources().getString(R.string.no_internet));
+            }
+
+        } catch (Exception e) {
+            //Utils.hideLoading();
+            Utils.showToast(this,getResources().getString(R.string.something_wrong));
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+        }
+    }
 
 
 

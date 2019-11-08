@@ -570,7 +570,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
                     final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
-                    final SpannableStringBuilder sb = new SpannableStringBuilder(getResources().getString(R.string.footwear_pick_category_model) + brand + " "+ categoryType + " " + getResources().getString(R.string.footwear_pick_category__model2)+ getResources().getString(R.string.footwear_pick_category_optional));
+                    final SpannableStringBuilder sb = new SpannableStringBuilder(getResources().getString(R.string.footwear_pick_category_model) +" "+ brand + " "+ categoryType + " " + getResources().getString(R.string.footwear_pick_category__model2)+ getResources().getString(R.string.footwear_pick_category_optional));
                     sb.setSpan(bss, sb.length() - getResources().getString(R.string.footwear_pick_category_optional).length(), sb.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     tv_category_model.setText(sb);
 
@@ -607,13 +607,28 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                         layout_brand_size.setVisibility(View.VISIBLE);
 
 
-                        if (categoryModel.equals(""))
+                        if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
                         {
-                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                            if (categoryModel.equals(""))
+                            {
+                                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" 鞋 "+getResources().getString(R.string.footwear_what_size_2));
+                            }
+                            else
+                            {
+                                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                            }
                         }
+
                         else
                         {
-                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                            if (categoryModel.equals(""))
+                            {
+                                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                            }
+                            else
+                            {
+                                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                            }
                         }
                     }
 
@@ -649,13 +664,28 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
                 get_brand_sizes(gender,category,brand);
 
-                if (categoryModel.equals(""))
+                if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
                 {
-                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                    if (categoryModel.equals(""))
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" 鞋 "+getResources().getString(R.string.footwear_what_size_2));
+                    }
+                    else
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                    }
                 }
+
                 else
                 {
-                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                    if (categoryModel.equals(""))
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                    }
+                    else
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                    }
                 }
 
             }
@@ -700,13 +730,28 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                     trackEvent(clientId,skuId,"click","pdp","refShoemodel_continue",uID);
 
 
-                    if (categoryModel.equals(""))
+                    if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
                     {
-                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                        if (categoryModel.equals(""))
+                        {
+                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" 鞋 "+getResources().getString(R.string.footwear_what_size_2));
+                        }
+                        else
+                        {
+                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                        }
                     }
+
                     else
                     {
-                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                        if (categoryModel.equals(""))
+                        {
+                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                        }
+                        else
+                        {
+                            tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                        }
                     }
                 }
                 else
@@ -742,13 +787,28 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 trackEvent(clientId,skuId,"click","pdp","refShoemodel_skip",uID);
 
 
-                if (categoryModel.equals(""))
+                if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
                 {
-                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                    if (categoryModel.equals(""))
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" 鞋 "+getResources().getString(R.string.footwear_what_size_2));
+                    }
+                    else
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                    }
                 }
+
                 else
                 {
-                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                    if (categoryModel.equals(""))
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                    }
+                    else
+                    {
+                        tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                    }
                 }
             }
         });
@@ -1183,6 +1243,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
              if (temp.size() == 0)
             {
+                tv_brand_error.setText(getResources().getString(R.string.brand_not_in_list));
                 layout_add.setVisibility(View.VISIBLE);
                 tv_brand_error.setVisibility(View.VISIBLE);
                 layout_brands.setVisibility(View.INVISIBLE);
@@ -2433,6 +2494,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
     private void trackEvent(String clientID ,String SKUID,String eventType,String page,String event,String uid ) {
 
+        Log.e("Event Track: eventType",eventType);
+        Log.e("Event Track: page",page);
+        Log.e("Event Track: event",event);
 
         try {
 
@@ -3747,7 +3811,7 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
 
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
-        final SpannableStringBuilder sb = new SpannableStringBuilder(getResources().getString(R.string.footwear_pick_category_model) + brand + " "+ categoryType + " " + getResources().getString(R.string.footwear_pick_category__model2)+ getResources().getString(R.string.footwear_pick_category_optional));
+        final SpannableStringBuilder sb = new SpannableStringBuilder(getResources().getString(R.string.footwear_pick_category_model) +" "+ brand + " "+ categoryType + " " + getResources().getString(R.string.footwear_pick_category__model2)+ getResources().getString(R.string.footwear_pick_category_optional));
         sb.setSpan(bss, sb.length() - getResources().getString(R.string.footwear_pick_category_optional).length(), sb.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         tv_category_model.setText(sb);
 
@@ -3786,14 +3850,32 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             get_brand_sizes(gender,category,brand);
 
-            if (categoryModel.equals(""))
+            if (preferredLanguage.equals("hk") || preferredLanguage.equals("tw"))
             {
-                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                if (categoryModel.equals(""))
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" 鞋 "+getResources().getString(R.string.footwear_what_size_2));
+                }
+                else
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
             }
+
             else
             {
-                tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                if (categoryModel.equals(""))
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryType+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
+                else
+                {
+                    tv_brand_fit.setText(getResources().getString(R.string.footwear_what_size) +" "+ brand +" "+categoryModel+" "+getResources().getString(R.string.footwear_what_size_2));
+                }
             }
+
+
+
             layout_brands.setVisibility(View.VISIBLE);
         }
         else if(!categoryType.equals(""))

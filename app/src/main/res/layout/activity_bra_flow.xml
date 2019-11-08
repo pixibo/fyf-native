@@ -2641,6 +2641,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_bra_sizes"
                 android:paddingTop="30dp"
+                android:visibility="gone"
                 android:paddingBottom="65dp"
                 android:layout_alignParentBottom="true">
 

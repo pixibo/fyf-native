@@ -7,11 +7,11 @@
     <string name="apparel_bra_cup">罩杯</string>
     <string name="apparel_bra_overbust">上圍</string>
     <string name="apparel_bra_select_">選擇罩杯尺寸</string>
-    <string name="apparel_bra_size">尺碼</string>
+    <string name="apparel_bra_size">尺碼類別</string>
     <string name="apparel_brand_range">尺碼</string>
     <string name="apparel_brand_size">尺碼</string>
     <string name="apparel_find_right_size">為您尋找合適的尺碼</string>
-    <string name="apparel_fit_accurate">想要更準確的尺碼推薦？</string>
+    <string name="apparel_fit_accurate">提供以下信息獲取更準確的尺碼推薦</string>
     <string name="apparel_fit_skip">跳過</string>
     <string name="apparel_fit_what_brand">是哪個品牌？</string>
     <string name="apparel_height">身高</string>
@@ -133,8 +133,8 @@
     <string name="bar_band_feel_straight_desc">穿上時舒適，而且形成水平線</string>
     <string name="bra_band_feel">下圍合適嗎？</string>
     <string name="bra_feel_digging">扣在最前一格後能否改善情況？</string>
-    <string name="bra_feel_yes">能</string>
-    <string name="bra_feel_no">不能</string>
+    <string name="bra_feel_yes">會</string>
+    <string name="bra_feel_no">不會</string>
     <string name="bra_isOld_bra">你會否連續兩天穿上同一個胸圍？</string>
     <string name="bra_how_old">你穿了這個胸圍有多久？</string>
     <string name="bra_underwire_bust">兩側鋼圈合適嗎？</string>
@@ -151,7 +151,7 @@
     <string name="bra_result_how_fit">胸圍是否合身？</string>
     <string name="bra_result_best_size">您最合適的尺碼是</string>
     <string name="bra_result_accurate_fit">為得到更準確結果，請完成以下問題，讓我們知道胸圍的合身度</string>
-    <string name="bra_fav_style">您的胸圍是什麼款式？</string>
+    <string name="bra_fav_style">你喜歡甚麼胸圍款式？</string>
     <string name="bra_cup_gaps">哪部分出現空隙？</string>
     <string name="bra_cup_fit">罩杯合身嗎？</string>
     <string name="bra_brand_not_listed">品牌不在此列</string>
