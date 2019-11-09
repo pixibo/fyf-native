@@ -119,7 +119,7 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
     private RecyclerView recycler_brand_suggestion,recycler_bra_sizeType;
     private EditText et_what_brand;
 
-    private RelativeLayout layout_brand_search,layout_add,layout_brands,layout_loading;
+    private RelativeLayout layout_brand_search,layout_add,layout_brands,layout_loading,layout_error,layout_try_again;
     private RelativeLayout layout_brand,layout_bra_profile,layout_bra_profile_noBrand,layout_result,layout_band_feel,layout_bra_old,layout_cup_fit,layout_gaps,layout_strap_fit,layout_underwire_front,layout_underwire_side,layout_bra_style;
     private TextView tv_brand_continue,tv_bra_continue,tv_bra_continue_noBrand;
     private TextView tv_back_bra,tv_back_bra_noBrand,tv_back_band_feel,tv_back_cup_fit,tv_back_strap_fit,tv_back_gap,tv_back_bra_style,tv_back_old_bra,tv_back_layout_underwire_front,tv_back_layout_underwire_side;
@@ -261,6 +261,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
         layout_add = findViewById(R.id.layout_add);
         layout_brands = findViewById(R.id.layout_brands);
         layout_loading = findViewById(R.id.layout_loading);
+        layout_error = findViewById(R.id.layout_error);
+        layout_try_again = findViewById(R.id.layout_try_again);
         layout_recommended = findViewById(R.id.layout_recommended);
         layout_start_over = findViewById(R.id.layout_start_over);
 
@@ -1449,6 +1451,31 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 trackEvent(clientId,skuId,"click","pdp","fyf_bra_startOver",uID);
 
+            }
+        });
+
+
+
+        layout_try_again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                resetData();
+
+                layout_brand.setVisibility(View.VISIBLE);
+
+                layout_bra_profile_noBrand.setVisibility(View.GONE);
+                layout_result.setVisibility(View.GONE);
+                layout_band_feel.setVisibility(View.GONE);
+                layout_bra_old.setVisibility(View.GONE);
+                layout_cup_fit.setVisibility(View.GONE);
+                layout_gaps.setVisibility(View.GONE);
+                layout_strap_fit.setVisibility(View.GONE);
+                layout_underwire_front.setVisibility(View.GONE);
+                layout_underwire_side.setVisibility(View.GONE);
+                layout_bra_style.setVisibility(View.GONE);
+
+                progress(1);
             }
         });
 
@@ -2943,6 +2970,9 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                 get.execute();
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
+                layout_loading.setVisibility(View.VISIBLE);
+                layout_error.setVisibility(View.VISIBLE);
+
             }
 
         } catch (Exception e) {
@@ -3173,6 +3203,8 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
 
                 try
                 {
+                    if (statusCode == 200)
+                    {
                     layout_loading.setVisibility(View.GONE);
                     layout_bra_profile.setVisibility(View.VISIBLE);
                     progress(2);
@@ -3262,6 +3294,13 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                             pixels = (int) (200 * scale + 0.5f);
                             recycler_bra_sizeType.setLayoutParams(new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, pixels));
                         }
+                    }
+                    }
+                    else if (statusCode == 500)
+
+                    {
+                        layout_loading.setVisibility(View.GONE);
+                        layout_error.setVisibility(View.VISIBLE);
                     }
 
                 }
@@ -3358,12 +3397,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                         }
                     }
 
+
                     else if (statusCode == 500)
+
                     {
-                        layout_bra_profile.setVisibility(View.GONE);
                         layout_loading.setVisibility(View.GONE);
-                        layout_brand.setVisibility(View.VISIBLE);
-                        progress(1);
+                        layout_error.setVisibility(View.VISIBLE);
                     }
 
                 }
@@ -3390,10 +3429,12 @@ public class BraFlow extends AppCompatActivity implements Result, View.OnClickLi
                             setData(result);
                         }
                     }
+
                     else if (statusCode == 500)
+
                     {
-                        layout_brand.setVisibility(View.VISIBLE);
-                        progress(1);
+                        layout_loading.setVisibility(View.GONE);
+                        layout_error.setVisibility(View.VISIBLE);
                     }
                 }
                 catch (Exception e)

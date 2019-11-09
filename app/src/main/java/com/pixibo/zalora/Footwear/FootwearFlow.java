@@ -479,6 +479,9 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 layout_brand_size.setVisibility(View.GONE);
                 layout_result.setVisibility(View.GONE);
                 layout_error.setVisibility(View.GONE);
+
+                resetData();
+
                 progress(1);
             }
         });
@@ -2373,6 +2376,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
+                layout_loading.setVisibility(View.GONE);
+                layout_error.setVisibility(View.VISIBLE);
             }
 
         } catch (Exception e) {
@@ -2394,6 +2399,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 get.execute();
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
+                layout_loading.setVisibility(View.GONE);
+                layout_error.setVisibility(View.VISIBLE);
             }
 
         } catch (Exception e) {
@@ -2421,6 +2428,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 get.execute();
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
+                layout_loading.setVisibility(View.GONE);
+                layout_error.setVisibility(View.VISIBLE);
             }
 
         } catch (Exception e) {
@@ -2447,6 +2456,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
                 get.execute();
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
+                layout_loading.setVisibility(View.GONE);
+                layout_error.setVisibility(View.VISIBLE);
             }
 
         } catch (Exception e) {
@@ -2482,6 +2493,8 @@ public class FootwearFlow extends AppCompatActivity implements Result, View.OnCl
 
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
+                layout_loading.setVisibility(View.GONE);
+                layout_error.setVisibility(View.VISIBLE);
             }
 
         } catch (Exception e) {

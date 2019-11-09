@@ -924,8 +924,14 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         layout_try_again.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                layout_body_profile.setVisibility(View.VISIBLE);
 
+
+                tv_header_text.setVisibility(View.GONE);
+                layout_header.setBackgroundColor(getResources().getColor(R.color.color_background));
+
+                resetData();
+
+                layout_body_profile.setVisibility(View.VISIBLE);
 
                 layout_bra_profile.setVisibility(View.GONE);
                 layout_bust.setVisibility(View.GONE);
@@ -5368,6 +5374,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             } else {
 
                 layout_error.setVisibility(View.VISIBLE);
+                layout_loading.setVisibility(View.GONE);
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
             }
 
@@ -5396,6 +5403,7 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
         } catch (Exception e) {
             //Utils.hideLoading();
             layout_error.setVisibility(View.VISIBLE);
+            layout_loading.setVisibility(View.GONE);
             Utils.showToast(this,getResources().getString(R.string.something_wrong));
             e.printStackTrace();
             Log.e("Exception",e.getMessage());
@@ -5418,6 +5426,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
             // Utils.showLoading(SettingActivity.this, false);
             get.execute();
         } else {
+            layout_error.setVisibility(View.VISIBLE);
+            layout_loading.setVisibility(View.GONE);
             Utils.showToast(this,getResources().getString(R.string.no_internet));
         }
 
@@ -5443,6 +5453,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 // Utils.showLoading(SettingActivity.this, false);
                 get.execute();
             } else {
+                layout_error.setVisibility(View.VISIBLE);
+                layout_loading.setVisibility(View.GONE);
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
             }
 
@@ -5466,6 +5478,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 get.execute();
 
             } else {
+                layout_error.setVisibility(View.VISIBLE);
+                layout_loading.setVisibility(View.GONE);
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
             }
 
@@ -5491,6 +5505,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 get.execute();
 
             } else {
+                layout_error.setVisibility(View.VISIBLE);
+                layout_loading.setVisibility(View.GONE);
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
             }
 
@@ -5516,6 +5532,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
             } else {
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
+                layout_error.setVisibility(View.VISIBLE);
+                layout_loading.setVisibility(View.GONE);
             }
 
         } catch (Exception e) {
@@ -5545,6 +5563,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
                 post.execute();
 
             } else {
+                layout_error.setVisibility(View.VISIBLE);
+                layout_loading.setVisibility(View.GONE);
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
             }
 
@@ -5580,6 +5600,8 @@ public class ApparelFlow extends AppCompatActivity implements View.OnClickListen
 
 
             } else {
+                layout_error.setVisibility(View.VISIBLE);
+                layout_loading.setVisibility(View.GONE);
                 Utils.showToast(this,getResources().getString(R.string.no_internet));
             }
 
